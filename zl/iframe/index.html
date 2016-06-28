@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css"/>
+    <script src="js/angular_module/angular.min.js"></script>
+    <script src="js/angular_module/angular-route.min.js"></script>
+    <script src="js/dateUtil.js"></script>
+    <script src="js/angular_module/main.js"></script>
+    <!--Easy UI主题css文件-->
+    <link rel="stylesheet" href="css/easyuiq.css"/>
+    <!--Easy UI的图标Css文件-->
+    <link rel="stylesheet" href="css/icon.css"/>
+    <!---->
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.easyui.min.js"></script>
+    <!--Easy UI的国际化文件,以下为让它显示中文-->
+    <script src="js/easyui-lang-zh_CN.js"></script>
+    <!--反贪模块js-->
+    <script src="js/modules/fantan/FanTan.js"></script>
+    <!--反渎模块js-->
+    <script src="js/modules/FanDu/FanDu.js"></script>
+
+</head>
+<body>
+<!--<h1>头部</h1>-->
+<div class="head">
+    <div class="head_left">
+        <div class="head_left_left"></div>
+        <div class="head_left_right">
+            <h3>检察业务综合分析管理系统</h3>
+        </div>
+    </div>
+    <div class="head_right">
+        <div class="head_right_left"></div>
+        <div class="head_right_content">
+            <h3>&nbsp;欢迎您&nbsp;滨州市院&nbsp;某某&nbsp;</h3>
+        </div>
+        <div class="head_right_right"></div>
+    </div>
+</div>
+<!--容器-->
+<div class="content">
+    <div class="content_left">
+        <ul>
+            <li><a href="#FanTanYeWu">反贪业务</a></li>
+            <li><a href="#/FanTanZongHe">反贪综合</a></li>
+            <li><a href="#FanDuYeWu">反渎业务</a></li>
+            <li><a href="#/FanDuZongHe">反渎综合</a></li>
+        </ul>
+    </div>
+    <div class="content_right">
+        <div style="padding-left: 300px;  padding-top: 2px;">时间范围:
+            <input type="text" id="rq1" class="easyui-datebox" data-options="sharedCalendar:'#cc'"/>-
+            <input type="text" id="rq2" class="easyui-datebox" data-options="sharedCalendar:'#cc'"/>
+            <input type="button" id="c" ng-click="cxBtn()" class="easyui-linkbutton" data-options="iconCls:'icon-help'" style="width:40px;height: 20px" value="查询"/>
+        </div>
+        <!--              -->
+        <!--      加载     -->
+        <!--               -->
+        <div ng-view="" style="width: 100%;outline:1px solid chartreuse "></div>
+    </div>
+    <!--日期的图标-->
+    <div id="cc" class="easyui-calendar"></div>
+
+</div>
+
+
+
+
+
+
+<!--<h1>尾部</h1>-->
+</body>
+<script>
+
+</script>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+onEndEdit	(editParm)
+onRowDragDrop	(editParm) {rows,parent,near,after}
+onDragCol	 	拖动列事件
+onToggleCol	 	切换列事件
+onChangeSort	 	改变排序事件
+onSuccess	(data, grid)	成功获取服务器数据的事件
+onDblClickRow	(data,rowid,rowdata)	双击行事件
+onSelectRow	(rowdata, rowid, rowobj)	选择行事件
+onUnSelectRow	(rowdata, rowid, rowobj)	取消选择行事件
+onBeforeCheckRow	(checked, data, rowid, rowdata)	选择前事件，可以通过return false阻止操作(复选框)
+onCheckRow	(checked,data,rowid,rowdata)	选择事件(复选框)
+onBeforeCheckAllRow	(checked,element)	选择前事件
+onCheckAllRow	(checked,element)	选择事件(复选框 全选/全不选)
+onBeforeShowData	(currentData)	显示数据前事件
+onAfterShowData	(currentData)	显示完数据事件
+onError	(XMLHttpRequest, textStatus, errorThrown)	错误事件
+onSubmit	a 	提交前事件
+onReload	(grid)	刷新事件
+onToFirst	(element)	第一页
+onToPrev	(element)	上一页
+onToNext	(element)	下一页
+onToLast	(element)	最后一页
+onAfterAddRow	(rowdata)	增加行后事件
+onBeforeEdit	(editParm)	编辑前事件
+onBeforeSubmitEdit	(editParm)	验证编辑器结果是否通过
+onAfterEdit	(editParm)	结束编辑后事件
+onLoading	 	加载时函数
+onLoaded	(grid)	加载完函数
+onContextmenu	({data,rowindex,row},e)	右击事件
+onBeforeCancelEdit	 	取消编辑前事件
+onAfterSubmitEdit	({record,rowindex,newdata})	编辑后事件
+onGroupExtend	()	分组展开事件
+onGroupCollapse	()	分组收缩事件
+onLoadData	()	加载数据前事件
+onBeforeSelectRow	()	选择前事件
+onHeaderCellBulid	()	头部单元格创建事件
+</body>
+</html>

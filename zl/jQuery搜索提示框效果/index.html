@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>jQuery搜索提示框效果</title>
+<link rel="stylesheet" href="css/jquery.bigautocomplete.css" type="text/css" />
+
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/jquery.bigautocomplete.js"></script>
+<script type="text/javascript">
+$(function(){
+	$("#tt").bigAutocomplete({
+	});
+});
+
+</script>
+
+</head>
+<body>
+
+<style type="text/css">
+*{margin:0;padding:0;list-style-type:none;}
+.text{background:url(img/spis_031ddf34.png) no-repeat;}
+.text{width:529px;height:22px;padding:4px 7px;padding:6px 7px 2px\9;font:16px arial;border:1px solid #cdcdcd;border-color:#9a9a9a #cdcdcd #cdcdcd #9a9a9a;vertical-align:top;outline:none;margin:0 5px 0 0;}
+</style>
+
+<div class="demo">
+
+	<div style=" margin: 100px 0 0 200px;">
+		<h2>jQuery搜索提示框</h2>
+		<input type="text" id="tt" value="" class="text" />
+	</div>
+<!--显示-->
+	<div id='bigAutocompleteContent' class='bigautocomplete-layout'></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="jquery-1.11.3.min.js"></script>
+  <style>
+    #head{
+      height: 100px;
+      border: 1px solid red;
+    }
+    #bottom{
+      height: 50px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+<body>
+<!------------------------------>
+<!-------------头部--------------->
+<!------------------------------>
+
+<div id="head">
+  <ul>
+    <li class="1">首页</li>
+    <li class="2">素材</li>
+  </ul>
+</div>
+<h1>在iframe中操作body下的DOM节点~
+
+  document.getElementById('iframeID').contentWindow.document.getElementById('元素的ID')</h1>
+<!--内容加载-->
+<div id="tj"></div>
+
+<!------------------------->
+<!-------底部距底部--------------->
+<div id="bottom">
+  底部
+</div>
+</body>
+<script>
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////iframe引入不同的页面////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var numeral,aa;
+  $("#tj").html("<iframe id='iframepage' width='100%' frameborder='0' height='400'  name='i' allowTransparency='true' src='test1.html' ></iframe>"); //默认页面
+  $("li").click(function (e) {  //选中的页面
+    numeral= $(e.target).attr("class"); // 获取到class的值
+    $("#tj").html("<iframe id='iframepage' width='100%' frameborder='0' height='400'  name='i' allowTransparency='true'></iframe>");
+//    文件名一样的情况下，经过后缀名+数字的形式跳转页面
+//    document.getElementById("iframepage").src="test"+numeral+".html";
+
+    //    文件名不一样的情况下，获取li的class与数组中的id相比较，如果相等，就把name传给iframepage
+    var ma=[{name:"test1",id:1},{name:"souye",id:2}];  //name为文件名
+      for (var value of ma) {
+        if((value.id)==(numeral)){
+          document.getElementById("iframepage").src=value.name+".html";
+    }
+      }
+  });
+
+
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////底部距底部//////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var h = 0;
+  function mainHeight()
+  {
+    if (window.innerHeight)
+      h = window.innerHeight;
+    else if ((document.body) && (document.body.clientHeight))
+      h = document.body.clientHeight;
+
+    if (document.documentElement && document.documentElement.clientHeight) {
+      h = document.documentElement.clientHeight;
+    }
+
+    //根据头和尾div高度计算中间高度
+    var th=$("#head").height();
+//    var th=document.getElementById("head").scrollHeight;
+//    alert(th);
+    var bh=$("#bottom").height();
+//    var bh=document.getElementById("head").scrollHeight;
+    document.getElementById("tj").style.height = (h - th-bh-25) + "px";
+  }
+  window.onload = mainHeight;
+  window.onresize = mainHeight;
+</script>
+</html>

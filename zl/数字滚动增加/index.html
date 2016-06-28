@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-1.7.2.min.js"></script>
+		<style>
+		ul li{
+			list-style-type: none;
+		}
+		p{
+			overflow: hidden;
+		}
+		.header_data_body{
+			width:1080px;
+			margin: 0 auto;
+			padding-top: 21px;
+			height: 75px;
+		}
+		.header_data_body ul li{
+			float: left;
+			width: 25%;
+			text-align: left;
+		}
+		.header_data_body ul li p span{
+			padding:10px 9px;
+			font-size: 22px;
+			background-color: #e84439;
+			border-radius: 4px;
+			color: #FFFFFF;
+			margin-right:8px;
+			float: left;
+		}
+	</style>
+	</head>
+	
+	<body>
+		<div class="header_data" name="view" id="view">
+				<div class="header_data_body">
+					<ul>
+						<li>
+							<p id="p-number">
+								<span class="span-number" data-number="5">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+							</p>
+							<p class="header_data_name">已发布岗位</p>
+						</li>
+						<li>
+							<p id="p-number1">
+								<span class="span-number" data-number="2">0</span>
+								<span class="span-number" data-number="3">0</span>
+								<span class="span-number" data-number="6">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+							</p>
+							<p class="header_data_name">已入驻商家</p>
+						</li>
+						<li>
+							<p id="p-number2">
+								<span class="span-number" data-number="5">0</span>
+								<span class="span-number" data-number="3">0</span>
+								<span class="span-number" data-number="6">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+								<span class="span-number" data-number="4">0</span>
+							</p>
+							<p class="header_data_name">已注册学生用户</p>
+						</li>
+						<li style="text-align: right;">
+							<p id="p-number3">
+								<span class="span-number" data-number="1">0</span>
+								<span class="span-number" data-number="0">0</span>
+								<span class="span-number" data-number="0">0</span>
+								<span class="span-number" data-number="0">0</span>
+								<span>万</span>
+							</p>
+							<p class="header_data_name" style="text-align: left;padding-left: 52px;">每月学生薪资</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+	</body>
+	<script type="text/javascript">
+	setInterval("startRequest('p-number')",200);
+	setInterval("startRequest('p-number1')",200);
+	setInterval("startRequest('p-number2')",200);
+	setInterval("startRequest('p-number3')",200);
+	function startRequest(id) {
+		$("#" + id).find(".span-number").each(function() {
+			if(parseInt($(this).text()) < parseInt($(this).attr("data-number"))) {
+				$(this).text(parseInt($(this).text()) + 1);
+			}
+		});
+	}
+	
+	</script>
+</html>

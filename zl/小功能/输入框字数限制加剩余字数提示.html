@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="leave">
+    <textarea id="textarea" style="width: 100%;height: 300px;" onKeyDown="textdown(event)"
+              onKeyUp="javascript:checkWord(this);" onMouseDown="javascript:checkWord(this);"
+              onfocus="if(value=='请输入投诉理由（限120字）'){value=''}"
+              onblur="if (value ==''){value='请输入投诉理由（限120字）'}"></textarea>
+
+    还可以输入<span style="font-family: Georgia; font-size: 26px;" id="wordCheck">120</span>个中文
+</div>
+
+<SCRIPT type="text/javascript">
+    function textdown(e) {
+        textevent = e;
+        if (textevent.keyCode == 8) {
+            return;
+        }
+        if (document.getElementById('textarea').value.length >= 120) {
+            if (!document.all) {
+                textevent.preventDefault();
+            } else {
+                textevent.returnValue = false;
+            }
+        }
+    }
+    function textup() {
+        var s = document.getElementById('textarea').value;
+        //判断ID为text的文本区域字数是否超过100个
+        if (s.length > 120) {
+            document.getElementById('textarea').value = s.substring(0, 120);
+        }
+    }
+    var maxstrlen = 120;
+
+    function Q(s) {
+        return document.getElementById(s);
+    }
+
+    function checkWord(c) {
+
+        len = maxstrlen;
+
+        var str = c.value;
+
+        myLen = getStrleng(str);
+
+        var wck = Q("wordCheck");
+
+        if (myLen > len * 2) {
+
+            c.value = str.substring(0, i + 1);
+
+        }
+
+        else {
+
+            wck.innerHTML = Math.floor((len * 2 - myLen) / 2);
+
+        }
+
+    }
+
+    function getStrleng(str) {
+
+        myLen = 0;
+
+        i = 0;
+
+        for (; (i < str.length) && (myLen <= maxstrlen * 2); i++) {
+
+            if (str.charCodeAt(i) > 0 && str.charCodeAt(i) < 120)
+
+                myLen++;
+
+            else
+
+                myLen += 2;
+
+        }
+
+        return myLen;
+
+    }
+
+
+
+</SCRIPT>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>js小功能</title>
+    <!------------   2秒后载入指定网页   ---------------------->
+    <!--<meta http-equiv="refresh" content="2;URL=http://www.cnblogs.com/hnyei/archive/2013/05/30/3107672.html">   -->
+</head>
+<body onload="scroll()">
+<!---------- 让文字不停地滚动 -------->
+<marquee behavior="" style="width: 200px;border: 1px solid red;"  direction="left"  scrolldelay="600">滚动文字</marquee><br/>
+
+<!------------     关闭当前窗口    ----------->
+<a href="/" onClick="javascript:window.close();return false;">关闭窗口</a><br/>
+
+<!------------     刷新本页窗口    ----------->
+<font onClick="history.go(0)">刷新本页</font><br/>
+
+<!------------     分享功能    ----------->
+<!--<div id="ckepop" class='feixiangjias'>-->
+    <!--<a href="javascript:" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank">分享到：</a>-->
+    <!--<a class="jiathis_button_qzone">QQ空间</a>-->
+    <!--<a class="jiathis_button_tsina">新浪微博</a>-->
+    <!--<a class="jiathis_button_kaixin001">开心网</a>-->
+    <!--<a class="jiathis_button_renren">人人网</a>-->
+    <!--<a class="jiathis_button_baidu">百度收藏</a>-->
+    <!--<a class="jiathis_button_douban">豆瓣</a>-->
+    <!--<a class="jiathis_button_tqq">腾讯微博</a>-->
+<!--</div>-->
+<!--<script type="text/javascript" src="http://www.139cai.com/public/share.js" charset="utf-8"></script>-->
+
+<!------------     分享功能    ----------->
+<div style="line-height: 12px" id="bdshare" class="bdshare_b">
+    <img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>
+<script id="bdshare_js" type="text/javascript" data="type=button&uid=664845" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=381133"></script>
+<script type="text/javascript">
+    document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();
+</script>
+</body>
+    <script language=Javascript>
+    document.write("最后更新时间: " + document.lastModified + "");
+
+
+    document.title="今天是星期天";   //修改tile标题
+    // setTimeout('window.close();',2000);   //两秒后自动关闭当前窗口
+
+
+    </script>
+</html>

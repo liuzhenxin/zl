@@ -1,0 +1,167 @@
+@charset "UTF-8";
+//*{
+//  outline: 1px solid #ff0000;
+//}
+//定义图片
+$head_1:url(../images/head_1.png) no-repeat;
+$head_2:url(../images/head_2.png) no-repeat;
+$head_3:url(../images/head_3.png) no-repeat;
+//多个数据循环
+//$animal-data: (puma, black, default),(sea-slug, blue, pointer),(egret, white, move);
+//@each $animal, $color, $cursor in $animal-data {
+//  .#{$animal}-icon {
+//    background-images: url('/images/#{$animal}.png');
+//    border: 2px solid $color;
+//    cursor: $cursor;
+//  }
+//}
+
+//单个字段数据循环h标题和值
+
+//$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
+////调用
+//@each $header, $size in $headings {
+//  #{$header} {
+//    font-size: $size;
+//  }
+//}
+
+//内外边距;调用 @extend %mpzero;
+%mpzero{
+  margin: 0;
+  padding: 0;
+}
+
+//设置BFC环境
+%mpzero1{
+  overflow: hidden;
+  zoom:1;
+}
+//默认字体为16px;调用 .te{font-size: pxToRem(10px);}
+$baseFontSize:      16px !default;
+@function pxToRem($px) {
+  @return $px / $baseFontSize * 1rem;
+}
+
+//定义字体颜色;lighten减淡和darken加深;第一个参数都是颜色值，第二个参数都是百分比
+$color:black; //调用color:darken($color,10%);
+$width:100px;
+
+//定义宽高;调用 @include wh(1000px, 337px);
+@mixin wh($w,$h){
+  width: $w;
+  height: $h;
+}
+//margin的上左
+@mixin marginTopLeft($top,$left){
+  margin-top:$top;
+  margin-left:$left;
+}
+//padding的上左
+@mixin paddingTopLeft($top,$left){
+  padding-top:$top;
+  padding-left:$left;
+}
+//margin的四个值
+@mixin marginTLBY($top,$left,$bottom,$right){
+  margin-top: $top;
+  margin-left: $left;
+  margin-bottom: $bottom;
+  margin-right: $right;
+}
+//第一个值为默认值，第二个鼠标滑过值;可用nth($var,$index)取值
+//调用  a{color:nth($linkColor,1); &:hover{color:nth($linkColor,2);}}
+$linkColor:#08c #333 !default;
+
+
+
+html{
+  font-size: $baseFontSize;
+}
+body{
+  @extend %mpzero;
+  font-family: 'Open Sans', Arial, Helvetica, Sans-serif, Verdana, Tahoma;
+}
+//
+//头部head
+//
+.head{
+  @include wh(pxToRem(1412px), pxToRem(45px));
+  background:#438eb9;
+  @extend %mpzero;
+  border: 1px solid #ff0000;
+  @extend %mpzero1;
+  h3{
+    color: #ffffff;
+  }
+}
+//左边
+.head_left{
+  height: 45px;
+  width: 320px;
+  float: left;
+  @extend %mpzero1;
+}
+.head_left_left{
+  @include wh(47px, 45px);
+  float: left;
+  background: $head_1;
+}
+.head_left_right{
+  @include wh(280px, 45px);
+}
+//右边
+.head_right{
+  width: 500px;
+  height: 45px;
+  float: right;
+  @extend %mpzero1;
+}
+.head_right_left{
+  @include wh(41px,45px);
+  background: $head_3;
+  float: right;
+}
+.head_right_content{
+  height: 45px;
+  float: right;
+}
+.head_right_right{
+  @include wh(41px,45px);
+  background: $head_2;
+  float: right;
+}
+
+//内容
+.content{
+  width:1423px;
+  font-size: 14px;
+  @extend %mpzero1;
+}
+.content_left{
+  width:300px;
+  height: 600px;
+  border: 1px solid #ff0000;
+  float: left;
+}
+li{
+  margin-top: 20px;
+  list-style: none;
+}
+a{
+  color: #000000;
+  text-decoration: none;
+  &:hover{
+  color: #ff0000;
+}
+}
+
+.content_right{
+  width: 1121px;
+  outline: 1px solid #ff0000;
+  float: right;
+}
+
+
+
+

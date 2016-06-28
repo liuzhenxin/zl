@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/tagsinput.css" />
+    <script type="text/javascript" src="js/jquery-1.7.js"></script>
+    <script type="text/javascript" src="js/tagsinput.js"></script>
+    <!-- To test using the original jQuery.autocomplete, uncomment the following -->
+    <!--
+    <script type='text/javascript' src='http://xoxco.com/x/tagsinput/jquery-autocomplete/jquery.autocomplete.min.js'></script>
+    <link rel="stylesheet" type="text/css" href="http://xoxco.com/x/tagsinput/jquery-autocomplete/jquery.autocomplete.css" />
+    -->
+
+
+    <script type="text/javascript">
+
+        function onAddTag(tag) {
+            alert("Added a tag: " + tag);
+        }
+        function onRemoveTag(tag) {
+            alert("Removed a tag: " + tag);
+        }
+
+        function onChangeTag(input,tag) {
+            alert("Changed a tag: " + tag);
+        }
+
+        $(function() {
+
+            $('#tags_1').tagsInput({width:'auto'});
+            $('#tags_2').tagsInput({
+                width: 'auto',
+                onChange: function(elem, elem_tags)
+                {
+                    var languages = ['php','ruby','javascript'];
+                    $('.tag', elem_tags).each(function()
+                    {
+                        if($(this).text().search(new RegExp('\\b(' + languages.join('|') + ')\\b')) >= 0)
+                            $(this).css('background-color', 'yellow');
+                    });
+                }
+            });
+            $('#tags_3').tagsInput({
+                width: 'auto',
+
+                //autocomplete_url:'test/fake_plaintext_endpoint.html' //jquery.autocomplete (not jquery ui)
+                autocomplete_url:'test/fake_json_endpoint.html' // jquery ui自动完成需要一个json端点
+            });
+
+
+//取消这条线的回调函数
+//			$('input.tags').tagsInput({onAddTag:onAddTag,onRemoveTag:onRemoveTag,onChange: onChangeTag});
+
+// 取消这条线看到毫无防备的输入接口添加新的标签。
+//			$('input.tags').tagsInput({interactive:false});
+        });
+
+    </script>
+</head>
+<body>
+<form>
+    <p><label>Defaults:</label>
+        <input id="tags_1" type="text" class="tags" value="foo,bar,baz,roffle" /></p>
+
+    <p><label>Technologies: (编程语言是黄色的)</label>
+        <input id="tags_2" type="text" class="tags" value="php,ios,javascript,ruby,android,kindle,kindleq" /></p>
+
+    <p><label>Autocomplete:</label>
+        <input id='tags_3' type='text' class='tags'></p>
+
+</form>
+</body>
+</html>

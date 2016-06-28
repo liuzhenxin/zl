@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="demo"></div>
+</body>
+<script>
+    var HtmlStr="<ul>";
+    for(var i=0;i<22;i++){
+        if((i!=0)&&(i%8==0)){
+            HtmlStr+="</ul><ul>";
+        }
+        HtmlStr+="<li>"+i+"</li>"
+    }
+    document.write(HtmlStr);
+</script>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <script src="jquery-1.11.3.min.js"></script>
+  <style>
+    body{
+      overflow: hidden;
+      zoom: 1;
+    }
+    #head {
+      background: #00BCD4;
+       border: 1px solid #00BCD4;
+      border-bottom: 3px lime solid;
+    }
+    #bottom{
+      background: #00BCD4;
+      border: 1px solid #00BCD4;
+      height: 34px;
+      line-height: 34px;
+      border-top: 3px lime solid;
+      text-align: center;
+      margin-top: 10px;
+    }
+    ul{
+      overflow: hidden;
+      zoom: 1;
+    }
+    li{
+      list-style: none;
+      float: left;
+      padding: 3px 6px;
+      background:lime ;
+      margin-left: 30px;
+    }
+    li:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+<!------------------------------>
+<!-------------头部--------------->
+<!------------------------------>
+
+<div id="head">
+  <ul>
+    <li class="1">css</li>
+    <li class="2">插件</li>
+    <li class="4">js</li>
+    <li class="3">资料</li>
+    <li class="5">工具</li>
+    <li class="6">框架</li>
+    <li><a href="https://www.bing.com/"></a>插件搜索</li>
+    <li><a href="http://so.chongbuluo.com/">搜索快人</a></li>
+  </ul>
+</div>
+
+<!--内容加载-->
+<div id="tj"></div>
+
+<!------------------------->
+<!-------底部距底部--------------->
+<div id="bottom">
+  底部
+</div>
+</body>
+<script>
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////iframe引入不同的页面////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var numeral,aa;
+  $("#tj").html("<iframe id='iframepage' width='100%' frameborder='0' height='670'  name='i' allowTransparency='true' src='pulic/css.html' ></iframe>"); //默认页面
+  $("li").click(function (e) {  //选中的页面
+    numeral= $(e.target).attr("class"); // 获取到class的值
+    $("#tj").html("<iframe id='iframepage' width='100%' frameborder='0' height='670'  name='i' allowTransparency='true'></iframe>");
+    //
+
+
+//    文件名一样的情况下，经过后缀名+数字的形式跳转页面
+//    document.getElementById("iframepage").src="test"+numeral+".html";
+
+    //
+
+    //    文件名不一样的情况下，获取li的class与数组中的id相比较，如果相等，就把name传给iframepage
+    var ma=[{name:"css",id:1},{name:"js",id:4},{name:"插件",id:2},{name:"资料",id:3},{name:"工具",id:5},{name:"框架",id:6}];  //name为文件名
+      for (var value of ma) {
+        if((value.id)==(numeral)){
+          document.getElementById("iframepage").src=value.name+".html";
+    }
+      }
+  });
+
+
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////底部距底部//////////////////////////////////////////////////////////////////////////////
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  var h = 0;
+  function mainHeight()
+  {
+    if (window.innerHeight)
+      h = window.innerHeight;
+    else if ((document.body) && (document.body.clientHeight))
+      h = document.body.clientHeight;
+
+    if (document.documentElement && document.documentElement.clientHeight) {
+      h = document.documentElement.clientHeight;
+    }
+
+    //根据头和尾div高度计算中间高度
+    var th=$("#head").height();
+//    var th=document.getElementById("head").scrollHeight;
+//    alert(th);
+    var bh=$("#bottom").height();
+//    var bh=document.getElementById("head").scrollHeight;
+    document.getElementById("tj").style.height = (h - th-bh-25) + "px";
+  }
+  window.onload = mainHeight;
+  window.onresize = mainHeight;
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function handle(delta) {
+        var s = delta + ": ";
+
+        if (delta < 0) {
+            s += "您在向下滚……";
+        } else {
+            s += "您在向上滚……";
+        }
+        console.log(s);
+    }
+
+    function wheel(event){
+        var delta = 0;
+        if (!event) event = window.event;
+        if (event.wheelDelta) {
+            delta = event.wheelDelta/120;
+            if (window.opera) delta = -delta;
+        } else if (event.detail) {
+            delta = -event.detail/3;
+        }
+        if (delta)
+            handle(delta);
+    }
+    if (window.addEventListener)
+        window.addEventListener('DOMMouseScroll', wheel, false);
+    window.onmousewheel = document.onmousewheel = wheel;
+</script>
+</html>

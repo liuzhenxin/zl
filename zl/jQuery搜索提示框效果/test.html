@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+	<!--jquery-->
+	<script src="js/jquery-1.7.2.min.js"></script>
+	<!--<script src="http://image.meilele.com/js/mll/jq.js?0925"></script>-->
+</head>
+<body>
+	<input type="text">
+	<ul>
+	</ul>
+</body>
+<script>
+	var arr = [
+		{
+			key:"我1"
+		},
+		{
+			key:"我2"
+		},
+		{
+			key:"我3"
+		},
+		{
+			key:"我4"
+		},
+		{
+			key:"我5"
+		},
+		{
+			key:"我6"
+		},
+		{
+			key:"你7"
+		}
+	];
+	$(function(){
+		var h = "";
+		$("input").on("input",function(){
+			$("li").remove();
+			var that = $(this),
+				val = that.val();
+			console.log("输入的值"+val);
+				if(!val) return;
+				arr.forEach(function(key,value){
+					var thisValue = arr[value].key;
+//					console.log(thisValue);
+					if(thisValue.indexOf(val) != -1 || val.indexOf(thisValue) != -1){
+						h += '<li>'+thisValue+'</li>';
+					}
+					
+				});
+				$("ul").append(h);
+				h = "";
+		});
+		$("input").focus(function(){
+			$("li").remove();
+			arr.forEach(function(key,value){
+				var thisValue = arr[value].key;
+				console.log(thisValue);
+					h += '<li>'+thisValue+'</li>';
+
+
+			});
+			$("ul").append(h);
+			h = "";
+		})
+
+	})
+</script>
+</html>
