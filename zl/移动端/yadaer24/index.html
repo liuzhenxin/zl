@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<meta charset="UTF-8">
+		<link rel="icon" href="images/dialogBox1.png" type="image/x-icon"/>
+		<title>标题</title>
+		<link href="CSS/index.css?v=201602161508" type="text/css" rel="stylesheet"/>
+		<script src="JS/hammer.js" type="text/javascript"></script>
+		<script src="JS/jquery-1.10.js" type="text/javascript"></script>
+		<script src="JS/index.js?v=201602161508" type="text/javascript"></script>
+	</head>
+	<body>
+		<div id="container">
+			<div>
+				<button id="musicKey" class="musicKey"></button>
+			</div>
+			<div id="page1" class="page page1 preserve3D">
+				<div id="page1Text" class="pageText"></div>
+				<div class="dialogBox"></div>
+				<div class="dialogBox2"></div>
+				<div id="imageContainer" class="imageContainer">
+					<!--<div class="fingerImg"></div>-->
+				</div>
+			</div>
+			
+			<div id="page2" class="page page2">
+				<div id="issueBox" class="issueBox">
+				</div>
+				<div>
+					<div id="phoneContai" class="PhoneContai issAnimate">
+						<div class="tilePhoneImage">
+						</div>
+					</div>
+				</div>
+				<div>
+					<div id="carBack" class="carBack">
+						<div id="carImage" class="carImage">
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="page3" class="page page3">
+				<ul>
+					<li>短</li>
+					<li>信</li>
+					<li>平</li>
+					<li>台</li>
+				</ul>
+				<div id="rotateRun" class="rotateRun"></div>
+				<div id="roundImage" class="roundImage"></div>
+			</div>
+			<div id="page4" class="page page4">
+				<div id="page4box1" class="page4box1">
+					<div id="talk1" class="talk1 page4TalkAinmate"></div>
+				</div>
+				<div id="page4box2" class="page4box2">
+					<div id="talk2" class="talk2 page4TalkAinmate"></div>
+				</div>
+				<div id="page4box3" class="page4box3">
+					<div id="talk3" class="talk3 page4TalkAinmate"></div>
+				</div>
+				<div id="page4box4" class="page4box4">
+					<div id="talk4" class="talk4 page4TalkAinmate" ></div>
+				</div>
+			</div>
+			<div id="page5" class="page page5">
+				<div class="scanCodeBox preserve3D">
+					<div id="scanCode" class="scanCode">
+					</div>
+				</div>
+			</div>
+			<div class="page page6">
+			</div>
+			<!-- <div id="page6" class="page page6">
+				
+			</div> -->
+		</div>
+		<audio id="audioMusic" autoplay="autoplay" loop="loop">
+	  		<source src="audio/mp3doc.ogg" type="audio/ogg" />
+	  		<source src="audio/mp3doc.mp3" type="audio/mpeg" />
+	  		<source src="audio/mp3doc.wma" type="audio/wma" />
+		</audio>
+		<script>
+		function getWidtHeight(){
+			var bodyWidth = document.body.clientWidth;
+			var bodyHeight = document.body.clientHeight;
+			
+			var imageContainer = document.getElementById("imageContainer");
+			var issueBox = document.getElementById("issueBox");
+			var phoneContai = document.getElementById("phoneContai");
+			var carBack = document.getElementById("carBack");
+			var carImage = document.getElementById("carImage");
+			var rotateRun = document.getElementById("rotateRun");
+			var roundImage = document.getElementById("roundImage");
+			var page4box1 = document.getElementById("page4box1");
+			var page4box2 = document.getElementById("page4box2");
+			var page4box3 = document.getElementById("page4box3");
+			var page4box4 = document.getElementById("page4box4");
+			
+			
+			if(bodyWidth==360 && bodyHeight==572){///小米微信浏览器
+				imageContainer.style.marginTop = "52%";
+				
+				phoneContai.style.margin = "26% 0 0 62%";
+				
+				rotateRun.style.background = "#1a94ff";
+				rotateRun.style.borderTop="1px solid #1985e4";
+				rotateRun.style.borderLeft="1px solid #1a94ff";
+				rotateRun.style.width = "240px";
+				rotateRun.style.height = "240px";
+				rotateRun.style.margin="135px 0 0 56px";
+				
+				roundImage.style.width = "235px";
+				roundImage.style.height = "235px";
+				roundImage.style.margin = "-245px 0 0 65px";
+				//alert("bb");
+			}else if(bodyWidth==360 && bodyHeight==519){//华为P8青春版
+				imageContainer.style.marginTop = "40%";
+				
+				issueBox.style.marginTop  = "37%";
+				
+				carBack.style.height = "120px";
+				carBack.style.margin ="20px 0 0 -10px";
+				carImage.style.height = "70px";
+				
+				rotateRun.style.background = "#1a94ff";
+				rotateRun.style.borderTop="1px solid #1985e4";
+				rotateRun.style.borderLeft="1px solid #1a94ff";
+				rotateRun.style.width = "240px";
+				rotateRun.style.height = "240px";
+				rotateRun.style.margin="115px 0 0 62px";
+				
+				roundImage.style.width = "235px";
+				roundImage.style.height = "235px";
+				roundImage.style.margin = "-245px 0 0 70px";
+				
+				page4box1.style.margin="30% 0 0 3%";
+				page4box3.style.margin="35% 0 0 3%";
+			}else if(bodyWidth==360 && bodyHeight==567){//魅族5
+				imageContainer.style.marginTop = "50%";
+				
+				phoneContai.style.margin = "26% 0 0 62%";
+				
+				carBack.style.height = "120px";
+				carBack.style.margin ="20px 0 0 -5px";
+				carImage.style.height = "70px";
+				
+				rotateRun.style.background = "#1a94ff";
+				rotateRun.style.borderTop="1px solid #1985e4";
+				rotateRun.style.borderLeft="1px solid #1a94ff";
+				rotateRun.style.width = "245px";
+				rotateRun.style.height = "245px";
+				rotateRun.style.margin="115px 0 0 50px";
+				
+				roundImage.style.width = "235px";
+				roundImage.style.height = "235px";
+				roundImage.style.margin = "-245px 0 0 60px";
+			}
+		}getWidtHeight();		
+		</script>
+	</body>
+</html>
