@@ -1,0 +1,105 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>省市区选择</title>
+  <link rel="stylesheet" href="lib/select2/select2.css" media="screen" title="no title" charset="utf-8">
+  <style media="screen">
+    *{margin:0;padding:0}
+    .select-group{
+      margin:10px auto;
+    }
+    select{
+      width:27%;
+      margin-right:3%;
+    }
+    h3{
+      line-height:30px;
+      font-weight:normal;
+    }
+  </style>
+</head>
+
+  <h3>只选择省份</h3>
+  <div class="select-group">
+    <select class="pro"></select>
+    <button type="button" name="button">获取值</button>
+  </div>
+  <h3>省市二级联动</h3>
+  <div class="select-group">
+    <select class="pro"></select>
+    <select class="city"></select>
+        <button type="button" name="button">获取值</button>
+  </div>
+  <h3>省市区三级联动</h3>
+  <div class="select-group">
+    <select class="pro"></select>
+    <select class="city"></select>
+    <select class="area"></select>
+        <button type="button" name="button">获取值</button>
+  </div>
+  <h3>带有默认值</h3>
+  <div class="select-group">
+    <select class="pro">
+      <option value="22"></option>
+    </select>
+    <select class="city"></select>
+    <select class="area"></select>
+        <button type="button" name="button">获取值</button>
+  </div>
+
+  <h3>应用select2</h3>
+  <div class="select-group select2-theme">
+    <select class="pro">
+      <option value="22"></option>
+    </select>
+    <select class="city"></select>
+    <select class="area"></select>
+        <button type="button" name="button">获取值</button>
+  </div>
+
+  <script src="lib/jquery-1.11.3.js"></script>
+  <script src="lib/area.js"></script>
+  <script src="src/js/chooseLocation.js"></script>
+
+  <script src="lib/select2/select2.min.js"></script>
+  <script>
+
+    $(function(){
+
+      // 初始化chooseLocation
+      $('.select-group').chooseLocation();
+
+      // 使用select2美化下拉框样式
+      $('.select2-theme select').select2({
+        minimumResultsForSearch: Infinity
+      });
+
+      // 展示选中的值
+      $('button').click(function(){
+        var selects= $(this).siblings('select');
+            value = (function(array){
+              array = [];
+              $.each(selects,function(i,n){
+                array.push(n.value);
+              });
+              return array;
+            }()),
+            html = (function(array){
+              array = [];
+              $.each(selects.find('option:selected'),function(i,n){
+                array.push($(n).html());
+              });
+              return array;
+            }());
+
+        alert('选中值:'+value+'  对应的汉字:'+html.join('-'));
+      });
+
+
+    });
+
+  </script>
+<body>
+</body>
+</html>
