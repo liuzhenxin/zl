@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <input type="text" id="name" placeholder="输入名字" >
+    <input type="text" id="score" placeholder="输入分数" >
+    <input type="button" value="ok" onclick="add()"/>
+    <input type="button" value="排序" onclick="sort()"/>
+</body>
+<script>
+    function Player(){
+        this.name = "不输名字的二逼";
+        this.score = 0;
+    }
+    function add(){
+        var p = new Player();
+        p.name = document.getElementById("name").value;
+        p.score = document.getElementById("score").value;
+
+        //首先从localStorage中获取数组，如果不存在则创建一个
+        var players = getObject();
+
+        players.push(p);
+
+        //将数组存放到localstorage中,必须将对象转换为字符串形式
+        console.log(JSON.stringify(players));
+        localStorage.players = JSON.stringify(players);
+
+
+    }
+    function sort(){
+        var players = getObject();
+        players.sort(function (a,b) {
+            return a.score - b.score;
+        });
+        console.log(players);
+    }
+    function getObject(){
+        //首先从localStorage中获取数组，如果不存在则创建一个
+        var players = localStorage.players;
+
+        if(!players){
+            players = [];
+        }else{
+            //字符串转换为json对象
+            players = JSON.parse(players);
+        }
+        return players;
+    }
+
+</script>
+</html>

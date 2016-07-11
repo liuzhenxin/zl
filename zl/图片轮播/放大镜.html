@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrap {
+            position: relative;
+        }
+
+        #left {
+            width: 430px;
+            height: 430px;
+        }
+
+        #left:hover {
+            cursor: pointer;
+        }
+
+        #buttom {
+            margin-top: 10px;
+            width: 430px;
+            height: 60px;
+        }
+
+        #buttom div {
+            float: left;
+            margin-right: 8px;
+        }
+
+        #buttom img:hover {
+            cursor: pointer;
+            border: 2px solid blue;
+        }
+
+        #right {
+            width: 430px;
+            height: 430px;
+            position: absolute;
+            top: 0;
+            left: 440px;
+            overflow: hidden;
+            display: none;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var left = document.getElementById("left");
+            var buttom = document.getElementById("buttom");
+            var right = document.getElementById("right");
+            buttom.onmouseover = function(e) {
+                var ev = e || window.event;
+                var obj = ev.target || ev.srcElement;
+                console.log(obj.nodeName);  //打印出DIV和IMG
+                //针对图片IMG，只判断是否是“IMG”
+                if(obj.nodeName == "IMG") {
+                    console.log(obj.src);   //获取图片的地址
+                    //replace() 方法不会在 History 对象中生成一个新的纪录。当使用该方法时，新的 URL 将覆盖 History 对象中的当前纪录。
+                    //substring() 方法用于提取字符串中介于两个指定下标之间的字符。
+                    var objImg = obj.src.substring(obj.src.lastIndexOf("/")).replace("1", "2");
+                    left.innerHTML = "<img src='./image" + objImg + "'/>";
+                }
+            };
+                left.onmouseover = function(e) {
+                var ev = e || window.event;
+                var obj = ev.target || ev.srcElement;
+                if(obj.nodeName == "IMG") {
+                    var objImg = obj.src.substring(obj.src.lastIndexOf("/")).replace("2", "3");
+                    right.innerHTML = "<img src='./image" + objImg + "'/>";
+                    right.style.display = "block";
+                }
+                var imgObj = right.getElementsByTagName("img")[0];
+                imgObj.style.position = "absolute";
+                imgObj.style.top = 0;
+                imgObj.style.left = 0;
+                this.onmousemove = function(e) {
+                    var ev = e || window.event;
+                    var ox = ev.offsetX;
+                    var oy = ev.offsetY;
+                    imgObj.style.left = -ox / this.offsetWidth * (imgObj.offsetWidth - right.offsetWidth) + "px";
+                    imgObj.style.top = -oy / this.offsetHeight * (imgObj.offsetHeight - right.offsetHeight) + "px"
+                }
+            };
+
+            left.onmouseout = function() {
+                right.style.display = "none";
+            };
+        }
+    </script>
+</head>
+<body>
+    <div id="wrap">
+        <div id="left">
+            <img src="./image/imgA_2.jpg" alt=""/>
+        </div>
+        <div id="buttom">
+            <div><img src="./image/imgA_1.jpg" alt=""/></div>
+            <div><img src="./image/imgB_1.jpg" alt=""/></div>
+            <div><img src="./image/imgC_1.jpg" alt=""/></div>
+            <div><img src="./image/imgD_1.jpg" alt=""/></div>
+        </div>
+        <div id="right"></div>
+    </div>
+</body>
+</html>

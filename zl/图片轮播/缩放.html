@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <img src="image/imgA_1.jpg" id="img"/>
+</body>
+</html>
+<script>
+  var img = document.getElementById("img");
+  if(myBrowser() == "FF"){
+      img.addEventListener("DOMMouseScroll",fun,false);   //DOMMouseScroll滚动条
+  }else{
+      img.onmousewheel = fun;
+        }
+      function fun(e){
+      var ev = e || window.event;
+      var num = ev.wheelDelta || ev.detail;
+      if(num > 0){
+          img.style.width = img.offsetWidth * 1.2 + "px";
+      }else{
+          img.style.width = img.offsetWidth * 0.8 + "px";
+      }
+  }
+        function myBrowser() {
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        //indexof();表示在userAgent里找"Opera"这个字符串的索引值,如果该字符串存在,其索引值大于等于0
+        var isOpera = userAgent.indexOf("Opera") > -1;
+        //判断是否是Opera浏览器
+        if(isOpera) {
+            return "Opera";
+        }
+        //判断是否是Firefox浏览器
+         if(userAgent.indexOf("Firefox") > -1) {
+            return "FF";
+        }
+        if (userAgent.indexOf("Chrome") > -1) {
+            return "Chrome";
+        }
+        if (userAgent.indexOf("Safari") > -1) {
+            return "Safari";
+        }
+        if (userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+            return "IE";
+        }
+    }
+</script>

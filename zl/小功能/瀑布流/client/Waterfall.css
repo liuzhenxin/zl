@@ -1,0 +1,124 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+#outer{
+    width: 610px;
+    background: #97a9c1;
+    /*border: 1px solid red;*/
+    margin: 0 auto;
+    position: relative;
+}
+.box_title{
+    width: 550px;
+    border-radius: 2px;
+    background: #ffffff;
+    margin: 10px  auto 0 auto;
+    font-size: 14px;
+    overflow: hidden;
+
+}
+.box_title li{
+    list-style: none;
+    float: left;
+    margin-left: 10px;
+    height: 14px;
+    padding: 15px 0;
+}
+.box_title li:hover{
+    border-bottom:solid 1px red;
+}
+.box{
+    width: 530px;
+    background: #ffffff;
+    font-size: 10px;
+    padding: 10px 10px;
+    margin: 10px auto;
+    border-radius: 2px;
+    overflow: hidden;
+}
+.box a,.box_ a{
+    text-decoration: none;
+    color:#333333;
+}
+.boxspan{
+    color:#333333;
+    float: right;
+    margin-right: 20px;
+}
+.box_{
+    height: 40px;
+    width: 550px;
+    background: #ffffff;
+    margin: 10px auto 0 auto;
+    line-height: 40px;
+    font-size: 10px;
+    font-weight: 500;
+}
+.box_ li{
+    list-style: none;
+    float: left;
+    margin-left: 90px;
+}
+.box_left{
+    float: left;
+    overflow: hidden;
+    margin-right: 10px;
+}
+.box_left img{
+    height: 50px;
+    width: 50px;
+    border-radius: 50px;
+    overflow: hidden;
+    display: block;
+}
+.box_right{
+    float: left;
+    width: 450px;
+
+}
+
+.box_left input{
+    margin-top: 10px;
+    height: 20px;
+    font-size: 8px;
+    width: 50px;
+}
+.box_right img{
+    margin: 10px 0 10px 0;
+}
+#box_right_title{
+    font-weight: 600;
+    color: black;
+    margin: 0 0 10px 0;
+}
+.box_right a{
+    margin-right: 80px;
+    margin-top: 20px;
+    display: inline-block;
+}
+.clickimg{
+    background: url("../img/icon.png") no-repeat;
+    background-position: -100px -25px;
+
+}
+.box1{
+    width: 530px;
+    background: #ffffff;
+    font-size: 10px;
+    padding: 10px 10px;
+    margin: 10px auto;
+    border-radius: 2px;
+    overflow: hidden;
+    position: absolute;
+}
+.trans{
+    transition-property: all;
+    transition-duration: 2s;/*整个过程持续两秒*/
+    transition-timing-function: linear;/*整个过程匀速执行*/
+    /*border: solid 1px red;*/
+}
+
+

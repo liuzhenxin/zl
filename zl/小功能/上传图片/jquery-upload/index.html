@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>HTML5上传图片预览</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script src="js/jquery-1.8.3.min.js"></script>
+<style>
+	.sc{ width:350px; height:420px; background:#f9f9f9; margin:0 auto; border:0px;}
+	.sc img{ height:100%; width:100%; border:0;}
+	.btn{width:120px; height:44px; position:relative}
+	.btns{background: none repeat scroll 0 0 #00b7ee;border-radius: 3px;box-shadow: 0 1px 1px rgba(0,0,0,0.1);color: #fff;cursor: pointer;display: inline-block;font-size: 18px; height: 44px;line-height: 44px; text-align:center; min-width: 120px;margin: 0 auto 0;overflow: hidden; position:absolute;top:0px; left:0px; z-index:1}
+	#file0{width:120px; height:44px; position:absolute; top:0px; left:0px; z-index:3; opacity:0}
+</style>
+</head>
+<body>
+	<div class="btn">
+    	<div class="btns">选择图片</div>
+        <input type="file" name="file0" id="file0" multiple />
+    </div>
+
+<div class="sc"><img src="" id="img0" ></div>
+<script>	
+$("#file0").change(function(){
+	var objUrl = getObjectURL(this.files[0]) ;
+	console.log("objUrl = "+objUrl) ;
+	if (objUrl) {
+		$("#img0").attr("src", objUrl) ;
+	}
+}) ;
+//建立一個可存取到該file的url
+function getObjectURL(file) {
+	var url = null ; 
+	if (window.createObjectURL!=undefined) { // basic
+		url = window.createObjectURL(file) ;
+	} else if (window.URL!=undefined) { // mozilla(firefox)
+		url = window.URL.createObjectURL(file) ;
+	} else if (window.webkitURL!=undefined) { // webkit or chrome
+		url = window.webkitURL.createObjectURL(file) ;
+	}
+	return url ;
+}
+</script>
+</body>
+</html>

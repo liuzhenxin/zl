@@ -1,0 +1,110 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>全屏js标签导航控制图片切换js特效代码</title>
+    <meta name="keywords" content="jquery特效,图片切换,全屏轮播大图" />
+    <meta name="description" content="全屏js标签导航控制图片切换js特效代码。" />
+    <style>
+        /*公共样式*/
+        html{color:#000;background:#FFF;font-family:'Microsoft YaHei';}
+        body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td,strong{padding:0;margin:0;font-family:'Microsoft YaHei';font-size:16px}
+        table{border-collapse:collapse;border-spacing:0;}
+        fieldset,img{border:0;}
+        a{text-decoration:none;outline:none;}
+        var,em,strong{font-style:normal;}
+        li{list-style:none;}
+        caption,th{text-align:left;}
+        h1,h2,h3,h4,h5,h6{font-size:14px;font-weight:normal;}
+        q:before,q:after{content:'';}
+        legend{color:#000;}
+        input,button,textarea,select,optgroup,option{font-family:inherit; font-size:14px;font-style:inherit;font-weight:inherit;}
+        input,button,textarea,select{*font-size:100%;}
+        input checkbox{ cursor:pointer;}
+        body{-webkit-user-select:none;-webkit-text-size-adjust:none;-webkit-transform-style:preserve-3d;}
+        *{-webkit-tap-highlight-color:rgba(0,0,0,0);}
+        .clearfix:after {content: "\200B";display: block;height: 0;overflow: hidden;clear: both;}
+        .clear{clear: both;}
+        .clearfix {*zoom:1;}
+
+        /*part1*/
+        .part1{ width:100%; height:590px;}
+        .p1_text{ width:1000px; height:76px; position:absolute; left:0; top:-560px; *top:-548px;}
+        .slide{width:100%;  height:524px;  margin:0 auto;}
+        .slide_cont{ width:100%; height:524px; overflow:hidden;}
+        .slide_cont ul li{ float:left;height:524px;}
+        .slide_cont ul li img{ display:block; width:1000px; height:310px; margin:0 auto; margin-top:156px;}
+        .slide_point{ width:1000px; margin:0 auto; height:64px;background-color:#FFF;}
+        .slide_point span{ display:inline-block; width:192px; text-align:center; height:54px; color:#FFF; font-size:17px; font-weight:bold; line-height:54px; cursor:pointer;}
+        .slide_point .cur_point,  .slide_point span:hover{ height:64px;cursor:pointer;}
+        .slide_point .point1{ background-color:#4ab9f3;}
+        .slide_point .point2{ background-color:#4fc34e;}
+        .slide_point .point3{ background-color:#ff852a;}
+        .slide_point .point4{ background-color:#dd3838;}
+        .slide_point .point5{ background-color:#a444d0;}
+    </style>
+    <script type="text/javascript" src="../../../e/jquery-1.7.min.js"></script>
+    <!--<script type="text/javascript" src="http://www.jsdaima.com/Upload/1460697270/script.js"></script>-->
+
+</head>
+
+<body>
+
+<div class="part1 clearfix">
+    <div class="slide">
+
+        <div class="slide_cont">
+            <ul class="clearfix">
+                <li style="background-color:#4ab9f3; "><img src="http://www.jsdaima.com/Upload/1460697270/banner_01.png"/></li>
+                <li style="background-color:#4fc34e; "><img src="http://www.jsdaima.com/Upload/1460697270/banner_02.png"/></li>
+                <li style="background-color:#ff852a; "><img src="http://www.jsdaima.com/Upload/1460697270/banner_03.jpg"/></li>
+                <li style="background-color:#dd3838; "><img src="http://www.jsdaima.com/Upload/1460697270/banner_04.png"/></li>
+                <li style="background-color:#a444d0; "><img src="http://www.jsdaima.com/Upload/1460697270/banner_05.png"/></li>
+            </ul>
+        </div>
+
+        <div class="slide_point">
+            <span class="cur_point point1">微信公众号一站式管理</span>
+            <span class="point2">网站完美兼容其他接口</span>
+            <span class="point3">微信粉丝互动营销利器</span>
+            <span class="point4">多种在线支付随你挑选</span>
+            <span class="point5">细化版本满足各行各业</span>
+        </div>
+    </div>
+</div>
+<script>
+    $(function(){
+        var spLength = $('.slide_point span').length,
+                scimgWidth = $(window).width(),
+                sulWidth = scimgWidth * spLength,
+                sNum = 0;
+        $(".slide_cont ul").width(sulWidth);
+        $(".slide_cont ul li").width(scimgWidth);
+        var sTimer = setInterval(moveSlide,2000);
+        function moveSlide(){
+            sNum++;
+            if (sNum >= spLength) {
+                sNum = 0;
+            }
+            showPics(sNum);
+        }
+
+        $('.slide_point span').mouseover(function(){
+            clearInterval(sTimer);
+            sNum = $(this).index();
+            showPics(sNum);
+        }).mouseleave(function(){
+            sTimer = setInterval(moveSlide,2000);
+        });
+        function showPics(sNum){
+            $(".slide_point span").eq(sNum).addClass("cur_point").siblings().removeClass("cur_point");
+            $(".slide_cont ul").animate({
+                "margin-left" : -scimgWidth * sNum
+            });
+
+        }
+    });
+</script>
+</body>
+</html>

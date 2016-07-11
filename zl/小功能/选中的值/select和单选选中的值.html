@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery文件包/jquery-1.7.min.js"></script>
+</head>
+<body>
+<select name="" id="secelt">
+    <option value="小王1">小王1</option>
+    <option value="小王2">小王2</option>
+    <option value="小王3">小王3</option>
+    <option value="小王4">小王4</option>
+</select>
+<br/>
+<input type="radio" id="1" name="ra" value="a" checked="checked" />小王11
+<input type="radio" id="2" name="ra" value="b" />小王22
+<input type="radio" id="3" name="ra" value="c" />小王3
+</body>
+<script>
+    //下拉框选中的值
+    $("#secelt").change(function ()
+    {
+        console.log(this.value);  //将选择的值赋给$("#zzzt")
+    });
+
+    //单选框选中的值
+    $(function(){
+        $("input[type='radio']").click(function(){
+            var id= $(this).attr("id");//点击按钮的时候获取id
+            console.log(id);
+        });
+    });
+</script>
+</html>

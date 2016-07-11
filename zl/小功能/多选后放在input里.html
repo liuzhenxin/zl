@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            overflow: hidden;
+        }
+        .wrap p{
+            float:left;
+            margin-top: 220px;
+        }
+        label{
+            margin-left: 100px;
+        }
+        .box{
+            float:left;
+            position: relative;
+            width:500px;
+            height:240px;
+            margin-left:30px;
+        }
+        .select-list{
+            position: absolute;
+            left:0;
+            bottom:40px;
+            display: none;
+            margin:0;
+            padding:0;
+            width:500px;
+            border: 1px solid grey;
+            list-style: none;
+            border-bottom:0;
+        }
+        .select-list li{
+            padding: 7px 10px;
+        }
+        .active{
+            background-color: #f5f5f5;
+        }
+        .filter-box{
+            position: absolute;
+            bottom:0;
+            left:0;
+            width:100%;
+            height:40px;
+            border-radius: 3px;
+            border: 1px solid grey;
+        }
+        .check-box{
+            display: inline-block;
+            float:left;
+            margin-left: 10px;
+        }
+        .check-value{
+            display: inline-block;
+            margin-top: 5px;
+            height:30px;
+            width:60px;
+            line-height: 30px;
+            font-size: 14px;
+            margin-right: 10px;
+            border-radius: 3px;
+            border: 1px solid grey;
+            background-color: #f5f5f5;
+        }
+        i{
+            margin-right:10px;
+            cursor: pointer;
+        }
+        .filter{
+            float:left;
+            min-width: 16px;
+            height:36px;
+            padding-left: 10px;
+            outline: none;
+            border: none;
+        }
+        input:disabled{
+            background-color: #F5F5F5;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <p>接收通报人员: <label><input type="checkbox" value="all" class="total" name="all">全选</label></p>
+
+    <div class="box">
+        <ul class="select-list">
+            <li>12</li>
+            <li>ee</li>
+            <li>52</li>
+            <li>6882</li>
+            <li>6882</li>
+            <li>aaa</li>
+        </ul>
+        <div class="filter-box">
+            <span class="check-box"></span>
+            <input type="text" class="filter">
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="jquery-1.11.3.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var filterObj = $(".filter");
+        var selectObj = $(".select-list");
+        var index;
+        fun();
+        function fun(){
+            //点击搜索框,弹出列表
+            filterObj.on('click',function(e){//点击搜索框,弹出
+                selectObj.css("display","block").find("li").css("display","block");
+                $(document).one("click", function(){
+                    selectObj.css("display","none");
+                });
+                e.stopPropagation();//阻止绑定在filterObj上的事件传播到其他节点
+            });
+            selectObj.on("click", function(e){
+                e.stopPropagation();//阻止绑定在selectObj上的事件传播到其他节点
+            });
+
+            //点击列表中的值,添加到搜索框中
+            selectObj.find("li").click(function(){
+                index = $(".select-list li").index(this);
+                if($(this).attr('class')!='active'){
+                    $(this).addClass('active');
+                    filterObj.val("");
+                    $(".check-box").css("display","block");
+                    $("<span class='check-value'/>").appendTo(".check-box");
+                    $("<i/>").html('×').attr('id',index).appendTo(".check-value:last");
+                    $("<span/>").html($(this).html()).appendTo(".check-value:last");
+                }
+            });
+            //点击x删除对应的值
+            $(".check-box").on('click','i',function(){//在check-value上动态添加无效,因为check-value也是动态添加上的
+//            console.log($(this).attr("id"));
+                index = $(this).attr("id");
+                selectObj.find("li").eq(index).removeClass('active');
+                $(this).parent().remove();
+            });
+
+            //过滤功能
+            //让jQuery的contains方法不区分大小写
+            jQuery.expr[':'].Contains = function(a,i,m){
+                return (a.textContent || a.innerText|| a.innerHTML || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+            };
+            //搜索框文字一旦改变就匹配查找
+            $(".filter")
+                    .change( function () {
+                        var filterVal = $(this).val();
+                        if(filterVal) {
+                            $matches = $(selectObj).find('li:Contains(' + filterVal + ')');
+                            $('li', selectObj).not($matches).slideUp();
+                            $matches.slideDown();
+                            $(".filter-box").val("");
+
+                        } else {
+//                            selectObj.find("li").slideDown();
+                            selectObj.css("display","block").find("li").css("display","block");
+                        }
+
+                        return false;
+                    })
+                    .keyup( function () {
+                        $(this).change();
+                    });
+
+        }
+
+        //全选后,禁用input,隐藏列表
+
+        $(".total").click(function(){//必须为多选按钮绑定点击事件才能判断
+            if($(this).is(':checked')){
+                filterObj.val("").attr('disabled','disabled');
+                $(".filter-box").css("backgroundColor","#f5f5f5");
+                $(".check-box").off('click','i');
+
+                $(".check-box").empty(); //清空节点
+            }else{
+                filterObj.removeAttr('disabled');
+                $(".filter-box").css("backgroundColor","");
+                selectObj.find("li").removeClass("active");
+               fun();
+            }
+        });
+    });
+</script>
+</html>

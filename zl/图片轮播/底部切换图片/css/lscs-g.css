@@ -1,0 +1,35 @@
+@charset "utf-8";
+/* reset */
+body {font-size:14px; color:#565656; background-color:#FFFFFF; font-family: "Microsoft YaHei" ! important;}
+/*a {color:#BABABA;}*/
+/*a:hover {color:#D53E06;}*/
+/*.g-wrap {width:1200px; margin:0 auto;}*/
+/*.g-toolbar {width:1200px !important;}*/
+/*.g-text {overflow:hidden; word-break:break-all; text-overflow:ellipsis; white-space:nowrap;}*/
+.g-header {width:100%; min-width:1200px; height:362px; background:url(../img/bg_head.jpg) no-repeat center top; position:relative;}
+.g-logo {width:350px; height:200px; display:block; position:absolute; left:50%; top:27px; margin-left:-590px; text-indent:-999em;}
+/*.g-btn-update {display:none; width:175px; height:47px; position:absolute; left:50%; top:205px; margin-left:-442px; text-indent:-999em; background:url(../img/bg_btn.png) no-repeat center top;}*/
+.g-nav {height:50px; background-color:#853d2e; min-width:1200px;}
+.g-nav-list {overflow:hidden;}
+.g-nav-list li { float: left; height: 50px; line-height: 50px; border-right: 1px solid #672f23; list-style: none;}
+.g-nav-liBorder{ border-left: 1px solid #672f23;}
+.g-nav-list a { text-align: center;display: inline-block;height: 46px; text-decoration: none; font-size: 16px; color: #ffffff; padding: 0 40px;}
+.g-nav-list a:hover {color: #e79e3c; background: #723427; border-bottom: 4px solid #e79e3c;}
+.g-nav-list .g-nav-selected a{color: #e79e3c; background: #723427; border-bottom: 4px solid #e79e3c;}
+.g-body {width:1158px; padding: 30px 20px;; margin:10px auto 0; background-color:#ffffff; box-shadow: 0 0 5px #eeeeee; border: 1px solid #eeeeee}
+/*.g-footer {min-width:1200px;}*/
+
+/*.g-box {overflow:hidden;}*/
+/*.g-box-tt {height:36px; line-height:36px; border-bottom:#A9A9A9 3px solid;}*/
+/*.g-box-tt h4 {float:left; padding:0 10px; color:#D93600; font-weight:normal; font-size:16px; border-bottom:#D93600 3px solid;}*/
+/*.g-box-tt span {float:right;}*/
+.g-rbox {overflow:hidden;}
+/*.g-rbox-tt {height:40px; line-height:40px; border-bottom:#D53E06 2px solid; overflow:hidden; background:url(../img/bg_tt.png) #2D2D2D no-repeat left top;}*/
+/*.g-rbox-tt li {float:left; margin:9px 0 0 10px; line-height:34px; padding:0 10px; border-radius:3px; background-color:#F2F2F2; color:#666; font-size:12px; cursor:pointer;}*/
+/*.g-rbox-tt li.thisclass {background-color:#D93600; color:#FFF; cursor:default;}*/
+/*.g-rbox-tt li a {color:#666;}*/
+/*.g-rbox-tt li.thisclass a {color:#FFF;}*/
+/*.g-rbox-tt span {float:right; padding-right:10px; font-size:12px; font-family:"SimSun";}*/
+/*.g-rbox-tt span a {color:#D43E06;}*/
+
+

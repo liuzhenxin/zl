@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>String</title>
+</head>
+<body>
+
+</body>
+<script>
+    let name="dfmn";
+    let age="edf";
+    let str="he is" + name + "my name"+ age;
+    console.log(str);
+    let str1=`<p>he is ${name} my name ${age}</p>`;  //拼接字符串再也不要单引号(双引号)，只需要反引号(`);插入变量也不需要加号,而是把变量放入${}即可
+    document.write(str1);
+
+
+    //定义多行字符串
+    let str2=`jdbfjd dsfksd,
+                dnbfknfdk fdnmgv`;//直接换行，所有的空格和代码上的换行都会保留在输出中
+    console.log(str2);
+
+    //${}中可以放任意的js表达式
+    var a=11;
+    var b=2;
+    var str3=`this is ${a+b}`;  //${}可以是运算表达式
+    console.log(str3);
+
+
+    var obj={"a1":1,"b1":2};
+    console.log(`this is ${obj.a1+obj.b1}`); //${}可以是对象属性
+
+
+    function fn(){
+        return 3;
+    }
+    console.log(`this ${fn()}`);//${}可以是函数的调用
+
+
+    //标签模板
+
+    var name1="章撒";
+    var height=1.8;
+    tagFn `他叫${name1},身高${height}米。`;  //标签函数+模板字符串
+
+    function tagFn(arr,v1,v2){  //定义一个函数，作为标签;第一个arr是数组类型，二三个参数则是模板字符串中对应的变量name1和height的值
+
+        console.log(arr);  //["他叫", ",身高", "米。", raw: Array[3]];除${}以外的其他字符
+        console.log(v1);   //章撒
+        console.log(v2);   //1.8
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    /////////                   函数的扩展
+    /////////////////////////////////////////////////////////////////////////
+
+    //repeat()函数:将字符串重复N次，返回一个新的字符串，但不影响目标字符串
+    var name2='web前端';  //目标字符串
+
+    var name3=name2.repeat(3);  //变量name2倍重复三次；返回一个新的字符串
+
+    console.log(name2);  //web前端
+
+    console.log(name3);   //web前端web前端web前端
+
+
+    //includes()函数:判断字符串是否含有指定的子字符串；返回true表示有和false表示没有，第二参数选填，表示开始搜索的位置;默认从第一个开始搜索，参数应该为0
+
+    var name4="web前端";
+    console.log(name4.includes("前"));  //true;name4含有“前”
+    console.log( name4.includes("drhbg"));  //false;name4没含有“drhbg”
+    console.log("ad"+ name4.includes("前",4));  //false;从第四个字符开始搜索,没含有“前”
+
+
+    //startsWith()函数:判断指定的子字符串是否出现在目标字符串的开头位置；第二参数选填，表示开始搜索的位置;默认从第一个开始搜索，参数应该为0
+
+    var name5="web前端";  //目标字符串
+    console.log(name5.startsWith("w"));  //true;“w”是在开头位置
+
+    console.log(name5.startsWith("前"));  //false;“前”不是在开头位置
+
+    console.log(name5.startsWith("前",3));  //true;从第三个字符开始搜索,“前”是在开头位置
+
+    //endsWith()函数:判断指定的子字符串是否出现在目标字符串的尾部位置；第二参数选填，表示开始搜索的位置;默认从第一个开始搜索，参数应该为1
+
+
+    var name6="web前端";  //目标字符串
+    console.log(name6.endsWith("端"));  //true;“端”是在尾部位置
+
+    console.log(name6.endsWith("前"));  //false;“前”不是在尾部位置
+
+    console.log(name6.endsWith("端",4));  //false;只针对前4个字符,“端”不是在尾部位置
+
+    console.log(name6.endsWith("端",5));  //true;只针对前5个字符,“端”是在尾部位置
+
+    //codePointAt()函数:处理4个字节的字符串
+    //String.fromCodePoint()函数:函数的参数是一个字符对应的码点，返回的结果对应的就是字符
+    var str4="前端";
+    console.log(str4.length);
+    console.log(str4.charAt(0)); //前
+    console.log(str4.charAt(1));  //端
+    console.log("------------------------------------");
+    var str5="纯碎大多";
+   console.log(str5.codePointAt()); //返回码点儿的十进制:32431;默认为第一个字符
+    console.log(String.fromCodePoint(32431));   //纯
+
+    //String.raw()函数:返回的字符串最原始的样貌，即使字符串中含有转义符，都视而不见，直接输出
+    console.log(`hello\nword`);  //未经String.raw处理
+
+    console.log(String.raw`hello\nword`);  //经String.raw处理后
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>
+<!--<input id="btn1" type="button" value="开始"/>-->
+<img id="tp1"  src="image/imgA_2.jpg"  alt=""/>
+</div>
+<!--<input id="bt2" type="button" value="停止"/>-->
+</body>
+</html>
+<script>
+    var imgs=["image/imgA_2.jpg", "image/imgB_2.jpg", "image/imgC_2.jpg"];
+  var tp=document.getElementById("tp1");
+  var i=1;
+  function changImg(){     //定义changImg函数
+      tp.src=imgs[i];
+      i++;
+      if(i>=imgs.length){
+          i=0;
+      }
+  }
+  setInterval(changImg,500);  //调用changImg函数
+</script>
+
+
+
+

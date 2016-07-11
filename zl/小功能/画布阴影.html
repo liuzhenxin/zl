@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="mycanvas" width="600" height="400" style="border: 1px solid black"></canvas>
+</body>
+<script type="text/javascript">
+	var canvas = document.getElementById("mycanvas");
+	var ctx = canvas.getContext("2d");
+
+	ctx.fillStyle = "red";
+	ctx.textBaseline = "top";
+	ctx.shadowBlur = 10;//值越大，越模糊
+	ctx.shadowColor = "green";//阴影颜色
+	ctx.shadowOffsetX = 10;//x轴偏移量
+	ctx.fillText("他说他叫税国亮", 0, 0);
+
+	ctx.strokeStyle = "blue";
+	ctx.textBaseline = "top";
+	ctx.shadowBlur = 10;//值越大，越模糊
+	ctx.shadowColor = "green";//阴影颜色
+	ctx.shadowOffsetY = 10;//y轴偏移量
+	ctx.strokeText("他叫薛仁贵，他说他是我的小弟", 0, 20);
+
+	ctx.fillRect(0, 50, 100, 20);
+</script>
+</html>

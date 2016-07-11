@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!-- JiaThis Button BEGIN -->
+<div id="ckepop">
+    <span class="jiathis_txt">分享到：</span>
+    <a class="jiathis_button_weixin">微信</a>
+    <a href="http://www.jiathis.com/share"  class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank">更多</a>
+    <a class="jiathis_counter_style"></a>
+</div>
+    <!--<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1" charset="utf-8"></script>-->
+
+<!-- JiaThis Button END -->
+</body>
+<script>
+//    function WeiXinShareBtn() {
+//        if (typeof WeixinJSBridge == "undefined") {
+//            alert("请先通过微信搜索 wow36kr 添加36氪为好友，通过微信分享文章 ");
+//        } else {
+//            WeixinJSBridge.invoke('shareTimeline', {
+//                "title": "36氪",
+//                "link": "http://www.36kr.com",
+//                "desc": "关注互联网创业",
+//                "img_url": "http://www.36kr.com/assets/images/apple-touch-icon.png"
+//            });
+//        }
+//    }
+//    WeiXinShareBtn();
+//链接：http://www.zhihu.com/question/23532498/answer/45072884
+wx_get_token();
+function wx_get_token() {
+    $token = S('access_token');
+    if (!$token) {
+        $res = file_get_contents('https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid='.'你的AppID'.'&secret='            .'你的AppSecret');
+        $res = json_decode($res, true);
+        $token = $res[''];
+        // 注意：这里需要将获取到的token缓存起来（或写到数据库中）
+        // 不能频繁的访问https://api.weixin.qq.com/cgi-bin/token，每日有次数限制
+        // 通过此接口返回的token的有效期目前为2小时。令牌失效后，JS-SDK也就不能用了。
+        // 因此，这里将token值缓存1小时，比2小时小。缓存失效后，再从接口获取新的token，这样
+        // 就可以避免token失效。
+        // S()是ThinkPhp的缓存函数，如果使用的是不ThinkPhp框架，可以使用你的缓存函数，或使用数据库来保存。
+        S('access_token', $token, 3600);
+    }
+    return $token;
+}
+</script>
+</html>

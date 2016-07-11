@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="div1" ></div>
+</body>
+</html>
+<script>
+    var div1=document.getElementById("div1");
+    document.onmousemove=function(e){
+        var a=e||window.event;
+        //clientXclientX （事件发生时，鼠标在客户区的x坐标，不包括工具栏和滚动条）
+        div1.innerHTML=a.clientX+"  "+a.clientY+"</br>"+ a.screenX+"   "+ a.screenY;
+
+    }
+</script>

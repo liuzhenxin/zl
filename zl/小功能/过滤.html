@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form action="" name="form">
+    <textarea name="txt1"   cols="30" rows="10"></textarea>
+    <textarea name="txt2"   cols="30" rows="10"></textarea>
+    <input type="button" id="btn" value="过滤"/>
+</form>
+</body>
+</html>
+<script>
+    var btn=document.getElementById("btn");
+    btn.onclick=function(){
+        txt1value=document.form.txt1.value;
+//        console.log(txt1value);  //打印txt1value的值
+        var txt=/网/g;
+//        console.log(txt1value.replace(txt,"###")); //打印txt1value过滤后的值
+        document.form.txt2.value=(txt1value.replace(txt,"###"));
+    }
+</script>

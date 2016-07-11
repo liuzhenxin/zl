@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #gouwuche{background-color: #00A3E5;
+            width: 100px;
+            height: 20px;
+            margin-top:200px;
+            margin-left: 30px;
+        }
+        #kong{
+            height: 400px;
+            border: solid 1px red;
+        }
+        .wupin{
+            background-color: #345501;
+            height: 30px;
+            width: 30px;
+            float: right;
+            margin-left: 30px;
+
+        }
+        #dingdian{background-color: #000000;
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            top:400px;
+            left: 800px;
+
+        }
+    </style>
+</head>
+<body><div id="bg">
+<div id="gouwuche">购物车</div>
+<div id="kong">黑点可拖动  双击购物<div id="dingdian"></div></div>
+<div class="wupin">物品</div>
+<div class="wupin">物品</div>
+<div class="wupin">物品</div></div>
+</body>
+</html>
+<script>
+    var gouwuche = document.getElementById("gouwuche");
+    var dingdian = document.getElementById("dingdian");
+    var wupin = document.getElementsByClassName("wupin");
+    var xuying=document.createElement("div");
+    var bg=document.getElementById("bg");
+    xuying.style.width="30px";
+    xuying.style.height="30px";
+    xuying.style.position="absolute";
+    xuying.style.display="none";
+    xuying.style.backgroundColor=" #345501";
+    bg.appendChild(xuying);
+    dingdian.onmousedown=function(e){
+        var ve = e||window.event;
+        var x2 = ve.offsetX;
+        var y2= ve.offsetY;
+
+        this.onmousemove=function(e){
+            var te = e||window.event;
+
+            var x1 = te.clientX ;
+            var y1 = te.clientY ;
+            this.style.left=(x1-x2)+"px";
+            this.style.top=(y1-y2)+"px";
+            dingdian.onmouseup=function(){
+                dingdian.onmousemove=null;
+        };
+
+        }
+    };
+    for(var i=0 ;i<wupin.length;i++){
+        wupin[i].ondblclick=function(e){
+            var ve = e||window.event;
+            var xx1=200;
+            var yy1=30;
+            var xx2=dingdian.offsetTop;
+            var yy2=dingdian.offsetLeft;
+            var xx3=ve.clientY;
+            var yy3=ve.clientX;
+            var a=((yy1-yy2)*(xx2-xx3)-(yy2-yy3)*(xx1-xx2))/((yy1-yy2)*(yy2*yy2-yy3*yy3)-(yy2-yy3)*(yy1*yy1-yy2*yy2))
+            var b=(xx1-xx2-a*(yy1*yy1-yy2*yy2))/(yy1-yy2);
+            var c=xx1-a*yy1*yy1-b*yy1;
+            xuying.style.top=ve.clientY+"px";
+            xuying.style.left=ve.clientX+"px";
+            xuying.style.display="block";
+            alert("确定购物?");
+            function lujing(){
+
+                var xx=xuying.offsetLeft-20;
+                xuying.style.left=xuying.offsetLeft-20+"px";
+                xuying.style.top=a*xx*xx+b*xx+c+"px";
+                if(xuying.offsetLeft<50){
+                   clearInterval(xuhuan);
+                    alert("购物成功")
+                }
+            }
+            var xuhuan=setInterval(lujing,50);
+
+        }
+    }
+
+
+
+</script>

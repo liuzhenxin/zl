@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+        }
+        h1{
+            width:300px;
+            height:50px;
+            background-color: gray;
+            text-align: center;
+        }
+        #div1{
+            width:300px;
+            height:300px;
+            background-color: cadetblue;
+        }
+        #text{
+            width:300px;
+            height:100px;
+
+        }
+
+    </style>
+
+    <script>
+        window.onload = function(){
+            var div1 = document.getElementById("div1");//获取div,textarea,btn的对象
+            var text = document.form1.text;
+            var btn = document.form1.btn;
+            btn.onclick = text.onkeydown = function(e){//绑定事件btn,onkeydown
+                var el = e||window.event;
+                //判断事件类型是否点击或键盘按下Crtl+Enter
+                if(el.type == "click" ||(el.type == "keydown"&&el.ctrlKey&&el.keyCode=="13")){   //keyCode属性
+                    //1. 创建节点
+                    var elP = document.createElement("p");
+                    elP.innerHTML = text.value;
+                    div1.appendChild(elP);
+                    text.value = "";
+                    text.focus();
+                }
+            }
+
+        };
+    </script>
+</head>
+<body>
+    <h1>留言板</h1>
+    <div id="div1"></div>
+    <form action="#" name = form1 method="post">
+        <textarea name="text" id="text" cols="30" rows="10"></textarea><br>
+        <input type="button" value="提交" name="btn"/>
+    </form>
+</body>
+</html>

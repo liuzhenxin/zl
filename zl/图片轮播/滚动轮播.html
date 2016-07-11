@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        #div2{
+            width: 1290px;
+            height: 430px;
+            border: 1px solid chocolate;
+            overflow: hidden;
+        }
+        #div1{
+            width: 1290px;
+            height:430px;
+            border: 1px solid #ff0000;
+            margin-left:0;
+
+        }
+        li{
+            float: left;
+            list-style: none;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+        var tp=document.getElementById("div1");
+        var lis=document.getElementsByTagName("li");
+        for(var i=0; i<lis.length; i++){
+            lis[i].style.marginLeft="0";  //设置图片与图片之间的间距为0
+        }
+     setInterval(run,110);//设置时间函数
+        function run(){
+            var liOne=lis[0];
+//           alert(parseInt(liOne.style.marginLeft));   //打印出0
+            //parseInt() 函数可解析一个字符串，并返回一个整数。
+            //如果字符串的第一个字符不能被转换为数字，那么 parseFloat() 会返回 NaN
+            var tmpLeft=parseInt(liOne.style.marginLeft);
+            liOne.style.marginLeft=tmpLeft-10+"px";  //每110毫秒移动10个像素
+            if(tmpLeft<=-430){      //由于每张图片的宽为430；判断图片是否完全移除
+                liOne.style.marginLeft="0"; //将第一张图片的marginLeft为0
+                tp.removeChild(liOne);   //将ul里的清除
+                tp.appendChild(liOne);   //添加到ul里
+            }
+//        };
+//        tp.onmouseover=function(){
+//            window.clearInterval(runIdse);
+//        };
+//        tp.onmouseout=function(){
+//            runId=setInterval(run,50);
+        }
+        }
+    </script>
+</head>
+<body>
+<div id="div2">
+    <ul id="div1">
+        <li><img src="./image/imgA_2.jpg"  alt=""/></li>
+        <li><img src="./image/imgB_2.jpg"  alt=""/></li>
+        <li><img src="./image/imgC_2.jpg"  alt=""/></li>
+    </ul>
+</div>
+</body>
+</html>

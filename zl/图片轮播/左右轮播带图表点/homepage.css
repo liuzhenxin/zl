@@ -1,0 +1,65 @@
+
+/*轮播*/
+.container {
+    margin-top: 40px;
+    height: 445px;
+    background-color: #dbddd7;
+    /*outline: 1px solid red;*/
+}
+.inner {
+    margin: 0 160px;
+    width: 730px;
+    height: 454px;
+    position: relative;
+}
+#t1{
+    margin: -243px 144px 100px 41px;
+    width: 0;
+    height: 25px;
+    border: 2px solid #000000;
+    transform: rotate(45deg);
+}
+#t2{
+    margin: -111px 0 39px 41px;
+    width: 0;
+    height: 25px;
+    border: 2px solid #000000;
+    transform: rotate(-45deg);
+}
+#t3{
+    margin: -51px 137px 100px 1019px;
+    width: 0;
+    height: 25px;
+    border: 2px solid #000000;
+    transform: rotate(-45deg);
+}
+#t4{
+    margin: -111px 0 50px 1018px;
+    width: 0;
+    height: 25px;
+    border: 2px solid #000000;
+    transform: rotate(45deg);
+}
+#back:hover,#forward:hover{
+    cursor: pointer;
+    border: #ff0000;
+}
+.point-index {
+    position: absolute;
+    left: 340px;
+    top: 420px;
+}
+.point-index>li {
+    background-color: black;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    text-align: center;
+    margin: 3px;
+}
+
+
+
+

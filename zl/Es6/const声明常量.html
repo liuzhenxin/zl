@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const(constant的缩写)声明常量</title>
+</head>
+<body>
+<h2>常量的值是不可更改的</h2>
+
+<h1>const也是用于声明一个常量，并必须赋值，声明后不可修改，跟let一样，只在块级作用域起作用，
+    不可重复声明同一个变量，不会变量提升，声明引用类型的常量时，要注意是传址赋值</h1>
+</body>
+<script>
+    var student1={"name":"张三"};
+    var student2=student1;
+    student2.name="李四";
+    console.log(student1);  //Object {name: "李四"}
+    console.log(student2);  //Object {name: "李四"}
+
+
+    var Zhang={"door":"red"};  //张师傅把你家的门改成红色
+    var Wang=Zhang;         //次日，又把地址告诉王师傅
+    Wang.door="green";     //王师傅按照地址，将门改成绿色
+    //不管是谁来你家，看到的门是绿色
+    console.log(Wang);    //{door: "green"}
+    console.log(Zhang);    //{door: "green"}
+
+
+    //在复制过程中，变量实际上存储的是数据的地址（对数据的引用），而不是原始数据或者数据的拷贝
+    const Person={"name":"张三"};
+    Person.name="李四";   //因为修改的是Person本身，修改的是name属性和增加age属性，地址没有变
+    Person.age=20;
+    console.log(Person);  //输出{age:20,name:"李四"}
+
+
+
+
+    /*
+    *
+    * 错误示范
+    *
+    *    const Person={"name":"张三"};
+    *     Person.name="李四";
+    *     Person={};  //错误，企图给常量Person赋新值(新地址)
+    *
+    *
+    *
+    * */
+</script>
+</html>

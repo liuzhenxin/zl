@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.outer {
+			width: 800px;
+			min-width: 800px;
+			margin: auto;
+			/*outline: 1px solid red;*/
+			margin-top: 100px;
+		}
+		.wrapper {
+			outline: 1px solid yellow;
+		}
+		.left {
+			float: left;
+			width: 200px;
+			height: 400px;
+			/*outline: 1px solid blue;*/
+		}
+		.left-fixed {
+			width: 200px;
+			height: 400px;
+			outline: 1px solid blue;
+		}
+		.center {
+			float: left;
+			width: 400px;
+			height: 800px;
+			outline: 1px solid green;
+		}
+		.right {
+			float: left;
+			width: 200px;
+			height: 400px;
+			outline: 1px solid blue;
+		}
+	</style>
+</head>
+<body>
+	<div class="outer">
+		<div class="wrapper">
+			<div class="left">
+				<div class="left-fixed"></div>
+			</div>
+			<div class="center"></div>
+			<div class="right"></div>
+		</div>
+	</div>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+</body>
+<script type="text/javascript">
+	var leftEle = document.getElementsByClassName("left-fixed")[0];
+	var outerEle = document.getElementsByClassName("outer")[0];
+	var wrapperEle = document.getElementsByClassName("left")[0];
+	var centerEle = document.getElementsByClassName("center")[0];
+	window.onscroll = function(event) {
+		var evenObj = window.event || event;
+		var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+		leftEle.innerHTML = scrollTop;
+		//向下滚动左边块开始固定悬挂在窗口
+		if (scrollTop >= 99) {
+			leftEle.style.position = "fixed";
+			leftEle.style.top = "0px";
+		}
+		//向上滚动左边块取消固定悬挂
+		if (scrollTop < 99) {
+			leftEle.style.position = "absolute";
+			leftEle.style.top = "100px";
+		}
+		//向下滚动左边块取消固定悬挂
+		var leftFixedHeight = parseInt(document.defaultView.getComputedStyle(wrapperEle, null).height);
+		var centerHeight = parseInt(document.defaultView.getComputedStyle(centerEle, null).height);
+		if (scrollTop + leftFixedHeight >= 100 + centerHeight) {
+			leftEle.style.position = "absolute";
+			leftEle.style.top = (centerHeight - leftFixedHeight + 100) + "px";
+		}
+	};
+</script>
+</html>

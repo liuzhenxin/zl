@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+//	localStorage.setItem("姓名", "汉强");
+//	for (var i = 0; i < localStorage.length; i++) {
+//		var key = localStorage.key(i);
+//		console.info("键：" + key);
+//		var val = localStorage.getItem(key);
+//		console.info("值：" + val);
+//		console.info();
+//	}
+
+	//json对象
+	var student = {
+		name : "金一",
+		desc : "love sleep",
+		gayFriend : "薛仁贵"
+	};
+	//json对象转成字符串，因为storage只能存字符串
+	sessionStorage.setItem("stu1", JSON.stringify(student));
+	//把字符串转化成json
+	console.info(JSON.parse(sessionStorage.getItem("stu1")).name);
+</script>
+</html>

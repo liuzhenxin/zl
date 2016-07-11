@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 630px;
+            height: 400px;
+            margin:100px auto 0;
+            position: relative;
+        }
+        .content{
+            width:500px;
+            height: 400px;
+            position: absolute;
+            left: 60px;
+            overflow: hidden;
+        }
+        .imglist{
+            width:3000px;
+            height: 500px;
+            position: absolute;
+            left:0;
+            top:0;
+            padding:0;
+            margin:0;
+            overflow: hidden;
+        }
+        .imglist li{
+            width:500px;
+            height: 400px;
+            float: left;
+            list-style: none;
+        }
+       .imglist li:nth-child(1){
+            background: url("images/1.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+       .imglist li:nth-child(2){
+            background: url("images/2.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .imglist li:nth-child(3){
+            background: url("images/3.jpeg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+       .imglist li:nth-child(4){
+            background: url("images/4.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+       .imglist li:nth-child(5){
+            background: url("images/5.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .imglist li:nth-child(6){
+            background: url("images/1.jpg") no-repeat;
+            background-size: cover;
+            background-position: center;
+        }
+        .btnlist {
+            margin:0;
+            padding:0;
+            position: absolute;
+            width: 80px;
+            bottom: 10px;
+            left: 50%;
+            margin-left:-40px;
+            text-align: center;
+            font-size: 0px;
+        }
+
+        .btnlist li {
+            width: 10px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0px 3px;
+            cursor: pointer;
+        }
+
+        .btnlist li.on {
+            background-color: #ff6a00;
+        }
+
+        .btn {
+            width: 30px;
+            height: 50px;
+            background-color: #808080;
+            opacity: 0.5;
+            filter: alpha(opacity:0.5);
+            position: absolute;
+            top: 50%;
+            margin-top: -25px;
+            cursor: pointer;
+            text-align: center;
+            line-height: 50px;
+            font-size: 40px;
+            color: #fff;
+            font-family: "宋体";
+        }
+
+        .btn_l {
+            left: 0px;
+        }
+
+        .btn_r {
+            right: 0px;
+        }
+    </style>
+    <script src="jqeury/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="wrap">
+        <div class="btn btn_l">&lt;</div>
+        <div class="content">
+            <ul class="imglist">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <ul class="btnlist">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="btn btn_r">&gt;</div>
+
+
+    </div>
+
+</body>
+</html>
+<script>
+    var i = 0;
+    var time;
+    var clone= $(".imglist li").first().clone(true);
+    $(".imglist").append(clone);
+    var size= $(".imglist li").size();
+    $(".btnlist").find("li").eq(0).addClass("on");
+    function recommendAuto(){
+        time=setInterval(function(){
+            i++;
+            recommendMove();
+        },3000);
+    }
+    recommendAuto();
+    $(".btn_r").click(function () {
+        clearInterval(time);
+        i++;
+        recommendMove();
+        recommendAuto();
+    });
+    $(".btn_l").click(function () {
+        clearInterval(time);
+        i--;
+        recommendMove();
+        recommendAuto();
+    });
+
+    $(".btnlist").find("li").hover(function () {
+        clearInterval(time);
+        var index=$(this).index();
+        $(".imglist").animate({left:-index*500 +"px"},600);
+        i = index;
+        $(".btnlist").find("li").removeClass("on");
+        $(this).addClass("on");
+    }, function () {
+        recommendAuto();
+    });
+
+    function recommendMove(){
+        if(i==size){
+            $(".imglist").css({left:"0px"});
+            i=1;
+        }
+        if(i==-1){
+            $(".imglist").css({left:-(size-1)*500+"px"});
+            i=size-2;
+        }
+
+        $(".imglist").stop(true).animate({left:-i*500 +"px"},600);
+        if(i==size-1){
+            $(".btnlist").find("li").removeClass("on");
+            $(".btnlist").find("li").eq(0).addClass("on");
+        }else {
+            $(".btnlist").find("li").removeClass("on");
+            $(".btnlist").find("li").eq(i).addClass("on");
+        }
+    }
+
+</script>

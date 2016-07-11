@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        function myPrint(a) {
+            document.write(a + "<br>");
+        }
+             //将URL中允许的字符编码解码，如：空格，汉字
+//             var url ="http://www.baidu.com/百度";
+//             var newUrl = encodeURI(url);
+//             myPrint(newUrl);
+//             var newUrl1 = decodeURI("http://www.baidu.com/%E7%99%BE%E7%A7%91");
+//             myPrint(newUrl1);
+
+
+           //将URL中允许的字符编码解码，如：斜杠，问号等
+               var url ="http://www.baidu.com/？？//ufbisef";
+               var newUrl = encodeURI(url);
+            myPrint(encodeURIComponent(url));
+            myPrint(decodeURIComponent("http%3A%2F%2Fwww.baidu.com%2F%EF%BC%9F%EF%BC%9F%2F%2Fufbisef"));
+        </script>
+</head>
+<body>
+
+</body>
+</html>

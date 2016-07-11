@@ -1,0 +1,384 @@
+/*全站全局样式*/
+
+@charset "utf-8";
+/* reset */
+html, body, p, ul, ol, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, from, input {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 14px;
+    color: #666;
+    background-color: #F6F6F6;
+    font-family: "Microsoft YaHei", "宋体", Verdana;
+}
+
+input, button, select, textarea {
+    outline: none;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #173172;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    border: none;
+    display: block;
+}
+
+em {
+    font-style: normal;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.dis {
+    display: block;
+}
+
+.undis {
+    display: none;
+}
+
+.fix {
+    clear: both;
+}
+
+.red {
+    color: #B20000 !important;
+}
+
+.blank40 {
+    height: 40px;
+    line-height: 40px;
+    font-size: 9px;
+    overflow: hidden;
+    clear: both;
+}
+
+.blank20 {
+    height: 20px;
+    line-height: 20px;
+    font-size: 9px;
+    overflow: hidden;
+    clear: both;
+}
+
+.blank10 {
+    height: 10px;
+    line-height: 10px;
+    font-size: 9px;
+    overflow: hidden;
+    clear: both;
+}
+
+.g-ad300 {
+    width: 300px;
+    overflow: hidden;
+    display: block;
+    margin: 0 auto 20px;
+}
+
+.g-ad960 {
+    width: 960px;
+    overflow: hidden;
+    display: block;
+    margin: 20px auto;
+}
+
+.g-wrap {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.g-search {
+    position: absolute;
+    width: 200px;
+    height: 28px;
+    right: 20px;
+    top: 6px;
+    background-color: #fff;
+}
+
+.g-search form {
+    width: 100%;
+    height: 28px;
+    position: relative;
+}
+
+.g-search input.input_search {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 165px;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 7px;
+    border: none;
+    background: none;
+}
+
+.g-search input.btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: url(../img/bg_g_search.png) no-repeat center center;
+    cursor: pointer;
+}
+
+.g-body {
+    box-shadow: 0px 3px 3px #EEE;
+    background-color: #FFF;
+    overflow: hidden;
+}
+
+.g-box {
+    overflow: hidden;
+}
+
+.g-box-tt {
+    height: 36px;
+    line-height: 36px;
+    border-bottom: #DDD 1px solid;
+}
+
+.g-box-tt h4 {
+    float: left;
+    padding: 0 20px;
+    color: #111;
+    font-weight: normal;
+    font-size: 16px;
+    border-bottom: #173173 1px solid;
+}
+
+.g-box-tt span {
+    float: right;
+}
+
+.g-table {
+    width: 100%;
+    margin: 5px auto;
+    border-top: #C0C0C0 1px solid;
+    border-left: #C0C0C0 1px solid;
+    font-size: 12px;
+}
+
+.g-table td, .g-table th {
+    border-bottom: #C0C0C0 1px solid;
+    border-right: #C0C0C0 1px solid;
+    padding: 3px;
+}
+
+.g-table th {
+    background-color: #FFF6A4;
+    color: #000;
+}
+
+.g-table td {
+    color: #333;
+}
+
+.g-table img {
+    width: 60px;
+    height: 60px;
+}
+
+.btn-link {
+    margin: 15px auto;
+    text-align: center;
+}
+
+.btn-link a {
+    padding: 6px 15px;
+    background-color: #0397FF;
+    color: #FFF;
+    font-size: 12px;
+    line-height: 20px;
+    border-radius: 3px;
+    text-decoration: none;
+}
+
+.btn-link a:hover {
+    background-color: #336C94;
+}
+
+.g-footer {
+    background-color: #24262B;
+    color: #8C8C8C;
+    font-size: 12px;
+    clear: both;
+    margin-top: 40px;
+}
+
+.g-footer a {
+    color: #DDD;
+}
+
+.g-footer-link {
+    overflow: hidden;
+    padding: 30px 0;
+}
+
+.g-footer-logo {
+    background: url(http://www.qieyou.com/tpl/www/img/bg_flogo.png) no-repeat left top;
+    width: 155px;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    padding: 40px 40px 10px 0;
+    margin-right: 40px;
+    color: #535457;
+    border-right: #505050 1px solid;
+}
+
+.g-footer-text {
+    line-height: 30px;
+}
+
+.g-footer-text em {
+    padding: 0 10px;
+}
+
+.g-footer-text a.mail {
+    margin-right: 20px;
+}
+
+.g-footer-code {
+    background: url(http://www.qieyou.com/tpl/www/img/bg_fcode.png) no-repeat right top;
+    padding-right: 90px;
+}
+
+.g-footer-code p {
+    line-height: 30px;
+    text-align: right;
+}
+
+.g-footer-cert {
+    background-color: #0C0D0E;
+    height: 40px;
+    line-height: 40px;
+    color: #4C4C4C;
+}
+
+.g-footer-cert i {
+    font-style: normal;
+    margin-right: 15px;
+}
+
+.talk-box {
+    width: 100%;
+}
+
+.talk-con {
+}
+
+.talk-p {
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.talk-p-img {
+    width: 60px;
+    height: 60px;
+    display: block;
+}
+
+.talk-text {
+    max-width: 477px;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    position: relative;
+}
+
+.talk-text i {
+    position: absolute;
+    width: 7px;
+    height: 13px;
+    top: 14px;
+    right: -7px;
+    background: url(http://www.qieyou.com/uploads/zt/20160515/bg_talk_text.png) no-repeat right center;
+}
+
+.talk-text p {
+    padding: 10px;
+    line-height: 20px;
+    color: #444;
+    margin: 0 !important;
+}
+
+.talk-p1 .talk-text {
+    border-color: #7DD053;
+    background-color: #A0E75A;
+    margin-right: 10px;
+    float: right;
+}
+
+.talk-p2 .talk-text {
+    border-color: #DDDDDD;
+    background-color: #FFFFFF;
+    margin-left: 10px;
+    float: left;
+}
+
+.talk-p2 i {
+    background-position: left center;
+    left: -7px;
+}
+
+.talk-p1 .talk-p-img {
+    float: right;
+    background: url(http://www.qieyou.com/uploads/zt/20160515/img-p1.jpg) no-repeat center center;
+}
+
+.talk-p2 .talk-p-img {
+    float: left;
+    background: url(http://www.qieyou.com/uploads/allimg/1605/12-160531091500.jpg) no-repeat center center;
+}
+
+.p-text-con p {
+    margin: 0;
+}
+
+.zt-btn {
+    height: 44px;
+    text-align: center;
+}
+
+.zt-btncon {
+    background-color: #0397FF;
+    color: #FFF !important;
+    border-radius: 3px;
+    width: 100%;
+    line-height: 30px;
+    display: block !important;
+    padding: 5px 0;
+    margin: 0 auto;
+}
+#g-topnav{width:100%;height:39px;border-bottom:#E5E5E5 1px solid;background-color:#FFF}
+.g-toolbar{line-height:39px;width:1200px;margin:0 auto}.g-toolbar a{color:#111}
+@media screen and (max-width: 900px) {
+    .talk-text {
+        width: 75%;
+    }
+}

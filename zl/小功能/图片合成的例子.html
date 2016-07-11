@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p>这个例子只能在http和https协议下使用</p>
+<p>记得该图片的url</p>
+<canvas id="cv" width="500" height="500">
+
+</canvas>
+<button id="test" onclic="save()">保存</button>
+<script>
+    function drawBeauty(beauty) {
+        var mycv = document.getElementById("cv");
+        var myctx = mycv.getContext("2d");
+
+        //地址url，x，y
+        myctx.drawImage(beauty,
+                100, 100);
+    }
+    function load() {
+        var beauty = new Image();
+        //在里加上本地图片的位置...尽量不要跨域
+        beauty.src = "./test.jpg";
+        if (beauty.complete) {
+            drawBeauty(beauty);
+        } else {
+            beauty.onload = function () {
+                drawBeauty(beauty);
+            };
+        }
+
+        //这是下载事件
+        document.getElementById("test").addEventListener("click",function(){
+
+            console.log("test")
+            var mycv = document.getElementById("cv");
+
+
+            var image = mycv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream;Content-Disposition: attachment;filename=foobar.png");
+            var image = mycv.toDataURL("image/jpeg").replace("image/jpeg", "image/octet-stream");
+
+            var alink = document.createElement("a");
+            //文件名
+            alink.download = "test.jpg";
+            //图片
+            alink.href = image;
+            alink.innerText = "asdasdas";
+
+            document.body.appendChild(alink)
+        })
+
+    }//load
+    if (document.all) {
+        window.attachEvent('onload',
+                load);
+    } else {
+        window.addEventListener('load',
+                load, false);
+    }
+
+</script>
+</body>
+</html>

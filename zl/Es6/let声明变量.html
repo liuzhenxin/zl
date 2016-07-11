@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>let声明变量</title>
+</head>
+<body>
+<h1>用let声明变量只在块级作用域起作用,适合在for循环使用，也不会出现变量提升现象;同一个代码块内,
+不可重复声明的相同变量,不可重复声明函数内的参数</h1>
+</body>
+<script>
+    //var声明变量的缺点
+    var arr=[];
+    for(var i=0;i<10;i++){
+        arr[i]=function(){
+            console.log("arr[2]"+i);
+        }
+    }
+    arr[2](); //不管arr[n];都打印的是10
+
+    var a=1;
+    (function(){
+        console.log(a);   //alert为undefined
+        var a=2;
+    })();
+
+
+
+    //let声明变量的好处
+    var Arr=[];
+    for(let i=0;i<10;i++){  //循环的初始化变量使用的是let
+        Arr[i]=function(){
+            console.log(i);
+        }
+    }
+    Arr[2](); //arr[n];都打印的是n
+
+
+
+    (function(){
+        let a=2;
+        console.log(a);   //alert为undefined
+    })();
+
+
+/*
+    //
+    //        let错误示范
+    //
+
+    //示范1
+    {
+        var a=1;
+        let a=2; //报错，因为a已经用var声明过
+    }
+
+    //示范2
+    {
+        let a=1;
+        let a=2; //报错，因为a已经用let声明过
+    }
+
+    //示范3
+    function  say(word){
+        let word="hdsf sdsf"; //报错，用let重新声明word参数
+        alert(word);
+    }
+    say("def rf");
+
+
+ */
+</script>
+</html>

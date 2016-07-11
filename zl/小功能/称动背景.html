@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh-cn">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples demo</title>
+<style>
+    div, ul, li {
+        margin: 0;
+        padding: 0;
+    }
+    #container {
+        position: relative;
+    }
+    #bg {
+        position: absolute;
+        width: 120px;
+        height: 50px;
+        background: green;
+        z-index: -1;
+        visibility: hidden;
+    }
+    #list {
+        width: auto;
+        height: auto;
+    }
+
+    #list li {
+        float: left;
+        width: 120px;
+        height:  50px;
+        border: 1px solid red;
+        list-style: none;
+    }
+</style>
+<script>
+    window.onload = function () {
+        var listbox = document.getElementById('list');
+        var bg = document.getElementById('bg');
+
+        var timer;
+        var direc;
+        var object;
+
+
+        listbox.onmouseover = function (e){
+            if(e.target.nodeName == 'LI'){
+                bg.style.visibility = 'visible';
+                object = e.target;
+                dire(object.offsetLeft);
+                motion();                
+
+            }
+
+        }
+
+        function motion(){
+            timer = setInterval(change,50);
+
+        }
+        function dire(){
+            var x = parseInt(getStyle(bg,'left'));
+            console.log('x: ',x);
+            if(object.offsetLeft < x)direc = 'left';
+            if(object.offsetLeft > x)direc = 'right';
+        }
+
+        function change() {
+            if(direc == 'left'){
+                bg.style.left = parseInt(getStyle(bg,'left')) - 6 +'px';
+                if(parseInt(getStyle(bg,'left')) <= object.offsetLeft){
+                     clearInterval(timer);
+                     bg.style.left = object.offsetLeft + 'px';
+                } 
+                    
+            }else if(direc == 'right'){
+                bg.style.left = parseInt(getStyle(bg,'left')) + 6 +'px';
+                if(parseInt(getStyle(bg,'left')) >= object.offsetLeft){
+                     clearInterval(timer);
+                     bg.style.left = object.offsetLeft + 'px';
+                }
+            }
+        }
+        function finsh() {
+            if (parseInt(getStyle(bg,'left')) != object.offsetLeft)
+                bg.style.left = object.offsetLeft + 'px';
+        }
+        listbox.onmouseout = function (e){
+            clearInterval(timer);
+            bg.style.visibility = '';
+            finsh();
+        }
+        
+        //获取内存中DOM的属性 其中 参数attr 为字符串
+        function getStyle(obj,attr)
+        {
+            return window.getComputedStyle ? getComputedStyle( obj , null )[attr] : obj.curNumrentStyle[attr];
+        }
+
+
+
+
+    }
+</script>
+</head>
+<body>
+    <div id="container">
+        <div id="bg"></div>
+        <ul id="list">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+        </ul>
+    </div>
+</body>
+</html>

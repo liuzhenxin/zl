@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		.container {
+			margin: auto;
+			margin-top: 100px;
+			width: 600px;
+			height: 300px;
+			outline: 1px solid black;
+			overflow: hidden;
+		}
+		.slide-component {
+			position: relative;
+			width: 5400px;
+			height: 300px;
+			outline: 1px solid red;
+		}
+		.ul1 li:nth-child(1) {
+			width: 600px;
+			height: 300px;
+			background-color: yellow;
+		}
+		.ul1 li:nth-child(2) {
+			width: 600px;
+			height: 300px;
+			background-color: blue;
+		}
+		.ul1 li:nth-child(3) {
+			width: 600px;
+			height: 300px;
+			background-color: green;
+		}
+		.ul2 li:nth-child(1) {
+			width: 600px;
+			height: 300px;
+			background-color: yellow;
+		}
+		.ul2 li:nth-child(2) {
+			width: 600px;
+			height: 300px;
+			background-color: blue;
+		}
+		.ul2 li:nth-child(3) {
+			width: 600px;
+			height: 300px;
+			background-color: green;
+		}
+		.ul3 li:nth-child(1) {
+			width: 600px;
+			height: 300px;
+			background-color: yellow;
+		}
+		.ul3 li:nth-child(2) {
+			width: 600px;
+			height: 300px;
+			background-color: blue;
+		}
+		.ul3 li:nth-child(3) {
+			width: 600px;
+			height: 300px;
+			background-color: green;
+		}
+		ul {
+			position: absolute;
+			list-style: none;
+			float: left;
+			transition: all 1s linear;
+		}
+		li {
+			float: left;
+		}
+		.next {
+			position: absolute;
+			left: 580px;
+			top: 147px;
+			cursor: pointer;
+			outline: 1px solid black;
+		}
+		.slide {
+			position: relative;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="slide-component">
+			<div class="slide"><ul class="ul1 ul"><li></li><li></li><li></li></ul><ul class="ul2 ul"><li></li><li></li><li></li></ul><ul class="ul3 ul"><li></li><li></li><li></li></ul></div>
+			<div id="next" class="next">></div>
+			<div class=""></div>
+		</div>
+	</div>
+</body>
+<script type="text/javascript">
+	var nextEle = document.getElementById("next");
+	var ulParent = document.getElementsByClassName("slide")[0];
+	var count = 0;
+	nextEle.onclick = function() {
+		var uls = document.getElementsByTagName("ul");
+		count++;
+		if (uls[0].style.left == "") uls[0].style.left = "-1800px";
+		if (uls[1].style.left == "") uls[1].style.left = "0px";
+		if (uls[2].style.left == "") uls[2].style.left = "1800px";
+		setTimeout(function() {
+			uls[0].style.left = parseInt(uls[0].style.left) - 600 + "px";
+			uls[1].style.left = parseInt(uls[1].style.left) - 600 + "px";
+			uls[2].style.left = parseInt(uls[2].style.left) - 600 + "px";
+		}, 1);
+		if (count === 3) {
+			count = 0;
+			ulParent.appendChild(uls[0]);
+			uls[2].style.left = "1800px";
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .wrap{
+            width: 1036px;
+            height: 400px;
+            border:1px solid black;
+            margin:100px auto 0;
+            overflow: hidden;
+        }
+        .content{
+            width:2520px;
+            height: 400px;
+        }
+        .content div{
+            width: 200px;
+            height: 400px;
+            border-left: 5px solid white;
+            display: inline-block;
+            font-size:20px;
+            font-weight: bold;
+            color: red;
+        }
+        .content div:nth-child(1){
+            background: url("images/1.jpg") no-repeat;
+            background-position: left 0;
+            background-size: auto 100%;
+        }
+        .content div:nth-child(2){
+            background: url("images/2.jpg") no-repeat;
+            background-position: left 0;
+            background-size: auto 100%;
+        }
+        .content div:nth-child(3){
+
+            background: url("images/3.jpg") no-repeat;
+            background-position: left 0;
+            background-size: auto 100%;
+        }
+        .content div:nth-child(4){
+
+            background: url("images/4.jpg") no-repeat;
+            background-position: left 0;
+            background-size: auto 100%;
+        }
+        .content div:nth-child(5){
+
+            background: url("images/5.jpg") no-repeat;
+            background-position: left 0;
+            background-size: auto 100%;
+        }
+    </style>
+    <script src="jquery.min.js"></script>
+</head>
+<body>
+   <div class="wrap">
+        <div class="content" id="content">
+            <div class="list" style="border-left: none;left: 0">1</div>
+            <div class="list">2</div>
+            <div class="list">3</div>
+            <div class="list">4</div>
+            <div class="list">5</div>
+        </div>
+
+   </div>
+</body>
+</html>
+<script>
+
+    $(function () {
+        var nowWidth=(1000-500)/4;
+        var i=2;
+        function run(){
+            i++;
+            if(i==5){
+                i=0;
+            }
+            $("#content").find("div").eq(i).animate({width:"500px"},600);
+            $("#content").find("div").eq(i).siblings().animate({width:nowWidth+"px"},600);
+        }
+        $("#content").find("div").hover(function (e) {
+            clearInterval(time);
+            var e = e||window.event;
+            var target=e.target||e.srcElement;
+            if(target.className=="list"){
+                $(target).stop(true).animate({width:"500px"},600);
+                $(target).siblings().stop(true).animate({width:nowWidth+"px"},600);
+            }
+            i=$(target).index();
+        }, function () {
+            time=setInterval(run,1000);
+        });
+        $("#content").find("div:eq(2)").trigger('mouseenter');
+        var time=setInterval(run,1000);
+    });
+</script>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var now = new Date();
+	now.setTime(now.getTime() + 2000);
+	document.cookie = "username=123";
+	document.cookie = "pwd=321";
+	document.cookie = "email=111;expires=" + now.toGMTString();
+	console.info(document.cookie);
+	setTimeout(function() {
+		console.info(document.cookie);
+	}, 2000);
+	console.info(now.getTime());
+	console.info(now.parse(now.getTime()));
+</script>
+</html>

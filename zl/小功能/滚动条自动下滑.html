@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        input {
+            position: fixed;
+        }
+        #start {
+            top: 10px;
+            left: 50px;
+        }
+
+        #stop {
+            top: 10px;
+            left: 200px;
+        }
+    </style>
+
+</head>
+<body>
+<input id="start" type="button" value="start"/>
+<input id="stop" type="button" value="stop"/>
+<div id="div" style="height: 2000px;"></div>
+</body>
+</html>
+
+<script>
+    //1. 获取按钮元素
+    var start = document.getElementById("start");
+    var stop = document.getElementById("stop");
+    var times;
+    //2. 添加单击事件
+    start.onclick = function() {
+        // 3. 设置定时器
+        times = setInterval(function() {
+           window.scrollBy(0, 5);
+        }, 40);
+    };
+    stop.onclick = function() {
+        //4. 清除定时器
+        window.clearInterval(times);
+    };
+</script>

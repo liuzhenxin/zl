@@ -1,0 +1,45 @@
+<!--<!DOCTYPE html>-->
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style type="text/css">
+    </style>
+    <script src="../jquery文件包/jquery-1.11.3.min.js"></script>
+    <style>
+        ul{
+            border: 1px solid red;
+        }
+        li{
+            border-bottom:1px solid red;
+        }
+        .l-tree li .l-body:first-child{
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+<ul id="parent">
+    <li>第1个</li>
+    <li>第2个</li>
+    <li>第3个</li>
+    <li>第4个</li>
+    <li>第5个</li>
+    <li>第6个</li>
+    <li>第7个</li>
+</ul>
+</body>
+<script>
+var ul = document.getElementById('parent');
+var li = ul.getElementsByTagName('li');
+console.log(li.length);
+    for(var i = 0; i < li.length; i++) {
+        (function(j){
+            li[j].onclick = function() {
+                console.log(li[j].innerHTML);
+                $(this).css("borderTop","10px solid red");
+            }
+        })(i);
+    }
+
+</script>
+</html>
