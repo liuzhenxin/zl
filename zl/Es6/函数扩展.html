@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数扩展</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Person(n,a){
+        var name=n||"zhang"; //如果n没有传参,那么变量得到的值就是右侧的“zhang”,否则就是n的值
+        var age=a||21;
+        console.log(name,age);
+    }
+    Person();  //zhang 21
+    Person("li",18);  //li 18
+
+    //////////////////////////////////////
+    //////ES6////////////////////////////
+
+    function Person1(name="zhang",age=25){  //设定默认值参数一定要放在最后;有默认值的参数后面不能再跟不需要默认值的参数了
+                                            //只有传入的参数为undefined,才会触发默认值,传入的值为0,false,null;都不会触发默认值
+
+        console.log(name,age);
+    }
+    Person1();  //zhang 25
+    Person1("li",18);  //li 18
+
+
+//rest参数:获取剩下部分的所有参数
+
+    //求和函数,得到的结果赋值到result;...values(三个点——变量名);values是一个数组
+    function  sum(result,...values){  //...values;是一种新的写法,也就是要介绍的rest参数;它代表:在实参中,除了第一个参数以外,剩下的参数都会被...values获取到
+        console.log(values);  //[1, 2, 3, 4]
+
+        values.forEach(function(v){  //进行求和
+            result+=v;  //求和的结果存到result
+        });
+        console.log(result);  //10
+    }
+    var res=0;  //存储求和结果的变量res
+    sum(res,1,2,3,4);   //调用sum函数
+
+
+    function  sum1(result,aa,...values){  //rest参数必须是函数的最后一个参数，后面不能再跟其他参数
+        console.log(values);  //[1, 2, 3, 4]
+
+        values.forEach(function(v){  //进行求和
+            result+=v;  //求和的结果存到result
+        });
+        /*
+          //箭头符号的写法
+        values.forEach(v=>result+=v);
+
+        */
+        console.log(result);  //10
+    }
+    var res1=0;  //存储求和结果的变量res
+    sum1(res1,22,1,2,3,4);   //调用sum函数
+
+
+
+//扩展运算符 作用:结合数组使用,把数组元素用逗号分隔开来,组成一个序列;可以将一个数组转化成一个对应的参数数列
+    function sum2(a,b){
+        return a+b;
+    }
+    let arr=[2,3];
+    var a=sum2(...arr);  //sum2(...arr)相当于sum2(2,3)
+    console.log(a);  //5
+
+//箭头函数  一种全新的定义函数方式 就是用箭头符号(=>)
+
+
+    //传统写法
+    var sum3=function(a){
+        return a;
+    };
+
+    //箭头写法
+    var sum4=a=>a;  //第一个a代表是传进去的参数,箭头=>后面的a表示函数体
+
+    var sum5=(a,b)=>{return a+b};   //如果参数超过一个,需要用小括号()括起来;函数体语句超过1条,需要用大括号{}括起来
+    console.log(sum5(1,2));  //3
+</script>
+</html>

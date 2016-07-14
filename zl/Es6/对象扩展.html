@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象扩展</title>
+</head>
+<body>
+
+</body>
+<script>
+    var name="ewfwer";
+    var  age=123;
+    /**
+     * 传统
+     * */
+    var  person={
+        "name":name,
+        "age":age
+    };
+    console.log(person);  //Object {name: "ewfwer", age: 123}
+
+    var person3={
+        say:function(){
+            console.log("这是传统的表示法");
+        }
+    };
+    person3.say();
+    /**
+    * es6
+    * */
+    var person1={name,age};
+    console.log(person1);  //Object {name: "ewfwer", age: 123}
+
+    var person2={
+        say(){
+            console.log("这是es6的表示法");
+        }
+    };
+    person2.say();
+
+
+
+    var f="first";
+    var n="Name";
+    var s="say";
+    var h="Hello";
+    var person4={
+        [f+n]:"zhyang",
+        [s+h](){
+            return "你好！"
+        }
+    };
+    console.log(person4.firstName);  //zhyang
+    console.log(person4.sayHello()); //你好！
+
+    /////////////////////////////////////////////////////
+    ///////////////////新增函数对象////////////////////////
+    //////////////////////////////////////////////////////
+
+//Object.is()函数:比较两个值是否严格相等;或者说是全等
+    var str='12';
+    var num=12;
+    var num1=12;
+    console.log(str==num);  //true;抽象相等,当类型不一致的两个变量进行类型转化，成为统一类型再比较
+
+    console.log(str===num);  //false;严格相等,类型不一样,直接返回false
+
+    console.log(Object.is(str,num));  //false;参数类型不一样
+
+    console.log(Object.is(num,num1));  //true;变量类型和值一样
+
+
+//Object.assign()函数:将源对象的属性赋值到目标对象上,参数可以是多个，至少两个
+
+    var target={"a":1};
+    var origin1={"b":2};
+    var origin2={"c":3};
+    Object.assign(target,origin1);
+    console.log(target);  //Object {a: 1, b: 2}
+
+    Object.assign(target,origin1,origin2);
+    console.log(target);  //Object {a: 1, b: 2, c: 3}
+
+//Object.getPrototypeOf()函数:获取一个对象的prototype属性
+//Object.setPrototypeOf()函数:设置一个对象的prototype属性
+    function Person(){  //自定义一个Person类(函数)
+
+    }
+    Person.prototype={//函数都有一个预属性prototype对象
+
+        say(){   //给prototype对象添加一个say方法
+            console.log("hello");
+        }
+    };
+
+    let allen=new Person(); //赋值给allen
+    allen.say();
+    //获取对象的prototype属性
+    console.log(Object.getPrototypeOf(allen));  //获取对象的prototype属性;  {say:function(){.........}}
+
+    //设置对象的prototype属性
+    Object.setPrototypeOf(
+            allen,
+            {say(){
+                console.log("hi");
+                }
+            }
+    );
+    allen.say();  //修改后，再次调用say()方法    hi
+
+
+    /////////////////////////////////////////////////////
+    ///////////////////javaScript面向对象/////////////////
+    //////////////////////////////////////////////////////
+
+    function Dog(name){  //构造函数模拟创建一个Dog类
+        this.name=name;
+    }
+    Dog.prototype={  //把一些属性和方法定义在prototype对象上
+        "type":"动物",
+        "say":function(){
+            console.log(this.name);
+        }
+    };
+    var dog=new Dog("旺财");  //实列化
+    dog.say();//根据实列化后的对象调用类的方法或者属性
+</script>
+</html>
