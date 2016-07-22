@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组扩展</title>
+    <link rel="stylesheet" href="../css/code.css">
+</head>
+<body>
+<h2>Array.of()函数</h2>
+<p>函数作用：将一组值，转换成数组。</p>
+<div class="code">
+    <p>Array.of(1,2,3,4,5); <span class="green">//结果：[1,2,3,4,5]</span></p>
+</div>
+<h2>Array.from( )函数</h2>
+<p> 函数作用：可以将类似数组的对象或者可遍历的对象转换成真正的数组。</p>
+<div class="code">
+    <p>let ele = document.getElementsByTagName('a');</p>
+    <p>ele instanceof Array; <span class="green"> //结果：false，不是数组</span></p>
+    <p>ele instanceof Object;<span class="green"> //结果:true，是对象</span></p>
+    <p>Array.from(ele) instanceof Array;<span class="green">//结果：true，是数组</span></p>
+</div>
+<p>调用getElementsByTagName方法，得到结果存到变量ele中，然后对其进行类型判断，发现变量ele并不是一个数组，而是一个对象Array，经过Array.from函数处理返回的结果，已经变成了一个真正的数组。</p>
+<p> Array.from函数其中一个用处就是将字符串转换成数组。</p>
+<div class="code">
+    <p>let str = 'hello';</p>
+    <p>Array.from(str);<span class="green">//结果：["h", "e", "l", "l", "o"]</span></p>
+</div>
+<h2>find( )函数</h2>
+<p>函数作用：找出数组中符合条件的第一个元素。</p>
+<div class="code">
+    <p>let arr = [1,2,3,4,5,6];</p>
+    <p>arr.find(function(value){</p>
+    <p>&nbsp;&nbsp;return value > 2;<span class="green">大于2的第一的元素</span></p>
+    <p>});<span class="green">//结果：value=3</span></p>
+</div>
+<p>find()函数的参数是一个匿名函数，数组的每个元素都会进入匿名函数执行，直到结果为true，find函数就会返回value的值：3。倘若所有元素都不符合匿名函数的条件，find( )函数就会返回undefind。</p>
+<h2>findIndex( )函数</h2>
+<p>函数作用：返回符合条件的第一个数组成员的位置。</p>
+<div class="code">
+    <p>let arr = [7,8,9,10];</p>
+    <p>arr.findIndex(function(value){</p>
+    <p>&nbsp;&nbsp;return value > 8;</p>
+    <p>});<span class="green">//结果：2</span></p>
+</div>
+<p>因为数组元素中大于8的元素是9，而元素9的位置正式2，（数组元素是从0算起）。倘若所有元素都不符合匿名函数的条件，findIndex( )函数就会返回-1。</p>
+<h2>fill( )函数</h2>
+<p>函数作用：用指定的值，填充到数组;fill( )函数也提供了一些参数，用于指定填充的起始位置和结束位置。</p>
+<div class="code">
+    <p>let arr = [1,2,3];</p>
+    <p>arr.fill(4);<span class="green">//结果：[4,4,4]</span></p>
+</div>
+<div class="code">
+    <p>let arr = [1,2,3];</p>
+    <p>arr.fill(4,1,3);<span class="green">//结果：[1,4,4]</span></p>
+</div>
+<p>第2个参数和第3个参数的意思是：从位置1的元素开始填充数字4，截止到位置3之前，所以是位置1和位置2的元素被数字4填充了，得到的结果：[1,4,4]。</p>
+<h2>entries( )函数</h2>
+<p>函数作用：对数组的键值对进行遍历，返回一个遍历器，可以用for..of对其进行遍历。</p>
+<div class="code">
+    <p>for(let [i,v] of ['a', 'b'].entries())</p>
+    <p>{</p>
+    <p>&nbsp;&nbsp;console.log(i,v);</p>
+    <p>}</p>
+    <p><span class="green">//0 "a"</span></p>
+    <p><span class="green">//1 "b"</span></p>
+</div>
+<p>将entries( )函数返回的一个遍历器，用for...of进行遍历，并打印出结果，能得到数组的键值：0和1，以及对应的数组元素：‘a‘和’b‘。</p>
+<h2>keys( )函数</h2>
+<p>函数作用：对数组的索引键进行遍历，返回一个遍历器。</p>
+<div class="code">
+    <p>for(let index of ['a', 'b'].keys())</p>
+    <p>{</p>
+    <p>&nbsp;&nbsp;console.log(index);</p>
+    <p>}</p>
+    <p><span class="green">//0</span></p>
+    <p><span class="green">//1</span></p>
+</div>
+<h2>values( )函数</h2>
+<p> 作用：对数组的元素进行遍历，返回一个遍历器。</p>
+<div class="code">
+     <p>for(let value of ['a', 'b'].values())</p>
+     <p>{</p>
+     <p>&nbsp;&nbsp;console.log(value);</p>
+     <p>}</p>
+     <p><span class="green">//a</span></p>
+     <p><span class="green">//b</span></p>
+</div>
+<h2>数组推导 </h2>
+<p>数组推导：用简洁的写法，直接通过现有的数组生成新数组。</p>
+<p>传统的</p>
+<div class="code">
+    <p>var arr1 = [1,2,3,4];</p>
+    <p>var arr2 = [];</p>
+    <p>for(let i=0;i< arr1.length;i++){</p>
+    <p>&nbsp;&nbsp;arr2.push(arr1[i]*2);<span class="green">//每个元素乘以2后，push到数组arr2</span></p>
+    <p>}</p>
+    <p>console.log(arr2);<span class="green">//结果：[2,4,6,8]</span></p>
+</div>
+<h1  style="color:red">一下代码存在bug</h1>
+<p>ES6</p>
+<div class="code">
+    <p>var arr1 = [1, 2, 3, 4];</p>
+    <p>var arr2 = [for(i of arr1) i * 2];</p>
+    <p>console.log(arr2);<span class="green">//结果： [ 2, 4, 6, 8 ]</span></p>
+</div>
+<p>同样可以得到数组arr2，它的值和上一段代码的一样。并且代码量大大地减少了。这就是数组推导给我们带来的便利。</p>
+<div class="code">
+    <p>var array1 = [1, 2, 3, 4];</p>
+    <p>var array2 = [for(i of array1)  if(i>3) i];</p>
+    <p>console.log(array2);<span class="green">//结果： [4]</span></p>
+</div>
+<p>不再是对数组的元素乘以2，而是用if做了个判断：数组的元素要大于3。所以运行的结果是：[ 4 ]。</p>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

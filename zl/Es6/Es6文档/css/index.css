@@ -1,0 +1,42 @@
+html{
+    font-family: 微软雅黑, sans-serif;
+    font-size: 16px;
+    color: #3e3e3e;;
+}
+body,ul,h2{
+    margin:0;
+    padding: 0;
+}
+.head{
+    width: 100%;
+    height: 50px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    background: greenyellow;
+}
+.content{
+    overflow: hidden;
+}
+.content_left{
+    width: 15%;
+    float: left;
+}
+ul li{
+    height: 30px;
+    line-height: 30px;
+    background:rgba(0, 185, 68, 0.97);
+    text-align: left;
+    color: white;
+    font-weight:700;
+    margin-bottom: 10px;
+    list-style: none;
+}
+.content_right{
+    width: 85%;
+    float: right;
+}
+/***************************************/
+/**************代码***********************/
+/***************************************/

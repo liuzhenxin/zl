@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ES6文档</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<div class="head">ES6</div>
+<div class="content">
+    <div class="content_left">
+        <ul>
+            <li class="1">浏览器兼容ES6特性</li>
+            <li class="2">let声明变量</li>
+            <li class="3">const声明常量</li>
+            <li class="4">解构赋值</li>
+            <li class="5">String特性</li>
+            <li class="6">数值扩展</li>
+            <li class="7">数组扩展</li>
+            <li class="8">对象扩展</li>
+            <li class="9">函数扩展</li>
+            <li class="10">数据类型Symbol</li>
+            <li class="11">Proxy代理</li>
+            <li class="12">for...of</li>
+            <li class="13">lterator遍历器</li>
+            <li class="14">Generator函数</li>
+            <li class="15">Set和WeakSet</li>
+            <li class="16"></li>
+            <li class="17"></li>
+            <li class="18"></li>
+            <li class="19"></li>
+        </ul>
+    </div>
+    <div class="content_right">
+
+    </div>
+</div>
+</body>
+<script>
+    var numeral,aa;
+    $(".content_right").html("<iframe id='iframepage' width='100%' frameborder='0' height='1000px'  name='i' allowTransparency='true' src='public/let声明变量.html' ></iframe>");
+    $("li").click(function (e) {
+        numeral= $(e.target).attr("class");
+        $(".content_right").html("<iframe id='iframepage' width='100%' frameborder='0' height='1000px'  name='i' allowTransparency='true'></iframe>");
+
+        var ma=[{name:"浏览器兼容ES6特性",id:1},
+            {name:"let声明变量",id:2},
+            {name:"const声明常量",id:3},
+            {name:"解构赋值",id:4},
+            {name:"String特性",id:5},
+            {name:"数值扩展",id:6},
+            {name:"数组扩展",id:7},
+            {name:"对象扩展",id:8},
+            {name:"函数扩展",id:9},
+            {name:"数据类型Symbol",id:10},
+            {name:"Proxy代理",id:11},
+            {name:"for...of",id:12},
+            {name:"lterator遍历器",id:13},
+            {name:"Generator函数",id:14},
+            {name:"Set和WeakSet",id:15},
+            {name:"Map和WeakMap",id:16},
+            {name:"Promise对象",id:17},
+            {name:"",id:18},
+            {name:"",id:19}];
+        for (var value of ma) {
+            if((value.id)==(numeral)){
+                document.getElementById("iframepage").src="public/"+value.name+".html";
+            }
+        }
+    });
+
+
+</script>
+</html>

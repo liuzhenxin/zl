@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul li{
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<p>JavaScript有6中数据类型</p>
+<ul>
+    <li>String 字符串类型</li>解决对象的属性名冲突
+    <li>Number 数字类型</li>
+    <li>Object 对象类型</li>
+    <li>Boolean 布尔值类型</li>
+    <li>Null  空值</li>
+    <li>Undefined 未定义</li>
+</ul>
+</body>
+<script>
+    //Symbol:解决对象的属性名冲突
+
+    let  sm=Symbol();  //解决对象的属性名冲突
+    console.log(sm);  //Symbol()
+    console.log(typeof sm);   //是symbol类型
+
+
+
+    let sm1=Symbol();
+    console.log(sm1);  //Symbol()
+    console.log( sm===sm1);//false;看起来相等,实际却不相等;说明它是独一无二的值
+
+
+    let sm2=Symbol("sm");
+    let  sm3=Symbol("sm");
+    console.log(sm2===sm3);  //false;即使两个变量的描述都是“sm”，但是终究对应的值还是不一样的，symbol永远都是独一无二的值
+
+
+    //解决对象属性的冲突
+
+    let name=Symbol();  //定义一个symbol类型的变量name;它作为一个对象person的属性，对应的值是“张三”
+    let person={
+        [name]:"zhangsan"
+    };
+    console.log(person[name]);  //zhangsan
+    console.log(person.name);  //undefined; 获取失败的原因: 当symbol值作为对象的属性名的时候，不能用点运算符获取对应的值
+
+
+    //把一个symbol类型的值作为对象的属性名的时候，一定要用中括号[ ]，不能用点运算符，
+    // 因为用点运算符的话，会导致javascript把后面的属性名为理解为一个字符串类型，而不是symbol类型
+
+
+    let  name1=Symbol();
+    let person1={};
+    person1.name="张三";
+
+    //其中变量name1是symbol，但是给person1对象设置属性的时候，用的是点运算符person1.name，而不是中括号person1[name ],
+    // 这会有什么后果呢？这就会导致person对象中的属性name实际上是字符串类型的，这也就解释了最后三行代码的打印结果了。
+
+    //person1[name ]这句代码相当于要求javascript去person1对象内找一个symbol类型的属性name，不好意思，没有，找不到。
+    // person1对象只有一个字符串类型的属性name；所以，如果用person1[‘name’]或者peroson1.name获取的话，就能找到对应的属性name了。
+    console.log(person1[name]);      //undefined
+    console.log(person1['name']);    //张三
+    console.log(person1.name);      //张三
+
+
+
+
+    //定义一个symbol类型的变量name
+    let name2 = Symbol();
+
+    //定义一个含有两种类型属性的对象
+    let person2 = {
+        [name]:"张三",  //symbol类型
+        "age":12        //string类型
+    };
+
+    // Object.keys() 方法获取该对象的属性和方法
+    console.log(Object.keys(person2));//结果：["age"];但无法获取到symbol类型的属性
+
+    for(let key in person2){
+        console.log(key);  //age;但无法获取到symbol类型的属性
+    }
+
+//------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Object.getOwnPropertySymbols()函数:它会找到symbol类型的属性并返回一个数组;数组的成员就是symbol类型的属性值
+
+    //定义两个symbol类型的变量name，age
+    let name3 = Symbol("name");
+    let age = Symbol("age");
+
+
+    let person3 = {
+        [name3]:"张三", //symbol类型
+        [age]:12       //symbol类型
+    };
+
+    console.log(Object.getOwnPropertySymbols(person3));  //得到一个数组，数组的内容就是两个symbol类型变量对应的值Symbol(name)和 Symbol(age)
+
+
+
+//-------------------------------------------------------------------------------------------------------------------------------------
+
+    //Reflect.ownKeys()函数:获取字符串类型的属性和获取symbol类型的属性要分开两种不同的方式来获取
+
+    let person4 = {   //定义一个对象person4，它含有两个属性，一个是symbol类型的，一个是字符串类型的
+        [Symbol('name')]:"张三",
+        "age": 21
+    };
+
+    console.log(Reflect.ownKeys(person4)); //["age", Symbol(name)]
+   //将对象person4传入Reflect.ownKeys()函数中,函数就会给我们返回一个数组,数组的内容便是对象的属性,包括symbol类型和字符串类型
+
+
+//--------------------------------------------------------------------------------------------------------------------------------------------------
+    //Symbol.for()函数:根据参数名,去全局环境中搜索是否有以该参数为名的Symbol值,有就返回它，没有就以该参数名来创建一个新的Symbol值
+
+    let n1=Symbol.for("name");
+    let n2=Symbol.for("name");
+    console.log(n1===n2);  //true;因为定义的时候用的是Symbol值得都是用Symbol.for(),而不是用Symbol();
+
+//Symbol和Symbol.for的区别:
+    //Symbol.for()创建的Symbol值会被登记在全局环境中,供以后用Symbol.for()来搜索,而Symbol()创建的变量就没有这样的没效果了
+
+
+    let n3=Symbol("name");  //用Symbol( )来创建的一个symbol值，按照上述的所说的，它不会被登记在全局环境中
+    let n4=Symbol.for("name");  //所以，第二行我们用Symbol.for( )去找的时候，是找不到的;此时Symbol.for( )会自动创建一个新的symbol值
+    console.log(n3===n4);  //false;
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    //Symbol.keyFor( )函数:返回一个以被登记在全局环境中的symbol值的key，没有就返回undefined。
+    // 注意这句话的一个关键词：“被登记在全局环境中”，也就是说这个symbol值是被Symbol.for( )创建的，不是被Symbol( )创建的。
+
+    let n5=Symbol.for("name");
+    console.log(Symbol.keyFor(n5)); //name
+
+
+    let n6 = Symbol('name');
+    console.log(Symbol.KeyFor(n6)); //undefined
+    //这段代码的变量n1是用Symbol( )创建的，最后的结果是undefined；
+    // 这就证明了两个知识点：1、Symbol( )创建symbol值不会被登记在全局环境中供Symbol.for( )和Symbol.keyFor( )搜索；
+    // 2、Symbol.keyFor( )函数在全局环境中找不到对应的symbol，就回返回undefined。
+</script>
+</html>

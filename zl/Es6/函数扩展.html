@@ -69,6 +69,7 @@
     var a=sum2(...arr);  //sum2(...arr)相当于sum2(2,3)
     console.log(a);  //5
 
+
 //箭头函数  一种全新的定义函数方式 就是用箭头符号(=>)
 
 
@@ -82,5 +83,47 @@
 
     var sum5=(a,b)=>{return a+b};   //如果参数超过一个,需要用小括号()括起来;函数体语句超过1条,需要用大括号{}括起来
     console.log(sum5(1,2));  //3
+
+
+//箭头函数this的使用
+    //箭头this:箭头函数中的this指向的是定义时的this,而不是执行时的this
+    //定义一个对象
+    var obj = {
+        x:100, //属性x
+        show(){
+            //延迟500毫秒，输出x的值
+            setTimeout(
+                    //匿名函数
+                    function(){console.log(this.x);},
+                    500
+            );
+        }
+    };
+    obj.show();//打印结果：undefined
+
+    //案例中，我们的obj对象中有一个属性x和一个属性show( )方法（用的是对象的简洁表示法，第九节已讲解，点击查看），
+    // show( )通过this打印出x的值。可最后一句代码执行后，我们打印出的结果是undefined。这是为什么呢？难道x的值不是100吗？
+
+    //没错，x的值确实是100，但问题出在了this上，当代码执行到了setTimeout( )的时候，
+    // 此时的this已经变成了window对象（setTimeout( )是window对象的方法），已经不再是obj对象了，所以我们用this.x获取的时候，
+    // 获取的不是obj.x的值，而是window.x的值，再加上window上没有定义属性x，所以得到的结果就是：undefined。
+
+
+    //定义一个对象
+    var obj1 = {
+        x:100,//属性x
+        show(){
+            //延迟500毫秒，输出x的值
+            setTimeout(
+                    //不同处：箭头函数
+                    () => { console.log(this.x)},
+            500
+        );
+        }
+    };
+    obj1.show();//打印结果：100
+
+    //当定义obj的show( )方法的时候，我们在箭头函数编写this.x，此时的this是指的obj，所以this.x指的是obj.x。
+    // 而在show()被调用的时候，this依然指向的是被定义时候所指向的对象，也就是obj对象，故打印出：100。
 </script>
 </html>

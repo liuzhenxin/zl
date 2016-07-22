@@ -1,0 +1,108 @@
+body,ul,li,p,h1,h2,h3,h4,h5{
+    margin:0;
+    padding:0;
+    font-size:100%;
+}
+body{
+    font-family: 'Microsoft YaHei UI', 'Microsoft YaHei', SimSun, 'Segoe UI', Tahoma, Helvetica, Sans-Serif;
+    font-size: 14px;
+    background: #6f0b02 url(../img/body-bg.png) center 0 no-repeat;
+}
+button,input,select,textarea{
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration:none;
+    color:#000;
+    background: transparent;
+}
+a:focus{
+    outline: none;
+}
+img{
+    border:0;
+}
+
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.center{
+    width: 1000px;
+    margin: 0 auto 0;
+}
+/*content*/
+.content{
+    position: relative;
+    margin: 40px auto 0;
+    width: 1026px;
+    height: 460px;
+}
+.l-pic-index{
+    position: absolute;
+    left: 450px;
+    top: 1px;
+    z-index:2;
+    width:79px;
+    height:460px;
+    background: url("../img/l-pic-index.png") no-repeat right 0;
+}
+.r-pic-index{
+    position: absolute;
+    right: 450px;
+    top: 0;
+    z-index: 2;
+    width:82px;
+    *width:82px;
+    height:460px;
+    background: url("../img/r-pic-index.png") no-repeat left 0;
+}
+.l-bg-index{
+    position: absolute;
+    top: 0;
+    left: 485px;
+    z-index: 1;
+    width: 20px;
+    height: 459px;
+    background: url(../img/l-bg-index.png) right 0 no-repeat;
+}
+.r-bg-index{
+    position: absolute;
+    top: 0;
+    left: 504px;
+    z-index: 1;
+    width: 20px;
+    height: 459px;
+    background: url(../img/r-bg-index.png) 0 0 no-repeat;
+}
+.main-index{
+    display: none;
+    overflow: hidden;
+    zoom:1;
+    position: absolute;
+    z-index: 5;
+    width:720px;
+    height:280px;
+    left:55px;
+    top:90px;
+    color: #2e2e2e;
+}
+.intro-text{
+    margin: 10px 0 0 44px;
+    line-height: 1.8;
+    text-indent: 30px;
+}

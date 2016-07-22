@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>卷轴展开demo</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+    <!--content-->
+    <div class="content">
+        <div class="l-pic-index"></div>
+        <div class="r-pic-index"></div>
+        <div class="l-bg-index"></div>
+        <div class="r-bg-index"></div>
+        <div class="main-index">
+            <h1 class="title"><img src="./img/intro-title.png" alt=""></h1>
+            <p class="intro-text">
+                西南传统音乐是在以典河流域为中心的中原音乐和四域音乐以及外国音乐的交流融合之中形成发展起来的。
+                因此可以说，中原音乐、四域音乐、外国音乐是中国传统音乐的三大来源。 中原音乐指的是以黄河流域为中心发展起来的音乐。
+                在漫长的历史发展过程中，形成了以汉族为主体的黄河流域音乐文化。其中，殷商和西周时期的音乐文化具有代表意义。
+                除六代乐舞及其他多种乐舞的发展和整理，礼乐制度的阶级化和等级化，大司乐机构的设置，三分损益律的运用等，
+                对全代有重要影响之外，尤其在“八音”乐器分类中“琴”（七弦琴）及其音乐的出现，奠定了中国传统乐器与器乐的基本模式。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+            //卷轴展开效果
+            $(".l-pic-index").animate({'left':'-5px'},3000);
+            $(".r-pic-index").animate({'right':'8px'},3000);
+            $(".l-bg-index").animate({'width':'432px','left':'73px'},3000);
+            $(".r-bg-index").animate({'width':'432px','left':'504px'},3000,function(){
+                $(".main-index").fadeIn(800);
+            });
+        });
+    </script>
+</body>
+</html>

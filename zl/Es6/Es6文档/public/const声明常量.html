@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>const声明常量</title>
+    <link rel="stylesheet" href="../css/code.css">
+</head>
+<body>
+<h2>const 的作用</h2>
+<p>const是constant（常量）的缩写，const和 let一样，也是用来声明变量的，但是const是专门用于声明一个常量的，顾名思义，常量的值是不可改变的。以前用var声明的变量，想怎么改就怎么改，同一个变量，后面的值可以轻松覆盖原来的值，这次const声明的变量，可由不得我们这么任性地想改就改了。</p>
+<h2>常量的特点</h2>
+<h3>1、不可修改</h3>
+<div class="code">
+    <p>const Name = '张三';</p>
+    <p> Name = '李四'; <span class="green">//错误，企图修改常量Name</span></p>
+</div>
+<h3>2、只在块级作用域起作用，这点与let关键字一样。</h3>
+<div class="code">
+    <p>if(1){</p>
+    <p>&nbsp; const Name = '张三';</p>
+    <p>&nbsp; }</p>
+    <p>alert(Name);<span class="green">//错误，在代码块{ }外，Name失效</span></p>
+</div>
+<h3>3、不存在变量提升，必须先声明后使用，这点也跟let关键字一样。</h3>
+<div class="code">
+    <p>if(1){</p>
+    <p>>&nbsp; alert(Name);<span class="green">//错误，使用前未声明</span></p>
+    <p>>&nbsp; const Name = '张三';</p>
+    <p>}</p>
+</div>
+<h3>4、不可重复声明同一个变量，这点跟let也一样。</h3>
+<div class="code">
+    <p> var Name  = '张三';</p>
+    <p> const  Name = '李四';<span class="green">//错误，声明一个已经存在的变量Name</span></p>
+</div>
+<h3>5、声明后必须要赋值</h3>
+<div class="code">
+    <p>const NAME; <span class="green">//错误，只声明不赋值</span></p>
+</div>
+<h2>如果常量是一个对象呢？</h2>
+<div class="code">
+    <p>const Person = {"name":"张三"};</p>
+    <p> Person.name = "李四";</p>
+    <p>Person.age = 20;</p>
+    <p>console.log(Person);<span class="green">//结果：正常输出{name: "李四", age: 20}</span></p>
+</div>
+<h2>传址赋值</h2>
+<p>在赋值过程中，我们可以分为传值赋值和传址赋值 <span>传址：在赋值过程中，变量实际上存储的是数据的地址（对数据的引用），而不是原始数据或者数据的拷贝。</span></p>
+<div class="code">
+    <p> var student1 = {"name":"张三"};</p>
+    <p> var student2 = student1;</p>
+    <p>student2.name = "李四";</p>
+    <p>console.log(student1);<span class="green">//结果：输出 {name: "李四"}</span></p>
+    <p>console.log(student2);<span class="green">//结果：输出 {name: "李四"}</span></p>
+</div>
+<p>为什么student2的name改成了“李四”，student1的那么也变成了“李四”呢？这就是传址赋值！</p>
+<div class="code">
+
+    <p>var Zhang = {"door":"red"};<span class="green">//张师傅把你家的门改成红色</span></p>
+    <p>var Wang = Zhang;<span class="green">//次日，你把地址也告诉了王师傅</span></p>
+    <p>Wang.door = "green";<span class="green">//王师傅按照地址，去到后把门改成绿色</span></p>
+    <p>console.log(Wang); <span class="green">//结果：输出 {door: "green"}  //最后不管是张师傅还是王师傅来到你家，看到门都是绿色的</span></p>
+    <p>console.log(Zhang);<span class="green"> //结果：输出 {door: "green"}</span></p>
+</div>
+<p><span>用const来声明一个对象类型的常量，就是传址赋值。而不可修改的是对象在内存中的地址，而不是对象本身</span></p>
+<div class="code">
+    <p>const Person = {"name":"张三"};</p>
+    <p>Person.name = "李四";</p>
+    <p>Person.age = 20;</p>
+    <p>console.log(Person);<span class="green">//结果：正常输出{name: "李四", age: 20}</span></p>
+</div>
+<p>因为修改的只是Person本身，修改的是name属性和增加一个属性age，而地址没变，也不可变，所以并没有违背常量不可修改的约定。</p>
+<div class="code">
+    <p>const Person = {"name":"张三"};</p>
+    <p>Person.age = 20;</p>
+    <p>Person = {};<span class="green">//错误，企图给常量Person赋新值（新地址）</span></p>
+</div>
+<h5>总结：const也是用于声明一个常量，并必须赋值，声明后不可修改，跟let一样，只在块级作用域起作用，不可重复声明同一个变量，不会变量提升，声明引用类型的常量时，要注意是传址赋值。</h5>
+</body>
+</html>
