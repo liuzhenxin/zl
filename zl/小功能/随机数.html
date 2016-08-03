@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //从数组中获取随机数
+   // var items = [12, 548 , 'a' , 2 , 5478 , 'foo' , 8852, 'Doe' , 2145 , 119];
+    //var  randomItem = items[Math.floor(Math.random() * items.length)];
+    //console.log(randomItem);
+
+
+
+//获取指定范围内的随机数
+//    var max=10;
+//    var min=1;
+//    var x = Math.floor(Math.random() * (max - min + 1)) + min;
+//    console.log(x);
+
+
+
+//生成从0到指定值的数字数组
+//    var numbersArray = [] , max = 100;
+//    for( var i=1; numbersArray.push(i++) <= max;){
+//        console.log(numbersArray);
+//    }  // numbers = [1,2,3 ... 100]
+
+
+
+    //生成随机的字母数字字符串
+    function generateRandomAlphaNum(len) {
+        var rdmString = "";
+        for( ; rdmString.length < len; rdmString  += Math.random().toString(36).substr(2));
+        return  rdmString.substr(0, len);
+    }
+    console.log(generateRandomAlphaNum(36));//生成的个数
+
+
+</script>
+</html>

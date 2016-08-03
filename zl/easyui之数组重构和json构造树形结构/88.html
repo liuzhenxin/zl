@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="themes/easyui.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.mobile.js"></script>
+    <script src="jquery.combobox.js"></script>
+    <script src="json2.js"></script>
+    <style>
+        .aa {
+            background: url('metro/images/tree_icons.png') no-repeat -256px 0;
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative">
+    <input id="filter" onkeyup="getContent(this,'myTree');" />
+    <div id="append" style="position: absolute; background-color: white;"></div>
+</div>
+</body>
+<script>
+    var data3=[
+        {"id":1,"iconCls":"aa","parendId":0,"text":"Foods"},  //iconCls显示的节点图标CSS类ID
+        {"id":2,"iconCls":"aa","parentId":1,"text":"Fruits"},
+        {"id":3,"iconCls":"aa","parentId":1,"text":"Vegetables"},
+        {"id":4,"iconCls":"aa","parentId":2,"text":"apple"},
+        {"id":5,"iconCls":"aa","parentId":2,"text":"orange"},
+        {"id":6,"iconCls":"aa","parentId":3,"text":"tomato"},
+        {"id":7,"iconCls":"aa","parentId":3,"text":"carrot"},
+        {"id":8,"iconCls":"aa","parentId":3,"text":"cabbage"},
+        {"id":9,"iconCls":"aa","parentId":3,"text":"potato"}
+    ];
+
+    $('#filter').combotree({
+        data:data3,
+        valueField: "id",
+        text:"text" ,
+        editable:true,
+        onLoadSuccess:function(data){
+            console.log(data);
+        }
+    });
+
+
+</script>
+</html>

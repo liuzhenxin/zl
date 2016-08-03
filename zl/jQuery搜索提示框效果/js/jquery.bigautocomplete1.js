@@ -67,6 +67,8 @@ $(function(){
 			               //callback：选中行后按回车或单击时回调的函数
 				callback:function(data){
 					alert(data.title);
+				},onClick:function(data){
+					alert(data.title);
 				}};
 			$.extend(this.config,param);
 			console.log(this.config);

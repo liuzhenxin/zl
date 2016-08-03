@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="themes/easyui.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.mobile.js"></script>
+    <!--<script src="jquery.combobox.js"></script>-->
+    <script src="json2.js"></script>
+</head>
+<body>
+<div style="position: relative">
+    <input id="filter" onkeyup="getContent(this,'myTree');" />
+    <div id="append" style="position: absolute; background-color: white;"></div>
+</div>
+</body>
+<script>
+    var data3=[
+        {"id":370000,"parendId":100000,"name":"广元市公安局"},
+        {"id":370300,"parentId":370000,"name":"淄博市院"},
+        {"id":370302,"parentId":370300,"name":"淄川区院2"},
+        {"id":370304,"parentId":370300,"name":"博山区院"},
+        {"id":371700,"parentId":370000,"name":"菏泽市院"},
+        {"id":371702,"parentId":371700,"name":"牡丹区院"},
+        {"id":371722,"parentId":371700,"name":"单县院"}
+    ];
+    console.log(data3);
+    function convert(rows){
+        function exists(rows, parentId){
+            for(var i=0; i<rows.length; i++){
+                if (rows[i].id == parentId) return true;
+            }
+            return false;
+        }
+
+        var nodes = [];
+        // get the top level nodes
+        for(var i=0; i<rows.length; i++){
+            var row = rows[i];
+            if (!exists(rows, row.parentId)){
+                nodes.push({
+                    id:row.id,
+                    text:row.name
+                });
+            }
+        }
+
+        var toDo = [];
+        for(var i=0; i<nodes.length; i++){
+            toDo.push(nodes[i]);
+        }
+        while(toDo.length){
+            var node = toDo.shift(); // the parent node
+            // get the children nodes
+            for(var i=0; i<rows.length; i++){
+                var row = rows[i];
+                if (row.parentId == node.id){
+                    var child = {id:row.id,text:row.name};
+                    if (node.children){
+                        node.children.push(child);
+                    } else {
+                        node.children = [child];
+                    }
+                    toDo.push(child);
+                }
+            }
+        }
+        return nodes;
+    }
+    var result = convert (data3);
+    console.log(result);
+    $('#filter').combotree({
+        data:result,
+        valueField: "id",
+        text:"text" ,
+        editable:true,
+        onClick:function(node){
+            console.log(node);
+        }
+    });
+
+
+</script>
+</html>
