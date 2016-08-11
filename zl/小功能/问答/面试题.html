@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Foo()
+    {
+        getName = function(){return 1;};
+        return this;
+    }
+
+    Foo.getName=function(){return 2;};
+    Foo.prototype.getName=function(){return 3;};
+    var getName=function(){return 4;};
+    function getName(){return 5;}
+
+    //以下内容会输出什么？
+    console.log(Foo.getName());//2
+    console.log(getName());  //4----变量声明提升后，return 5那个最先被定义，但后来被return 4的覆盖，因此，返回4;
+    console.log(Foo().getName());  //1 ---return 1的函数被赋值全局变量getName,Foo()返回window，window.getName()返回1;
+    console.log(getName()); //1---return 1的函数被赋值全局变量getName,Foo()返回window，window.getName()返回1;
+    console.log(new Foo.getName());  //{}-----构造函数return的值如果不是对象会被舍弃，所以返回一个空对象;
+    console.log(new Foo().getName());  //3---构造函数Foo()返回的一个空对象{},这个对象是Foo的实例，继承原型上的getName函数，所以返回3;
+    console.log(new new Foo().getName());   //{}-----构造函数return的值如果不是对象会被舍弃，所以返回一个空对象;
+    console.log(new (new Foo().getName)()); //{}-----构造函数return的值如果不是对象会被舍弃，所以返回一个空对象;
+</script>
+</html>

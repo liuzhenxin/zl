@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:600px"></div>
+
+
+<div onload="te()" >
+    <table id="test" style="width: 100%"></table>
+</div>
+<!-- ECharts单文件引入 -->
+<script src="dist/echarts.js"></script>
+<script type="text/javascript">
+    function parers(mix,max){
+        var rand=max-mix;
+        var ran=Math.random();
+        return(mix+Math.round(ran*rand))
+    }
+    var num=parers(1,100);
+    var num1=parers(1,100);
+    var num2=parers(1,100);
+    var num3=parers(1,100);
+    var num4=parers(1,100);
+    var num5=parers(1,100);
+    var num6=parers(1,100);
+    var num7=parers(1,100);
+    var num8=parers(1,100);
+    var num9=parers(1,100);
+    var num10=parers(1,100);
+    var num11=parers(1,100);
+    var num12=parers(1,100);
+
+    //series封装  yAxisIndex:1
+    function series(name,type,num,arr){
+        return{name:name,type:type,yAxisIndex:num,data:arr}
+    }
+
+    // 路径配置
+    require.config({
+        paths: {
+//            当前文件下的文件名（放有echarts.js文件）
+            echarts: 'dist'
+        }
+    });
+    // 使用
+    require(
+            [
+//                 echarts主模块入口
+                'echarts',
+//                按需加载
+//      使用柱状图就加载bar模块
+                'echarts/chart/bar',
+//                折线图，堆积折线图，区域图，堆积区域图。
+                'echarts/chart/line'
+
+
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('main'));
+
+                var option = {
+                    tooltip : {
+                        trigger: 'axis'
+                    },
+                    title: {
+//                            标题
+                        text: '犯罪嫌疑人身份分析'
+////                            副标题
+//                        subtext: '向上级院提请刑事申诉抗诉'
+                    },
+                    toolbox: {
+                        show : true,
+                        x:'right',
+                        feature : {
+                            mark : {show: true},
+                            dataView : {show: true, readOnly: false},
+                            magicType: {show: true, type: ['line', 'bar']},
+                            restore : {show: true},
+                            saveAsImage : {show: true}
+                        }
+                    },
+                    calculable : true,
+                    legend: {
+                        itemWidth:15,
+                        y:'30',
+                        data:['在校学生','非在校生','男','女','女性改变为男性','男性改变为女性','',
+                            '未说明的性别','单亲家庭','父母双亡','其它']
+                    },
+                    xAxis : [
+                        {
+                            type : 'category',
+                            data : ['全市','市院','滨城','沾化','惠民','阳信','无棣','博兴','邹平','开发区']
+                        }
+                    ],
+                    grid:{
+                        y: 70
+                    },
+                    yAxis : [
+//                            左侧Y轴
+                        {
+                            type : 'value',
+                            name : '',
+                            axisLabel : {
+                                formatter: 'value '
+                            }
+
+                        },
+//                            右侧Y轴
+                        {
+                            type : 'value',
+                            name : '',
+                            axisLabel : {
+                                formatter: '{value}% '
+                            }
+                        }
+                    ],
+                    series : [
+                         series('在校学生','line','1',[num, num1, num2, num3, num4, num5, num6, num7, num8, num9,num10]),
+                            series('非在校生','line','1',[ num1, num2, num3, num4, num5, num6, num7, num8, num9,num10,num]),
+                            series('男','line','1',[ num2, num3, num4, num5, num6, num7, num8, num9,num10,num, num1]),
+                            series('女','line','1',[num3, num4, num5, num6, num7, num8, num9,num10,num, num1, num2]),
+                            series('女性改变为男性','line','1',[num4, num5, num6, num7, num8, num9,num10,num, num1, num2, num3]),
+                            series('男性改变为女性','line','1',[ num5, num6, num7, num8, num9,num10,num, num1, num2, num3, num4]),
+                            series('未说明的性别','line','1',[ num6, num7, num8, num9,num10,num, num1, num2, num3, num4, num5]),
+                            series('单亲家庭','line','1',[num7, num8, num9,num10,num, num1, num2, num3, num4, num5, num6]),
+                            series('父母双亡','line','1',[ num8, num9,num10,num, num1, num2, num3, num4, num5,num6, num7]),
+                            series('其它','line','1',[num10,num, num1, num2, num3, num4, num5, num6,num7, num8, num9])
+                     ]
+
+
+                };
+
+                // 为echarts对象加载数据
+                myChart.setOption(option);
+            }
+    );
+
+
+</script>
+</body>

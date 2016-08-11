@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box { width: 160px; height: 160px; margin: 10px 0 20px; background-color: #beceeb; overflow: hidden; resize: both; }
+        .box > img {
+            width: 100%; height: 100%; background-color: #cd0000;
+        }
+        .fill { object-fit: fill; }
+        .contain { object-fit: contain; }
+        .cover { object-fit: cover; }
+        .none { object-fit: none; }
+        .scale-down { object-fit: scale-down; }
+    </style>
+</head>
+<body>
+<ul>
+    <li>fill: 中文释义“填充”。默认值。替换内容拉伸填满整个content box, 不保证保持原有的比例。</li>
+    <li>contain: 中文释义“包含”。保持原有尺寸比例。保证替换内容尺寸一定可以在容器里面放得下。因此，此参数可能会在容器内留下空白。 </li>
+    <li> cover: 中文释义“覆盖”。保持原有尺寸比例。保证替换内容尺寸一定大于容器尺寸，宽度和高度至少有一个和容器一致。因此，此参数可能会让替换内容（如图片）部分区域不可见。 </li>
+    <li> none: 中文释义“无”。保持原有尺寸比例。同时保持替换内容原始尺寸大小。 </li>
+    <li> scale-down: 中文释义“降低”。就好像依次设置了none或contain, 最终呈现的是尺寸比较小的那个。 </li>
+
+</ul>
+<div class="box">
+    <img src="img/2.jpg" class="fill">
+</div>
+<strong>object-fit: contain</strong>
+<div class="box">
+    <img src="img/2.jpg" class="contain">
+</div>
+<strong>object-fit: cover</strong>
+<div class="box">
+    <img src="img/2.jpg" class="cover">
+</div>
+<strong>object-fit: none</strong>
+<div class="box">
+    <img src="img/2.jpg" class="none">
+</div>
+<strong>object-fit: scale-down</strong>
+<div class="box">
+    <img src="img/2.jpg" class="scale-down">
+</div>
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>函数扩展</title>
+    <link rel="stylesheet" href="../css/code.css"/>
+</head>
+<body>
+<h2>参数的默认值</h2>
+<h5>设定默认值的参数一定要放在最后,有默认值的参数后面不能再跟不需默认值的参数了。</h5>
+<p>给函数的参数指定默认值，是很普遍很常见的一个需求，我们先来回顾一下传统的实现方式，对比着看更好理解：</p>
+<div class="code">
+    <p>function person(n,a){</p>
+    <p>&nbsp;&nbsp;var name = n || 'Zhangsan';</p>
+    <p>&nbsp;&nbsp;var age  = a ||  25;</p>
+    <p>}</p>
+</div>
+<p>原理：<span>如果运算符 || 左侧为true，直接返回左侧的值，否则返回右侧的值</span>； 在person函数内，如果参数n没有传参，那么变量name得到的值就是“Zhangsan”，如果传参了，变量name的值就为参数n的值。</p>
+<h1>es6</h1>
+<div class="code">
+    <p>function person(name = 'Zhangsan',age = 25){</p>
+    <p>&nbsp;&nbsp;console.log(name,age);</p>
+    <p>}</p>
+    <p>person();<span class="green">//结果：Zhangsan  25</span></p>
+    <p>person('Lisi',18);<span class="green">//结果：Lisi  18</span></p>
+</div>
+<p>把默认值的设定放在了参数上：(name = 'Zhangsan',age = 25)，这样就实现了参数name的默认值为‘Zhangsan’，age的默认值为25。而不需要在函数体内进行检测，函数体内可以专注对参数的使用或者运算，再也不用担心函数的实际传参情况了。</p>
+<p>上面的案例，我们对person( )函数进行两次调用，区别是有传参数和没传参数，运行的结果也符合我们的预期：没传参，得到的是默认值Zhangsan 25，传参就会得到传入的参数值：Lisi  18。</p>
+<p>如果函数有多个参数，但只有部分需要指定默认值，另一部分不需要的话，那么，设定默认值的参数一定要放在最后。</p>
+<p>只有当传入的参数为undefined，才会触发默认值赋值。否则，哪怕你传的参数值为0，false，null都不会触发默认值赋值，如下代码：</p>
+<div class="code">
+    <p>function person(age = 12){</p>
+    <p>&nbsp;&nbsp;console.log(age);</p>
+    <p>}</p>
+    <p>person(); <span class="green">//结果：12</span></p>
+    <p>person(undefined);<span class="green">//结果：12</span></p>
+    <p>person(0);<span class="green">//结果：0</span></p>
+    <p> person(null);<span class="green">//结果：null</span></p>
+</div>
+<p>person( )函数的4次调用和结果，只有不传或者传入undefined的时候才会触发默认值赋值，得到12，传入数字0或者null都不会触发默认值赋值。</p>
+<p>函数的参数是默认声明的，声明过的变量，就不能用let或者const关键字再次声明，否则会报错的，不信给你看一个案例：</p>
+<div class="code">
+    <p>function person(age = 12){</p>
+    <p>&nbsp;&nbsp;let age = 25;<span class="green">//错误，再次声明age</span></p>
+    <p>}</p>
+</div>
+<h2>rest参数</h2>
+<p>将一组数字进行求和，然后把求和的结果赋值到一个变量去，我们用rest参数实现：</p>
+<div class="code">
+    <p>function sum(result,...values){<span class="green">//求和函数，得到的结果赋值到result</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log(values);<span class="green">//结果：[1,2,3,4]</span></p>
+    <p> <span class="green">//进行求和</span></p>
+    <p> values.forEach(function (v,i) {</p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;result += v;<span class="green">//求和得到的结果存到result</span></p>
+    <p>});</p>
+    <p>&nbsp;&nbsp;console.log(result);<span class="green">//结果：10</span></p>
+    <p> }</p>
+    <p>var res = 0;<span class="green">//存储求和结果的变量res</span></p>
+    <p>sum(res,1,2,3,4);<span class="green">//调用sum函数</span></p>
+</div>
+<p><span>...values，也就是我们要介绍的rest参数，它代表的意思是：在实参中，除了第一个参数以外，剩余的参数都会被...values获取到。</span></p>
+<p>在上面的案例中：sum(res,1,2,3,4)，也就是除去实参 res 以外的参数，它们是1,2,3,4一共4个参数。它们全被...values收入囊中，接着，我们打印了values，看到的结果是一个数组：[1,2,3,4]，也就是这4个参数被装在了一个数组中，我们想要使用这4个参数的话，就可以用数组的方法来对他们进行处理，所以我们用了forEach方法对它们进行了循环，并求和，把求和结果存储到了变量res中，最后我们打印出结果，得到了数字10，也就是数字1,2,3,4的求和结果。</p>
+<h1>rest参数必须是函数的最后一个参数，后面不能再跟其他参数</h1>
+<div class="code">
+    <p>function sum(result, mult, ...values){ <span class="green">//rest参数...values放在最后</span></p>
+
+    <p>}</p>
+</div>
+<p> rest参数并不是适合所有的函数使用，只在特定的情境下会比较适用，比方说刚刚案例中的求和函数，就十分适合要rest参数把实际的参数收集起来放在数组中进行求和</p>
+<p>除了第一个参数以外，剩余的参数都会被...values获取到，如下代码</p>
+<div class="code">
+    <p>function sum(result,aa,...values){<span class="green">//求和函数，得到的结果赋值到result</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;console.log(values);<span class="green">//结果：[2,3,4]</span></p>
+    <p> <span class="green">//进行求和</span></p>
+    <p> values.forEach(function (v,i) {</p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;result += v;<span class="green">//求和得到的结果存到result</span></p>
+    <p>});</p>
+    <p>&nbsp;&nbsp;console.log(result);<span class="green">//结果：9</span></p>
+    <p> }</p>
+    <p>var res = 0;<span class="green">//存储求和结果的变量res</span></p>
+    <p>sum(res,1,2,3,4);<span class="green">//调用sum函数</span></p>
+</div>
+
+<h2>扩展运算符</h2>
+<p>rest参数，它的表示法使用...（三个点），它除了用在rest参数中，还有其他用途，我们称这种表示法为扩展运算符,它一般<span>结合数组使用，把数组的元素用逗号分隔开来，组成一个序列。</span></p>
+<div class="code">
+    <p>function sum(a,b) {</p>
+    <p>&nbsp;&nbsp;return  a+b ;</p>
+    <p>}
+    <p>let arr = [2,3];<span class="green">//用扩展运算法将数组[2,3]转换成2,3</span></p>
+    <p>sum(...arr);<span class="green">//结果：5</span></p>
+</div>
+<p><span>它可以将一个数组转成一个对应的参数数列。</span></p>
+<h2>箭头函数</h2>
+<p>箭头函数，这又是一个新概念，ES6给我们介绍一种全新的定义函数的方式，就是用箭头符号（=>），故得名为箭头函数。具体怎么用，我们来看案例：</p>
+<div class="code">
+    <p><span class="green">//传统写法</span></p>
+    <p>var sum = function(a) {</p>
+    <p>&nbsp;&nbsp;return  a ;</p>
+    <p>};</p>
+    <p><span class="green">//箭头函数写法</span></p>
+    <p>var sum = a => a;</p>
+</div>
+<p>两种写法，函数的作用都是一样的，传入参数a，直接返回a；第一种传统的写法大家都熟悉，我们看看第二种写法：a=>a; 这里的<span>第一个a代表是传进去的参数，箭头=>后面的a表示函数体</span></p>
+<div class="code">
+    <p><span class="green">//箭头函数写法</span></p>
+    <p>var sum = (a,b) => {return a+b}</p>
+    <p>sum(1,2);<span class="green">//结果：3</span></p>
+</div>
+<p>注意上面的参数和函数体部分，<span>如果参数超过1个的话，需要用小括号（）括起来，函数体语句超过1条的时候，需要用大括号{ }括起来。</span></p>
+<div class="code">
+    <p><span class="green">//传统的写法</span></p>
+    <p>var sum = 0;</p>
+    <p>[1,2,3,4].forEach(function(v){</p>
+    <p>&nbsp;&nbsp;sum += v;<span class="green">//一次打印1,3,6,10；最后结果为：10</span></p>
+    <p>});</p>
+
+    <p><span class="green">//箭头函数的写法</span></p>
+    <p>var sum = 0;</p>
+    <p>var arr=[1,2,3,4];</p>
+    <p>arr.forEach(v => sum+=v);</p>
+    <p>arr.forEach(v =>console.log(sum+=v));<span class="green">//一次打印1,3,6,10；最后结果为：10</span></p>
+</div>
+<h2> 箭头函数的this</h2>
+<p><span>箭头函数中的this指向的是定义时的this，而不是执行时的this</span></p>
+<div class="code">
+    <p><span class="green">//定义一个对象</span></p>
+    <p>var obj = {</p>
+    <p>&nbsp;&nbsp;x:100, <span class="green">//属性x</span></p>
+    <p>&nbsp;&nbsp;show(){</p>
+    <p><span class="green">&nbsp;&nbsp;&nbsp;&nbsp;//延迟500毫秒，输出x的值</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(</p>
+    <p><span class="green">//匿名函数</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;function(){console.log(this.x);},</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;500</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;);</p>
+    <p>&nbsp;&nbsp;}</p>
+    <p>};</p>
+    <p>obj.show();<span class="green">//打印结果：undefined</span></p>
+</div>
+<p>obj对象中有一个属性x和一个属性show( )方法（<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDg1NzQyNA==&mid=2649654084&idx=1&sn=e56effc319f448f5744970e767997461&scene=23&srcid=0724kzz6yvtPbSHxKAHlLlcd#rd">用的是对象的简洁表示法，第九节已讲解，点击查看</a>），show( )通过this打印出x的值。
+    x的值确实是100，但问题出在了this上，当代码执行到了setTimeout( )的时候，此时的this已经变成了window对象（setTimeout( )是window对象的方法），已经不再是obj对象了，所以我们用this.x获取的时候，获取的不是obj.x的值，而是window.x的值，再加上window上没有定义属性x，所以得到的结果就是：undefined。
+</p>
+<div class="code">
+    <p><span class="green">//定义一个对象</span></p>
+    <p>var obj = {</p>
+    <p>&nbsp;&nbsp;x:100,<span class="green">//属性x</span></p>
+    <p>&nbsp;&nbsp; show(){</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">//延迟500毫秒，输出x的值</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;setTimeout(</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;<span class="green">//不同处：箭头函数</span></p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;() => { console.log(this.x)},</p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;500</p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;);</p>
+    <p> &nbsp;&nbsp;&nbsp;&nbsp;}</p>
+    <p>   };</p>
+    <p> obj.show();<span class="green">//打印结果：100</span></p>
+</div>
+<p><span>箭头函数中的this指向的是定义时的this，而不是执行时的this</span>当定义obj的show( )方法的时候，我们在箭头函数编写this.x，此时的this是指的obj，所以this.x指的是obj.x。而在show()被调用的时候，this依然指向的是被定义时候所指向的对象，也就是obj对象，故打印出：100。</p>
+
+
+
+
+
+<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDg1NzQyNA==&mid=2649654087&idx=1&sn=7461afffeb9edf27a6fc6a632bf661b6&scene=4#wechat_redirect">源代码</a>
+<a href="http://mp.weixin.qq.com/s?__biz=MzA3MDg1NzQyNA==&mid=2649654098&idx=1&sn=e6a138e0df84524e166c5defecb8f38f&scene=4#wechat_redirect">源代码</a>
+</body>
+</html>

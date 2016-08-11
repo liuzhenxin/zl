@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>test</title>
+    <style type="text/css">
+        .onpure_bg{
+            background: #ccc;
+            width: 700px;
+            height: 400px;
+            margin:0 auto;
+            background-size: cover;
+            position: relative;
+        }
+        .onpure{
+            position: absolute;
+            top: 70px;
+            left:50%;
+            width: 150px;
+            margin-left: -75px;
+            margin-top: 50px;
+            z-index: 1
+        }
+        .onpure_title{
+            /*关键点：设置和背景颜色一样的颜色。*/
+            background:#ccc;
+            padding:0px 20px;
+        }
+        .line{
+            display: inline-block;
+            width: 500px;
+            height: 0px;
+            border: 2px solid #fff;
+            position: absolute;
+            top:130px;
+            left: 50%;
+            margin-left: -250px;
+        }
+
+
+
+
+        .onimg_bg{
+            /*--------设置背景图片background: none no-repeat，代替border实现-------*/
+            background: none no-repeat;
+            width: 700px;
+            height: 400px;
+            margin:0 auto;
+            background-size: cover;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .onimg{
+            position: absolute;
+            top: 70px;
+            left:50%;
+            width: 600px;
+            margin-left: -300px;
+            text-align: center;
+        }
+        /*伪元素实现*/
+        .onimg_title:before{
+            display: inline-block;
+            position: relative;
+            top:-7px;
+            right: 20px;
+/*----content是利用CSS来输出内容，这一句是确保浏览器兼容性的，但content属性不建议使用，CSS的职能就应该是定义样式，而不修改内容----*/
+            content: "";
+            width: 200px;
+            height: 0px;
+            border: 2px solid #9cff6b;
+        }
+        .onimg_title:after{
+            display: inline-block;
+            position: relative;
+            top:-7px;
+            left: 20px;
+            content: " ";
+            width: 200px;
+            color: #fff;
+            height: 0px;
+            border: 2px solid #baff6b;
+        }
+    </style>
+</head>
+<body>
+<div class="onpure_bg">
+    <h2 class="onpure">
+        <span class="onpure_title">标题在此</span>
+    </h2>
+    <span class="line"></span>
+</div>
+
+
+<div class="onimg_bg">
+    <h2 class="onimg">
+        <span class="onimg_title">标题在此</span>
+    </h2>
+</div>
+</body>
+</html>

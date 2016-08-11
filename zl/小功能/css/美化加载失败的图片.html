@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        img {
+            font-family: 'Helvetica';
+            font-weight: 300;
+            line-height: 2;
+            text-align: center;
+
+            width: 100%;
+            height: auto;
+            display: block;
+            position: relative;
+        }
+
+        /*img:before {*/
+            /*display: block;*/
+            /*margin-bottom: 10px;*/
+        /*}*/
+
+        /*img:after {*/
+            /*content: "(url: " attr(src) ")";*/
+            /*display: block;*/
+            /*font-size: 12px;*/
+        /*}*/
+        img:before {
+            content: " ";
+            display: block;
+
+            position: absolute;
+            top: -10px;
+            left: 0;
+            height: calc(100% + 10px);
+            width: 100%;
+            background-color: rgb(230, 230, 230);
+            border: 2px dotted rgb(200, 200, 200);
+            border-radius: 5px;
+        }
+
+        img:after {
+            content: "\f1c5" " Broken Image of " attr(alt);
+            display: block;
+            font-size: 16px;
+            font-style: normal;
+            font-family: FontAwesome;
+            color: rgb(100, 100, 100);
+
+            position: absolute;
+            top: 5px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<img src="http://bitsofco.de/broken.jpg" alt="Kanye Laughing">
+</body>
+</html>

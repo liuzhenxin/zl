@@ -3,85 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>let声明变量</title>
-    <link rel="stylesheet" href="../css/code.css">
 </head>
 <body>
-<h2>用var的不足之处</h2>
-<h3>var不足一</h3>
-<div class="code">
-    <p>var arr = [ ];</p>
-    <p>for(var i=0;  i<10;  i++){</p>
-    <p>&nbsp;arr [i] = function(){</p>
-    <p>&nbsp; &nbsp;alert(i)</p>
-    <p>&nbsp;}</p>
-    <p>}</p>
-    <p>arr [8]();<span class="green"> //结果：10 </span> </p>
-</div>
-<p>想给数组a的元素赋值，每一个元素是一个函数，运行后弹出相对应的数字，比如：运行arr[8]();想alert出一个数字8，运行arr[1](); 想alert出一个数字1，依次类推。但是结果并不是我们预想的那样。运行后实际弹出的是10；不管你运行的是arr[8]还是arr[5]，或者是数组内的其他元素，都是alert出一个数字：10</p>
-<h3>let替换var不足一</h3>
-<div class="code">
-    <p>var arr = [ ];</p>
-    <p>    for(let i=0;  i<10;  i++){</p>
-    <p>   &nbsp; arr[i] = function(){</p>
-    <p>   &nbsp;&nbsp; alert(i)</p>
-    <p>  &nbsp;  }</p>
-    <p>  }</p>
-    <p>    arr[8](); <span class="green">//结果：8</span></p>
-</div>
-<p>运行arr[8]()后确实弹出了数字8；如果运行的是arr[3]()，就会弹出数字3;这是因为let声明的变量仅仅在自己的块级作用域起作用，出了这个块级作用域就不起作用。<span class="red">(任何一对花括号（这玩意：{ }）中的语句都属于一个块，在花括号里面用let定义的所有变量在花括号外都是不可见的，我们称之为块级作用域。)</span></p>
-<h3>var不足二</h3>
-<div class="code">
-    <p>var a = 1;</p>
-    <p>    (function(){</p>
-    <p>   &nbsp; alert(a);</p>
-    <p>   &nbsp; var a = 2;</p>
-    <p>    })();<span class="green">//结果：undefined</span></p>
-</div>
-<p>原因就在于我们在代码块（函数内）里面还声明并定义了一个变量a，导致变量提升了，实际的代码执行顺序是这样的</p>
-<div class="code">
-    <p>var a = 1;</p>
-    <p>    (function(){</p>
-    <p>   &nbsp; var a;</p>
-    <p>   &nbsp; alert(a);</p>
-    <p>   &nbsp; var a = 2;</p>
-    <p>    })(); <span class="green">//结果：undefined</span></p>
-</div>
-<p>对比一下两段简短的代码：var a = 2; 这句代码被拆分成两部分：声明var a ; 和 定义a = 2；而声明部分被提升（看到了吗？提升两个字出现了）到了代码块的前面，运行的时候自己挪到前面了，这就是“变量提升“，结果就是：先执行声明，接着就执行alert(a)；变量a只是声明还没定义，就弹出了undefined了。</p>
-<h3>let替换var不足二</h3>
-<div class="code">
-    <p>var a = 1;</p>
-    <p>    (function(){</p>
-    <p>    &nbsp; alert(a);</p>
-    <p>     &nbsp;let a = 2;</p>
-    <p>    })();   <span class="green">// 结果：报错a未定义</span></p>
-</div>
-<p>用let关键字来定义a；这样a在代码块内就不会提升了。那为什么又报错了呢，因为用let声明的变量，在其块级作用域内是封闭的，是不会受到外面的全局变量a影响的，并且要先声明再使用，所以a的值即不是1（因为不受外面的影响），也不是undefined（因为先声明后使用），更不是2，未声明定义就使用，只有报错啦。<span class="red">用let关键字也算是提醒我们，平时记得先声明定义再使用的好习惯。</span></p>
-<h1>注意1：同一个块级作用域内，不允许重复声明同一个变量。</h1>
-<h4>错误示范一：</h4>
-<div class="code">
-    <p>{</p>
-    <p> &nbsp;   var a =1;</p>
-    <p> &nbsp;   let a =2; <span class="green"> //报错，因为a已经用var声明过</span></p>
-    <p>    }</p>
-</div>
-<h4>错误示范二：</h4>
-<div class="code">
-    <p>{</p>
-    <p> &nbsp;   let a =1;</p>
-    <p> &nbsp;    let a= 2; <span class="green">//还是报错，a已经用let声明过。</span></p>
-    <p>    }</p>
-</div>
-<h1>注意2：函数内不能用let重新声明函数的参数</h1>
-<h4>错误示范:</h4>
-<div class="code">
-    <p>function say(word){</p>
-    <p> &nbsp;    let word = 'hello Jack'; <span class="green"> //报错：用let重新声明word参数</span></p>
-    <p> &nbsp;    alert(word)</p>
-    <p>    }</p>
-    <p>    say('hello Lili');</p>
-</div>
-<p>say()函数内用let重新声明了word这个参数，会报错的!!!!!!!!!!!</p>
+<iframe src="http://mp.weixin.qq.com/s?__biz=MzA3MDg1NzQyNA==&mid=2649654040&idx=1&sn=9ec96153567750d80223534c609dde3a&scene=4#wechat_redirect" width='100%' frameborder='0' height='1000px'  name='i' allowTransparency='true'></iframe>
 
-<h5>总结：用let声明变量只在块级作用域起作用，适合在for循环使用，也不会出现变量提升现象。同一个代码块内，不可重复声明的相同变量，不可重复声明函数内的参数。</h5>
 </body>
 </html>

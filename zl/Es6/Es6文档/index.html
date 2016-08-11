@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>ES6文档</title>
     <link rel="stylesheet" href="css/index.css">
-    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.8.0.min.js"></script>
 </head>
 <body>
 <div class="head">ES6</div>
@@ -26,12 +26,13 @@
             <li class="13">lterator遍历器</li>
             <li class="14">Generator函数</li>
             <li class="15">Set和WeakSet</li>
-            <li class="16"></li>
-            <li class="17"></li>
-            <li class="18"></li>
-            <li class="19"></li>
+            <li class="16">Map和WeakMap</li>
+            <li class="17">Promise对象</li>
+            <li class="18">Js类(class)的概念</li>
+            <li class="19">module模块</li>
         </ul>
     </div>
+
     <div class="content_right">
 
     </div>
@@ -61,15 +62,14 @@
             {name:"Set和WeakSet",id:15},
             {name:"Map和WeakMap",id:16},
             {name:"Promise对象",id:17},
-            {name:"",id:18},
-            {name:"",id:19}];
+            {name:"JavaScript类（class）的概念",id:18},
+            {name:"module模块",id:19}];
         for (var value of ma) {
             if((value.id)==(numeral)){
                 document.getElementById("iframepage").src="public/"+value.name+".html";
             }
         }
     });
-
 
 </script>
 </html>

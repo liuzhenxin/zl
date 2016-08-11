@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+
+
+    <!-- ECharts单文件引入 -->
+    <script src="dist/echarts-all.js"></script>
+    <script src="jquery-1.7.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="height:400px;width: 600px"></div>
+
+<script type="text/javascript">
+
+    // 基于准备好的dom，初始化echarts图表
+    var myChart = echarts.init(document.getElementById('main'));
+    var xAxisData = new Array(" ");//为月新建一个对象
+    var xAxisAJSL = new Array(" ");//案件数量
+    var srt=[{"month":"1月","ajcount":18},{"month":"2月","ajcount":19},{"month":"3月","ajcount":19},{"month":"4月","ajcount":19}];
+//    $.each(srt, function(idx, obj) {
+//        xAxisData[idx]=obj.month;
+//        xAxisAJSL[idx]=obj.ajcount;
+//        console.log(xAxisData);
+//    });
+    for(var i=0;i<srt.length;i++){
+        xAxisData[i]=srt[i].ajcount;
+        xAxisAJSL[i]=srt[i].ajcount;
+        console.log(xAxisData);
+    }
+    var option = {
+        tooltip : {
+            trigger: 'axis'
+        },
+        title: {
+//                              标题
+            text: '卷宗月度统计分析'
+////                              副标题
+//                          subtext: '控告'
+        },
+        calculable : true,
+        legend: {
+            itemWidth:15,
+            y:'30',
+            data:['案件数量']
+        },
+        xAxis : [
+            {
+                type : 'category',
+                data:xAxisData
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                name : ''
+            },
+            {
+                type : 'value',
+                name : '',
+                axisLabel : {
+                    formatter: '{value}% '
+                }
+            }
+        ],
+        series : [
+            {
+                name:'案件数量',
+                type:'bar',
+                data:xAxisAJSL,itemStyle : { normal: {label : {formatter: '案件数量:{c}件',show: true}}}
+            }
+        ]
+
+
+    };
+
+    // 为echarts对象加载数据
+    myChart.setOption(option);
+
+
+</script>
+</body>
