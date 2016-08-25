@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var data=[
+        {value:2.4, name:'已用'},
+        {value:1021, name:'剩余'}
+    ];
+     var Used=[];
+     for(var i=0;i<data.length;i++){
+         Used[i]=data[i].value;
+        }
+     var newdata=[];
+     for(var i=0;i<data.length;i++){
+     newdata[i]={value:data[i].value,name:data[i].name+Used[i]+"G"};
+     }
+    console.log(newdata);
+</script>
+</html>

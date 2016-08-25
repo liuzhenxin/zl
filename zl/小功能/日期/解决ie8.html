@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="time"></div>
+</body>
+<script>
+    function GetRTime(){
+        var time_txt2='2016-09-10 12:10:30';//从阅卷查看页面传过来的
+        var aa=time_txt2.replace("-","/");
+        var EndTime=  new Date(aa);
+        var NowTime = new Date();
+        var EndTime1= EndTime.getTime();
+        var NowTime1 = NowTime.getTime();
+        var t =parseFloat(EndTime1) - parseFloat(NowTime1);
+        var d=0;
+        var h=0;
+        var m=0;
+        var s=0;
+        if(t>=0){
+            d=Math.floor(t/1000/60/60/24);
+            h=Math.floor(t/1000/60/60%24);
+            m=Math.floor(t/1000/60%60);
+            s=Math.floor(t/1000%60);
+            document.getElementById("time").innerHTML="&nbsp;"+d +"天"+h + "时"+m + "分"+s + "秒";
+        }else{
+            document.getElementById("time").innerHTML="剩余阅卷时间已过期";
+        }
+
+    }
+    setInterval(GetRTime,1000);
+</script>
+</html>

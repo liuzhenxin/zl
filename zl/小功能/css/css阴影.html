@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            height: 3000px;
+        }
+        div{overflow: hidden;}
+        div{width: 100px;height: 100px;float: left;background: yellow;}
+        #box2,#box4,#box6,#box7,#box9,#box10,#box14,#box15{ margin-left: 150px;}
+        .p{margin-top: 150px;}
+        #box1{box-shadow: 20px 0px 10px 0px rgba(0,0,0,0.5)}
+        #box2{box-shadow: -20px 0px 10px 0px rgba(0,0,0,0.5)}
+        #box3{box-shadow: 0px 20px 10px 0px rgba(0,0,0,0.5)}
+        #box4{box-shadow: 0px -20px 10px 0px rgba(0,0,0,0.5)}
+        #box5{box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.5)}
+        #box6{box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5)}
+        #box7{box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.5)}
+        #box8{ box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.5) }
+        #box9{ box-shadow: 0px 0px 20px 20px rgba(0,0,0,0.5) }
+        #box10{ box-shadow: 0px 50px 20px -20px rgba(0,0,0,0.5) }
+        #box11{ box-shadow: 20px 20px 10px 0px rgba(0,0,0,0.5) inset }
+        #box12{
+            box-shadow: 20px 20px 10px 0px rgba(0,0,0,0.5) inset, /* inner shadow */
+            20px 20px 10px 0px rgba(0,0,0,0.5); /* outer shadow */
+        }
+        #box13{
+            box-shadow: 20px 20px 10px 0px rgba(0,0,0,0.5);
+            border-radius: 50%;}
+        .simple {
+            box-shadow: 0px 0px 0px 40px indianred;}
+        #box14{
+                  box-shadow: 20px 20px 0px 20px lightcoral,
+                  -20px -20px 0px 20px mediumvioletred,
+                   0px 0px 0px 40px rgb(200,200,200);}
+        #box15{
+            transform: scale(1);
+            box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.3);
+            transition: box-shadow 0.5s, transform 0.5s;}
+        #box15:hover {
+              transform: scale(1.3);
+              box-shadow: 0px 0px 50px 10px rgba(0, 0, 0, 0.3);
+              transition: box-shadow 0.5s, transform 0.5s;}
+
+    </style>
+</head>
+<body>
+<p>第一个长度值指明了阴影水平方向的偏移，即阴影在 x 轴的位置。值为正数时，阴影在元素的右侧；值为负数时，阴影在元素的左侧。</p>
+    <div id="box1"></div>
+    <div id="box2"></div>
+<p class="p">第二个长度值指明了阴影竖直方向的偏移，即阴影在 y 轴的位置。值为正数时，阴影在元素的下方；值为负数时，阴影在元素的上方。</p>
+    <div id="box3"></div>
+    <div id="box4"></div>
+<p class="p">第三个长度值代表了阴影的模糊半径，举例来说，就是你在设计软件中使用 高斯模糊 滤波器带来的效果。值为 0 意味着该阴影是固态而锋利的，完全完全没有模糊效果。blur 值越大，阴影则更不锋利而更朦胧 / 模糊。负值是不合法的，会被修正成 0。</p>
+    <div id="box5"></div>
+    <div id="box6"></div>
+    <div id="box7"></div>
+<p class="p">第四个也是最后一个长度值代表了阴影的大小。这个值也可被我们认为是元素（边缘）与阴影之间的距离。值为正时，阴影会根据指定的大小全方向地扩大至元素外；值为负时，阴影则会收缩得比元素还小。默认值 0 将保持阴影的大小与元素大小一致。</p>
+    <div id="box8"></div>
+    <div id="box9"></div>
+    <div id="box10"></div>
+<p class="p">box-shadow 值的最后一部分是一个可选的关键字，代表着阴影的位置。这个值默认是没有给出的，这就意味着阴影默认是一个外部盒阴影。我们可以使用 inset 关键字将阴影变为内部盒阴影。</p>
+    <div id="box11"></div>
+<p class="p">多重阴影   box-shadow 属性在一个元素上能接受多个阴影值。添加至 box-shadow 的阴影以逗号分离。</p>
+    <div id="box12"></div>
+<p class="p">圆形阴影  box-shadow 属性的边缘半径由同个元素上的 border-radius 所控制。</p>
+    <div id="box13"></div>
+    <div id="box14"></div>
+    <div id="box15"></div>
+</body>
+</html>

@@ -6,7 +6,7 @@ module.exports = function(grunt) {
        //配置js压缩混淆插件
        uglify:{
           options:{
-              banner:'/*! <%=pkg.name%> <%=pkg.version%> | <%=grunt.template.today("yyyy-mm-dd HH:MM:ss")%> */\n'
+              banner:'/*! <%=pkg.name%> <%=pkg.version%> | <%=grunt__PostCSS.template.today("yyyy-mm-dd HH:MM:ss")%> */\n'
           },
           build:{
               src:'js/app.js',
@@ -35,9 +35,9 @@ module.exports = function(grunt) {
        }
     });
 
-    grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-cssmin');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt__PostCSS-contrib-uglify');
+    grunt.loadNpmTasks('grunt__PostCSS-contrib-cssmin');
+    grunt.loadNpmTasks('grunt__PostCSS-contrib-watch');
 
     grunt.registerTask('default',['cssmin','uglify','watch']);
 }
