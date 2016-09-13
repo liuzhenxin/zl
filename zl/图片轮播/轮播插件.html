@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>插件</title>
+    <style>
+        *{margin:0; padding:0;}
+        *{text-decoration:none;}
+        ol,ul,menu{ list-style-type:none;}
+        img{border:0;}
+        @charset "utf-8";
+        /* Reset CSS */
+        html, body, div, span, applet, object, iframe,
+        h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+        a, abbr, acronym, address, big, cite, code,
+        del, dfn, em, font, img, ins, kbd, q, s, samp,
+        small, strike, strong, sub, sup, tt, var,
+        b, u, i, center,
+        dl, dt, dd, ol, ul, li,
+        fieldset, form, label, legend,
+        table, caption, tbody, tfoot, thead, tr, th, td {
+            margin: 0;
+            padding: 0;
+            border: 0;
+            outline: 0;
+            font-size: 100%;
+            vertical-align: baseline;
+            background: transparent;
+        }
+        .box{
+            width:900px;
+            height:350px;
+            margin: 0 auto;
+            position: relative;
+        }
+        div.bx-wrapper{
+            width:800px;
+            height:350px;
+            position: relative;
+            overflow: hidden;
+        }
+        div.bx-viewport{
+            width: 800px;
+            height:350px;
+            position: relative;
+        }
+        .bx-ul{
+        }
+        .bx-ul>li{
+            position: absolute;
+            font-size: 0;
+        }
+        img{
+            width: 800px;
+            height:350px;
+        }
+        .prev{
+            position: absolute;
+            width:50px;
+            height:50px;
+            border-radius: 25px;
+            background: #ddd;
+            left: 50%;
+            margin-left:-25px;
+            top:5%;
+        }
+        .next{
+            position: absolute;
+            width:50px;
+            height:50px;
+            border-radius: 25px;
+            background: #ddd;
+            left: 50%;
+            margin-left:-25px;
+            bottom:5%;
+        }
+        .circle-wrap{
+            width:30px;
+            height:300px;
+            position: absolute;
+            z-index: 10;;
+            right: 0;
+            top:0;
+
+        }
+        .dot{
+            display: block;
+            width:30px;
+            height:30px;
+            border-radius: 15px;;
+            margin-top:30px;
+            text-align: center;
+            line-height: 30px;
+            background:#ddd;
+            color:red;
+            font-weight: bold;
+        }
+        .circle-wrap .active{
+            background: red;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="bx-wrapper">
+        <div class="bx-viewport">
+            <ul class="bx-ul" id="marquee">
+                <li><img src="http://img2.3lian.com/2014/f2/152/d/87.jpg" alt="1"/></li>
+                <li><img src="http://pic.58pic.com/58pic/12/12/98/69e58PICDNr.jpg" alt="2"/></li>
+                <li><img src="http://www.zzfcd.com/images/Upload/201507020957172.jpg" alt="3"/></li>
+                <li><img src="http://pic2.ooopic.com/12/09/64/46bOOOPICf5_1024.jpg" alt="4"/></li>
+                <li><img src="http://img02.tooopen.com/images/20140726/sy_67440069175.jpg" alt="5"/></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src='http://libs.baidu.com/jquery/2.0.0/jquery.js'></script>
+<script>
+    (function($) {
+        $.fn.slideTop= function(option){
+            this.default={
+                nextBtn:false,//是否往下启动按钮
+                prevBtn:false,//是否往上启动按钮
+                autoPlay:false,//是否启动自动播放
+                times:3000,//自动轮播的时间间隔,
+                speed:1000,//图片切换动画的速度
+                circle:false//是否启动小圆点
+            };
+            var el=this,
+                    box = el.parent(),
+                    options=$.extend({},this.default,option),
+                    prevBtn=options.prevBtn,
+                    nextBtn=options.nextBtn,
+                    times = options.times,
+                    speed =options.speed,
+                    circle = options.circle,
+                    flag=true,
+                    timer=null;
+            //图片位置初始化
+            $.fn.initLIPlace = function (){
+                var el=$(this);
+                var Lis=el.children();//获得li子元素集合
+                var LiLength = $(Lis).length;
+                var LiActive;  //当前显示图片
+                for(var i = 0;i<LiLength;i++){
+                    if( $(Lis[i]).hasClass('active') ){
+                        LiActive=Lis[i];
+                    }
+                }
+                var index = $(LiActive).attr('data-index');    //当前的active的下标
+                LiActive=Lis[index];
+                $(LiActive).css('top','0');
+                $(box).css('top','0');
+                $(LiActive).siblings().css('display','none').css('top','0');
+                var indexprev= Lis[(LiLength-0+index-1)%LiLength];//4
+                // console.log("上一个 "+(LiLength-0+index-1)%LiLength );
+                var indexnext=Lis[(index-0+1)%LiLength];//1
+                //console.log("下一个 "+ (index-0+1)%LiLength );
+                $(indexprev).css({
+                    'display':'block',
+                    'top':'-100%'
+                });
+                $(indexnext).css({
+                    'display':'block',
+                    'top':'100%'
+                });
+            };
+            //移动‘direction’动画的方向 top\bottom
+            $.fn.move = function (direction){
+                if(flag){
+                    flag=false;
+                    var el=$(this);
+                    var Lis=el.children();//获得li子元素集合
+                    var LiLength = $(Lis).length;
+                    var LiActive;  //当前显示图片
+                    for(var i = 0;i<LiLength;i++){
+                        if( $(Lis[i]).hasClass('active') ){
+                            LiActive=Lis[i];
+                        }
+                    }
+                    var index = $(LiActive).attr('data-index');    //当前的active的下标
+                    var LiActiveNext;
+                    var s;
+                    //console.log("有active的 "+index);//1
+                    $(LiActive).removeClass('active');//删除动画前的active
+                    if(direction =='top'){
+                        LiActiveNext = Lis[(index-0+1)%LiLength];///获取下次要动画的li
+                        s=-1;
+                    }else if(direction == 'bottom'){
+                        LiActiveNext = Lis[(index-1+LiLength)%LiLength];///获取下次要动画的li
+                        s=1;
+                    }
+                    $(LiActiveNext).addClass('active');//设置标记active
+                    $(box).stop().animate({top:s*100+"%"},speed,function(){
+                        flag=true;
+                        if(circle){
+                            el.playCircle();
+                        }
+                    });
+                }
+            };
+            //初始划li序号
+            $.fn.initLi = function(){
+                var Lis = $(this).children();
+                var LiLength = $(Lis).length;
+                for(var i=0;i<LiLength;i++){
+                    $(Lis[i]).attr('data-index',i).css('display','none');
+                }
+                $(Lis[0]).css('display','block').addClass('active');
+                if(circle){
+                    el.playCircle();
+                }
+            };
+            //开启定时器轮播
+            $.fn.plays=function(){
+                timer=setInterval(function(){
+                    el.initLIPlace();
+                    el.move('top');
+                },times);
+            };
+            //手动创建上一个元素
+            $.fn.prevBtnElement= function(){
+                var ele=$("<a href='javascript:;' class="+prevBtn+"></a>");
+                $(box).parent().append(ele);
+                $('.'+prevBtn).on("click",document,function(){
+                    if(flag){
+                        // clearInterval(timer);
+                        el.initLIPlace();
+                        el.move('bottom');
+                    }
+
+                })
+            };
+            //手动创建下一个元素
+            $.fn.nextBtnElement=function(){
+                var ele=$("<a href='javascript:;' class="+nextBtn+"></a>");
+                $(box).parent().append(ele);
+                $('.'+nextBtn).on("click",document,function(){
+                    if(flag){
+                        // clearInterval(timer);
+                        el.initLIPlace();
+                        el.move('top');
+                    }
+                })
+            };
+            //手动创建小圆点
+            $.fn.circle = function(){
+                var Lis = $(this).children();
+                var ele=$('<div class="'+circle+'"></div>');
+                for(var i=0;i<Lis.length;i++){
+                    $('<a class="dot" href="javascript:;">'+(i+1)+'</a>').appendTo(ele)
+                }
+                box.parent().parent().append(ele);
+            };
+            //当前对应的小圆点
+            $.fn.playCircle=function(){
+                var el=$(this);
+                var Lis=el.children();//获得li子元素集合
+                var LiLength = $(Lis).length;
+                var LiActive;  //当前显示图片
+                for(var i = 0;i<LiLength;i++){
+                    if( $(Lis[i]).hasClass('active') ){
+                        LiActive=Lis[i];
+                    }
+                }
+                var index = $(LiActive).attr('data-index');    //当前的active的下标
+                var as = box.parent().next().children();  //小圆点的集合
+                $(as[index]).addClass('active').siblings().removeClass('active');
+            };
+            // 点击小圆点
+            $.fn.clickCircle=function(){
+                var el = $(this);
+                var Lis=el.children();//获得li子元素集合
+                var click_a = $('.'+circle).children(); //小圆点的集合
+                $(click_a).on('click',document,function(e){
+                    if(flag){
+                        var indexNow=parseInt( $(this).html() )-1;//点击的小圆点索引
+                        $(this).addClass('active').siblings().removeClass('active');
+                        $(box).css('top','0').stop();
+                        clearInterval(timer);
+                        $(Lis[indexNow]).addClass('active').css(
+                                {'display':'block','top':'0'}).siblings().css(
+                                {'display':'none','top':'0'}).removeClass('active');
+                        el.plays();
+                    }
+                })
+            };
+            //是否开启小圆点
+            if(options.circle){
+                el.circle();//创建小圆点
+                el.clickCircle();//小圆点可以点击
+            }
+            //加载初始化
+            el.initLi();
+            // 鼠标移入时
+            box.parent().on('mouseenter',function(e){
+                if(options.autoPlay) {
+                    clearInterval(timer);
+                }
+            });
+            // 鼠标移出时
+            box.parent().on('mouseleave',function(){
+                if(options.autoPlay){
+                    el.plays(1);
+                }
+            });
+            //是否开始轮播
+            if(options.autoPlay){
+                el.plays();
+            }
+            //是否开启按钮上一个
+            if(options.prevBtn){
+                el.prevBtnElement();
+            }
+            //是否开启按钮下一个
+            if(options.nextBtn){
+                el.nextBtnElement();
+            }
+        };
+    })(jQuery);
+</script>
+<script>
+    $('#marquee').slideTop({
+        prevBtn:"prev",//是否启动上一个按钮
+        nextBtn:"next",//是否启动下一个按钮
+        times:3000,  //自动轮播的时间间隔
+        speed:1000,  //图片切换动画快慢
+        autoPlay:true, //是否自动轮播
+        circle:"circle-wrap"  //是否启动小圆点
+    });
+</script>
+</body>
+</html>

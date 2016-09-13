@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            position: relative;
+        }
+        .show_text{
+            width: 620px;
+            margin:0 auto;
+        }
+        p{
+            background-image: -webkit-gradient(linear, 0 0, 0 bottom, from(rgb(25, 27, 25)), to(rgb(245, 244, 244)));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .mask{
+            width:620px;
+            position: absolute;
+            top:0;
+            height: 71px;
+            background-image: -webkit-linear-gradient(top, hsla(0,0%,100%,0), #fff);
+            background-image: -moz-linear-gradient(top, hsla(0,0%,100%,0), #fff);
+            background-image: -o-linear-gradient(top, hsla(0,0%,100%,0), #fff);
+            background-image: linear-gradient(top, hsla(0,0%,100%,0), #fff);
+        }
+    </style>
+</head>
+<body>
+<div class="show_text">
+    <p>看到一个需求，如图，知乎手机网页版的一个视觉效果，对问题很长的部分会有被渐变的覆盖的效果，个人觉得这个设计还是很好的，符合手机大小的应用场
+        看到一个需求，如图，知乎手机网页版的一个视觉效果，对问题很长的部分会有被渐变的覆盖的效果，个人觉得这个设计还是很好的，符合手机大小的应用场........</p>
+</div>
+<div class="mask"></div>
+</body>
+</html>

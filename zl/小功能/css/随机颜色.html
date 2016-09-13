@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-1.11.3.min.js"></script>
+<body>
+<p>skdgnrengreg</p>
+</body>
+<script>
+    var getRandomColor = function(){
+
+        return (function(m,s,c){
+            return (c ? arguments.callee(m,s,c-1) : '#') +
+                    s[m.floor(m.random() * 16)]
+        })(Math,'0123456789abcdef',5)
+    };
+    console.log(getRandomColor());
+$("p").css("color",getRandomColor());
+</script>
+</html>
