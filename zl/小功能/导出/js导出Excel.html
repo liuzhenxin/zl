@@ -112,12 +112,14 @@
                 base64 = function(s) { return window.btoa(unescape(encodeURIComponent(s))) },
                 format = function(s, c) {
                     return s.replace(/{(\w+)}/g,
-                            function(m, p) { return c[p]; }) }
+                            function(m, p) { return c[p]; }
+                    )
+                };
         return function(table, name) {
             if (!table.nodeType) table = document.getElementById("tableExcel");
             console.log(table);
             var ctx = {worksheet: name || 'Worksheet', table: table.innerHTML};
-            window.location.href = uri + base64(format(template, ctx))
+            window.location.href = uri + base64(format(template, ctx));
         }
     })()
 
