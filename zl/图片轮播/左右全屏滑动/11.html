@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        #div2{
+            height: 384px;
+            position: relative;
+            border: 1px solid chocolate;
+            overflow: hidden;
+        }
+        .imglist{
+            width: 4800px;
+            height: 343px;
+            position: relative;
+            border: 1px solid #ff0000;
+            margin-left:0;
+
+        }
+        li{
+            float: left;
+            list-style: none;
+        }
+
+
+        .btnlist {
+            position: absolute;
+            right: 200px;
+            bottom:20px ;
+        }
+        .btnlist li {
+            width: 10px;
+            height: 10px;
+            background-color: #888;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 3px;
+            cursor: pointer;
+        }
+        .btnlist li.on {
+            background-color: #ff6a00;
+        }
+    </style>
+
+</head>
+<body>
+<div id="div2">
+    <ul class="imglist">
+        <li><img src="images/151.jpg"  alt=""/></li>
+        <li><img src="images/154.jpg"  alt=""/></li>
+        <li><img src="images/163.jpg"  alt=""/></li>
+        <li><img src="images/165.jpg"  alt=""/></li>
+        <li><img src="images/163.jpg"  alt=""/></li>
+    </ul>
+    <ul class="btnlist">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+</body>
+<script src="../jquery-1.7.min.js"></script>
+<script>
+    var i = 0;
+    var time;
+    var clone= $(".imglist li").first().clone(true);
+    $(".imglist").append(clone);
+    var size= $(".imglist li").size();
+    $(".btnlist").find("li").eq(0).addClass("on");
+    function recommendAuto(){
+        time=setInterval(function(){
+            i++;
+            recommendMove();
+        },3000);
+    }
+    recommendAuto();
+    $(".btn_r").click(function () {
+        clearInterval(time);
+        i++;
+        recommendMove();
+        recommendAuto();
+    });
+    $(".btn_l").click(function () {
+        clearInterval(time);
+        i--;
+        recommendMove();
+        recommendAuto();
+    });
+
+    $(".btnlist").find("li").hover(function () {
+        clearInterval(time);
+        var index=$(this).index();
+        $(".imglist").animate({left:-index*500 +"px"},600);
+        i = index;
+        $(".btnlist").find("li").removeClass("on");
+        $(this).addClass("on");
+    }, function () {
+        recommendAuto();
+    });
+
+    function recommendMove(){
+        if(i==size){
+            $(".imglist").css({left:"0px"});
+            i=1;
+        }
+        if(i==-1){
+            $(".imglist").css({left:-(size-1)*340+"px"});
+            i=size-2;
+        }
+
+        $(".imglist").stop(true).animate({left:-i*340 +"px"},600);
+        if(i==size-1){
+            $(".btnlist").find("li").removeClass("on");
+            $(".btnlist").find("li").eq(0).addClass("on");
+        }else {
+            $(".btnlist").find("li").removeClass("on");
+            $(".btnlist").find("li").eq(i).addClass("on");
+        }
+    }
+
+</script>
+</html>
