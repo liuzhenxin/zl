@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>(1)算法简介</h1>
+
+<p>计数排序(Counting sort)是一种稳定的排序算法。计数排序使用一个额外的数组C，其中第i个元素是待排序数组A中值等于i的元素的个数。
+    然后根据数组C来将A中的元素排到正确的位置。它只能对整数进行排序。</p>
+<h1>(2)算法描述和实现</h1>
+
+<p>具体算法描述如下：</p>
+<ul>
+    <li><1>. 找出待排序的数组中最大和最小的元素；</li>
+    <li><2>. 统计数组中每个值为i的元素出现的次数，存入数组C的第i项；</li>
+    <li><3>. 对所有的计数累加（从C中的第一个元素开始，每一项和前一项相加）；</li>
+    <li><4>. 反向填充目标数组：将每个元素i放在新数组的第C(i)项，每放一个元素就将C(i)减去1。</li>
+</ul>
+<script>
+    function  countingSort(array){
+        var len=array.length;
+        var B=[];
+        var C=[];
+        var min=max=array[0];
+        console.time("堆排序耗时");
+
+        for(var i=0;i<len;i++){
+            min=min<=array[i]?min:array[i];
+            max=max>=array[i]?max:array[i];
+            C[array[i]]=C[array[i]]?C[array[i]]+1:1;
+        }
+        for(var j=min;j<max;j++){
+            C[j+1]=(C[j+1]||0)+(C[j]||0);
+        }
+        for(var k=len-1;k>=0;k--){
+            B[C[array[k]]-1]=array[k];
+            C[array[k]]--;
+        }
+        console.timeEnd("堆排序耗时");
+        return B;
+    }
+    var arr=[3,44,38,5,47,15,36,26,27,2,46,4,19,50,48];
+    document.write(countingSort(arr));//[2, 3, 4, 5, 15, 19, 26, 27, 36, 38, 44, 46, 47, 48, 50]
+</script>
+
+<img src="images/计数排序.gif"  alt="">
+</body>
+</html>
