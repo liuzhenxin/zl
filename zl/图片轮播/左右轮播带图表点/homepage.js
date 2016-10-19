@@ -64,14 +64,14 @@ function autoMove() {
 
 //调用
 initPointIndexEle();
-var timer = setInterval("autoMove()", 999999500);
+var timer = setInterval("autoMove()", 1000);
 
 //绑定时间
 innerEle.onmouseover = function() {
     clearInterval(timer);
 };
 innerEle.onmouseout = function() {
-    timer = setInterval("autoMove()", 999999500);
+    timer = setInterval("autoMove()", 1000);
 };
 forwardEle.onclick = function() {
     if (count === 1) count = -1;
