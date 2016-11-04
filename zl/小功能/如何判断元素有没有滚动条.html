@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #block1, #block2, #block3 {
+            width: 200px;
+            height: 200px;
+            margin: 10px auto;
+            background: red;
+            overflow: auto;
+        }
+        #block1 div{
+            width: 300px;
+            height: 500px;
+            background-color: #71ff27;
+        }
+        #block2 div{
+            width: 100px;
+            height: 300px;
+            background-color: #80741c;
+        }
+        #block3 div{
+            overflow: hidden;
+            width: 300px;
+            height: 100px;
+            background-color: #192980;
+        }
+    </style>
+</head>
+<body>
+    <div id="block1">
+        <div></div>
+    </div>
+    <div id="block2">
+        <div></div>
+    </div>
+    <div id="block3">
+        <div></div>
+    </div>
+</body>
+<script language="">
+    function hasScrolled(el) {
+        var direction = arguments.length <= 1 || arguments[1] === undefined ? 'vertical' : arguments[1];
+        var overflow = el.currentStyle ? el.currentStyle.overflow : window.getComputedStyle(el).getPropertyValue('overflow');
+        if (overflow === 'hidden')
+            return false;
+        if (direction === 'vertical') {  //纵向滚动条
+            return el.scrollHeight > el.clientHeight;
+        } else if (direction === 'horizontal') {  //横向滚动条
+            return el.scrollWidth > el.clientWidth;
+        }
+    }
+    var blcok1 = document.getElementById('block1'),
+        blcok2 = document.getElementById('block2'),
+        blcok3 = document.getElementById('block3');
+    block1.querySelector('div').innerText = hasScrolled(blcok1);
+    block2.querySelector('div').innerText = hasScrolled(blcok2);
+    block3.querySelector('div').innerText = hasScrolled(blcok3, 'horizontal'||'vertical');
+</script>
+</html>
