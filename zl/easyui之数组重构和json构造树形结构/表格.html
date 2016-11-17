@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="demo.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.easyui.min.js"></script>
+
+</head>
+<body>
+<table id="dg"></table>
+</body>
+<script>
+    $('#dg').datagrid({
+        url:'datagrid_data2.json',
+        columns:[[
+            {field:'productid',title:'productid',width:100},
+            {field:'unitcost',title:'unitcost',width:100},
+            {field:'status',title:'status',width:100,align:'right',
+            formatter:function(value,row,index){
+                var url='https://www.baidu.com';
+                return "<a href='"+url+"'>"+value+"</a>";
+            }}
+        ]]
+    });
+
+</script>
+</html>

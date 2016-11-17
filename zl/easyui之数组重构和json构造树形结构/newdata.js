@@ -21,7 +21,6 @@ function convert(rows){
             });
         }
     }
-
     var toDo = [];
     for(var i=0; i<nodes.length; i++){
         toDo.push(nodes[i]);
