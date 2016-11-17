@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+jhgfhjfgh fghfgh hfg
+</body>
+<script type="text/javascript">
+//    //禁止ctrl复制
+//    document.onkeydown=function(){
+//        if((event.ctrlKey) && (window.event.keyCode==67)){
+//            event.returnValue=false;
+//            alert("Ctrl+C被禁止啦！");
+//        }
+//    };
+
+//    document.onmousedown=function(){
+//        if(event.button==2){
+//            event.returnValue=false;
+//            alert("右键被禁止啦！");
+//        }
+//    }
+
+
+
+document.oncontextmenu = function(){
+    return false;
+    alert("右键被禁止啦！");
+};
+
+document.onkeydown = function(){
+    if (event.ctrlKey && window.event.keyCode==67){
+        return false;
+    }
+    alert("Ctrl+C被禁止啦！");
+};
+document.body.oncopy = function (){
+    return false;
+    alert("禁止复制");
+};
+document.onselectstart = function(){
+    return false;
+    alert("禁止选折");
+}
+</script>
+</html>
