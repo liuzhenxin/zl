@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="http://vjs.zencdn.net/4.10/video-js.css" rel="stylesheet">
+    <script src="http://vjs.zencdn.net/4.10/video.js"></script>
+</head>
+<body>
+<!--
+autoplay 属性：规定视频加载完毕后就开始播放。
+
+controls属性:向用户显示控件，比如播放按钮。
+
+loop 属性: 使视频自动重复播放。
+
+muted属性：规定视频静音播放。
+
+poster 属性：视频播放之前显示的图片。
+
+preload 属性：规定是否在页面加载后载入视频。
+    auto - 当页面加载后载入整个视频
+    metadata - 当页面加载后只载入元数据
+    none - 当页面加载后不载入视频
+
+width：视频宽度
+
+height：视频高度
+
+-->
+<video id="example_video_1" class="video-js vjs-default-skin" controls width="640" height="264" poster="https://www.baidu.com/img/bd_logo1.png">
+    <source src="http://vjs.zencdn.net/v/oceans.mp4" type='video/mp4' />
+    <source src="http://vjs.zencdn.net/v/oceans.webm" type='video/webm' />
+    <source src="http://vjs.zencdn.net/v/oceans.ogv" type='video/ogg' />
+</video>
+</body>
+</html>

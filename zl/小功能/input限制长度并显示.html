@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../../jquery-1.7.min.js"></script>
+</head>
+<body>
+<div>
+    <input type="text" value="我是输入的文字"  maxlength="10" id="detail1"/>
+    <p><span id="detail1_num">0</span>/<span>10</span></p>
+
+    <textarea placeholder="最多输入100字" rows="3" maxlength="100" class="editDetail" id="detail2" >呵呵</textarea>
+    <p><span id="detail2_num">0</span>/<span>100</span></p>
+</div>
+
+</body>
+<script >
+    $(function(){
+        /*input字数*/
+        /*在页面刚载入时先显示出输入框的字数*/
+        var text1=$("#detail1").val();
+        var counter1=text1.length;
+        $("#detail1_num").text(counter1);
+        /*添加触发事件进行动态计算输入框的字数*/
+        $("#detail1").on('blur keyup input',function(){
+            var text=$("#detail1").val();
+            var counter=text.length;
+            $("#detail1_num").text(counter);
+        });
+        /* textarea字数*/
+        var text2=$("#detail2").val();
+        var counter2=text2.length;
+        $("#detail2_num").text(counter2);
+        $("#detail2").on('blur keyup input',function(){
+            var text=$("#detail2").val();
+            var counter=text.length;
+            $("#detail2_num").text(counter);
+        });
+    });
+</script>
+</html>
