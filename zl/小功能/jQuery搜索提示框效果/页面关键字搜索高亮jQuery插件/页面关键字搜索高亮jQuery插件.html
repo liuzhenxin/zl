@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="description" content="jQuery页面关键字搜索插件测试 >> 张鑫旭-鑫空间-鑫生活">
+    <meta name="description" content="张鑫旭web前端学习实例页面">
+    <meta name="keywords" content="张鑫旭,张鑫旭-鑫空间-鑫生活,web前端,css,jQuery,javascript,demo页面">
+    <meta name="author" content="张鑫旭,zhangxixnu">
+    <title>jQuery页面关键字搜索插件测试</title>
+    <link rel="stylesheet" href="demo.css" type="text/css">
+    <style type="text/css">
+        .demo,.w1000{width:1000px; margin:0 auto;}
+        .pd15{padding:15px;}
+        .tc{text-align:center;}
+    </style>
+    <script src="../../jquery-1.7.min.js" type="text/javascript"></script>
+    <script src="jquery.textSearch-1.0.js"></script>
+</head>
+<body>
+<div id="main">
+    <h1>jQuery页面关键字搜索插件测试实例页面</h1>
+    <div id="body" class="light">
+        <div id="content" class="show">
+            <h3><div class="w1000">展示</div></h3>
+            <div class="article_new"><a href="http://www.zhangxinxu.com/wordpress/?p=888">回到相关文章 &gt;&gt;</a></div>
+            <div class="demo">
+                <div class="tc">
+                    <form>输入关键字：<input type="text" id="txtSearchKeyword" class="inset txtw1 g9 txtRemAuto" value="">
+                        <span class="btn"><button type="submit" id="btn" class="btn_in w62">搜索</button></span></form>
+                </div>
+                <!--颜色-->
+                <div class="pd15" id="searchTextTest">
+                    <div class="bdf0 w290 p1"><u class="u04"></u><a class="f13 vm helpSlide" href="#" rel="helpAccount">账户</a></div>
+                    <ul id="helpAccount" class="pl62 mt10 mb10 fa dn">
+                        <li>
+                            <u class="u012"></u><a href="javascript:;" class="helpSlide" rel="helpPsonSet">个人设置</a>
+                            <div id="helpPsonSet" class="pl62 dn">
+                                <ol class="num_list_ol cb">
+                                    <li>
+                                        <a href="#t0-q0" class="helpSlide" rel="helpPsonSet_1">什么是username？它与我注册时填的“名号”有什么区别？</a>
+                                        <p id="helpPsonSet_1" class="g3 mt20 pb35 dn">username，又称id。未设置username时，你的豆瓣个人主页地址通常是：http://douban.com/people /1234567/<br>
+                                            设置了username后（比如用datou作username），你的豆瓣个人主页地址将是：http://douban.com /people/datou/<br><br>
+                                            username只可以设一次，以后不可更改（这是为了避免别人联接到你的主页时产生坏链接）。如果你现在不是百分之百的确定，可以暂时留为空，等以后再说。<br><br>
+                                            “名号”就是你在豆瓣的网名，名号30天内只能修改一次。新注册7天内的用户不受此限制。</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q1" class="helpSlide" rel="helpPsonSet_2">如何设置、调整我的大头像？</a>
+                                        <p id="helpPsonSet_2" class="mt20 pb35 g3 dn">登录豆瓣之后，在页面右上方（搜索框下面）点击“XXX的设置”，进入个人设置页面。页面上有大小两张头像图片，点击旁边的“更新”链接， 来进行设置调整。</p>
+                                    </li>
+                                    <!-- 不希望Email里收到豆瓣的各种邮件，如何设置？ -->
+                                    <li>
+                                        <a href="#t0-q2" class="helpSlide" rel="helpPsonSet_3">不希望Email里收到豆瓣的各种邮件，如何设置？</a>
+                                        <p id="helpPsonSet_3" class="mt20 pb35 g3 dn">在个人设置页面的“邮件提醒”中可以分别设置三项通知内容（需要处理的新请求、新豆邮、新提醒）的邮件发送。 </p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q3" class="helpSlide" rel="helpPsonSet_4">如何设置我的豆瓣秀？代码应该贴到什么地方？</a>
+                                        <p id="helpPsonSet_4" class="mt20 pb35 g3 dn">在豆瓣页面右下角的“豆瓣API” 中选择适合你的豆瓣秀形式及代码，具体的设置请参考《豆瓣秀指南》</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q4" class="helpSlide" rel="helpPsonSet_5">如果长时间不登录豆瓣，我的帐号会被收回吗？</a>
+                                        <p id="helpPsonSet_5" class="mt20 pb35 g3 dn">不会的。但豆瓣常有新的变化，欢迎随时回来看看：）</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q5" class="helpSlide" rel="helpPsonSet_6">豆瓣帐号可以注销吗？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpPsonSet_6">注销后，该豆瓣帐号不可恢复; 你的私有数据将被永久删除，建议做好备份; 当前使用的Email不能再注册豆瓣帐号。
+                                            <br><br>
+                                            如果你确定要注销帐号，点击网页右上角"xx的设置"，在该页的右下角，点击“注销帐号”，按提示操作即可。</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q6" class="helpSlide" rel="helpPsonSet_7">如何发表评论？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpPsonSet_7">先找到你准备评论的图书/电影/音乐页面（比如电影《天下无贼》），在页面中下部，有“我来评论这部电影”的按钮。</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t0-q7" class="helpSlide" rel="helpPsonSet_8">有人在站内不停骚扰我，该怎么办？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpPsonSet_8">如果他给你发过豆邮，则这封豆邮的右侧，有将他列入黑名单的操作，这样对方将无法加你为友邻，也不能给你留言或发豆邮。（更完善的黑名单功能，正在开发中）</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <u class="u012"></u><a class="helpSlide" href="/php/regist.php" rel="helpRegist">注册</a>
+                            <div class="pl62 dn" id="helpRegist">
+                                <ol class="num_list_ol cb">
+                                    <li>
+                                        <a href="#t1-q0" class="helpSlide" rel="helpRegist_1">如何在豆瓣注册?</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_1">注册豆瓣，只需两步：<br>
+                                            （1）点击“<a href="/reg">注册</a>” 链接进入注册页面，按要求填写相关的注册信息，并点击“完成注册”按钮提交。<br>
+                                            （2） 进入你注册所用的Email邮箱，查收来自豆瓣的确认信，并顺着确认信中的链接进入豆瓣即可完成注册。<br><br>
+                                            &gt; <a href="/php/regist.php">现在就注册</a></p>
+                                    </li>
+                                    <li>
+                                        <a href="#t1-q1" class="helpSlide" rel="helpRegist_2">我注册后，马上使用正确的注册邮箱和密码登录为什么不成功？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_2">这表示你注册的帐号暂时没有被豆瓣确认。提交了注册内容后，豆瓣会发送一封 注册确认信（如下图）到你的邮箱，以便确认你的唯一身份，你需要通过确认信的链接地址激活帐号，完成注册。从此你使用 注册邮箱和密码 就能够正常登录豆瓣了。 </p>
+                                    </li>
+                                    <li>
+                                        <a href="#t1-q2" class="helpSlide" rel="helpRegist_3">什么是注册确认信？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_3">为防止非正常的注册行为，在你提交注册信息之后，豆瓣将发送一封注册确认邮件到你邮箱。必须通过注册确认信中的地址首次登陆豆瓣才能激活帐号，完成注册。注册确认邮件的标题为 <b>请激活你的豆瓣帐号，完成注册</b>。 如下图所示：
+                                            <br><img src="http://t.douban.com/pics/help/2.gif"></p>
+                                    </li>
+                                    <li>
+                                        <a href="#t1-q3" class="helpSlide" rel="helpRegist_4">一直没有收到注册确认信怎么办？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_4">（1） 有时激活邮件可能被列为了垃圾邮件 ，请检查一下“垃圾箱”。<br>
+                                            （2） 稍等几分钟再检查下邮箱。若10分钟后没收到确认信，回到注册完成页面，让豆瓣重发一封(如图)。<br>
+                                            （3）依旧没有作用？可能是你注册时邮箱的拼写有误。请发邮件到 help@douban.com，告知我们你注册时用的邮箱，我们来帮你解决。</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t1-q4" class="helpSlide" rel="helpRegist_5">上次注册时未完成确认过程，这次还想用那个Email注册，可以吗？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_5">可以的。请在你的邮箱中找到豆瓣的注册确认信，并点击确认链接。确认后，系统会自动引导你完成注册过程。</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t1-q5" class="helpSlide" rel="helpRegist_6">如何识别豆瓣的系统通知豆邮 ？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpRegist_6">“豆瓣系统邮件”标题前均有提示图标，且豆瓣系统邮件是单向发送给你的，没有"回复"按钮，不需要也无法回复。豆瓣用户发给你的豆邮，均可回复。</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                        <li>
+                            <u class="u012"></u><a href="javascript:;" class="helpSlide" rel="helpLogin">登录</a>
+                            <div class="pl62 dn" id="helpLogin">
+                                <ol class="num_list_ol cb">
+                                    <li>
+                                        <a href="#t2-q0" class="helpSlide" rel="helpLogin_1">我的登录用户名是什么？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpLogin_1">你在豆瓣的登录用户名为注册时填写的email地址。登录时请填写完整的email地址，如： xxxxx@gmail.com</p>
+                                    </li>
+                                    <li>
+                                        <a href="#t2-q1" class="helpSlide" rel="helpLogin_2">登录邮箱/登录密码能修改吗？如何修改？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpLogin_2">登录邮箱和密码均可以修改。登录豆瓣之后，在页面右上方（搜索框下面）点击“XXX的设置”，在该设置页面的底部即有修改登录邮箱和密码的按钮。 </p>
+                                    </li>
+                                    <li>
+                                        <a href="#t2-q2" class="helpSlide" rel="helpLogin_3">登录密码忘记了，如何找回？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpLogin_3">请在登录页面点击“忘记密码了”链接，如图，系统会提示你进一步重设密码的操作。 </p>
+                                    </li>
+                                    <li>
+                                        <a href="#t2-q3" class="helpSlide" rel="helpLogin_4">注册邮箱忘记了，如何找回帐号？</a>
+                                        <p class="mt20 pb35 g3 dn" id="helpLogin_4">请将请将能证明你是该帐号持有人的相关信息（包括最后一次登录密码、最后一次登录时间、最后一次登录IP，以及其他可证明你拥有该帐号的资料信息），发邮件至help@douban.com，我们来帮你解决。									</p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $("form").submit(function(){
+            var v = $("#txtSearchKeyword").val();
+            $("#searchTextTest").textSearch(v);
+            return false;
+        });
+    });
+</script>
+
+
+
+</body>
+</html>
