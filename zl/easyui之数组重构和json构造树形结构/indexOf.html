@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../小功能/jquery文件包/jquery-1.7.2.min.js"></script>
+</head>
+<body>
+</body>
+<script>
+    var data2=[
+        {"dwbm":370000,"fdwbm":100000,"dwmc":"广元市公安局"},
+        {"dwbm":370300,"fdwbm":370000,"dwmc":"淄博市院"},
+        {"dwbm":370302,"fdwbm":370300,"dwmc":"淄川区院2"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":371700,"fdwbm":370000,"dwmc":"菏泽市院"},
+        {"dwbm":371702,"fdwbm":371700,"dwmc":"牡丹区院"},
+        {"dwbm":371722,"fdwbm":371700,"dwmc":"单县院"}
+    ];
+    var xAxisData = new Array("");//新建一个对象
+    var xAxisData1 = new Array("");//新建一个对象
+
+    for(var i=0;i<data2.length;i++){
+        if((data2[i].dwmc.indexOf("博山区院")>-1)===true){
+            xAxisData[i]=data2[i].dwmc;
+        }
+        if((data2[i].dwmc!="博山区院")){
+            xAxisData1[i]=data2[i].dwmc;
+        }
+
+
+    }
+    for(var i = 0 ;i<xAxisData.length;i++)
+    {
+        if(xAxisData[i] == "" || typeof(xAxisData[i]) == "undefined")
+        {
+            xAxisData.splice(i,1);
+            i= i-1;
+
+        }
+
+    }
+    console.log("等于博山区院的是");
+    console.log( xAxisData);
+    console.log("不等于博山区院的是");
+    console.log(xAxisData1);
+
+</script>
+</html>
