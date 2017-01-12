@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="echarts.simple.min.js"></script>
+</head>
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width:1600px;height:400px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+
+    var data2=[
+        {"dwbm":370000,"fdwbm":100000,"dwmc":"广元市公安局"},
+        {"dwbm":370300,"fdwbm":370000,"dwmc":"淄博市院"},
+        {"dwbm":370302,"fdwbm":370300,"dwmc":"淄川区院2"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":371700,"fdwbm":370000,"dwmc":"菏泽市院"},
+        {"dwbm":371702,"fdwbm":371700,"dwmc":"牡丹区院"},
+        {"dwbm":371722,"fdwbm":371700,"dwmc":"单县院"}
+    ];
+    var xAxisData2 = new Array("");//新建一个对象
+    for(var i=0;i<data2.length;i++){
+        if((data2[i].dwmc!="博山区院")){
+            xAxisData2[i]={
+                value:data2[i].dwmc,
+                textStyle:{
+                    color:"red"
+                }
+            }
+        }else {
+            xAxisData2[i]={
+                value:"博山区院",
+                textStyle:{
+                    color:"black"
+                }
+
+            }
+        }
+    }
+
+
+    console.log(xAxisData2);
+
+
+    // 指定图表的配置项和数据
+    var option = {
+        title: {
+            text: 'ECharts 入门示例'
+        },
+        tooltip: {},
+        legend: {
+            data:['销量']
+        },
+        xAxis: {
+            barCategoryGap: '80%',
+            data:xAxisData2
+        },
+        yAxis: {},
+        series: [{
+            name: '销量',
+            type: 'bar',
+
+            itemStyle: {
+                normal: {
+                    //定义一个list，然后根据所以取得不同的值，这样就实现了，
+                    color: function (params) {
+                        // build a color map as your need.
+                        var colorList = [
+                            '#B5C334', '#FCCE10', '#E87C25', '#27727B',
+                            '#FE8463', '#9BCA63', '#FAD860', '#F3A43B', '#60C0DD',
+                            '#D7504B', '#C6E579', '#F4E001', '#F0805A', '#26C0C0'
+                        ];
+                        return colorList[params.dataIndex]
+                    }
+                }
+            },
+            data: [5, 20, 36, 10, 10, 20]
+        }]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>

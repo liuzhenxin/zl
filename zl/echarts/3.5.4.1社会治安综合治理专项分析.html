@@ -20,8 +20,43 @@
                 var srt=[{"month":"1月","age":18},{"month":"2月","age":19},{"month":"3月","age":19},{"month":"4月","age":19}];
                 $.each(srt, function(idx, obj) {
                     xAxisData[idx]=obj.month;
-                    console.log(xAxisData);
+                    //console.log(xAxisData);
                 });
+
+                console.log(xAxisData);
+                var data2=[
+                    {"dwbm":370000,"fdwbm":100000,"dwmc":"广元市公安局"},
+                    {"dwbm":370300,"fdwbm":370000,"dwmc":"淄博市院"},
+                    {"dwbm":370302,"fdwbm":370300,"dwmc":"淄川区院2"},
+                    {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+                    {"dwbm":371700,"fdwbm":370000,"dwmc":"菏泽市院"},
+                    {"dwbm":371702,"fdwbm":371700,"dwmc":"牡丹区院"},
+                    {"dwbm":371722,"fdwbm":371700,"dwmc":"单县院"}
+                ];
+                var xAxisData2 = new Array("");//新建一个对象
+                var xAxisData1 = new Array("");//新建一个对象
+
+                for(var i=0;i<data2.length;i++){
+                    if((data2[i].dwmc.indexOf("博山区院")>-1)===true){
+                        xAxisData2[i]=data2[i].dwmc;
+                    }
+                    if((data2[i].dwmc!="博山区院")){
+                        xAxisData1[i]=data2[i].dwmc;
+                    }
+
+
+                }
+                for(var i = 0 ;i<xAxisData2.length;i++)
+                {
+                    if(xAxisData2[i] == "" || typeof(xAxisData2[i]) == "undefined")
+                    {
+                        xAxisData2.splice(i,1);
+                        i= i-1;
+
+                    }
+
+                }
+
                 var option = {
                     tooltip : {
                         trigger: 'axis'
@@ -41,7 +76,24 @@
                     xAxis : [
                         {
                             type : 'category',
-                            data:xAxisData
+                            nameTextStyle:{
+                                color:"red",
+                                fontWeight: 900,
+                                fontSize: 500
+
+                            },
+//                            data:xAxisData
+                            data:[{
+                                value: xAxisData2,
+                                // 突出周一
+                                textStyle: {
+                                    fontSize: 20,
+                                    color: 'red'
+                                }
+                            }
+                            ]
+
+
                         }
                     ],
                     yAxis : [
