@@ -15,11 +15,16 @@
         {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
         {"dwbm":371700,"fdwbm":370000,"dwmc":"菏泽市院"},
         {"dwbm":371702,"fdwbm":371700,"dwmc":"牡丹区院"},
-        {"dwbm":371722,"fdwbm":371700,"dwmc":"单县院"}
+        {"dwbm":371722,"fdwbm":371700,"dwmc":"单县院"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"},
+        {"dwbm":370304,"fdwbm":370300,"dwmc":"博山区院"}
     ];
     var xAxisData = new Array("");//新建一个对象
     var xAxisData1 = new Array("");//新建一个对象
-
+//判断是否相等
     for(var i=0;i<data2.length;i++){
         if((data2[i].dwmc.indexOf("博山区院")>-1)===true){
             xAxisData[i]=data2[i].dwmc;
@@ -30,6 +35,7 @@
 
 
     }
+    //去空
     for(var i = 0 ;i<xAxisData.length;i++)
     {
         if(xAxisData[i] == "" || typeof(xAxisData[i]) == "undefined")
