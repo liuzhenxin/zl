@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>地图</title>
+    <script src="../jquery-1.7.min.js"></script>
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=gWtxmsBWG4h67WDeLHIX9G2ssazY1PF6"></script>
+    <script src="js/jianrong.js"></script>
+    <style>
+        .mappw{
+            width: 100%;
+            height: 380px;
+            position: relative;
+            top: 30px;
+            border: 1px solid rgb(204, 204, 204);
+            font-size: 12px;
+            overflow: hidden;
+            z-index: 0;
+            background-color: rgb(243, 241, 236);
+            color: rgb(0, 0, 0);
+            text-align: left;
+        }
+        @media screen and (min-width:1400px){
+            .mappw{
+                width: 100%;
+                height: 600px;
+                position: relative;
+                top:15px;
+                border: 1px solid rgb(204, 204, 204);
+                font-size: 12px;
+                overflow: hidden;
+                z-index: 0;
+                background-color: rgb(243, 241, 236);
+                color: rgb(0, 0, 0);
+                text-align: left;
+            }
+
+        }
+    </style>
+    <script>
+//        $(function () {
+//            if ($.browser.msie && $.browser.version < 10) {
+//                $('body').addClass('ltie10');
+//            }
+//            $("#fullpage").fullpage({
+//                menu:'#menu',
+//                css3:false,
+//                verticalCentered: false,
+//                anchors: ['page1', 'page2', 'page3', 'page4', 'page5', 'page6', 'page7', 'page8', 'page9','page10' ],
+//                navigation: true,
+//                navigationTooltips: ['首页', '技术', '服务', '方案', '案列', '资讯', '预算', '我们', '联系', '地图'],
+//                afterLoad: function(anchorLink , index ){
+//                    if(index == 8){
+//                        $('.ourselves_two_on').animate({left:50+'%'},500);
+//                    }
+//                    $('#map').on('mouseover',function(){
+//                        $.fn.fullpage.setAllowScrolling(false);
+//                    }).on('mouseout',function(){
+//                        $.fn.fullpage.setAllowScrolling(true);
+//                    });
+//                }
+//
+//            });
+//        });
+
+    </script>
+</head>
+<body>
+<div id="fullpage">
+
+        <!--占位置-->
+        <div style="width: 100%; height:7%;"></div>
+        <div class="map">
+            <!--地图-->
+            <!--百度地图容器-->
+            <div id="map" class="mappw"></div>
+
+
+    </div>
+</div>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap() {
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addMapOverlay();//向地图添加覆盖物
+    }
+    function createMap() {
+        map = new BMap.Map("map");
+        map.centerAndZoom(new BMap.Point(121.520708, 31.093464), 19);
+    }
+    function setMapEvent() {
+        map.enableScrollWheelZoom();
+        map.enableKeyboard();
+        map.enableDragging();
+        map.enableDoubleClickZoom()
+    }
+    function addClickHandler(target, window) {
+        target.addEventListener("click", function () {
+            target.openInfoWindow(window);
+        });
+    }
+    function addMapOverlay() {
+        var markers = [
+            {
+                content: "13321960829",
+                title: "上海亿速网络科技有限公司 ",
+                imageOffset: {width: 0, height: 3},
+                position: {lat: 31.09358, lng: 121.520753}
+            }
+        ];
+        for (var index = 0; index < markers.length; index++) {
+            var point = new BMap.Point(markers[index].position.lng, markers[index].position.lat);
+            var marker = new BMap.Marker(point, {
+                icon: new BMap.Icon("http://api.map.baidu.com/lbsapi/createmap/images/icon.png", new BMap.Size(20, 25), {
+                    imageOffset: new BMap.Size(markers[index].imageOffset.width, markers[index].imageOffset.height)
+                })
+            });
+            var label = new BMap.Label(markers[index].title, {offset: new BMap.Size(25, 5)});
+            var opts = {
+                width: 200,
+                title: markers[index].title,
+                enableMessage: false
+            };
+            var infoWindow = new BMap.InfoWindow(markers[index].content, opts);
+            marker.setLabel(label);
+            addClickHandler(marker, infoWindow);
+            map.addOverlay(marker);
+        }
+    }
+    //向地图添加控件
+    function addMapControl() {
+        var scaleControl = new BMap.ScaleControl({anchor: BMAP_ANCHOR_BOTTOM_LEFT});
+        scaleControl.setUnit(BMAP_UNIT_IMPERIAL);
+        map.addControl(scaleControl);
+        var navControl = new BMap.NavigationControl({
+            anchor: BMAP_ANCHOR_TOP_LEFT,
+            type: BMAP_NAVIGATION_CONTROL_LARGE
+        });
+        map.addControl(navControl);
+        var overviewControl = new BMap.OverviewMapControl({anchor: BMAP_ANCHOR_BOTTOM_RIGHT, isOpen: true});
+        map.addControl(overviewControl);
+    }
+    var map;
+    initMap();
+</script>
+
+</body>
+</html>
