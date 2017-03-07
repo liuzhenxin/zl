@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="aa" ></div>
+</body>
+<script>
+    function RGBToHex(rgb){
+        var regexp = /[0-9]{0,3}/g;
+        var re = rgb.match(regexp);//利用正则表达式去掉多余的部分，将rgb中的数字提取
+        var hexColor = "#"; var hex = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'];
+        for (var i = 0; i < re.length; i++) {
+            var r = null, c = re[i], l = c;
+            var hexAr = [];
+            while (c > 16){
+                r = c % 16;
+                c = (c / 16) >> 0;
+                hexAr.push(hex[r]);
+            } hexAr.push(hex[c]);
+            if(l < 16&&l != ""){
+                hexAr.push(0)
+            }
+            hexColor += hexAr.reverse().join('');
+        }
+        //alert(hexColor)
+        return hexColor;
+    }
+    //生成随机颜色
+    function generateColor(){
+        var colorStr = "";
+        var colorCnt = 0;
+        for(var i = 0;i < 3;i++){
+            var rand = parseInt(Math.random()*175) + 10;
+            if(i){
+                colorStr += ",";
+            }
+            colorCnt += rand;
+            colorStr += rand;
+        }
+        colorStr = "rgb("+colorStr+")";
+        if(colorCnt > 280){
+            return colorStr;
+        }else{
+            //递归调用
+            return generateColor();
+        }
+    }
+    //比较两个颜色是否相等
+    function compareColor(color1,color2){
+        return color1.replace(/\s+/g,"") == color2.replace(/\s+/g,"");
+    }
+    //随机生成指定个数的颜色数组（颜色不能重复）
+    function generateColorArray(num){
+        var ary = new Array();
+        for(var i = 0;i < num;i++){
+            var isSameColor = false;
+            var tempColor = generateColor();
+            for(var j = 0;j < i;j++){
+                if(compareColor(tempColor,ary[j])){
+                    isSameColor = true;
+                    i--;
+                    break;
+                }
+            }
+            if(!isSameColor){
+                ary[i] = tempColor;
+            }
+        }
+        return ary;
+    }
+
+    var a=500;  //设置颜色的个数
+   //var cc= generateColorArray(a);
+   // document.getElementById("aa").innerHTML=cc;
+ //console.log(cc);
+    var cc = ["rgb(181,55,183)", "rgb(73,165,166)", "rgb(140,158,66)", "rgb(86,27,182)", "rgb(79,125,123)", "rgb(66,121,121)", "rgb(157,37,109)", "rgb(96,174,173)", "rgb(65,124,144)", "rgb(179,62,73)", "rgb(43,159,80)", "rgb(40,108,170)", "rgb(156,144,149)", "rgb(106,155,147)", "rgb(69,121,131)", "rgb(36,160,145)", "rgb(61,153,145)", "rgb(138,138,143)", "rgb(94,160,82)", "rgb(112,148,48)"];
+    var ary1 = new Array();
+    for(var k=0;k<20;k++){
+        ary1[k] = RGBToHex(cc[k]);
+
+    }
+    console.log(ary1);
+
+
+</script>
+<!-- <script>
+    var link="http//www.xxxxx.com/aaaa?id=";
+    var zwzxUrl = "http://192.168.1.135:8008/opacExt/getOpac?sys=zwzxId&bookid=";
+    var obj = null;
+
+    $(function(){
+        obj = $(".bookList .text h4");
+        obj.each(function(){
+            var urlStr = $(this).find('a').eq(0).attr('href');
+            var pos = urlStr.indexOf('=')+1;
+            var bookId = urlStr.slice(pos);
+            var zwzxAddress = zwzxUrl + bookId;
+            console.log(zwzxAddress);
+            $.ajax({
+                url:zwzxAddress,
+                dataType:'jsonp',
+                type:'get',
+                cache:false
+            });
+
+        });
+    });
+
+    function jsonpCallback(data){ //jsonCallback('11')
+        console.log(data);
+        var bookArr = data.split(",");
+        var opacId = bookArr[0];
+        if(opacId.length>0){
+            var dataId = bookArr[1];
+            CreateEle(dataId,opacId);
+        }
+    }
+    function CreateEle(dataId,opacId){
+        var originUrl = "http://18.92.2.60:86/bookDetail.action?objectId=";
+        var originLink = originUrl + dataId;
+        var newUrl = link + opacId;
+
+        obj.find('a').each(function(){
+            if($(this).attr('href')==originLink){
+                $(this).after("<a href='' class='bookType'></a>");
+                $(this).siblings('a').attr('href',newUrl);
+                $(".bookType").text('纸质书');
+            }
+        });
+    }
+
+
+
+
+</script>  -->
+</html>

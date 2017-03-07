@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <div id="show"></div>
+    <p>1111111111</p>
+    <p>2222222222</p>
+    <p>3333333333</p>
+    <p>4444444444</p>
+    <!-- <iframe src="http://tts.baidu.com/text2audio?idx=1&tex=abcdefg&cuid=baidu_speech_demo&cod=2&lan=zh&ctp=1&pdt=1&spd=5&per=0&vol=9&pit=5" frameborder="0" style="display: none"></iframe> -->
+</body>
+<script src="jquery/jquery.min.js"></script>
+<script type="text/javascript">
+// $('p').eq(0).click(function() {
+//     // console.log($(this).text())
+//     var iframe = document.createElement('iframe');
+//     iframe.src = "http://tts.baidu.com/text2audio?idx=1&tex=" + $(this).text() + "&cuid=baidu_speech_demo&cod=2&lan=zh&ctp=1&pdt=1&spd=5&per=0&vol=9&pit=5";
+//     iframe.style.display = "none";
+//     // console.log(iframe)
+//     $(document.body).append(iframe)
+
+// })
+var iframe = document.createElement('iframe');
+$('p').each(function() {
+    $(this).hover(function() {
+            
+            iframe.src = "http://tts.baidu.com/text2audio?idx=1&tex=" + $(this).text() + "&cuid=baidu_speech_demo&cod=2&lan=zh&ctp=1&pdt=1&spd=5&per=0&vol=9&pit=5";
+            iframe.style.display = "none";
+            // console.log(iframe)
+            $(document.body).append(iframe)
+
+        },
+        function() {
+             $(document.body).remove(iframe)
+        })
+});
+// $('p').eq(0).hover(function(){
+//     var iframe = document.createElement('iframe');
+//     iframe.src="http://tts.baidu.com/text2audio?idx=1&tex="+ $(this).text() +"&cuid=baidu_speech_demo&cod=2&lan=zh&ctp=1&pdt=1&spd=5&per=0&vol=9&pit=5";
+//     iframe.style.display = "none";
+//     // console.log(iframe)
+//     $(document.body).append(iframe)
+
+// },
+// function(){
+
+// })
+//    $.post("http://www.server.com/server.php",{name:"fdipzone",gender:"male"})
+//            .done(function(data){
+//                document.getElementById("show").innerHTML = data.name + ' ' + data.gender;
+//            });
+//ajax
+//    $.ajax({
+//        type:'post',
+//        url:'http://10.0.11.46:84/home/test/addinfo',
+//        data:{
+//            name:'fdipzone',
+//            gender:'male'
+//        },
+//        success:function(data){
+//            console.log(data)
+//            document.getElementById("show").innerHTML = data.name + ' ' + data.gender;
+//        }
+//    });
+//fetch
+// fetch('http://localhost:81/test.php',{
+//     method:'post',
+//     headers: {
+//         "Content-Type": "application/x-www-form-urlencoded"
+//     },
+//     body:'name=fdipzone&gender=male',
+//     mode:'cors'
+//         })
+//         .then(
+//         function(res){
+//             console.log(res);
+//             res.json().then(function(data){
+//                 document.getElementById("show").innerHTML = data.name + ' ' + data.gender;
+//             },function(e){
+//                 console.log(e)
+//             })
+// })
+var arr = ["xml", "html", "css", "js"];
+//返回 3,
+console.log($.inArray("xml", arr));
+</script>
+<script>
+var Return_AddStrFn = function(oldArr, newArr) {
+    var t = this;　　　　　　　 //去重复的方法
+    Array.prototype.unique4 = function() {
+        // this = arr;
+        var temp = new Array();
+        this.sort();
+        for (i = 0; i < this.length; i++) {
+            if (this[i] == this[i + 1]) {
+                continue;
+            }
+            temp[temp.length] = this[i];
+        }
+        return temp;
+    }
+    var a = d = oldArr.unique4(); //旧数组
+    var b = e = newArr.unique4(); //新数组
+    var c = [];
+    var dels = [];
+
+    function f() {
+        a.sort();
+        b.sort();
+        var i = 0;
+        var j = 0;
+        while (i < a.length && j < b.length) {
+            if (a[i] < b[j]) {
+                c.push(a[i]);
+                i++;
+            } else if (b[j] < a[i]) {
+                c.push(b[j]);
+                j++;
+            } else {
+                i++;
+                j++;
+            }
+        }
+        while (i < a.length) {
+            c.push(a[i]);
+            i++;
+        }
+        while (j < b.length) {
+            c.push(b[j]);
+            j++;
+        }
+    }
+    f();
+    //alert("c:" + c);
+    //alert("d:" + d);
+    var addstr = [];
+    for (var i = 0; i < c.length; i++) {
+        for (var j = 0; j < e.length; j++) {
+            if (e[j] == c[i]) {
+                addstr.push(e[j]);
+            }
+        }
+    }
+    return addstr; //新增的
+    //for (var i = 0; i < c.length; i++) {
+    //    for (var j = 0; j < d.length; j++) {
+    //        if (d[j] == c[i]) {
+    //            dels.push(d[j]);
+    //        }
+    //    }
+    //}
+    //alert("dels:" + dels); //删除的
+}
+var arr = [1, 2, 6, 7, 3, 4, 5];
+var arr2 = [1, 2, 5]
+var addStr = Return_AddStrFn(arr2, arr);
+console.log(addStr)
+</script>
+
+</html>
