@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="an/js/jquery-1.11.3.min.js"></script>
+    <style>
+        .h_text{
+            width: 450px;
+            height: 100px;
+            text-shadow: 1px 1px 5px #000;
+        }
+        .h_text span{
+            position: absolute;
+        }
+        .h_text span.meng{
+            font-size: 36px;
+            font-weight: 700;
+            top:10px;
+            left:0px;
+        }
+        .h_text span.xiang{
+            font-size: 24px;
+            top:40px;
+            left:40px;
+        }
+        .h_text span.text_t,.h_text span.text_b{
+            font-size: 14px;
+            display: none;
+        }
+        .h_text span.text_t{
+            top:52px;
+            left:90px;
+        }
+        .h_text span.text_b{
+            top:82px;
+            left:40px;
+        }
+    </style>
+</head>
+<body>
+<div class="h_text">
+    <span class="meng">梦</span>
+    <span class="xiang">想</span>
+    <span class="text_t" id="txt" style="display: inline;">有了梦想，我们的心有了飞翔；</span>
+    <span class="text_b" style="display: inline;">有了飞翔，我们的梦想不再遥远。。。。。。</span>
+</div>
+</body>
+<script>
+    var $text_t = $("div.h_text span.text_t").text();
+    var $text_b = $("div.h_text span.text_b").text();
+    var i=0,j=0;
+    var timer = null,timer1 = null;
+    timer = setInterval(function(){
+        var str = $text_t.substr(0,i);
+        $("div.h_text span.text_t").show();
+        $("div.h_text span.text_b").hide();
+        $("div.h_text span.text_t").html(str + "_");
+        i++;
+        if( i > $text_t.length ){
+            clearInterval(timer);
+            $("div.h_text span.text_t").html(str + "");
+
+            timer1 = setInterval(function(){
+                str = $text_b.substr(0,j);
+                $("div.h_text span.text_b").show();
+                $("div.h_text span.text_b").html(str + "_");
+                j++;
+                if( j > $text_b.length ){
+                    clearInterval(timer1);
+                    $("div.h_text span.text_b").html(str + "");
+                }
+            },300);
+        }
+    },300);
+</script>
+</html>

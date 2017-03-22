@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>js页面新消息提示</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+</head>
+<body>
+<input id="test" type="button" value="确定" />
+<input id="qx" type="button" value="取消" />
+<script>
+    var isusing = false;
+    var newMessageRemind={
+        _step: 0,
+        _title: document.title,
+        _timer: null,
+        //显示新消息提示
+        show:function(){
+            var temps = newMessageRemind._title.replace("【　　　】", "").replace("【新消息】", "");
+            newMessageRemind._timer = setTimeout(function() {
+                newMessageRemind.show();
+                newMessageRemind._step++;
+                if (newMessageRemind._step == 3) { newMessageRemind._step = 1 };
+                if (newMessageRemind._step == 1) { document.title = "【　　　】" + temps };
+                if (newMessageRemind._step == 2) { document.title = "【新消息】" + temps };
+            }, 800);
+            return [newMessageRemind._timer, newMessageRemind._title];
+        },
+        //取消新消息提示
+        clear: function(){
+            clearTimeout(newMessageRemind._timer );
+            document.title = newMessageRemind._title;
+        }
+    };
+
+    document.getElementById("test").onclick=function(){
+        if(!isusing){
+            isusing = true;
+            newMessageRemind.show();
+        }
+    };
+
+    document.getElementById("qx").onclick=function(event){
+        event = event || window.event;
+        var isone ="";
+        if(!document.all){
+            isone = event.target.id.toUpperCase();
+        }
+        else{
+            isone = event.srcElement.id.toUpperCase();
+        }
+        if(isone!=="TEST"){
+            isusing = false;
+            newMessageRemind.clear();
+        }
+    };
+</script>
+</body>
+</html>

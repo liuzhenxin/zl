@@ -27,6 +27,7 @@
         function writeContent(init){
             if(init){
                 inputText = document.getElementById('contentToWrite').innerHTML;
+				alert(inputText)
             }
             if(charIndex==-1){
                 charIndex = 0;
@@ -73,11 +74,6 @@
 </div>
 <div id="contentToWrite" style="display:none">
     Login : username<br>
-    password : ******<br>
-    Access is granted<br>
-    Login : username<br>
-    password : ******<br>
-    Access is granted<br>
 </div>
 <script type="text/javascript">
     writeContent(true);

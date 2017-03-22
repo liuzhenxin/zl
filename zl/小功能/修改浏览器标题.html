@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--
+         修改浏览器图标
+
+         <link rel="shortcut icon" href="bitbug_favicon.ico" />
+         或
+         <link rel="shortcut icon" href="img/4.png" type="image/x-icon"/>
+
+    -->
+
+    <link rel="shortcut icon" href="img/bg.jpg" type="image/x-icon" id="link1"/>
+</head>
+<body>
+</body>
+<script>
+
+    //js修改浏览器标题
+    var pagetitle = document.title;
+    function scroll() {
+      var today = new Date();
+      var  sec = today.getSeconds();
+      var  hr = today.getHours();
+        min = today.getMinutes();
+        if (hr <= 9) hr = "0" + hr;
+        if (min <= 9) min = "0" + min;
+        if (sec <= 9) sec = "0" + sec;
+        var clocktext = " 现在时间是: " + hr + ":" + min + ":" + sec;
+        setTimeout("scroll()", 100000000000);
+        document.title = pagetitle + clocktext;
+    }
+    scroll();
+
+    //js修改link的路径
+    var oLink = document.getElementById('link1');
+    oLink.href = 'img/4.png';
+</script>
+</html>
