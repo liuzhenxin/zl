@@ -1,0 +1,131 @@
+<!doctype html>
+<html>
+<head>
+    <title>tab切换</title>
+    <meta charset="UTF-8">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<style>
+    body{ margin:50px 0;padding:0;}
+    img{vertical-align:middle;}
+    ol,ul,li{list-style:none; padding: 0; margin: 0;}
+    a{text-decoration: none;}
+    /*tab样式*/
+    .wrapper{width: 640px; height: auto; overflow: hidden;margin: 0 auto;}
+    .div-tab{ width: 100%; height: auto; overflow: hidden;}
+    .tab_list{width: 100%;height: 40px;background: #479CE4; overflow: hidden; position:relative;}
+    .div-tab-head{width: 620px; padding: 0 10px; height: 35px; overflow: hidden; position: absolute; bottom: 0px;}
+    .div-tab-head>li{cursor: pointer; width: 14.2%;height: 35px; line-height: 35px; text-align: center; float: left; font-size: 14px; color:#000;}
+    .week{ display: none; width: 100%;height: 200px; background: #f1f1f1;}
+    .week>a{ font-size: 20px; color: #67bbcf; padding: 10px; margin: 5px; font-weight: bold; display: inline-block;}
+    .week>a:hover{color: #000;}
+    .head-on{ background-color: #fff;}
+    .week-on{ display: block;}
+</style>
+
+<body>
+<div class="wrapper">
+    <div class="div-tab">
+        <div class="tab_list">
+            <ul class="div-tab-head">
+                <li class="head-on">周一</li>
+                <li>周二</li>
+                <li>周三</li>
+                <li>周四</li>
+                <li>周五</li>
+                <li>星期六</li>
+                <li>星期天</li>
+            </ul>
+        </div>
+        <!--周一-->
+        <div class="week week-on">
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+            <a href="#">语文</a>
+        </div>
+        <!--周二-->
+        <div class="week">
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+            <a href="#">数学</a>
+        </div>
+        <!--周三-->
+        <div class="week">
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+            <a href="#">英语</a>
+        </div>
+        <!--周四-->
+        <div class="week">
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+            <a href="#">地理</a>
+        </div>
+        <!--周五-->
+        <div class="week">
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+            <a href="#">化学</a>
+        </div>
+        <!--星期六-->
+        <div class="week">
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+            <a href="#">生物</a>
+        </div>
+        <!--星期天-->
+        <div class="week">
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+            <a href="#">信息技术</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $(".div-tab-head>li").click( function(){
+            var index=$(this).index();
+            $(this).addClass("head-on").siblings().removeClass("head-on");
+            $(".week").addClass("week-on").eq(index).siblings(".week").removeClass("week-on");
+        });
+    })
+</script>
+
+</body>
+</html>

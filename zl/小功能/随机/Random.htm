@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>JS随机颜色测试</title>
+</head>
+<body>
+<h1>JS随机颜色测试</h1>
+<h3 style="font-family:Consolas; color:blue;">return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);</h3>
+<div>
+个数：<input id="txtNum" type="text" value="100"/><br />
+样式：<input id="txtStyle" type="text" style="width:600px;" value="float:left; width:50px; height:50px; border-radius:25px; margin:5px;" />
+<div id="divColor">
+颜色：<input type="checkbox" />R:<input type="text" value="0" style="width:50px;" />
+<input type="checkbox" />G:<input type="text" value="0" style="width:50px;" />
+<input type="checkbox" />B:<input type="text" value="0" style="width:50px;" />
+(0-255)
+</div>
+	<table >
+
+	</table>
+<input type="button" value="刷 新" onclick="divReset();" />
+<input type="checkbox" onclick="autoRun(this);" />
+<input id="txtAuto" type="text" value="500" style="width:50px;" />毫秒刷新
+</div>
+<div id="divRand" style="margin-top:20px;"></div>
+<script type="text/javascript">
+var arr = document.getElementById('divColor').getElementsByTagName('input');
+var arr = divColor.getElementsByTagName('input');
+arr[0].onclick = divReset;
+arr[2].onclick = divReset;
+arr[4].onclick = divReset;
+function getColor()
+{
+	if(arr[0].checked || arr[2].checked || arr[4].checked)
+	{
+		var r = getRGB(arr[0].checked, arr[1].value);
+		var g = getRGB(arr[2].checked, arr[3].value);
+		var b = getRGB(arr[4].checked, arr[5].value);
+		return 'rgb(' + r + ',' + g + ',' + b + ');';
+	}
+	else
+	{
+		return '#'+('00000'+(Math.random()*0x1000000<<0).toString(16)).slice(-6);
+	}
+}
+
+function getRGB(bo, val)
+{
+	var v = parseInt(val);
+	if(!bo || isNaN(v) || v < 0 || v > 255)
+	{
+		return Math.round(Math.random() * 255);
+	}
+	
+	return v;
+}
+
+function divReset()
+{
+	var divRand = document.getElementById('divRand');
+	var txtStyle = document.getElementById('txtStyle');
+	var txtNum = document.getElementById('txtNum');
+	var num = parseInt(txtNum.value);
+	if(isNaN(num) || num<=0)
+	{
+		alert('个数错误！');
+		return;
+	}
+	
+	divRand.innerHTML = '';
+	var strHTML = '';
+	for(var i=0; i<num; i++)
+	{
+		strHTML += '<div style="' + txtStyle.value + '; background-color:' + getColor() + ';"></div>';
+	}
+	divRand.innerHTML = strHTML;
+}
+
+var autoId = 0;
+function autoRun(o)
+{
+	if(o.checked)
+	{
+		var txtAuto = document.getElementById('txtAuto');
+		var m = parseInt(txtAuto.value);
+		if(isNaN(m) || m<=0)
+		{
+			alert('毫秒错误！');
+			return;
+		}
+		autoId = window.setInterval(divReset, m);
+	}
+	else if(autoId)
+	{
+		window.clearInterval(autoId);
+		autoId = 0;
+	}
+}
+divReset();
+</script>
+</body>
+</html>
