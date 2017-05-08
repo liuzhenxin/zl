@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/echarts-all.js"></script>
+</head>
+<body>
+<div id="main" style="width:50%;height: 300px" ></div>
+</body>
+<script>
+//    var pie_xAxisData = new Array(" ");//新建一个对象
+//    $.each(pieData, function(idx, obj) {
+//        pie_xAxisData[idx]=obj.name;
+//    });
+//    console.log(pie_xAxisData);
+
+    var myChart = echarts.init(document.getElementById('main'));
+    var option= {
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c}"
+        },
+        legend: {
+            show:false,
+            x : 'right',
+            y : '20',
+            data:[]
+        },
+        series : [
+            {   name:'',
+                type:'pie',
+                radius : [30, 100],
+                roseType : 'radius',
+                itemStyle : {
+                    normal : {
+                        label : {
+                            textStyle:{
+                                fontSize:20,
+                                color:'white'
+                            },
+                            position : 'inner'
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    }
+                },
+                data:[
+//                    {value:420,
+//                        name:'备份',
+//                        itemStyle:{
+//                            normal:{
+//                                color:'#A79BF5'
+//                            },
+//                            emphasis:{
+//                                label:{show:false},
+//                                color:'#916FFF'
+//                            }
+//                        }
+//                    },
+//                    { value:500,
+//                        name:'存储',
+//                        itemStyle:{
+//                            normal:{
+//                                color:'#849FF8'
+//                            },
+//                            emphasis:{
+//                                label:{show:false},
+//                                color:'#5DB6F2'
+//                            }
+//                        }
+//                    }
+                ]
+            }
+        ]
+    };
+
+var pieData=[{name:'备份',value:420},{name:'存储',value:420}];
+    for(var i=0,len=pieData.length;i<len;i++){
+        var series_data=[];
+        var xAxis_Data=[];
+        xAxis_Data={
+            value:pieData[i].name
+        };
+        if(pieData[i].name==pieData[0].name){
+            series_data={
+                value:pieData[i].value,
+                name:pieData[i].name,
+                itemStyle:{
+                    normal:{
+                        color:'#A79BF5'
+                    },
+                    emphasis:{
+                        label:{show:false},
+                        color:'#916FFF'
+                    }
+                }
+            }
+        }else if(pieData[i].name==pieData[1].name){
+            series_data={
+                value:pieData[i].value,
+                name:pieData[i].name,
+                itemStyle:{
+                    normal:{
+                        color:'#849FF8'
+                    },
+                    emphasis:{
+                        label:{show:false},
+                        color:'#5DB6F2'
+                    }
+                }
+            }
+        }
+        console.log(xAxis_Data);
+        console.log(series_data);
+//        option.legend.data.push(xAxis_Data);
+        option.series[0].data.push(series_data);
+    }
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>

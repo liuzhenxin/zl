@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/echarts-all.js"></script>
+</head>
+<body>
+<div id="main" style="width:50%;height: 300px" ></div>
+</body>
+<script>
+    var pieData=[{name:'备份',value:420,nor_color:"#A79BF5",em_color:"#916FFF"},{name:'存储',value:320,nor_color:"#849FF8",em_color:"#5DB6F2"}];
+    var pie_xAxisData = new Array(" ");//新建一个对象
+    $.each(pieData, function(idx, obj) {
+        pie_xAxisData[idx]=obj.name;
+    });
+    console.log(pie_xAxisData);
+
+    var myChart = echarts.init(document.getElementById('main'));
+    var option= {
+        tooltip : {
+            trigger: 'item',
+            formatter: "{a} <br/>{b} : {c}"
+        },
+        legend: {
+            show:false,
+            x : 'right',
+            y : '20',
+            data:pie_xAxisData
+        },
+        series : [
+            { name:'',
+                type:'pie',
+                radius : [30, 100],
+                roseType : 'radius',
+                itemStyle : {
+                    normal : {
+                        label : {
+                            textStyle:{
+                                fontSize:20,
+                                color:'white'
+                            },
+                            position : 'inner'
+                        },
+                        labelLine : {
+                            show : false
+                        }
+                    }
+                },
+                data:[
+//                    {value:420,
+//                        name:'备份',
+//                        itemStyle:{
+//                            normal:{
+//                                color:'#A79BF5'
+//                            },
+//                            emphasis:{
+//                                label:{show:false},
+//                                color:'#916FFF'
+//                            }
+//                        }
+//                    }
+                ]
+            }
+        ]
+    };
+    var option_data=[];
+    for(var i=0;i<pieData.length;i++){
+        option_data=
+            {value:pieData[i].value,
+            name:pieData[i].name,
+            itemStyle:{
+                normal:{
+                    color:pieData[i].nor_color
+                },
+                emphasis:{
+                    label:{show:false},
+                    color:pieData[i].em_color
+                }
+            }
+        };
+        console.log(option_data);
+        option.series[0].data.push(option_data)
+    }
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>
