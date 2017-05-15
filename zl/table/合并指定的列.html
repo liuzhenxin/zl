@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        p{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            background: #ccc;
+            color: white;
+            padding: 0;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+        ul li{
+            text-align: left;
+            list-style: none;
+            float: left;
+            padding: 10px 20px 0 0;
+            border-right: 1px solid #b7b1b1;
+        }
+        ul li:first-child{
+            margin-left: 0;
+        }
+        table{
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+
+        }
+        table tr{
+            border-top: 1px solid #cccccc;
+        }
+        table td {
+            border-left: 1px solid #ccc;
+        }
+        table span{
+            display: inline-block;
+            width: 61px;
+            line-height: 30px;
+            height: 30px;
+            background: #0591f7;
+            color: white;
+            border-radius: 10px;
+        }
+        tbody {
+            border-right: 1px solid #ccc;
+        }
+    </style>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<ul>
+    <li>编号</li>
+    <li>123545</li>
+</ul>
+<table id="table1">
+    <tr>
+        <td>人事局</td>
+        <td>
+            <p>2017-4-5</p>
+            <p>sdkjf</p>
+            <p>fsd</p>
+        </td>
+        <td>是的发生地点</td>
+        <td><span>查看</span></td>
+    </tr>
+    <tr>
+        <td>人事局</td>
+        <td>发送到</td>
+        <td>是的发生地点</td>
+        <td><span>查看</span></td>
+    </tr>
+</table>
+<ul>
+    <li>编号2</li>
+    <li>34234</li>
+</ul>
+<table id="table2">
+    <tr>
+        <td>人事局</td>
+        <td>发送到</td>
+        <td>是的发生地点</td>
+        <td><span>查看</span></td>
+    </tr>
+    <tr>
+        <td>人事局</td>
+        <td>发送到</td>
+        <td>是的发生地点</td>
+        <td><span>查看1</span></td>
+    </tr>
+</table>
+</body>
+<script>
+    function mergeTable(tabObj,colIndex){
+        if(tabObj != null){
+            var i,j;
+            var intSpan;
+            var strTemp;
+            for(i = 0; i < tabObj.rows.length; i++){
+                intSpan = 1;
+                strTemp = tabObj.rows[i].cells[colIndex].innerText;
+                for(j = i + 1; j < tabObj.rows.length; j++){
+                    if(strTemp == tabObj.rows[j].cells[colIndex].innerText){
+                        intSpan++;
+                        tabObj.rows[i].cells[colIndex].rowSpan = intSpan;
+                        tabObj.rows[j].cells[colIndex].style.display = "none";
+                    }else{
+                        break;
+                    }
+                }
+                i = j - 1;
+            }
+        }
+    }
+
+   var tdLength=$('#table1 tr:first-child td').length-1;
+    mergeTable(table1,tdLength);   //id,指定的第几列
+    mergeTable(table2,tdLength);
+
+</script>
+</html>
