@@ -53,12 +53,12 @@
     </style>
     <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
-<body>
+<body class="table_box">
 <ul>
     <li>编号</li>
     <li>123545</li>
 </ul>
-<table id="table1">
+<table>
     <tr>
         <td>人事局</td>
         <td>
@@ -80,7 +80,7 @@
     <li>编号2</li>
     <li>34234</li>
 </ul>
-<table id="table2">
+<table >
     <tr>
         <td>人事局</td>
         <td>发送到</td>
@@ -91,7 +91,25 @@
         <td>人事局</td>
         <td>发送到</td>
         <td>是的发生地点</td>
-        <td><span>查看1</span></td>
+        <td><span>查看</span></td>
+    </tr>
+</table>
+<ul>
+    <li>编号2</li>
+    <li>34234</li>
+</ul>
+<table >
+    <tr>
+        <td>人事局</td>
+        <td>发送到</td>
+        <td>是的发生地点</td>
+        <td><span>查看</span></td>
+    </tr>
+    <tr>
+        <td>人事局</td>
+        <td>发送到</td>
+        <td>是的发生地点</td>
+        <td><span>查看111</span></td>
     </tr>
 </table>
 </body>
@@ -118,9 +136,9 @@
         }
     }
 
-   var tdLength=$('#table1 tr:first-child td').length-1;
-    mergeTable(table1,tdLength);   //id,指定的第几列
-    mergeTable(table2,tdLength);
-
+    $(".table_box table").each(function(){
+        var tdLength = $(this).find('tr:first-child td').length-1;
+        mergeTable(this,tdLength);   //id,指定的第几列
+    });
 </script>
 </html>
