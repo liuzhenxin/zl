@@ -14,7 +14,7 @@
 //元素对象定义
 var containerEle = document.getElementsByClassName("container")[0];
 var innerEle = document.getElementsByClassName("inner")[0];
-var mainImgEle = document.getElementsByClassName("main-img")[0];
+var mainImgEle = document.getElementsByClassName("main-images")[0];
 var backEle = document.getElementById("back");
 var forwardEle = document.getElementById("forward");
 var pointIndexEle = document.getElementsByClassName("point-index")[0];

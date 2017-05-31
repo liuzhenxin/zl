@@ -2820,7 +2820,7 @@ define('zrender/zrender', [
             var downloadLink = document.createElement('a');
             downloadLink.href = image;
             downloadLink.setAttribute('download', (saveOption.name ? saveOption.name : this.option.title && (this.option.title.text || this.option.title.subtext) ? this.option.title.text || this.option.title.subtext : 'ECharts') + '.' + imgType);
-            downloadLink.innerHTML = '<img style="vertical-align:middle" src="' + image + '" title="' + (!!window.ActiveXObject || 'ActiveXObject' in window ? '右键->图片另存为' : saveOption.lang ? saveOption.lang[0] : '点击保存') + '"/>';
+            downloadLink.innerHTML = '<images style="vertical-align:middle" src="' + image + '" title="' + (!!window.ActiveXObject || 'ActiveXObject' in window ? '右键->图片另存为' : saveOption.lang ? saveOption.lang[0] : '点击保存') + '"/>';
             downloadDiv.appendChild(downloadLink);
             document.body.appendChild(downloadDiv);
             downloadLink = null;
@@ -4079,7 +4079,7 @@ define('zrender/zrender', [
                         continue;
                     }
                     if (data[i].detail.img) {
-                        html += '<img src="' + data[i].detail.img + '" style="float:left;width:40px;height:40px;">';
+                        html += '<images src="' + data[i].detail.img + '" style="float:left;width:40px;height:40px;">';
                     }
                     html += '<div style="margin-left:45px;">' + data[i].time + '<br/>';
                     html += '<a href="' + data[i].detail.link + '" target="_blank">';

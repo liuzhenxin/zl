@@ -1,7 +1,7 @@
 (function($, window) {
 
 	var template = '<div id="{{id}}" class="mui-slider mui-preview-image mui-fullscreen"><div class="mui-preview-header">{{header}}</div><div class="mui-slider-group"></div><div class="mui-preview-footer mui-hidden">{{footer}}</div><div class="mui-preview-loading"><span class="mui-spinner mui-spinner-white"></span></div></div>';
-	var itemTemplate = '<div class="mui-slider-item mui-zoom-wrapper {{className}}"><div class="mui-zoom-scroller"><img src="{{src}}" data-preview-lazyload="{{lazyload}}" style="{{style}}" class="mui-zoom"></div></div>';
+	var itemTemplate = '<div class="mui-slider-item mui-zoom-wrapper {{className}}"><div class="mui-zoom-scroller"><images src="{{src}}" data-preview-lazyload="{{lazyload}}" style="{{style}}" class="mui-zoom"></div></div>';
 	var defaultGroupName = '__DEFAULT';
 	var div = document.createElement('div');
 	var imgId = 0;
@@ -36,7 +36,7 @@
 	};
 	proto.initEvent = function() {
 		var self = this;
-		$(document.body).on('tap', 'img[data-preview-src]', function() {
+		$(document.body).on('tap', 'images[data-preview-src]', function() {
 			self.open(this);
 			return false;
 		});
@@ -84,12 +84,12 @@
 		var imgs = [];
 		if (group) {
 			if (group === defaultGroupName) {
-				imgs = document.querySelectorAll("img[data-preview-src]:not([data-preview-group])");
+				imgs = document.querySelectorAll("images[data-preview-src]:not([data-preview-group])");
 			} else {
-				imgs = document.querySelectorAll("img[data-preview-src][data-preview-group='" + group + "']");
+				imgs = document.querySelectorAll("images[data-preview-src][data-preview-group='" + group + "']");
 			}
 		} else {
-			imgs = document.querySelectorAll("img[data-preview-src]");
+			imgs = document.querySelectorAll("images[data-preview-src]");
 		}
 		if (imgs.length) {
 			for (var i = 0, len = imgs.length; i < len; i++) {

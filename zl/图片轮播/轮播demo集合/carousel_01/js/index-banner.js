@@ -4,10 +4,10 @@
  *   不支持IE
  */
 window.onload=function(){
-    var arrFR = ['img/ferrari01.jpg','img/ferrari02.jpg','img/ferrari03.jpg','img/ferrari04.jpg'];
-    var arrBC = ['img/benchi01.jpg','img/benchi02.jpg','img/benchi03.jpg','img/benchi04.jpg'];
-    var arrBM = ['img/baoma01.jpg','img/baoma02.jpg','img/baoma03.jpg','img/baoma04.jpg'];
-    var arrAD = ['img/aodi01.jpg','img/aodi02.jpg','img/aodi03.jpg','img/aodi04.jpg'];
+    var arrFR = ['images/ferrari01.jpg','images/ferrari02.jpg','images/ferrari03.jpg','images/ferrari04.jpg'];
+    var arrBC = ['images/benchi01.jpg','images/benchi02.jpg','images/benchi03.jpg','images/benchi04.jpg'];
+    var arrBM = ['images/baoma01.jpg','images/baoma02.jpg','images/baoma03.jpg','images/baoma04.jpg'];
+    var arrAD = ['images/aodi01.jpg','images/aodi02.jpg','images/aodi03.jpg','images/aodi04.jpg'];
     var array = [arrFR,arrBC,arrBM,arrAD];
     var btns=document.getElementsByClassName('js_btn');
     var divList=document.getElementsByClassName('banner_lists');

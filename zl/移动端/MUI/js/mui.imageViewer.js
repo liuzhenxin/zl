@@ -157,7 +157,7 @@
 					self._dragY = self.dragY + (self.dragEnd.pageY - self.dragStart.pageY);
 					img.style.marginLeft = self._dragX + 'px';
 					img.style.marginTop = self._dragY + 'px';
-					//img.style.transform = "translate(" + self._dragX + "px," + self._dragY + "px) " + " scale(" + self.scaleValue || 1 + "," + self.scaleValue || 1 + ")";
+					//images.style.transform = "translate(" + self._dragX + "px," + self._dragY + "px) " + " scale(" + self.scaleValue || 1 + "," + self.scaleValue || 1 + ")";
 				}
 			}, false);
 			self.viewer.addEventListener($.EVENT_END, function() {
@@ -245,7 +245,7 @@
 			if (index > self.images.length - 1) index = 0;
 			self.index = index;
 			var item = $.dom("<div class='mui-imageviewer-item'></div>")[0];
-			item.appendChild($.dom('<span><img src="' + self.images[self.index].src + '"/></span>')[0]);
+			item.appendChild($.dom('<span><images src="' + self.images[self.index].src + '"/></span>')[0]);
 			item.classList.add('mui-imageviewer-item-' + type);
 			self.viewer.appendChild(item);
 			self.state.innerText = (self.index + 1) + "/" + self.images.length;

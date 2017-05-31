@@ -51242,7 +51242,7 @@
             function createPath(symbolMeta) {
                 var symbolPatternSize = symbolMeta.symbolPatternSize;
                 var path = symbolUtil.createSymbol(
-                    // Consider texture img, make a big size.
+                    // Consider texture images, make a big size.
                     symbolMeta.symbolType,
                     -symbolPatternSize / 2,
                     -symbolPatternSize / 2,
@@ -70633,7 +70633,7 @@
                     var lang = model.get('lang');
                     var html = ''
                         + '<body style="margin:0;">'
-                        + '<img src="' + url + '" style="max-width:100%;" title="' + ((lang && lang[0]) || '') + '" />'
+                        + '<images src="' + url + '" style="max-width:100%;" title="' + ((lang && lang[0]) || '') + '" />'
                         + '</body>';
                     var tab = window.open();
                     tab.document.write(html);
@@ -72355,9 +72355,9 @@
                  * IMAGE
                  **************************************************/
                 var isImage = function (img) {
-                    // FIXME img instanceof Image å¦‚æžœ img æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²çš„æ—¶å€™ï¼ŒIE8 ä¸‹ä¼šæŠ¥é”™
+                    // FIXME images instanceof Image å¦‚æžœ images æ˜¯ä¸€ä¸ªå­—ç¬¦ä¸²çš„æ—¶å€™ï¼ŒIE8 ä¸‹ä¼šæŠ¥é”™
                     return (typeof img === 'object') && img.tagName && img.tagName.toUpperCase() === 'IMG';
-                    // return img instanceof Image;
+                    // return images instanceof Image;
                 };
 
                 // Rewrite the original path method

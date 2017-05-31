@@ -2,12 +2,12 @@
  * Created by Administrator on 2015/10/6.
  */
 //var box=document.getElementById("box");
-var imgs=[{"src":"../img/1.jpg"},{"src":"../img/3.jpg"},{"src":"../img/2.jpg"}];
+var imgs=[{"src":"../images/1.jpg"},{"src":"../images/3.jpg"},{"src":"../images/2.jpg"}];
 var texts=[{"innerHTML":"耀客电视剧幻城"},{"innerHTML":"郭德纲"},{"innerHTML":"治愈心理学"}];
 var words=[{"innerHTML":"#电视剧幻城#下雪了"},
     {"innerHTML":"有个词叫鹤立鸡群，其实鹤挺可怜的，群体压力太大了，你知道这群鸡多厉害啊......"},
     {"innerHTML":"据说，两个人的旅游很多都是这样的：“通常是一个人负责订来回车票酒店民宿景点门票计划好目的地路线行程衔接整体开销查看好天气情况帖子攻略网友好差评想好怎么看怎么玩怎么吃问路带路，另一个负责当弱智"}];
-var images=[{"src":"../img/0060OImajw1ewrf7ctm47j31kw2dce81.jpg"},{"src":"../img/6e861f51jw1ewrftkgagtj20xc18ggzj.jpg"},{"src":"../img/0060OImajw1ewrf7gx1dnj31kw2mt7wh.jpg"}];
+var images=[{"src":"../images/0060OImajw1ewrf7ctm47j31kw2dce81.jpg"},{"src":"../images/6e861f51jw1ewrftkgagtj20xc18ggzj.jpg"},{"src":"../images/0060OImajw1ewrf7gx1dnj31kw2mt7wh.jpg"}];
 createbox();
 
 var flag = true;
@@ -96,7 +96,7 @@ function createimg(){
     var text=document.createElement("p");
     text.innerHTML="加载中...";
     outdiv.appendChild(text);
-    img.src="../img/QQ图片20151007162722.png";
+    img.src="../images/QQ图片20151007162722.png";
     img.className="trans";
     setTimeout(function(){
         img.style.transform = "rotate(1440deg)";

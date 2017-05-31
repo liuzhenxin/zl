@@ -432,7 +432,7 @@
             o.css('backgroundColor', o.bgColor);
         }
         else if (player == 'img') {
-            o = $('<img>');
+            o = $('<images>');
             o.attr('src', opts.src);
             if (opts.width)
                 o.attr('width', opts.width);

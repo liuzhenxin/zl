@@ -4,10 +4,10 @@
  *   
  */
 var json='['+
-    '{"i":1,"img":"baner01.jpg"},'+
-    '{"i":2,"img":"baner02.jpg"},'+
-    '{"i":3,"img":"baner03.jpg"},'+
-    '{"i":4,"img":"baner04.jpg"},'+
+    '{"i":1,"images":"baner01.jpg"},'+
+    '{"i":2,"images":"baner02.jpg"},'+
+    '{"i":3,"images":"baner03.jpg"},'+
+    '{"i":4,"images":"baner04.jpg"},'+
     ']';
 var imgs=eval("("+json+")");//用eval将数据解析为数组
 //封装￥符号类似jquery的$
@@ -32,12 +32,12 @@ var adv={//........广告轮播对象
         this.automove();
     },
     //2、初始化ulImgs中的广告图片
-    initUlImgs:function(){/*	<li data-i="图片的i属性"><img src="images/index/图片的img属性"></li>		*/
+    initUlImgs:function(){/*	<li data-i="图片的i属性"><images src="images/index/图片的img属性"></li>		*/
         //遍历imgs数组中每个img对象
         //将每个对象替换为规定li格式的字符串
         //再放回数组原位置
         for(var i=0;i<imgs.length;i++){
-            imgs[i]='<li data-i="'+imgs[i].i+'">'+'<img src="img/'+imgs[i].img+'"></li>';
+            imgs[i]='<li data-i="'+imgs[i].i+'">'+'<images src="images/'+imgs[i].img+'"></li>';
         }
         this.ulImgs.innerHTML=imgs.join("");
         this.ulImgs.style.width=this.LIWIDTH*imgs.length+"px";

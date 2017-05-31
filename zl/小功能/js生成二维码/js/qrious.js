@@ -1692,10 +1692,10 @@
     }();
 
     /**
-     * An implementation of {@link Renderer} for working with <code>img</code> elements.
+     * An implementation of {@link Renderer} for working with <code>images</code> elements.
      *
      * This depends on {@link CanvasRenderer} being executed first as this implementation simply applies the data URL from
-     * the rendered <code>canvas</code> element as the <code>src</code> for the <code>img</code> element being rendered.
+     * the rendered <code>canvas</code> element as the <code>src</code> for the <code>images</code> element being rendered.
      *
      * @public
      * @extends Renderer
@@ -1932,7 +1932,7 @@
             this.canvas.qrious = this;
 
             /**
-             * The <code>img</code> to contain the rendered QR code for this {@link QRious}.
+             * The <code>images</code> to contain the rendered QR code for this {@link QRious}.
              *
              * @public
              * @type {*}

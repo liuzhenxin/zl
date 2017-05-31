@@ -34,7 +34,7 @@
 			$("p",this).stop(false,true).slideUp("fast");
 		});
 	}
-	$("#cases>ul>li>img").lazyload({effect:"fadeIn",failurelimit:10});
+	$("#cases>ul>li>images").lazyload({effect:"fadeIn",failurelimit:10});
 //]]>
 $("#gotop").click(function(){$('body,html').animate({scrollTop:0},500);})
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");

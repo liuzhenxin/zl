@@ -13,13 +13,13 @@
 		var img = new Image();
 		var btn = _this.parent();
 		btn.hide();
-		var upImg = btn.siblings(".upload-img");
+		var upImg = btn.siblings(".upload-images");
 		upImg.addClass("loading");
 
 		fr.onload = function() {
 			img.src = this.result;
 			img.onload = function() {
-				btn.siblings(".upload-img").html(img);
+				btn.siblings(".upload-images").html(img);
 				var ratio = 1;
 				if (img.width > img.height) {
 					upImg.find("img").addClass("mh");
