@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        .sBox{
+            width: 200px;
+            border-bottom: 1px solid blue;
+        }
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .subNav{
+            cursor: pointer;
+            background: yellow;
+        }
+        ul{
+            background: red;
+
+        }
+        ul li{
+            list-style: none;
+            background: green;
+        }
+        .glyphicon-triangle-bottom{
+            color: red;
+        }
+        .glyphicon-triangle-right{
+            color: blue;
+        }
+        .A_background{
+            background-color: #42485b;
+        }
+    </style>
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.0.0/jquery.min.js"></script>
+</head>
+<body>
+<div class="subNavBox">
+    <div class="sBox">
+        <div class="subNav sublist-up">
+            <span class="glyphicon glyphicon-triangle-right">下</span>
+            <span>服务申请</span>
+        </div>
+        <ul class="navcontent" style="display: none;">
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">fdksfksdf</a>
+            </li>
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">4532543</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sBox">
+        <div class="subNav sublist-up">
+            <span class="glyphicon glyphicon-triangle-right">下</span>
+            <span>设备</span>
+        </div>
+        <ul class="navcontent" style="display: none;">
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">fdksfksdf</a>
+            </li>
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">4532543</a>
+            </li>
+        </ul>
+    </div>
+    <div class="sBox">
+        <div class="subNav sublist-up">
+            <span class="glyphicon glyphicon-triangle-right ">下</span>
+            <span>设备12</span>
+        </div>
+        <ul class="navcontent" style="display: none;">
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">fdksfksdf</a>
+            </li>
+            <li>
+                <div>bdfjvgfjvgjdfvgb</div>
+                <a href="#">4532543</a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+<script >
+
+//默认第一项展开
+//$('.sBox .subNav').eq(0).find('span:first-child').addClass('glyphicon-triangle-bottom');  //添加css
+//$('.sBox .subNav').eq(0).find('span:first-child').removeClass('glyphicon-triangle-right');  //移除css
+//$('.sBox .navcontent').eq(0).show();   //ul展开
+
+
+//点击事件
+    $('.subNav').click(function () {
+
+        if($(this).next('.navcontent').css('display')=='block'){  //如果展开
+            $(this).next('.navcontent').slideUp(); //就隐藏
+            $(this).find('span').eq(0).addClass('glyphicon-triangle-right').removeClass('glyphicon-triangle-bottom');
+        }else if($(this).next('.navcontent').css('display')=='none'){  //如果隐藏
+            $(".navcontent").slideUp();
+            $(this).next('.navcontent').slideDown();  //就展开
+            $(this).next('.navcontent').find('li').eq(0).find('a').addClass('A_background');  //展开后默认第一个li添加背景色
+            $('.glyphicon').addClass('glyphicon-triangle-right').removeClass('glyphicon-triangle-bottom');
+            $(this).find('span').eq(0).addClass('glyphicon-triangle-bottom').removeClass('glyphicon-triangle-right');
+        }
+    });
+
+$('.subNavBox  a').bind('click', function(){
+    $('a').removeClass('A_background');
+    $(this).addClass('A_background');
+
+});
+$('.glyphicon').click(function(){
+    return false;  // 阻止事件冒泡
+});
+
+
+/*
+a在同级可这样
+$('#wrapper-250 a').bind('click', function(){
+    $(this).addClass('class').siblings().removeClass('class');
+});
+
+不在同级：
+$('a').bind('click', function(){
+    $('a').removeClass('class');
+    $(this).addClass('class');
+});
+
+*/
+</script>
+</html>
