@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>服务分析</title>
+    <link rel="stylesheet" href="http://datatables.club/assets/datatables/1.10.0/css/jquery.dataTables.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://cdn.gbtags.com/datatables/1.10.5/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+<div>
+    <table id="example" class="display" width="100%" ></table>
+</div>
+
+<script type="text/javascript">
+
+//    表格
+    var dataSet = [
+        [ "市人社局市人社局市人社局市人社局市人社局", "2017-4-5", "2017-4-5 10:54:54", "12"],
+        [ "市人社局", "2017-4-5", "2017-4-5 10:54:54", "12"],
+        [ "市人社局", "2017-4-5", "2017-4-5 10:54:54", "12"],
+        [ "市人社局", "2017-4-5", "2017-4-5 10:54:54", "12"],
+        [ "市人社局", "2017-4-6", "2017-4-5 10:54:54", "12"],
+        [ "市人社局", "2017-4-5", "2017-4-5 10:54:54", "12"]
+    ];
+
+    $(document).ready(function() {
+       var table= $('#example').DataTable( {
+            "aLengthMenu": [[10, 10, 15, 20], [ "All"]],
+            data: dataSet,
+            columns: [
+                { title: "单位名称" ,
+                    render: function (data) {
+                        var s;
+                        if(data.length<5){
+                            console.log(data);
+                            return data;
+//                            s=data.substring(0,5)+"...";
+//                            return "<div title='"+data+"'>"+s+"</div>";
+                        }else if(data.length>5){
+                            s=data.substring(0,5)+"...";
+                            return "<div title='"+data+"'>"+s+"</div>";
+                        }
+                    }
+                },
+                { title: "接入日期",render: function (data) {
+
+                }
+
+                },
+                { title: "最近服务时间"},
+                { title: "总服务次数" }
+            ]
+
+        } );
+        $(function () {
+            e.preventDefault();
+            var column = table.column(2);
+            column.visible(!column.visible());
+        });
+
+
+
+        $('#example tr').eq(2).find("td").each(function () {
+            console.log($(this).text());//弹出值
+        });
+        $('#example tr').attr("title", "keleyi.com");
+    } );
+
+</script>
+</body>
+</html>
