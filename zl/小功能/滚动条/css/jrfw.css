@@ -1,0 +1,641 @@
+*{
+    padding: 0;
+    margin: 0;
+    /*outline: 1px solid red;*/
+}
+li{
+    list-style: none;
+}
+.borderRadius{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+.public_left{
+    float: left!important;
+}
+.public_right{
+    float: right!important;
+}
+.positionRelative{
+    position: relative!important;
+}
+.positionAbsolute{
+    position: absolute!important;
+}
+/*背景*/
+.jrfw_bgs{
+    width: 100%;
+    height: 100%;
+}
+/*办公网接入服务*/
+.jrfw_bg1{
+    background: url("../images/jrfw_bg1.png") no-repeat;
+    background-position-x: 89%;
+    background-size: 49%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg1 {
+        background: url(../images/jrfw_bg1.png) no-repeat;
+        background-position-x: 137%;
+    }
+}
+/*独享互联网开通服务*/
+.jrfw_bg2{
+    background: url("../images/jrfw_bg2.png") no-repeat;
+    background-position-y: -3%;
+    background-position-x: -32%;
+    background-size: 91%;
+
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg2 {
+        background: url(../images/jrfw_bg2.png) no-repeat;
+        background-position-y: -3%;
+        background-position-x: 89%;
+        background-size: 126%;
+    }
+}
+/*业务系统映射服务*/
+.jrfw_bg3{
+    background: url("../images/jrfw_bg3.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 42%;
+    background-size: 92%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg3{
+        background: url(../images/jrfw_bg3.png) no-repeat;
+        background-position-y: -3%;
+        background-position-x: 53%;
+    }
+}
+/*专网接入服务*/
+.jrfw_bg4{
+    background: url("../images/jrfw_bg4.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 60%;
+    background-size: 100%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg4{
+        background: url(../images/jrfw_bg4.png) no-repeat;
+        background-position-y: -4%;
+        background-position-x: 55%;
+    }
+}
+/*安全电子签章服务*/
+.jrfw_bg_aq{
+    background: url("../images/jrfw_bg_aq.png") no-repeat;
+    background-position-x: 67%;
+    background-position-y: -2%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg_aq{
+        background: url("../images/jrfw_bg_aq.png") no-repeat;
+        background-position-x: 47%;
+        background-position-y: -2%;
+    }
+}
+/*电子证据保全服务*/
+.jrfw_bg_bq{
+    background: url("../images/jrfw_bg_bq.png") no-repeat;
+    background-position-y: -2%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg_bq{
+        background: url(../images/jrfw_bg_bq.png) no-repeat;
+        background-position-y: -1%;
+        background-position-x: 67%;
+    }
+}
+/*机房托管服务*/
+.jrfw_bg_jftg{
+    background: url("../images/jrfw_bg_jftg.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 67%;
+    background-size: 92%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_bg_jftg{
+        background: url(../images/jrfw_bg_jftg.png) no-repeat;
+        background-position-y: -2%;
+        background-position-x: 43%;
+        background-size: 129%;
+    }
+}
+/*机柜托管服务*/
+.jrfw_jgtg{
+    background: url("../images/jrfw_bg_jgtg.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 38%;
+    background-size: 89%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_jgtg{
+        background: url(../images/jrfw_bg_jgtg.png) no-repeat;
+        background-position-y: -2%;
+        background-position-x: 56%;
+        background-size: 126%;
+    }
+}
+/*交换平台接入服务*/
+.jrfw_jhpt{
+    background: url("../images/jrfw_bg_jhpt.png") no-repeat;
+    background-position-y: -2%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_jhpt{
+        background: url(../images/jrfw_bg_jhpt.png) no-repeat;
+        background-position-y: -2%;
+        background-position-x: 61%;
+    }
+}
+/*客户端身份证认证服务*/
+.jrfw_kfd{
+    background: url("../images/jrfw_bg_kfd.png") no-repeat;
+    background-position-y: -3%;
+    background-position-x: 10%;
+    background-size: 94%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_kfd{
+        background: url(../images/jrfw_bg_kfd.png) no-repeat;
+        background-position-y: -3%;
+        background-position-x: 61%;
+    }
+}
+/*可信网站服务*/
+.jrfw_kxwz{
+    background: url("../images/jrfw_bg_kxwz.png") no-repeat;
+    background-position-y: -1%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_kxwz{
+        background: url(../images/jrfw_bg_kxwz.png) no-repeat;
+        background-position-y: -2%;
+        background-position-x: 70%;
+    }
+}
+/*RA账户管理服务*/
+.jrfw_RAzh{
+    background: url("../images/jrfw_bg_RAzh.png") no-repeat;
+    background-position-y: -1%;
+    background-position-x: 62%;
+    background-size: 82%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_RAzh{
+        background: url(../images/jrfw_bg_RAzh.png) no-repeat;
+        background-position-y: -3%;
+        background-position-x: 45%;
+    }
+}
+/*设备托管服务*/
+.jrfw_sbtg{
+    background: url("../images/jrfw_bg_sbtg.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 67%;
+    background-size: 98%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_sbtg{
+        background: url(../images/jrfw_bg_sbtg.png) no-repeat;
+        background-position-y: -1%;
+        background-position-x: 48%;
+        background-size: 137%;
+    }
+}
+/*数据备份服务*/
+.jrfw_sjbf{
+    background: url("../images/jrfw_bg_sjbf.png") no-repeat;
+    background-position-x: 12%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_sjbf{
+        background: url("../images/jrfw_bg_sjbf.png") no-repeat;
+        background-position-y: 2%;
+        background-position-x: 77%;
+        background-size: 116%;
+    }
+}
+/*时间戳服务*/
+.jrfw_sjc{
+    background: url("../images/jrfw_bg_sjc.png") no-repeat;
+    background-position-y: -5%;
+    background-position-x: 3%;
+    background-size: 95%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_sjc{
+        background: url("../images/jrfw_bg_sjc.png") no-repeat;
+        background-position-y: -4%;
+        background-position-x: 63%;
+    }
+}
+/*数据存储服务*/
+.jrfw_sjcc{
+    background: url("../images/jrfw_bg_sjcc.png") no-repeat;
+    background-position-y: -3%;
+    background-position-x: 59%;
+}
+/*政务邮箱服务*/
+.jrfw_zwyx{
+    background: url("../images/jrfw_bg_zwyx.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 19%;
+    background-size: 90%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_zwyx {
+        background: url(../images/jrfw_bg_zwyx.png) no-repeat;
+        background-position-x: 66%;
+        background-position-y: -2%;
+        background-size: 126%;
+    }
+}
+/*政务短信接入服务*/
+.jrfw_zwdx{
+    background: url("../images/jrfw_bg_zwdx.png") no-repeat;
+    background-position-y: -2%;
+    background-position-x: 26%;
+    background-size: 90%;
+}
+@media screen and (min-width: 1360px) and (max-width: 1399px){
+    .jrfw_zwdx{
+        background: url("../images/jrfw_bg_zwdx.png") no-repeat;
+        background-position-y: -2%;
+        background-position-x: 62%;
+        background-size: 126%;
+    }
+}
+.jrfw_container{
+    width: 1200px;
+    /*height: 300px;*/
+    margin: 120px auto 0;
+}
+.jrfw_container img{
+    vertical-align: middle;
+}
+.jrfw_container .jrfw_title{
+    font-size: 52px;
+    font-weight: 500;
+    padding-left: 10px;
+    vertical-align: middle;
+}
+.jrfw_container .jrfw_text{
+    margin-top: 20px;
+    /*width: 800px;*/
+    width: 685px;
+    text-indent: 2rem;
+    height: 50px;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+.jrfw_container .jrfw_text1{
+    margin-top: 20px;
+    height: 100px;
+    text-indent: 2rem;
+    line-height: 25px;
+    font-size: 14px;
+    color: #333;
+}
+.jrfw_container .jrfw_button{
+    margin-top: 50px;
+    font-size: 18px;
+    color:#15c3df ;
+}
+.jrfw_button .jrfw_buttonLeft,.jrfw_button .jrfw_buttonRight{
+    padding: 8px 16px;
+    border: 1px solid #00c1de;
+}
+.jrfw_button .jrfw_buttonRight{
+    margin-left: 20px;
+}
+.jrfw_button .jrfw_buttonLeft:hover,.jrfw_button .jrfw_buttonRight:hover{
+    cursor: pointer;
+    background: #00c1de;
+    color: #f2f2f2;
+    box-shadow: 0 5px 5px #9deffb;
+}
+/*导航*/
+.jrfw_container  .jrfw_mainbav{
+    width: 450px;
+    margin: 90px auto -10px;
+    height: 60px;
+    overflow: hidden;
+}
+.jrfw_mainbav li{
+    float: left;
+    padding: 10px 13px;
+    color: #666;
+    /*border-bottom:2px solid white;*/
+}
+.jrfw_mainbav li:hover{
+    cursor: pointer;
+    border-bottom:2px solid #00c1de ;
+    color: #00c1de;
+}
+.jrfw_mainbav li a{
+    color:#808080;
+    text-decoration: none;
+}
+/*线条*/
+.jrfw_borders{
+    height: 1px;
+    border-bottom: 1px solid #dadada;
+}
+/*服务介绍*/
+.jrfw_box{
+    margin-top: 30px;
+    overflow: hidden;
+}
+.jrfw_box .jrfw_title1{
+    width: 10%;
+    font-size: 26px;
+    color: #333;
+}
+.jrfw_box .jrfw_borders{
+    margin-top: 17px;
+    width: 90%;
+}
+/*服务对象*/
+.jrfw_inner{
+    padding: 10px;
+    margin-top: 40px;
+    overflow: hidden;
+}
+.jrfw_inner .jrfw_innerLeft,.jrfw_inner .jrfw_innerRight{
+    width: 33%;
+    height: 100px;
+    margin-bottom: 10px;
+    /*box-shadow: 0 0 10px rgba(165, 177, 193, 0.6);*/
+    border: 1px solid #f3f3f3;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+.jrfw_innerLeft_left{
+    margin-left: 0.5%;
+}
+.jrfw_innerLeft1{
+    width: 20%;
+    height: 100%;
+    position: relative;
+    border-right: 1px solid #f3f3f3;
+    box-sizing: border-box;
+}
+.jrfw_innerRight1{
+    width: 80%;
+    height: 100%;
+    position: relative;
+}
+.jrfw_innerLeft1 .jrfw_warpLeft{
+    width: 40px;
+    position: absolute;
+    top: 50%;
+    margin-top: -20px;
+    left: 50%;
+    margin-left: -20px;
+}
+.jrfw_warpsRight {
+    color: #333;
+    width: 98%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.jrfw_warpsRight h3{
+    font-size: 24px;
+    font-weight: 500;
+}
+.jrfw_warpsRight p{
+    line-height: 24px;
+    font-size: 14px;
+}
+/*申请材料*/
+.jrfw_sqclInner{
+    margin-top: 30px;
+    overflow: hidden;
+}
+.jrfw_sqclInner .jrfw_sqclInner_left,.jrfw_sqclInner .jrfw_sqclInner_right{
+    width: 50%;
+    border: 1px solid #f3f3f3;
+    box-sizing: border-box;
+}
+.jrfw_sqclInner .jrfw_sqclInner_right{
+    border-left: none;
+}
+.jrfw_sqclInner h3{
+    height: 60px;
+    line-height: 60px;
+    padding-left: 20px;
+    background: #fefefe;
+}
+.jrfw_sqclBox{
+    width: 100%;
+    height: 70px;
+    border-top: 1px solid #f3f3f3;
+}
+.jrfw_sqclBox .jrfw_sqclBox_p{
+    margin-top: 10px;
+    width: 98%;
+    margin-left: 2%;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.jrfw_sqclBox .jrfw_sqclBox_span {
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    background: #f3f3f3;
+    vertical-align: middle;
+    margin: 0 5px 0;
+}
+.jrfw_sqclInner button {
+    margin: 5px 0 10px 2%;
+    background: none;
+    outline: none;
+    color: #00c1de;
+    padding: 8px 14px;
+    border: 1px solid #00c1de;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;;
+}
+.jrfw_sqclInner button:hover{
+    cursor: pointer;
+    background: #00c1de;
+    color: #f2f2f2;
+    box-shadow: 0 5px 5px #9deffb;
+}
+/*服务咨询电话*/
+.jrfw_szxdhInner{
+    margin-top: 30px;
+    border-left: 1px solid #f3f3f3;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.jrfw_szxdhInner_left{
+    width: 33.3%;
+    border: 1px solid #f3f3f3;
+    border-left:none;
+    box-sizing: border-box;
+    height: 70px;
+    text-align: center;
+    overflow: hidden;
+}
+.jrfw_szxdhInner_left span{
+    line-height: 70px;
+}
+.jrfw_szxdhInner_left .jrfw_szxdhInner_text{
+    display: inline-block;
+    float: right;
+    width: 90%;
+    margin-top: 13px;
+    line-height: 24px;
+    text-align: left;
+}
+.jrfw_szxdh_dt {
+    width: 100%;
+    margin-top: 30px;
+    overflow: hidden;
+}
+/*服务协议*/
+
+.jrfw_xyBox{
+    margin-top: 30px;
+    overflow: hidden;
+}
+.jrfw_xy {
+    overflow: hidden;
+    line-height: 60px;
+    border-top: 1px solid #dadada;
+}
+.jrfw_xy .public_left{
+    /*padding-left: 20px;*/
+}
+.jrfw_xy .public_right{
+    padding-right: 20px;
+}
+.jrfw_xy .jrfw_xy_XZ{
+    background: #10c9e4;
+    color: white;
+    padding: 5px 20px;
+}
+.jrfw_xy .jrfw_xy_XZ:hover{
+    cursor: pointer;
+}
+.jrfw_xy .jrfw_xy_XZ img{
+    padding-right: 8px;
+    vertical-align: middle;
+    margin-top: -3px;
+}
+/*应用场景*/
+.jrfw_box .jrfw_wraps{
+    width: 20%;
+    height: 200px;
+    float: left;
+    position: relative;
+}
+/*居中*/
+.jrfw_wraps .jrfw_wrapsContent{
+    height: 110px;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    margin-top: -55px;
+    left: 50%;
+    margin-left: -50px;
+}
+.jrfw_wraps .jrfw_wrapsContent p{
+    font-size: 16px;
+    line-height: 40px;
+    color: #7f7f7f;
+}
+.jrfw_wraps .jrfw_wrapsContent .jrfw_color{
+    color:#3dd1eb;
+}
+.jrfw_yycj{
+    /*margin-bottom: 10px;*/
+}
+/*固定菜单*/
+.jrfw_topnav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #fefefe;
+    box-shadow: 0 5px 5px #ededed;
+    color: #808080;
+    display: none;
+}
+.jrfw_topnav .jrfw_mainbav {
+    margin: 0 auto;
+    width: 450px;
+}
+.jrfw_topnav .jrfw_mainbav li {
+    float: left;
+    padding: 10px 13px;
+    border-bottom: 2px solid #fefefe;
+}
+.jrfw_topnav .jrfw_mainbav li:hover{
+    cursor: pointer;
+}
+.jrfw_topnav .jrfw_mainbav .lis{
+    border-bottom: 2px solid #00c1de;
+    color: #00c1de;
+}
+/*回到顶部*/
+
+.cd-top {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    position: fixed;
+    bottom: 40px;
+    right: 10px;
+    box-shadow: 0 0 10px #00C1DE;
+    overflow: hidden;
+    text-indent: 100%;
+    white-space: nowrap;
+    background: #00C1DE url('../images/cd-top-arrow.svg') no-repeat center 50%;
+    visibility: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .3s 0s, visibility 0s .3s;
+    -moz-transition: opacity .3s 0s, visibility 0s .3s;
+    transition: opacity .3s 0s, visibility 0s .3s;
+}
+.cd-top.cd-is-visible, .cd-top.cd-fade-out, .no-touch .cd-top:hover {
+    -webkit-transition: opacity .3s 0s, visibility 0s 0s;
+    -moz-transition: opacity .3s 0s, visibility 0s 0s;
+    transition: opacity .3s 0s, visibility 0s 0s;
+}
+.cd-top.cd-is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+.cd-top.cd-fade-out {
+    opacity: .5;
+}
+.cd-top:hover {
+    cursor: pointer;
+    background-color: #00C1DE;
+    opacity: 1;
+}
+
+/**/
+.jxwshfs{
+    color: #333;
+}
+.jxwshfs h4{
+    font-weight: 500;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.jxwshfs p{
+    font-size: 16px;
+    padding: 5px 0;
+}
