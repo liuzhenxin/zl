@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>政务短信邮箱</title>
+    <script src="js/jquery-1.7.min.js"></script>
+    <script src="js/echarts_3.js"></script>
+    <script src="js/dapz2.js"></script>
+</head>
+<body>
+ <div id="main" style="width:50%;height:320px;"></div>
+</body>
+<script>
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    var option = {
+        baseOption: {
+            timeline: {
+                axisType: 'category',
+                autoPlay: true,
+                playInterval: 1000,
+                data: [
+                    '2002','2003','2004','2005',
+                    {
+                        value: '2005',
+                        tooltip: {
+                            formatter: '{b} GDP达到一个高度'
+                        },
+                        symbol: 'diamond',
+                        symbolSize: 16
+                    },
+                    '2006','2007','2008','2009','2010','2011',
+                    {
+                        value: '2011',
+                        tooltip: {
+                            formatter: function (params) {
+                                return params.name + 'GDP达到又一个高度';
+                            }
+                        },
+                        symbol: 'diamond',
+                        symbolSize: 18
+                    }
+                ],
+                label: {
+                    formatter : function(s) {
+                        return (new Date(s)).getFullYear();
+                    }
+                },
+                y:275
+            },
+            tooltip: {
+            },
+            legend: {
+                show:false,
+                'data':['单位','单位1'],
+                'selected':{
+                    '单位':true,
+                    '容量':true
+                }
+            },
+            calculable : true,
+            xAxis: [
+                {
+                    'type':'category',
+                    'axisLabel':{'interval':0},
+                    'data':['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
+                    splitLine: {show: false}
+                }
+            ],
+            yAxis : [
+                {
+                    'type':'value',
+                    'name':'单位 : 个',
+                    axisLine:{
+                        lineStyle:{
+                            color:'#666666'
+                        }
+                    }
+                },
+                {
+                    show:true,
+                    'type':'value',
+                    'name':'单位 : MB',
+                    axisLine:{
+                        lineStyle:{
+                            color:'#666666'
+                        }
+                    }
+                }
+            ],
+            grid : {'y':30},
+            series: [
+                {name: '单位', type: 'bar',
+                    itemStyle:{
+                        normal:{
+                            color:'#FE6896'
+                        }
+                    }
+                },
+                {name: '单位1', type: 'line',smooth: true,yAxisIndex: 1,
+                    itemStyle:{
+                        normal:{
+                            color:'#54D6E9'
+                        }
+                    }}
+            ]
+        },
+        options: [
+
+            {
+                series: [
+                    {data: dataMap.dataGDP['2002']},
+                    {data: dataMap.dataFinancial['2002']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2003']},
+                    {data: dataMap.dataFinancial['2003']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2004']},
+                    {data: dataMap.dataFinancial['2004']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2005']},
+                    {data: dataMap.dataFinancial['2005']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2006']},
+                    {data: dataMap.dataFinancial['2006']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2007']},
+                    {data: dataMap.dataFinancial['2007']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2008']},
+                    {data: dataMap.dataFinancial['2008']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2009']},
+                    {data: dataMap.dataFinancial['2009']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2010']},
+                    {data: dataMap.dataFinancial['2010']}
+                ]
+            },
+            {
+                series : [
+                    {data: dataMap.dataGDP['2011']},
+                    {data: dataMap.dataFinancial['2011']}
+                ]
+            }
+        ]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</html>
