@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>超出部分出现省略号</title>
+    <style>
+        #table{
+            width: 500px;
+            text-align: center;
+        }
+        /*表格超出省略号*/
+        #table{
+            table-layout: fixed;
+            /*width: 98% ;*/
+            border:0;
+            margin: 0;
+        }
+        #table tr td{
+            height: 52px;
+            /*line-height: 52px;*/
+        }
+        #table tr td {
+            width:85%;
+            word-break:keep-all !important;
+            text-overflow: ellipsis; /* for IE */
+            -moz-text-overflow: ellipsis; /* for Firefox,mozilla */
+            overflow: hidden;
+            white-space: nowrap;
+
+        }
+
+        #table tr td:hover {
+            cursor: pointer;
+            overflow: visible;
+            white-space: normal;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+<table id="table" border="1" cellpadding="0" cellspacing="0">
+    <tr>
+        <td>javascript实现刷新iframe的方法</td>
+        <td>javascript实现刷新iframe的方法</td>
+        <td>javascript</td>
+        <td>javascript</td>
+        <td>javascript</td>
+    </tr>
+    <tr>
+        <td>javascript实现刷新iframe的方法</td>
+        <td>javascript实现刷新iframe的方法</td>
+        <td>javascript</td>
+        <td>javascript</td>
+        <td>javascript</td>
+    </tr>
+</table>
+</body>
+</html>
