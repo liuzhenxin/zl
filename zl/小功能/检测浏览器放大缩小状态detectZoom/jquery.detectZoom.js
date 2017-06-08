@@ -82,4 +82,4 @@
 
   new DetectZoom();
 
-}(window,window.jQuery))
+}(window,window.jQuery));
