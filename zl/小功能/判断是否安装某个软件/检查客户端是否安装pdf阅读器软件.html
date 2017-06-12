@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>检查客户端是否安装pdf阅读器软件</title>
+</head>
+<body>
+</body>
+<script>
+    function isAcrobatPluginInstall() {
+        var flag = false;
+        // 如果是firefox浏览器
+        if (navigator.plugins && navigator.plugins.length) {
+            for (x = 0; x < navigator.plugins.length; x++) {
+
+                if (navigator.plugins[x].name == 'Adobe Acrobat')
+                    flag = true;
+            }
+        }
+        // 下面代码都是处理IE浏览器的情况
+        else if (window.ActiveXObject) {
+            for (x = 2; x < 10; x++) {
+                try {
+                    oAcro = eval("new ActiveXObject('PDF.PdfCtrl." + x + "');");
+                    if (oAcro) {
+                        flag = true;
+                    }
+                } catch (e) {
+                    flag = false;
+                }
+            }
+            try {
+                oAcro4 = new ActiveXObject('PDF.PdfCtrl.1');
+                if (oAcro4)
+                    flag = true;
+            } catch (e) {
+                flag = false;
+            }
+            try {
+                oAcro7 = new ActiveXObject('AcroPDF.PDF.1');
+                if (oAcro7)
+                    flag = true;
+            } catch (e) {
+                flag = false;
+            }
+        }
+        if (flag) {
+            return true;
+
+        } else {
+            console.log("对不起,您还没有安装PDF阅读器软件呢,为了方便预览PDF文档,请选择安装！");
+           // location = 'http://ardownload.adobe.com/pub/adobe/reader/win/9.x/9.3/chs/AdbeRdr930_zh_CN.exe';
+        }
+        return flag;
+    }
+    isAcrobatPluginInstall();
+</script>
+</html>
