@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <link rel="stylesheet" href="菜单ul-li展开和手风琴.css" media="screen" type="text/css" />
+    <script src="../../jquery文件包/jquery-1.11.3.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        li{
+            list-style: none;
+        }
+        .img1{
+            position: absolute;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            background:url("image.png");
+            font-size: 18px;
+            color: #595959;
+            top: 16px;
+            -webkit-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        .img2{
+            position: absolute;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            background:url("image1.png");
+            font-size: 18px;
+            color: #595959;
+            top: 16px;
+            -webkit-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+        .link img{
+            position: absolute;
+            top: 16px;
+            left: 12px;
+            font-size: 18px;
+            color: #595959;
+            -webkit-transition: all 0.4s ease;
+            -o-transition: all 0.4s ease;
+            transition: all 0.4s ease;
+        }
+    </style>
+
+</head>
+
+<body>
+<ul id="accordion" class="accordion">
+    <li>
+        <div class="link"><img src="image.png" alt="">Diseño web<span class="img2"></span></div>
+        <ul class="submenu">
+            <li><a href="#">Photoshop</a></li>
+            <li><a href="#">HTML</a></li>
+            <li><a href="#">CSS</a></li>
+            <li><a href="#">Maquetacion web</a></li>
+        </ul>
+    </li>
+    <li>
+        <div class="link"><img src="image.png" alt="">Desarrollo front-end<span class="img2"></span></div>
+        <ul class="submenu">
+            <li><a href="#">Javascript</a></li>
+            <li><a href="#">jQuery</a></li>
+            <li><a href="#">Frameworks javascript</a></li>
+        </ul>
+    </li>
+    <li>
+        <div class="link"><img src="image.png" alt="">Diseño responsive<span class="img2"></span></div>
+        <ul class="submenu">
+            <li><a href="#">Tablets</a></li>
+            <li><a href="#">Dispositivos mobiles</a></li>
+            <li><a href="#">Medios de escritorio</a></li>
+            <li><a href="#">Otros dispositivos</a></li>
+        </ul>
+    </li>
+    <li>
+        <div class="link"><img src="image.png" alt="">Posicionamiento web<span class="img2"></span></div>
+        <ul class="submenu">
+            <li><a href="#">Google</a></li>
+            <li><a href="#">Bing</a></li>
+            <li><a href="#">Yahoo</a></li>
+            <li><a href="#">Otros buscadores</a></li>
+        </ul>
+    </li>
+</ul>
+</body>
+<script>
+    $('.link').click(function () {
+        if($(this).next('.submenu').css('display')=='block'){  //如果展开
+            $(this).next('.submenu').slideUp(); //就隐藏
+            $(this).find('span').addClass('img2').removeClass('img1');
+        }else if($(this).next('.submenu').css('display')=='none'){  //如果隐藏
+            $(".submenu").slideUp();
+            $(this).next('.submenu').slideDown();  //就展开
+            $('span').addClass('img2').removeClass('img1');
+            $(this).find('span').addClass('img1').removeClass('img2');
+        }
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<!--<script>-->
+    <!--$(function() {-->
+        <!--var Accordion = function(el, multiple) {-->
+            <!--this.el = el || {};-->
+            <!--this.multiple = multiple || false;-->
+
+            <!--// Variables privadas-->
+            <!--var links = this.el.find('.link');-->
+            <!--// Evento-->
+            <!--links.on('click', {el: this.el, multiple: this.multiple}, this.dropdown)-->
+        <!--};-->
+
+        <!--Accordion.prototype.dropdown = function(e) {-->
+            <!--var $el = e.data.el;-->
+            <!--$this = $(this),-->
+                    <!--$next = $this.next();-->
+
+            <!--$next.slideToggle();-->
+            <!--$this.parent().toggleClass('open');-->
+            <!--$this.find('.link').find('.img1').css("background","url(image1.png)");-->
+            <!--if (!e.data.multiple) {-->
+                <!--$el.find('.submenu').not($next).slideUp().parent().removeClass('open');-->
+                <!--$this.find('.link').find('.img1').css("background-image","url(image.png)");-->
+            <!--}-->
+        <!--};-->
+
+        <!--var accordion = new Accordion($('#accordion'), false);-->
+    <!--});-->
+
+<!--</script>-->
+</html>
