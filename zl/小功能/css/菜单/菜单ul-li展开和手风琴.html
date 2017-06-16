@@ -102,7 +102,9 @@
 <script>
     //点击展开
     $(function () {
-        $(".accordion .link").next(".submenu").hide();
+        //侧边菜单
+        $(".accordion .link").next(".submenu").show();
+//        $(".accordion .link").next(".submenu").hide();
         $(".accordion  .link").click(function()
         {
             if($(this).next(".submenu").css('display')=='block'){
@@ -138,6 +140,8 @@
 //            $(this).find('span').addClass('img1').removeClass('img2');
 //        }
 //    })
+
+
 </script>
 
 
