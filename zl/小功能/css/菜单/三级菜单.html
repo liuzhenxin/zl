@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="三级菜单.css">
+    <script src="../../jquery文件包/jquery-1.11.3.min.js"></script>
+</head>
+<body>
+<ul id="accordion" class="accordion">
+    <li>
+        <div class="link_ul"><a href="#"><img src="sanji_nav.png" alt=""><span class="link_ul_text">基础设施</span></a><span class="link_ul_span"><i class="img1"></i></span></div>
+        <ul class="link_ul_submenu show">
+            <li>
+                <div class="link"><a href="#">政务集中机房</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>机房托管服务机房托管服务</a></li>
+                    <li><a href="#"><i class="square"></i>设备托管服务</a></li>
+                    <li><a href="#"><i class="square"></i>机柜托管服务</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><a href="#">电子政务外网</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>办公网接入服务</a></li>
+                    <li><a href="#"><i class="square"></i>专网划分服务</a></li>
+                    <li><a href="#"><i class="square"></i>业务系统映射服务</a></li>
+                    <li><a href="#"><i class="square"></i>独享互联网开通服务</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><a href="#">数据存储与灾备系统</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>数据存储服务</a></li>
+                    <li><a href="#"><i class="square"></i>数据备份服务</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="link_ul"><a href="#"><img src="sanji_nav.png" alt=""><span class="link_ul_text">公共应用</span></a><span class="link_ul_span"><i class="img2"></i></span></div>
+        <ul class="link_ul_submenu hidden">
+            <li>
+                <div class="link"><a href="#">数据资源交换共享平台</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>交换平台接入服务</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><a href="#">政务短信系统</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>政务短信接入服务</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><a href="#">政务邮箱系统</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>政务邮箱服务</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <div class="link_ul"><a href="#"><img src="sanji_nav.png" alt=""><span class="link_ul_text">政务安全</span></a><span class="link_ul_span"><i class="img2"></i></span></div>
+        <ul class="link_ul_submenu hidden">
+            <li>
+                <div class="link"><a href="#">CA 认证平台</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>RA账户管理服务</a></li>
+                    <li><a href="#"><i class="square"></i>电子证据保全服务</a></li>
+                    <li><a href="#"><i class="square"></i>可信网站服务</a></li>
+                    <li><a href="#"><i class="square"></i>客户端身份认证服务</a></li>
+                    <li><a href="#"><i class="square"></i>时间戳服务</a></li>
+                    <li><a href="#"><i class="square"></i>安全电子签章服务</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="link"><a href="#">政务短信系统</a></div>
+                <ul class="submenu">
+                    <li><a href="#"><i class="square"></i>政务短信接入服务</a></li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+
+</ul>
+</body>
+<script>
+    //侧边菜单
+    $(".accordion .link").next(".submenu").show();
+
+    $(".accordion  .link_ul span").click(function () {
+            ////ul li手风琴
+            $('.accordion .link_ul_submenu:visible').slideUp("slow");
+            $(".accordion  .link_ul span i").addClass('img2').removeClass('img1');
+            $(this).parent().next().slideDown("slow");
+            $(this).parent().find('i').addClass('img1').removeClass('img2');
+            return false;
+
+
+        //点击展开
+//            if($(this).parent().next(".link_ul_submenu").css('display')=='block'){
+//                $(this).parent().next('.link_ul_submenu').slideUp(); //就隐藏
+//                $(this).parent().find('i').addClass('img2').removeClass('img1');
+//            }else{
+//                $(this).parent().find('i').addClass('img1').removeClass('img2');
+//                $(this).parent().next('.link_ul_submenu').slideDown();  //就展开
+//            }
+    });
+
+
+    //选中加颜色
+    $('.accordion  a').bind('click', function(){
+        $('a').removeClass('A_background');
+        $('a').find('.square').removeClass('square1');
+        $(this).addClass('A_background');
+        $(this).find('.square').addClass('square1');
+
+    });
+</script>
+</html>
