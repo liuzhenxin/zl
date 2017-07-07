@@ -1,0 +1,72 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+/*box*/
+.table_box{
+    width: 100%;
+    background: white;
+}
+/*运单号*/
+.table_box ul{
+    background: #F5F7FB;
+    color:#888a8d ;
+    overflow: hidden;
+}
+
+.table_box ul li{
+    list-style: none;
+    float: left;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 20px;
+}
+.table_box ul .bj{
+    float: right;
+    color: #c14a5b;
+}
+.table_box ul .bj:hover{
+    cursor: pointer;
+    color:#f71031;
+}
+
+/*表格*/
+.table_box table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    color: #323232;
+}
+.table_box table tr{
+    border-top: 1px solid #cccccc;
+}
+.table_box table td {
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.table_box table td p {
+    padding: 10px 0;
+}
+.table_box table td .yzf {
+    margin-left: 10px;
+    color:#46cfe3;
+}
+.table_box tr td img{
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+}
+.table_box tr td .pj{
+    color:#b2b5b2;
+}
+.table_box tr td .lcck{
+    padding: 10px;
+    background: #46cfe3;
+    color: white;
+    border-radius: 10px;
+}
+.table_box tr td .lcck:hover{
+    cursor: pointer;
+    background: #03d8f7;
+}

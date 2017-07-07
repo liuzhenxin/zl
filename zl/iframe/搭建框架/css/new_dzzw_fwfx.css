@@ -1,0 +1,122 @@
+/*增加部分*/
+.Framework_head_box .Framework_head_boxRight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fbfffb;
+}
+div .Framework_head_box .Framework_head_right_box{
+    width: 100%;
+    margin: 0;
+    background: #fbfffb;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+@media only screen and (max-width: 1920px) and (min-width: 1024px) {
+    div .Framework_head_box .Framework_head_right_box1 p {
+        font-size: 14px;
+        padding-left: 4px;
+    }
+    div .Framework_head_box .Framework_head_right_box1 b {
+        font-size: 18px;
+    }
+}
+.Framework_head_right_box p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Framework_head_right_box p label {
+    border-bottom: 1px solid #8BDC8A;
+}
+.project_con{
+    width: 94px;
+    height: 82px;
+    display: inline-block;
+}
+.project {
+    position: relative;
+    width: 94px;
+    height: 82px;
+    box-sizing: border-box;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    -o-perspective: 1000;
+    perspective: 1000;
+    -ms-transform: perspective(1000px);
+    -moz-transform: perspective(1000px);
+    -ms-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+}
+.project .front{
+    /*background: url(project_front_bg.png) no-repeat;*/
+    display: table;
+}
+.project .back, .project .front {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.project .back{
+    /*background: url(project_back_bg.png) no-repeat;*/
+}
+.project .back, .project .front{
+    position: absolute;
+    left: 0;
+    top: 0;
+    /*padding: 0 16px;*/
+    text-align: center;
+}
+
+.project, .project .back, .project .front {
+    -webkit-transition: all 1s cubic-bezier(0.68,-.55,.265,1.55);
+    -moz-transition: all 1s cubic-bezier(0.68,-.55,.265,1.55);
+    -o-transition: all 1s cubic-bezier(0.68,-.55,.265,1.55);
+    -ms-transition: all 1s cubic-bezier(0.68,-.55,.265,1.55);
+    transition: all 1s cubic-bezier(0.68,-.55,.265,1.55);
+}
+
+.project .back, .project .front {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    -o-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
+.project .front {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+.project .back {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+.project .front_hover {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.project .back_hover {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+#btn{
+    cursor: pointer;
+}
