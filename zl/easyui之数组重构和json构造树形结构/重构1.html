@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="themes/easyui.css">
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+</head>
+<body>
+<div style="position: relative">
+    <input id="filter"  />
+</div>
+</body>
+<script>
+    var data=[
+        {"dwbm":310000,"fdwbm":100000,"dwmc":"首页"},
+        {"dwbm":320000,"fdwbm":100000,"dwmc":"平台介绍"},
+        {"dwbm":330000,"fdwbm":100000,"dwmc":"服务申请"},
+
+        {"dwbm":331000,"fdwbm":330000,"dwmc":"基础设施"},
+
+        {"dwbm":331100,"fdwbm":331000,"dwmc":"政务集中机房"},
+
+        {"dwbm":331110,"fdwbm":331100,"dwmc":"机房托管服务"},
+        {"dwbm":331120,"fdwbm":331100,"dwmc":"机柜托管服务"},
+        {"dwbm":331130,"fdwbm":331100,"dwmc":"设备托管服务"},
+
+        {"dwbm":331200,"fdwbm":331000,"dwmc":"电子政务外网"},
+
+        {"dwbm":331210,"fdwbm":331200,"dwmc":"办公网接入服务"},
+        {"dwbm":331220,"fdwbm":331200,"dwmc":"专网划分服务"},
+        {"dwbm":331230,"fdwbm":331200,"dwmc":"业务系统映射服务"},
+
+        {"dwbm":331300,"fdwbm":331000,"dwmc":"政务云平台"},
+        {"dwbm":331400,"fdwbm":331000,"dwmc":"数据存储与灾备系统"},
+        {"dwbm":331500,"fdwbm":331000,"dwmc":"应急指挥调度无线通信网"},
+        {"dwbm":331600,"fdwbm":331000,"dwmc":"公共呼叫中心平台"},
+
+        {"dwbm":332000,"fdwbm":330000,"dwmc":"公共应用"},
+        {"dwbm":333000,"fdwbm":330000,"dwmc":"政务安全"},
+
+        {"dwbm":340000,"fdwbm":100000,"dwmc":"政策法规"},
+        {"dwbm":350000,"fdwbm":100000,"dwmc":"技术支持"},
+        {"dwbm":360000,"fdwbm":100000,"dwmc":"通知公告"}
+    ];
+
+    //重构data
+    function convert(rows){
+        function exists(rows, parentId){  //调用exists
+            console.log(parentId);  //打印父ID
+            for(var i=0; i<rows.length; i++){   //循环data的长度
+                if (rows[i].dwbm == parentId) return true;  //判断子ID==父ID
+            }
+            return false;
+        }
+        var nodes = [];
+        // get the top level nodes获取顶层节点
+        for(var i=0; i<rows.length; i++){
+            var row = rows[i];
+            if (!exists(rows, row.fdwbm)){  //父ID
+                nodes.push({
+                    dwbm:row.dwbm,
+                    text:row.dwmc
+                });
+            }
+        }
+        var toDo = [];
+        for(var i=0; i<nodes.length; i++){
+            toDo.push(nodes[i]);
+        }
+        while(toDo.length){
+            var node = toDo.shift(); // the parent node  父节点
+            // get the children nodes  获取子节点
+            for(var i=0; i<rows.length; i++){
+                var row = rows[i];
+                if (row.fdwbm == node.dwbm){  //子ID==父ID
+
+                    var child = {dwbm:row.dwbm,text:row.dwmc};
+                    if (node.children){
+                        node.children.push(child);
+                    } else {
+                        node.children = [child];
+                    }
+                    toDo.push(child);
+                }
+            }
+        }
+        return nodes;
+    }
+    console.log(data);
+    var result = convert (data);
+    console.log(result);
+
+
+
+</script>
+</html>
