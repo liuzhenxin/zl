@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>天气接口</title>
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+
+</body>
+
+<script>
+    //天气
+    $.getScript('http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js', function(_result) {
+        $.ajax({
+            url: "http://wthrcdn.etouch.cn/weather_mini?city="+'深圳',
+            //以下是解决IE9及以下跨域
+            dataType: "text",
+            async: true,
+            type: 'GET',
+            cache: false,
+            crossDomain: true == !(document.all),
+            //以上是解决IE9及以下跨域
+//                data: "",
+            success: function(msg){
+                var aa=JSON.parse(msg);
+//                    aa.data.forecast[0].aqi;
+//                    aa.data.forecast[0].wendu;
+                alert(JSON.parse(msg));
+                console.log(aa.data.forecast[0].type);
+                console.log(aa.data.city);
+                console.log(aa.data.aqi);
+            }, error: function(jqXHR, textStatus, errorMsg){
+                alert("请求失败：" + errorMsg);
+            }
+        });
+    });
+    //天气json
+                    $.ajax({
+
+                        url: "http://api.jirengu.com/weather.php?city="+'成都',
+                        success: function(msg){
+                            console.log(msg);
+                        }
+                    });
+    //天气xml
+                    $.ajax({
+
+                        url: "http://wthrcdn.etouch.cn/WeatherApi?city="+'成都',
+                        success: function(msg){
+//                            console.log(msg);
+                        }
+                    });
+    //天气json
+                    $.ajax({
+                        url: "http://wthrcdn.etouch.cn/weather_mini?city="+'成都',
+                        success: function(msg){
+                           //alert(msg);
+                        }
+                    });
+                    var citytq='成都';
+    //天气图片
+                    $.ajax({
+                        url: "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" +citytq,
+                        dataType: "script",
+                        scriptCharset: "gbk",
+                        success: function (data) {
+                            var _w = window.SWther.w[citytq][0];
+                            var _f = _w.f1 + "_0.png";   //白天
+                            if (new Date().getHours() > 17) {
+                                _f = _w.f2 + "_1.png"; //夜晚
+                            }
+                            //                   天气图片
+                            $('#tq_img').html('<img id="tq_img" src="http://php.weather.sina.com.cn/images/yb3/78_78/'+ _f +'"   alt="" >');
+//                    天气状态
+                            document.getElementById('tq_type').innerHTML=_w.s1+'(实时)';
+                        }
+                    });
+    //空气质量
+                    $.ajax({
+                        url: "http://www.pm25.in/api/querys/pm10.json?city="+'成都'+"&token=5j1znBVAsnSf5xQyNQyq&avg",
+                        dataType: "jsonP",
+                        scriptCharset: "gbk",
+                        success: function (data) {
+//                            console.log(data.length-1);
+//                            console.log(data);
+//                            console.log(data[data.length-1].aqi);
+                        }
+                    });
+</script>
+</html>
