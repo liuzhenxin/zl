@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #ca{width: 200px;float: left; }
+        #ca1{width: 200px;float: left; margin-left: 300px}
+        li{
+            list-style: none;
+        }
+        .lis{
+            background: green;
+            line-height: 30px;
+            border-bottom: 1px solid red;
+        }
+        .lists li{
+            background: yellow;
+            line-height: 30px;
+        }
+        .lists_children li {
+            background: #54ff33;
+            line-height: 30px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="ca" style="width: 200px"></div>
+<div id="ca1" style="width: 200px"></div>
+</body>
+<script>
+var aa='image.png';
+    var data=[
+        { text: '节点1',icon:aa, children: [
+            { text: '节点1.1'},
+            { text: '节点1.2'},
+            { text: '节点1.3', children: [
+                { text: '节点1.3.1' },
+                { text: '节点1.3.2' }
+            ]
+            },
+            { text: '节点1.4'}
+        ]
+        },
+        { text: '节点2',  children: [
+            { text: '节点2.1'},
+            { text: '节点2.2'},
+            { text: '节点2.4'}]
+        },
+        { text: '节点3'},
+        { text: '节点4'}
+    ];
+
+//    $(data).each(function(){
+//        console.log(this.text);
+//        if(this.children != null){
+//            $(this.children).each(function(){+
+//                console.log(this.text);
+//                if(this.children != null){
+//                    $(this.children).each(function(){
+//                        console.log(this.text);
+//                    })
+//                }
+//            });
+//        }
+//    });
+    var src="";
+    src+="<ul>";
+    $(data).each(function(i){
+        console.log(this.icon);
+        src+="<li class='lis lis_"+i+"'><span><img src='"+this.icon+"' alt=''></span><span>"+this.text+"</span><span></span>";
+            if(this.children != null){  //判断是否有子集
+                src+="<ul class='lists lists_"+i+"'>";
+                    $(this.children).each(function(i){  //循环所有子集
+                        src+="<li>"+this.text;
+                            if(this.children != null){  //判断是否有子集
+                                src+="<ul class='lists_children lists_children_"+i+"'>";
+                                $(this.children).each(function(i){
+                                    src+="<li>"+this.text+"</li>";
+                                });
+                                src+="</ul>";
+                            }
+                        src+="</li>";
+                    });
+                src+="</ul>";
+            }
+        src+="</li>";
+    });
+    src+="</ul>";
+     $("#ca").html(src);
+
+//    父子集区分
+    var ht="";
+    ht+="<ul>";
+    $(data).each(function(i){
+
+        if(this.children != null){  //判断是否有子集
+            ht+="<li class='lis parent lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
+            ht+="<ul class='lists lists_"+i+"'>";
+            $(this.children).each(function(i){
+                ht+="<li>"+this.text+"</li>";
+            });
+            ht+="</ul>";
+            ht+="</li>";
+        }else{
+            ht+="<li class='lis children lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
+
+            ht+="</li>";
+        }
+
+
+    });
+    ht+="</ul>";
+    $("#ca1").html(ht);
+</script>
+</html>
