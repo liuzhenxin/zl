@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>截取字符串</title>
+</head>
+<body>
+
+</body>
+<script>
+    //截取字符串
+    var self = $('.fw_content-warp .slh_p');
+    self.each(function(){
+        var objString = $(this).text();
+        console.log(objString);
+        var objLength = $(this).text().length;
+        var num =80;  //截取个数
+        if(objLength > num){
+            $(this).attr('title',objString);
+            $(this).text(objString.substring(0,num) + '...');
+        }
+    });
+
+
+</script>
+</html>
