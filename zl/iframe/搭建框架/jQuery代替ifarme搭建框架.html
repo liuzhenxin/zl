@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<ul class="list-side">
+    　　<li><a target="test2.html" >about</a></li>
+    　　<li><a target="test1.html" >news</a></li>
+</ul>
+
+<div id="iframe" style="height: 100%;width: 100%">
+    　　<!--jquery 插入html 位址-->
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        $.get("test2.html", function (data) { //初始將a.html include div#iframe
+            $("#iframe").html(data);
+        });
+        $(function () {
+            $('.list-side li').click(function () {
+                // 找出 li 中的超链接 href(#id)
+                var $this = $(this),
+                        _clickTab = $this.find('a').attr('target'); // 找到链接a中的targer的值
+
+                $.get(_clickTab, function (data) {
+                    $("#iframe").html(data);  //获取该页面的html内容
+                });
+            });
+        });
+    });
+</script>
+</html>
