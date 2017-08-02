@@ -57,9 +57,16 @@
 <script>
     function open2(url) {
         console.log(url);
-        $.get(url, function (data) {
-            $("#right-product").html(data);  //获取该页面的html内容
-        });
+       // $.get(url, function (data) {
+       //     $("#right-product").html(data);  //获取该页面的html内容
+        //});
+		 $.ajax({
+           type:'post',
+           url:url,
+           success:function (html) {
+               $("#right-product").html(html);
+           }
+       })
        // document.getElementById("iframepage").src=url;
     }
     function open(url) {
