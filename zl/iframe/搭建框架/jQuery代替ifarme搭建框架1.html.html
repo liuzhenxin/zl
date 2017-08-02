@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.7.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .down-main {
+            position: absolute;
+            width: 100%;
+            top: 50px;
+            bottom: 0px;
+            z-index: 100;
+        }
+        .left-main {
+            bottom: 0px;
+            top: 50px;
+            z-index: 100;
+            position: fixed;
+            background-color: #42485b;
+        }
+        .left-full {
+            width: 180px;
+            display: block;
+        }
+        .right-product {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            right: 0px;
+            background: #3fff28;
+            font-size: 0px
+        }
+        .right-full {
+            left: 180px;
+        }
+    </style>
+</head>
+<body>
+<div onclick="open2('11.html')">头部</div>
+<div class="down-main">
+    <div class="left-main left-full">
+
+        <div style="" onclick="open2('test1.html')">菜单</div>
+        <div style="" onclick="open2('test2.html')">菜单1</div>
+        <a href="javascript:open('test2.html');">资源分析</a>
+    </div>
+    <div class="right-product view-product right-full" id="right-product">
+
+    </div>
+</div>
+</body>
+<script>
+    function open2(url) {
+        console.log(url);
+        $.get(url, function (data) {
+            $("#right-product").html(data);  //获取该页面的html内容
+        });
+       // document.getElementById("iframepage").src=url;
+    }
+    function open(url) {
+        console.log(url);
+        $.get(url, function (data) {
+            $("#right-product").html(data);  //获取该页面的html内容
+        });
+       // document.getElementById("iframepage").src=url;
+    }
+    //以下是测试
+    function aa(init) {
+        console.log(init);
+    }
+
+</script>
+</html>
