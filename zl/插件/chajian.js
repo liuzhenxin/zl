@@ -3,7 +3,7 @@
  */
 var ecDo = {
     //去除空格
-   // ecDo.trim(' xx x x',1);
+    // ecDo.trim(' xx x x',1);
     //去除空格  type 1-所有空格  2-前后空格  3-前空格 4-后空格
     trim: function (str, type) {
         switch (type) {
@@ -40,7 +40,7 @@ var ecDo = {
                     else if (/^([A-Z]+)/.test(item)) {
                         itemText += item.toLowerCase();
                     }
-                    else{
+                    else {
                         itemText += item;
                     }
                 });
@@ -120,6 +120,29 @@ var ecDo = {
             var replaceCount = this.repeatStr(replaceText, regArr[0]);
             return str.replace(Reg, replaceCount)
         }
+    },
+    //统计一个字符串出现最多的字母
+    findMaxDuplicateChar: function (str) {  //使用:ecDo.findMaxDuplicateChar('afjghdfraaaasdenas ')
+        if (str.length == 1) {
+            return str;
+        }
+        var charObj = {};
+        for (var i = 0; i < str.length; i++) {
+            if (!charObj[str.charAt(i)]) {
+                charObj[str.charAt(i)] = 1;
+            } else {
+                charObj[str.charAt(i)] += 1;
+            }
+        }
+        var maxChar = '',
+            maxValue = 1;
+        for (var k in charObj) {
+            if (charObj[k] >= maxValue) {
+                maxChar = k;
+                maxValue = charObj[k];
+            }
+        }
+        return maxChar;
     },
     //检测字符串
     //checkType('165226226326','phone')
@@ -202,13 +225,42 @@ var ecDo = {
             return self.indexOf(item) == index;
         });
     },
+    //数组去重
+    unique: function (arr) {  //使用:console.log(ecDo.unique([1,13,24,11,11,14,1,2]));
+        var hashTable = {};
+        var data = [];
+        for (var i = 0, l = arr.length; i < l; i++) {
+            if (!hashTable[arr[i]]) {
+                hashTable[arr[i]] = true;
+                data.push(arr[i]);
+            }
+        }
+        return data
+
+    },
     //数组顺序打乱
     upsetArr: function (arr) {
         return arr.sort(function () {
             return Math.random() - 0.5
         });
     },
+// 找出下列正数组的最大差值
+    getMaxProfit: function (arr) { //使用:console.log(ecDo.getMaxProfit([10,5,11,7,8,9]));
+        var minPrice = arr[0];
+        var maxProfit = 0;
 
+        for (var i = 0; i < arr.length; i++) {
+            var currentPrice = arr[i];
+
+            minPrice = Math.min(minPrice, currentPrice);
+
+            var potentialProfit = currentPrice - minPrice;
+
+            maxProfit = Math.max(maxProfit, potentialProfit);
+        }
+
+        return maxProfit;
+    },
     //数组最大值
     //这一块的封装，主要是针对数字类型的数组
     maxArr: function (arr) {
@@ -390,6 +442,27 @@ var ecDo = {
             return Math.round(Math.random() * 255)
         }
     },
+    //随机生成指定长度的字符串
+    randomString: function (n) { //console.log(ecDo.randomString(10));
+        var str = 'abcdefghijklmnopqrstuvwxyz9876543210';
+        var tmp = '',
+            i = 0,
+            l = str.length;
+        for (i = 0; i < n; i++) {
+            tmp += str.charAt(Math.floor(Math.random() * l));
+        }
+        return tmp;
+    },
+    //不借助临时变量，进行两个整数的交换
+    //主要是利用 + – 去进行运算，类似 a = a + ( b – a) 实际上等同于最后 的 a = b;
+    swap: function (a, b) {  //console.log(ecDo.swap(4,6));
+        // b = b - a;
+        // a = a + b;
+        // b = a - b;
+        //或者
+        [a, b] = [b, a];
+        return [a, b];
+    },
     //设置url参数
     //setUrlPrmt({'a':1,'b':2})
     //a=1&b=2
@@ -518,7 +591,7 @@ var ecDo = {
             }
             p = p.previousSibling//最后把上一个节点赋给p
         }
-        a.reverse()//把顺序反转一下 这样元素的顺序就是按先后的了
+        a.reverse();//把顺序反转一下 这样元素的顺序就是按先后的了
         var n = obj.nextSibling;//再取o的弟弟
         while (n) {//判断有没有下一个弟弟结点 n是nextSibling的意思
             if (n.nodeType === 1) {
