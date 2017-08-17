@@ -1,0 +1,21 @@
+循环
+<!-- 开始循环 -->
+					<c:choose>
+						<c:when test="${not empty pg.list}">
+							<c:forEach items="${pg.list}" var="p" varStatus="vs">
+								<div class="inner-new">
+									<p onclick="show('${p.id}')" title="${p.title }">
+									<img alt="" src="${pageContext.request.contextPath }/static/img/policy/shuangjiantouhui.png">
+										<c:if test="${fn:length(p.title) <= 32}">
+										${p.title}
+										</c:if>
+										<c:if test="${fn:length(p.title) > 32}">
+										${fn:substring(p.title,0,32)}...
+										</c:if>
+										<%-- <span>${p.noticeDate }</span> --%>
+									</p>
+									<p class="zcfz_text">类型：${p.tname }&nbsp;&nbsp;&nbsp;&nbsp; 发布时间：${p.noticeDate }</p>
+								</div>
+							</c:forEach>
+						</c:when>
+					</c:choose>
