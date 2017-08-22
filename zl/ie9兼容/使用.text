@@ -1,0 +1,7 @@
+/*解决ie8及以下不支持圆角*/
+.选择器{
+
+  behavior: url(ie8border_radius/iecss3.htc)\0;
+  position:relative\0;
+  z-index:2\0;
+  }
