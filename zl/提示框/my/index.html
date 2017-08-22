@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../../小功能/jquery文件包/jquery-1.7.min.js"></script>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .btn {
+            /*display: inline-block;*/
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -ms-touch-action: manipulation;
+            touch-action: manipulation;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            background-image: none;
+            border: 1px solid transparent;
+            border-radius: 4px;
+        }
+
+        .btn-default {
+            color: #333;
+            background-color: #fff;
+            border-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+<div style="margin-top: 200px;margin-left: 200px;position: relative">
+    <button type="button" class="btn btn-default" data-tip="tooltip" data-title="默认的 Tooltip">默认的 Tooltip </button><!--
+    --><button type="button" class="btn btn-default" data-tip="tooltip" data-direction="right"  data-title="右边的 Tooltip" data-background="#85deec">右边的 Tooltip</button><!--
+    --><button type="button" class="btn btn-default" data-tip="tooltip" data-direction="bottom"  data-title="底部的 Tooltip">底部的 Tooltip</button><!--
+    --><button type="button" class="btn btn-default" data-tip="tooltip" data-direction="left" data-title="左边的 Tooltip">左边的 Tooltip</button><!--
+    --><button type="button" class="btn btn-default" data-tip="tooltip" data-direction="top" data-title="头部的 Tooltip">头部的 Tooltip</button>
+
+    <p>djasbjfddsf dsfdbfgjdf dfgkjdfdf <span data-tip="tooltip" style="color:red" data-direction="top" data-title="头部的 Tooltip" data-background="green">hndgfh</span> gfhjgfh gf</p>
+</div>
+</body>
+<script src="sy_tooltip.js"></script>
+<script>
+    $("[data-tip='tooltip']").sy_tooltip({
+
+    });
+</script>
+</html>
