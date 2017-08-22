@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.tips.js"></script>
+</head>
+<body>
+<form action="onServerLog" method="post" name="loginForm" id="loginForm">
+    <div class="login" style="margin-bottom: -65px;height: 550px">
+        <div class="dlcon">
+            <div class="denglv">
+                <table width="100%" border="0">
+                    <tr>
+                        <td colspan="3" class="dltitle" style="padding-top:20px !important">用户登录<span>USER LOGIN</span></td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:15px;">登录名：</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input id="loginname2" type="text" class="dltxta" />
+                            <input name="username" id="loginname" type="hidden" class="dltxta" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:15px;">登录密码：</td>
+                        <!-- <td  align="right"><a href="#">忘记登录密码？</a></td> -->
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input name="password" id="password" type="password" class="dltxta" /></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" ><button style="width: 102%" name="" id="loginbutton" type="button" onclick="severCheck()" class="dlbtn"  />登录</button></td>
+                    </tr>
+                    <tr>
+                        <td colspan="3" style="font-size:12px;" >建议使用谷歌或者IE9及以上的浏览器</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <div id="particles-js"></div>
+    </div>
+</form>
+<script type="text/javascript">
+    var status ='${status}';
+    var message = '${message}';//提示登录成功与否
+    var loginname='${loginname}';  //登陆使用的名字
+    //服务器校验
+    function severCheck(){
+        if(check()){
+            $.getJSON("getRsa",function(data) {
+                document.getElementById("loginbutton").setAttribute("disabled",true);   //让按钮不可用，避免连续几次点击不能登陆
+                var modulus = data.modulus, exponent = data.exponent;
+                var publicKey = RSAUtils.getKeyPair(exponent, '', modulus);
+                $("#password").val(RSAUtils.encryptedString(publicKey, $("#password").val().split("").reverse().join("")));//进行反序
+                $("#loginname").val(RSAUtils.encryptedString(publicKey, $("#loginname2").val().split("").reverse().join("")));
+                $("#loginForm").submit();
+            });
+        }
+    }
+
+    $(document).ready(function() {
+        if(status == '1' && loginname != ''){
+            $("#loginname2").val(loginname);
+        }
+        if(status == '1' && message != ''){
+            if(message=='密码错误'){
+                $("#password").tips({
+                    side : 2,
+                    msg : message,
+                    bg : '#AE81FF',
+                    time : 5
+                });
+                $("#password").focus();
+            }else{
+                $("#loginname2").tips({
+                    side : 2,
+                    msg : message,
+                    bg : '#AE81FF',
+                    time : 5
+                });
+                $("#loginname2").focus();
+            }
+
+        }
+    });
+
+    $(document).keyup(function(event) {
+        if (event.keyCode == 13) {
+            severCheck();
+        }
+    });
+
+
+    //客户端校验
+    function check() {
+        if ($("#loginname2").val() == "") {
+            $("#loginname2").tips({
+                side : 2,
+                msg : '用户名不得为空',
+                bg : '#AE81FF',
+                time : 2
+            });
+            $("#loginname2").focus();
+            return false;
+        } else {
+            $("#loginname2").val(jQuery.trim($('#loginname2').val()));
+            var reg = /^[0-9a-zA-Z]+$/;
+            if(!reg.test($("#loginname2").val())){
+                $("#loginname2").tips({
+                    side : 2,
+                    msg : '用户名只能是数字和字母',
+                    bg : '#AE81FF',
+                    time : 2
+                });
+                $("#loginname2").focus();
+                return false;
+            };
+        }
+
+        if ($("#password").val() == "") {
+            $("#password").tips({
+                side : 2,
+                msg : '密码不得为空',
+                bg : '#AE81FF',
+                time : 2
+            });
+
+            $("#password").focus();
+            return false;
+        }
+
+        $("#loginbox").tips({
+            side : 1,
+            msg : '正在登录 , 请稍后 ...',
+            bg : '#68B500',
+            time : 10
+        });
+
+        return true;
+    }
+</script>
+</body>
+</html>
