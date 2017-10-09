@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <script src="https://cdn.bootcss.com/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        #ca{width: 200px;float: left; }
+        body{
+            background: #cccccc;
+        }
+        li{
+            list-style: none;
+        }
+        .mainnav-menu .mainnav-menu-li {
+            position: relative;
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            color: #FFFFFF;
+        }
+        .mainnav-menu .mainnav-menu-li:hover .second-nav{
+            display: block;
+        }
+        .mainnav-menu-li .second-nav {
+            position: absolute;
+            left: 180px;
+            width: 181px;
+            top: 0px;
+            border: 1px solid red;
+            display: none;
+        }
+        .mainnav-menu li .second-nav li {
+            line-height: 50px;
+            height: auto;
+            position: static;
+        }
+        .mainnav-menu li a {
+            display: block;
+            height: 100%;
+            text-decoration: none;
+            cursor: pointer;
+            color: #FFFFFF;
+        }
+
+        .mainnav-menu li a i {
+            width: 25px;
+            height: 25px;
+            margin: 12px 16px 0 16px;
+            _margin-left: 10px;
+            display: block;
+            float: left;
+            vertical-align: middle;
+            cursor: pointer;
+            font-size: 24px;
+            line-height: 20px;
+        }
+
+        .mainnav-menu li a:hover {
+            background-color: #3ddea8;
+        }
+
+        .mainnav-menu li a:hover.active {
+            background-color: #FFFFFF;
+            color: #576179;
+        }
+
+        .mainnav-menu li .active {
+            background-color: #FFFFFF;
+            color: #576179;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="ca" style="width: 200px"></div>
+<div id="ca1" style="width: 200px"></div>
+</body>
+<script>
+    var data=[
+        { text: '问题跟踪'},
+        { text: '组织用户',  children: [
+                { text: '用户管理',children: [
+                    { text: '用户管理'}]
+                },
+                { text: '群组管理',children: [
+                    { text: '群组管理'}]
+                },
+                { text: '域管理',children: [
+                    { text: '群组管理'}]
+                },
+                { text: '组织部门',children: [
+                    { text: '组织部门管理'}]
+                },
+                { text: '通讯录',children: [
+                    { text: '公共通讯录'}]
+                },
+                { text: '频道管理',children: [
+                    { text: '频道管理'}]
+                }
+            ]
+        },
+        { text: '归档管理',children: [
+                { text: '邮件归档',children: [
+                    { text: '归档列表'}]
+                }
+            ]
+        },
+        { text: '安全管理',children: [
+            { text: '审核',children: [
+                { text: '审核列表'},
+                { text: '审核规则'}]
+            },
+            { text: '监控',children: [
+                { text: 'IM监控规则'},
+                { text: '邮件监控规则'}]
+            },
+            { text: '过滤',children: [
+                { text: 'IM过滤规则'},
+                { text: '邮件过滤规则'}]
+            }
+        ]}
+    ];
+
+//    $(data).each(function(){
+//        console.log(this.text);
+//        if(this.children != null){
+//            $(this.children).each(function(){+
+//                console.log(this.text);
+//                if(this.children != null){
+//                    $(this.children).each(function(){
+//                        console.log(this.text);
+//                    })
+//                }
+//            });
+//        }
+//    });
+
+//<i class='iconfont iconfont_"+i+"'>"+this.icon+"</i>
+    var src="";
+    src+="<ul id='mainnav_menu' class='mainnav-menu list-group '>";
+    $(data).each(function(i){
+        console.log(this.icon);
+        src+="<li class='mainnav-menu-li'><a href='javascript:;'><span class='menu-title'>"+this.text+"</span></a>";
+            if(this.children != null){  //判断是否有子集
+                src+="<ul class='second-nav lists_"+i+"'>";
+                    $(this.children).each(function(i){  //循环所有子集
+                        src+="<li>"+this.text;
+                            if(this.children != null){  //判断是否有子集
+                                src+="<ul class='third-nav lists_children_"+i+"'>";
+                                $(this.children).each(function(i){
+                                    src+="<li>"+this.text+"</li>";
+                                });
+                                src+="</ul>";
+                            }
+                        src+="</li>";
+                    });
+                src+="</ul>";
+            }
+        src+="</li>";
+    });
+    src+="</ul>";
+     $("#ca").html(src);
+
+</script>
+</html>
