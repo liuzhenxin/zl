@@ -44,14 +44,23 @@
 var aa='image.png';
     var data=[
         { text: '节点1',icon:aa, children: [
-            { text: '节点1.1'},
-            { text: '节点1.2'},
+            { text: '节点1.1', children: [
+                { text: '节点1.1.1' },
+                { text: '节点1.1.2' }
+            ]},
+            { text: '节点1.2', children: [
+                { text: '节点1.2.1' },
+                { text: '节点1.2.2' }
+            ]},
             { text: '节点1.3', children: [
                 { text: '节点1.3.1' },
                 { text: '节点1.3.2' }
             ]
             },
-            { text: '节点1.4'}
+            { text: '节点1.4', children: [
+                { text: '节点1.4.1' },
+                { text: '节点1.4.2' }
+            ]}
         ]
         },
         { text: '节点2',  children: [
@@ -102,27 +111,27 @@ var aa='image.png';
      $("#ca").html(src);
 
 //    父子集区分
-    var ht="";
-    ht+="<ul>";
-    $(data).each(function(i){
-
-        if(this.children != null){  //判断是否有子集
-            ht+="<li class='lis parent lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
-            ht+="<ul class='lists lists_"+i+"'>";
-            $(this.children).each(function(i){
-                ht+="<li>"+this.text+"</li>";
-            });
-            ht+="</ul>";
-            ht+="</li>";
-        }else{
-            ht+="<li class='lis children lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
-
-            ht+="</li>";
-        }
-
-
-    });
-    ht+="</ul>";
-    $("#ca1").html(ht);
+//    var ht="";
+//    ht+="<ul>";
+//    $(data).each(function(i){
+//
+//        if(this.children != null){  //判断是否有子集
+//            ht+="<li class='lis parent lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
+//            ht+="<ul class='lists lists_"+i+"'>";
+//            $(this.children).each(function(i){
+//                ht+="<li>"+this.text+"</li>";
+//            });
+//            ht+="</ul>";
+//            ht+="</li>";
+//        }else{
+//            ht+="<li class='lis children lis_"+i+"'><span></span><span>"+this.text+"</span><span></span>";
+//
+//            ht+="</li>";
+//        }
+//
+//
+//    });
+//    ht+="</ul>";
+//    $("#ca1").html(ht);
 </script>
 </html>

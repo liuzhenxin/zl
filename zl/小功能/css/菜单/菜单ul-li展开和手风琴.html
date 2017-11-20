@@ -101,25 +101,25 @@
 </body>
 <script>
     //点击展开
-    $(function () {
-        //侧边菜单
-        $(".accordion .link").next(".submenu").show();
-//        $(".accordion .link").next(".submenu").hide();
-        $(".accordion  .link").click(function()
-        {
-            if($(this).next(".submenu").css('display')=='block'){
-                $(this).next('.submenu').slideUp(); //就隐藏
-                $(this).find('span').addClass('img2').removeClass('img1');
-            }else {
-                $(this).find('span').addClass('img1').removeClass('img2');
-                $(this).next('.submenu').slideDown();  //就展开
-                $('.accordion a').removeClass('A_background');
-                $(this).next('.submenu').find('li').eq(0).find('a').addClass('A_background');
-            }
-            // console.log(11);
-            // $(this).next(".submenu").toggle();
-        });
-    });
+//    $(function () {
+//        //侧边菜单
+//        $(".accordion .link").next(".submenu").show();
+////        $(".accordion .link").next(".submenu").hide();
+//        $(".accordion  .link").click(function()
+//        {
+//            if($(this).next(".submenu").css('display')=='block'){
+//                $(this).next('.submenu').slideUp(); //就隐藏
+//                $(this).find('span').addClass('img2').removeClass('img1');
+//            }else {
+//                $(this).find('span').addClass('img1').removeClass('img2');
+//                $(this).next('.submenu').slideDown();  //就展开
+//                $('.accordion a').removeClass('A_background');
+//                $(this).next('.submenu').find('li').eq(0).find('a').addClass('A_background');
+//            }
+//            // console.log(11);
+//            // $(this).next(".submenu").toggle();
+//        });
+//    });
     //选中添加背景色
     $('.accordion  a').bind('click', function(){
 
@@ -129,17 +129,17 @@
     });
     //ul li手风琴
 
-//    $('.link').click(function () {
-//        if($(this).next('.submenu').css('display')=='block'){  //如果展开
-//            $(this).next('.submenu').slideUp(); //就隐藏
-//            $(this).find('span').addClass('img2').removeClass('img1');
-//        }else if($(this).next('.submenu').css('display')=='none'){  //如果隐藏
-//            $(".submenu").slideUp();
-//            $(this).next('.submenu').slideDown();  //就展开
-//            $('span').addClass('img2').removeClass('img1');
-//            $(this).find('span').addClass('img1').removeClass('img2');
-//        }
-//    })
+    $('.link').click(function () {
+        if($(this).next('.submenu').css('display')=='block'){  //如果展开
+            $(this).next('.submenu').slideUp(); //就隐藏
+            $(this).find('span').addClass('img2').removeClass('img1');
+        }else if($(this).next('.submenu').css('display')=='none'){  //如果隐藏
+            $(".submenu").slideUp();
+            $(this).next('.submenu').slideDown();  //就展开
+            $('span').addClass('img2').removeClass('img1');
+            $(this).find('span').addClass('img1').removeClass('img2');
+        }
+    })
 
 
 </script>
