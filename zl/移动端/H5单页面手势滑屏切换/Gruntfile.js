@@ -10,7 +10,7 @@ module.exports = function(grunt) {
           },
           build:{
               src:'js/app.js',
-              dest:'dist/app.min.js'
+              dest:'sweetalert/app.min.js'
           }
        },
        //配置css压缩插件
@@ -21,7 +21,7 @@ module.exports = function(grunt) {
            },
            build: {
                src:'css/app.css',
-               dest:'dist/app.css'
+               dest:'sweetalert/app.css'
            }
        },
        watch:{

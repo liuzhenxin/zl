@@ -20,11 +20,15 @@
 <body>
 <div id="div1">
 </div>
+<div style="width: 100px;height: 300px;background: green" id="box">
+
+</div>
 </body>
 <script>
     window.onload = function () {
         //获取需要拖拽的div
         var div1 = document.getElementById("div1");
+        var box = document.getElementById("box");
         //添加鼠标按下事件
         div1.onmousedown = function (evt) {
             var oEvent = evt || event;
@@ -42,19 +46,19 @@
                     left = 0;
                 }
                 //当left 超过文档右边界  设置为右边界
-                else if (left >= document.documentElement.clientWidth - div1.offsetWidth) {
-                    left = document.documentElement.clientWidth - div1.offsetWidth;
+                else if (left >= document.documentElement.clientWidth - box.offsetWidth) {
+                    left = document.documentElement.clientWidth - box.offsetWidth;
                 }
                 if (top <= 0) {
                     top = 0;
                 }
-                else if (top >= document.documentElement.clientHeight - div1.offsetHeight) {
-                    top = document.documentElement.clientHeight - div1.offsetHeight;
+                else if (top >= document.documentElement.clientHeight - box.offsetHeight) {
+                    top = document.documentElement.clientHeight - box.offsetHeight;
                 }
                 //重新给div赋值
-                div1.style.top = top + "px";
-                div1.style.left = left + "px";
-            }
+                box.style.top = top + "px";
+                box.style.left = left + "px";
+            };
             //添加鼠标抬起事件
             div1.onmouseup = function () {
                 //清空事件

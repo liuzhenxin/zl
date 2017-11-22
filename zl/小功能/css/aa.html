@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>
+        Document
+    </title>
+    </meta>
+    <style media="screen" type="text/css">
+        .button{
+            padding: 5px 10px;
+            background-color: #AEAEAE;
+            cursor: pointer;
+        }
+
+        .radio > input[type=radio]:checked ~ .button{
+            background-color: #4F4;
+        }
+
+        .radio > input[type=radio]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<label class="radio">
+    <input name="r" type="radio" value="a" />
+    <span class="button">A</span>
+</label>
+<label class="radio">
+    <input name="r" type="radio" value="b" checked/>
+    <span class="button">B</span>
+</label>
+</body>
+</html>

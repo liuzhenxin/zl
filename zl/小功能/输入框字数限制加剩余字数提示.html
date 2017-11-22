@@ -6,10 +6,12 @@
 </head>
 <body>
 <div class="leave">
-    <textarea id="textarea" style="width: 100%;height: 300px;" onKeyDown="textdown(event)"
-              onKeyUp="javascript:checkWord(this);" onMouseDown="javascript:checkWord(this);"
-              onfocus="if(value=='请输入投诉理由（限120字）'){value=''}"
-              onblur="if (value ==''){value='请输入投诉理由（限120字）'}"></textarea>
+    <textarea id="textarea" style="width: 100%;height: 300px;"
+              onKeyDown="textdown(event)"
+              onKeyUp="javascript:checkWord(this);"
+              onMouseDown="javascript:checkWord(this);"
+
+    ></textarea>
 
     还可以输入<span style="font-family: Georgia; font-size: 26px;" id="wordCheck">120</span>个中文
 </div>
@@ -28,14 +30,14 @@
             }
         }
     }
-    function textup() {
-        var s = document.getElementById('textarea').value;
-        //判断ID为text的文本区域字数是否超过100个
-        if (s.length > 120) {
-            document.getElementById('textarea').value = s.substring(0, 120);
-        }
-    }
-    var maxstrlen = 120;
+//    function textup() {
+//        var s = document.getElementById('textarea').value;
+//        //判断ID为text的文本区域字数是否超过100个
+//        if (s.length > 120) {
+//            document.getElementById('textarea').value = s.substring(0, 120);
+//        }
+//    }
+    var maxstrlen = 10;
 
     function Q(s) {
         return document.getElementById(s);
