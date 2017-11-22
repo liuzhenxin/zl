@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="text/javascript" src="static/common/assets/jquery-1.11.0.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" type="text/css" href="static/common/assets/bootstrap/css/bootstrap.min.css">
+    <script type="text/javascript" src="static/common/assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 表单校验插件 -->
+    <script type="text/javascript" src="static/common/assets/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="static/common/assets/validate/additional-methods.min.js"></script>
+    <script type="text/javascript" src="static/common/js/messages_zh.js"></script>
+    <!--拖动验证-->
+    <link rel="stylesheet" href="static/common/assets/drag/drag.css">
+    <script type="text/javascript" src="static/common/assets/drag/drag.js"></script>
+    <!-- 表单校验插件 -->
+    <script type="text/javascript" src="static/common/js/jquery.form.js"></script>
+    <!--layui插件-->
+    <script type="text/javascript" src="static/common/assets/layer/layer-v3.1.0/layer.js"></script>
+<!--自定义css-->
+    <link rel="stylesheet" href="static/gateway/css/personalData/index.css">
+
+</head>
+<body>
+<div class="col-md-12">
+    <div class="border">
+        <p class="color-606060 padding-10">修改手机号</p>
+    </div>
+    <div class="border marginTop-20 clearfix container_h">
+        <form class="form-horizontal form-online formTable" id="formTable" >
+            <!--手机号码验证-->
+            <div class="form-group">
+                <label for="new_Phone" class="col-sm-3 control-label"><span class="color_ff0000 paddingLR-10">*</span>新手机号码：</label>
+                <div class="col-sm-6">
+                    <!--  phone="true"验证手机号是否正确        phoneCheck="true"验证手机号是否被注册(唯一性)  -->
+                    <input type="text" class="form-control" id="new_Phone" name="phone" placeholder="请输入新手机号码"
+                           phone="true" phoneCheck="true" required>
+                </div>
+                <div class="col-sm-3 form_text" id="tongguo">
+                    <i class="iconfont"></i>
+                    <!--<span class="form_text">通过信息验证</span>-->
+                </div>
+            </div>
+            <!--手机验证码-->
+            <div class="form-group">
+                <label for="twoPassword" class="col-sm-3 control-label"><span class="color_ff0000 paddingLR-10">*</span>手机验证码：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="twoPassword" placeholder="请输入手机验证码" name="number"
+                           readonly="readonly">
+                    <input type="text" id="phoneYz" name="phoneYz" placeholder="请输入验证码" required="required" style="width: 0; height: 0; border: 0; outline: 0; position: absolute;">
+                </div>
+                <div style="display: none"></div>
+                <div class="col-sm-2" style="padding:0;">
+                    <input type="button" id="Phone_message" class="form_text Phone_message" value="免费获取验证码" readonly="readonly" onclick="sendemail()" />
+                </div>
+                <div class="col-sm-3 form_text" id="yz" >
+                    <i class="iconfont" ></i>
+                    <span class="form_text"></span>
+                </div>
+            </div>
+            <!--拖动验证码-->
+            <div class="form-group">
+                <label for="drag_text" class="col-sm-4 control-label">验证:</label>
+                <div class="col-sm-4" style='position: relative;'>
+                    <input type="text" name="drag" id='drag_text' value="false" drag="true" required="required">
+                    <div id="drag" class="slider"></div>
+                </div>
+                <div class="form_text col-sm-2">
+                    <i class="iconfont"></i>
+                </div>
+            </div>
+<!--提交-->
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-10">
+                    <button type="button" class="btn btn-primary" onclick="sub();">保 存</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script src="form_qipao.js"></script>
+<script type="text/javascript">
+    /*拖动事件*/
+    $("#drag").drag({
+        height:36,
+        callback: function(result) {  //回调
+            $("#drag_text").val(result).blur();  //给$("#drag_text")赋值
+        }
+    });
+    /*点击免费获取验证码*/
+    var countdown = 60;
+    function sendemail() {
+        var flag = $('#tongguo').find('i').hasClass('icon-tongguo');  //判断手机号是否通过
+        if (flag) {  //为true时
+            var obj = $("#Phone_message");    //获取元素
+            $("#twoPassword").removeAttr("readonly");    //移除验证码输入框的禁止状态，使用户可以输入
+            $.ajax({
+                url: '${pageContext.request.contextPath }/personal/smsCheck',
+                type: 'post',
+                data: 'phone=' + $("#new_Phone").val(),
+                dataType: 'json',
+                async: false,
+                success: function (data) {
+                    settime(obj);
+                    dxyz(data);
+                    dxyz_a(data);
+                }
+            });
+        }
+
+    }
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled', false);
+            obj.val("免费获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            obj.attr('disabled', true);
+            obj.val("重新发送(" + countdown + ")");
+            countdown--;
+        }
+        setTimeout(function () {
+                settime(obj)
+            }
+            , 1000)
+    }
+    /* 短信验证码 */
+    function dxyz(data){
+        /*键盘输入，实时提醒*/
+        $('#twoPassword').on("keyup", function () {
+            var val=$(this).val();
+            console.log(val)
+            if(val==''||val==null){  //如果为空
+                $('#yz').find('i').addClass('icon-tishi1');
+                $('#yz').find('span').text('请输入验证码');
+            }else  if(val!=data){
+                $('#yz').find('i').addClass('icon-tishi1');
+                $('#yz').find('span').text('验证码输入不正确');
+                $('#phoneYz').val('').blur();
+            }
+            else  if(val==data){
+                $('#yz').find('i').removeClass('icon-tishi1').addClass('icon-tongguo');
+                $('#yz').find('span').text('通过信息验证');
+                $('#phoneYz').val('true').blur();
+            }
+
+
+        });
+    }
+    //拖动验证
+    $.validator.addMethod("drag", function(value, element,param) {
+        var drag_text =$("#drag_text").val();
+        if(drag_text=='true'){
+            var flag=true;
+        }else{
+            var flag=false;
+        }
+        return this.optional(element) || (flag) ;
+    }, $.validator.format("请滑动到最右边"));
+
+    /*提交时,提示*/
+    function dxyz_a(data){
+        var val=$('#twoPassword').val();
+        if(val==''||val==null){  //如果为空
+            $('#yz').find('i').addClass('icon-tishi1');
+            $('#yz').find('span').text('请输入验证码');
+        }
+        else  if(val==data){
+            $('#yz').find('i').removeClass('icon-tishi1').addClass('icon-tongguo');
+            $('#yz').find('span').text('通过信息验证');
+            $('#phoneYz').val('true').blur();
+        }
+    }
+
+
+    /*提交时验证*/
+    function sub() {
+        dxyz_a();  //短信验证是否输入验证码
+        $("#formTable").submit();
+    }
+    /**/
+    $(document).ready(function () {
+        jsonSubmit({
+            successFun: back   //成功后调用back方法
+        });
+    });
+    function back() {
+
+    }
+</script>
+
+</html>

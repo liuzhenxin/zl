@@ -1,0 +1,468 @@
+/* 钃濊壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/*鐧借壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/* 瀛椾綋棰滆壊*/
+/*--------------------------------- 鍏叡鏍峰紡闆嗗悎----------------------------------*/
+.wh100 {
+  width: 100px;
+}
+.wh110 {
+  width: 110px;
+}
+.wh120 {
+  width: 120px;
+}
+.wh130 {
+  width: 130px;
+}
+.wh140 {
+  width: 140px;
+}
+.wh150 {
+  width: 150px;
+}
+.wh160 {
+  width: 160px;
+}
+.wh170 {
+  width: 170px;
+}
+.wh180 {
+  width: 180px;
+}
+.wh190 {
+  width: 190px;
+}
+.wh200 {
+  width: 200px;
+}
+.hg20 {
+  height: 20px;
+}
+.hg25 {
+  height: 25px;
+}
+.hg30 {
+  height: 30px;
+}
+.hg35 {
+  height: 35px;
+}
+.hg40 {
+  height: 40px;
+}
+.hg45 {
+  height: 45px;
+}
+.hg50 {
+  height: 50px;
+}
+.hg55 {
+  height: 55px;
+}
+.hg60 {
+  height: 60px;
+}
+.hg65 {
+  height: 65px;
+}
+.hg70 {
+  height: 70px;
+}
+.hg75 {
+  height: 75px;
+}
+.hg80 {
+  height: 80px;
+}
+.paddingL0 {
+  padding-left: 0 !important;
+}
+.paddingR0 {
+  padding-right: 0 !important;
+}
+.paddingLR0 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.paddingT0 {
+  padding-top: 0 !important;
+}
+.paddingB0 {
+  padding-bottom: 0 !important;
+}
+.paddingTB0 {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+.paddingTRBL0 {
+  padding: 0 !important;
+}
+.tAlignC {
+  text-align: center !important;
+}
+.tAlignL {
+  text-align: left !important;
+}
+.tAlignR {
+  text-align: right !important;
+}
+/* -------------- page loading鍔犺浇 style ------------------------------- */
+.page-loading {
+  width: 316px;
+  height: 134px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -67px;
+  margin-left: -158px;
+  z-index: 10000;
+  background: url('../../common/img/loading-bg.png') no-repeat;
+}
+.page-loading span {
+  width: 50px;
+  height: 54px;
+  position: absolute;
+  left: 128px;
+  bottom: 17px;
+  background: url("../../common/img/loading.gif") no-repeat;
+}
+/*mask style*/
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  opacity: 0.15;
+  filter: alpha(opacity=15);
+  background-color: #666;
+}
+/*---------------------------- 瑙ｅ喅 bootstrap 浣嶇Щ闂 寮瑰嚭妗嗗姞body padding-right:17px闂----------------------------------*/
+body,
+body.modal-open {
+  overflow-y: auto !important;
+  padding-right: 0 !important;
+}
+/*-------------------------------------妯℃�佹 鍨傜洿灞呬腑----------------------------------------*/
+.modal_wrapper {
+  display: block;
+}
+.modal-dialog {
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: table;
+}
+.modal-body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  /* fa-check 鎴愬姛 銆乫a-close 澶辫触銆乫a-exclamation 榛樿鎰熷徆鍙� */
+}
+.modal-body i.fa-check,
+.modal-body i.fa-close,
+.modal-body i.fa-exclamation {
+  font-size: 26px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+.modal-body i.fa-check {
+  color: #1ab394;
+}
+.modal-body i.fa-close {
+  color: #ca4440;
+}
+.modal-body i.fa-exclamation {
+  color: #f8ac59;
+}
+.modal-body .modal-contP {
+  word-break: break-all;
+  word-wrap: break-word;
+}
+/*----------------------------------- 寮瑰嚭妗嗗眰绾ф帶鍒堕伩鍏嶄笌 UEditor 鑷甫鎺т欢灞傜骇鍐茬獊----------------------------*/
+.modal {
+  z-index: 1001;
+}
+.modal-backdrop {
+  z-index: 1000;
+}
+/*--------------------------------------- 鏍囩---------------------------------------*/
+h3.nav-title,
+h4.nav-title,
+h6.nav-title {
+  margin-bottom: 15px;
+  height: 30px;
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: 700;
+  text-indent: 10px;
+  position: relative;
+  clear: both;
+}
+h3.nav-title:before,
+h4.nav-title:before,
+h6.nav-title:before,
+h3.nav-title:after,
+h4.nav-title:after,
+h6.nav-title:after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: 0;
+}
+h3.nav-title:before,
+h4.nav-title:before,
+h6.nav-title:before {
+  top: 5px;
+  width: 5px;
+  height: 20px;
+  background: #70b9b0;
+}
+h3.nav-title:after,
+h4.nav-title:after,
+h6.nav-title:after {
+  width: 100%;
+  top: 36px;
+  border-top: 1px #ececec solid;
+}
+/*------------------------------ 鎻愪氦鎸夐挳鏉垮潡 -----------------------------------------------*/
+.sub_btn {
+  text-align: center;
+  margin: 20px auto;
+}
+.btn {
+  border-radius: 3px;
+}
+.btn-white {
+  color: inherit;
+  background: white;
+  border: 1px solid #e7eaec;
+}
+.btn-info {
+  background-color: #23c6c8;
+  border-color: #23c6c8;
+  color: #FFFFFF;
+}
+.btn-warning {
+  background-color: #f8ac59;
+  /* border-color: #f8ac59; */
+  color: #FFFFFF;
+}
+.btn-w-m {
+  min-width: 120px;
+}
+/*--------------------------------娓呴櫎娴姩------------------------------*/
+.clearfix:after {
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  font-size: 0;
+  content: ".";
+  visibility: hidden;
+}
+/*------------------------ 鏆傛棤鏁版嵁鏍峰紡-----------------------------*/
+p.no-data {
+  width: 100%;
+  text-align: center;
+  padding: 20px 0;
+  font-size: 16px;
+  color: #928585;
+}
+/*-------------------------- 娓呮鏍囩榛樿鏍峰紡-----------------------*/
+ul,
+li {
+  list-style: none;
+  text-align: left;
+  padding: 0;
+}
+/*------------------------ 璺緞瀵艰埅-----------------------------*/
+.service_route {
+  width: 100%;
+  height: 36px;
+  line-height: 35px;
+  border-bottom: 1px solid #e8e8e8;
+  color: #666666;
+}
+.service_route ol {
+  background-color: #ffffff;
+  padding: 0;
+  margin: 0;
+}
+.service_route li a {
+  font-size: 14px;
+  color: #666666;
+}
+.service_route .breadcrumb > li + li:before {
+  padding: 0;
+  content: "";
+}
+.service_route .breadcrumb > .active {
+  color: #1daed2;
+}
+.service_route .breadcrumb i {
+  margin: 0  5px;
+}
+/*-------------------------------- bottstrap 鏍峰紡淇敼-----------------------------*/
+.center-block {
+  float: none;
+  position: static;
+}
+.col-sm-12Padd0 {
+  widgth: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+.btn-link:focus,
+.btn-link:active:focus,
+.btn-link.active:focus,
+.btn-link.focus,
+.btn-link:active.focus,
+.btn-link.active.focus {
+  outline: none;
+}
+/*------------------------- title 鍏敤------------------------------*/
+.home_title {
+  margin: 50px 0 auto 0;
+  position: relative;
+}
+.home_title i {
+  position: absolute;
+  top: 67px;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #dddddd;
+}
+.home_title i:after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -1px;
+  left: 50%;
+  width: 70px;
+  height: 1px;
+  background-color: #47495e;
+  margin-left: -35px;
+}
+.home_title .col-md-4 {
+  text-align: center;
+  float: none;
+}
+.home_title .col-md-4 h3 {
+  font-size: 32px;
+  color: #333333;
+}
+.home_title .col-md-4 span {
+  font-size: 18px;
+  line-height: 45px;
+  color: #999999;
+}
+/*------------------------- form 琛ㄥ崟  鏁磋 瀵归綈-------------------------------*/
+.alignment_row .alignment_row_left {
+  float: left;
+  text-align: right;
+  padding-left: 0;
+  padding-right: 0;
+}
+.alignment_row .alignment_row_right {
+  float: left;
+  padding-right: 10px;
+}
+.form-group {
+  font-size: 13px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.form-group .control-label {
+  text-align: right;
+  color: #666666;
+  padding: 0;
+  line-height: 28px;
+  margin: 0;
+  /* width: 140px; */
+}
+.form-group .form-control {
+  height: 28px;
+  padding: 3px 12px;
+  border-color: #dbdbdb;
+  color: #666666;
+}
+.form-group textarea.form-control {
+  width: 100%;
+  height: 60px;
+  resize: none;
+}
+.form-group .form-group-left {
+  width: 140px;
+  float: left;
+}
+.form-group .form-group-right {
+  overflow: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+.form-disabled .control-label {
+  color: #a3a5a7 !important;
+}
+.form-disabled .form-control {
+  border-color: #f6f6f6 !important;
+  color: #a3a5a7 !important;
+}
+.form-disabled .form-control[disabled],
+.form-disabled .form-control[readonly],
+.form-disabled fieldset[disabled] .form-control {
+  background-color: #ffffff !important;
+}
+/*-------------------------- 瀵屾枃鏈紪杈戞 榛樿鏍峰紡---------------------------*/
+.edui-editor-iframeholder {
+  min-height: 70px;
+}
+/*------------------------------chrom input杈撳叆妗嗛粍鑹茶儗鏅幓闄�-----------------------------*/
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #333;
+}
+input[type=text]:focus,
+input[type=password]:focus,
+textarea:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff  inset;
+  -webkit-text-fill-color: #333;
+}
+/*------------------------------瀛椾綋鍥炬爣鏍峰紡--------------------------------------------------*/
+i.fa {
+  padding: 0 2px;
+  cursor: pointer;
+}

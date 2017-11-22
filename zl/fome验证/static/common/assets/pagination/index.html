@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>分页 组件</title>
+</head>
+<link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="css/pagination.css">
+<body>
+<!--     <div class="page-box">
+        <input type="hidden" name="pageInput" value="1">
+        <div class="page1"></div>
+    </div>
+    <div class="page-box">
+        <input type="hidden" name="pageInput" value="10">
+        <div class="page2"></div>
+    </div> -->
+    <!-- <div class="page-box"> -->
+        <!-- <input type="hidden" name="pageInput" value="10"> -->
+    <div class="page3"></div>
+    <!-- </div> -->
+</body>
+<script type="text/javascript" src="../jquery-1.11.0.js"></script>
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/pagination.js"></script>
+<script >
+ $(function(){
+    // $('.page1').pagination({
+    //     coping:true,
+    //     count:2,
+    // });
+    // $('.page2').pagination({
+    //     coping:true,
+    //     count:2,
+    //     homePage:'首页',
+    //     endPage:'末页',
+    //     prevContent:'上页',
+    //     nextContent:'下页'
+    // });
+    // $('.page2').pagination({
+    //     coping:false,
+    //     count:2,
+    //     homePage:'首页',
+    //     endPage:'末页',
+    //     prevContent:'上页',
+    //     nextContent:'下页'
+    // });
+    $('.page3').pagination({
+    	pagesSize:20,
+    	current:1,
+        coping:false,
+        count:2,
+        jump:true,
+        little:false,
+        position:true,
+        homePage:'首页',
+        endPage:'末页',
+        prevContent:'上页',
+        nextContent:'下页',
+        callback:function(options){
+            var now = this.getCurrent();
+            var common = this.getTotalPage();
+            $('.now').text(now);
+            $('.common').text(common);
+            //这里写ajax请求。传递到后端的参数里一定要有当前页的页码哟。
+        }
+    });
+
+});
+</script>
+</html>

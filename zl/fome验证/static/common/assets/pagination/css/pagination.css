@@ -1,0 +1,51 @@
+/* 分页插件 */
+.jump-ipt {
+    width: 38px;
+    float: initial;
+    height: 30px;
+    border-color: #ddd; 
+    border-radius: 3px;
+    margin:auto 3px;
+    /*border-left: none;*/
+    display: inline-block;
+}
+.jump-btn {
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.paging-position {
+    display: inline-block;
+    line-height: 30px;
+    margin-left: 5px;
+}
+.paging-position span {
+    font-weight: bolder;
+    margin: 0 3px;
+}
+.page3  {
+    text-align:center;
+}
+.page3 li p {
+    margin: auto;
+}
+
+.pagination-sm>li {
+    margin: auto 3px;
+    display: inline-block;
+    vertical-align: middle;
+    color:#7e7e7e;
+    cursor: pointer;
+}
+.pagination-sm>li>a, .pagination-sm>li>span {
+    padding: 4px 8px;
+    border-radius: 4px;
+    color:#7e7e7e;
+}
+.pagination-sm>li>a.active, .pagination-sm>li>span.active {
+    color: #fff;
+    background-color: #4381e6;
+}
+.pagination-sm>li input {
+    margin-bottom:0;
+    color:#7e7e7e;
+}
