@@ -21,6 +21,38 @@
         label input[type="checkbox"]:checked + span{
             background-position:0 -21px
         }
+
+        /**/
+        input[type="radio"] {
+            margin: 3px 3px 0px 5px;
+            display: none;
+        }
+        label {
+            padding-left: 20px;
+            cursor: pointer;
+            /*background: url(bg.gif) no-repeat left top;*/
+            background: red;
+        }
+        label.checked {
+            /*background-position: left bottom;*/
+            background: green;
+        }
+
+
+        /*.input_checkboxs{cursor:pointer;}*/
+
+        /*.input_checkboxs input[type="checkbox"]{*/
+        /*appearance: none;*/
+        /*-webkit-appearance: none;*/
+        /*outline: none;*/
+        /*display:none;*/
+        /*}*/
+        /*.input_checkboxs input[type="checkbox"]  i{*/
+        /*color: #999999;*/
+        /*}*/
+        /*.input_checkboxs input[type="checkbox"]:checked ~ i{*/
+        /*color: #2493c4;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -29,5 +61,13 @@
 <label><input type="checkbox"><span></span></label>
 <label><input type="checkbox"><span></span></label>
 <label><input type="checkbox"><span></span></label>
+
+
+<div>
+    <input type="radio" id="nba" checked="checked" name="sport" value="nba">
+    <label name="nba" class="checked" for="nba">NBA</label>
+    <input type="radio" id="cba" name="sport" value="cba">
+    <label name="cba" for="cba">CBA</label>
+</div>
 </body>
 </html>
