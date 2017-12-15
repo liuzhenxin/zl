@@ -3,23 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="jquery.js"></script>
+
 </head>
 <body>
 <table id="example" border="1" width="100%">
-    <tr>
-        <td>12</td>
-        <td>121</td>
-        <td>122</td>
-        <td>dr</td>
-        <td>fddfs</td>
+    <thead>
+    <tr class="table_head">
+        <th rowspan="2">类别</th>
+        <th rowspan="2">一级指标</th>
+        <th rowspan="1" colspan="2">二级指标</th>
+        <th rowspan="2">三级指标</th>
+        <th rowspan="2">积分计算类型</th>
+        <th rowspan="2">计算分值</th>
+        <th rowspan="2">基础分值</th>
+        <th rowspan="2">积分上限</th>
+        <th rowspan="2">积分计算规则</th>
+        <th rowspan="2">数据交换</th>
     </tr>
     <tr>
-        <td>12</td>
-        <td>121</td>
-        <td>123</td>
-        <td>dsdr</td>
-        <td>fddddfs</td>
+        <th rowspan="1">指标说明</th>
+        <th rowspan="1">最高分值</th>
     </tr>
+    </thead>
+    <tbody id="tbody">
+    <tr>
+        <td class="rules_box rules_td1" rowspan="1" id="tb__0_0"><span class="word">加分项</span></td>
+        <td class="rules_box rules_td2" rowspan="1" id="tb__0_1"><span class="word">大三大打撒大撒</span></td>
+        <td class="rules_box rules_td3" rowspan="1" id="tb__0_2"><span class="word">但更反感的风格的规定</span></td>
+        <td id="tb__0_3">10</td>
+        <td class="rules_box rules_td4" rowspan="1" id="tb__0_4"><span class="word">2</span></td>
+        <td rowspan="1" id="tb__0_5">无</td>
+        <td rowspan="1" id="tb__0_6">风格的规定</td>
+        <td rowspan="1" id="tb__0_7">风格的规定</td>
+        <td rowspan="1" id="tb__0_8">风格的规定</td>
+        <td rowspan="1" id="tb__0_9">风格的规定</td>
+        <td rowspan="1" id="tb__0_10">2222</td>
+    </tr><tr>
+        <td class="rules_box rules_td1" rowspan="1" id="tb__1_0"><span class="word">加分项</span></td>
+        <td class="rules_box rules_td2" rowspan="1" id="tb__1_1"><span class="word">大三大打撒大撒</span></td>
+        <td class="rules_box rules_td3" rowspan="1" id="tb__1_2"><span class="word">但更反感的风格的规定</span></td>
+        <td id="tb__1_3">10</td>
+        <td class="rules_box rules_td4" rowspan="1" id="tb__1_4"><span class="word">2</span></td>
+        <td rowspan="1" id="tb__1_5">无</td>
+        <td rowspan="1" id="tb__1_6">风格的规定</td>
+        <td rowspan="1" id="tb__1_7">风格的规定</td>
+        <td rowspan="1" id="tb__1_8">风格的规定</td>
+        <td rowspan="1" id="tb__1_9">风格的规定</td>
+        <td rowspan="1" id="tb__1_10">2222</td>
+    </tr>
+    </tbody>
 </table>
 </body>
 <script>
@@ -73,6 +106,6 @@
             }
         }
     }
-    uniteTab('example',1);  //id   合并的前几列
+    uniteTab('tbody',3);  //id   合并的前几列
 </script>
 </html>
