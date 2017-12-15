@@ -37,7 +37,24 @@
             }
         });
     };
-
+    /**
+     * @param textArea dom节点输入框
+     *
+     * @param numItem  dom节点限制字数显示
+     *
+     *使用方法:myFrame.statInputNum(节点输入框, 节点限制字数显示);
+     */
+    myFrame.statInputNum=function (textArea, numItem){
+        var max = numItem.text(),//限制最大字数,如:50
+            curLength;
+        textArea[0].setAttribute("maxlength", max);
+        curLength = textArea.val().length;
+        numItem.text(max - curLength);
+        textArea.on('input propertychange', function () {
+            var _value = $(this).val().replace(/\n/gi, "");
+            numItem.text(max - _value.length);
+        });
+    };
     /*
     * 大小写转换
     *  type 1:首字母大写 2：首页母小写 3：大小写转换 4：全部大写 5：全部小写
@@ -361,6 +378,24 @@
             array[this.name] = this.value;
         });
         return array;
+    };
+    /*
+    *   表单security.js RSA 加密
+    *   @param  {[type]} data   --->  {modulus: "86f07785f0e5465614b0c1accc218ecec6dddd033d12fb0e67…790ff875292dbb4ca54e1c304dd3f4ac4f1947a8c7a62946d", exponent: "10001"}
+    *
+    *    @param  {[type]} el 元素
+    *
+    *   多个输入框用逗号隔开
+    *    使用:myFrame.security(ajax成功返回的值,[input元素,input元素,input元素])
+    *
+    * */
+    myFrame.security=function (data,el) {
+        var modulus = data.modulus,
+            exponent = data.exponent;
+        var publicKey = RSAUtils.getKeyPair(exponent, '', modulus);
+        for(var i=0;i<el.length;i++){
+            $(el[i]).val(RSAUtils.encryptedString(publicKey, $(el[i]).val().split("").reverse().join("")));//进行反序
+        }
     };
     /**
      * 获取单选或者多选的值
@@ -1118,6 +1153,36 @@
         }
         return "剩余时间" + d + "天 " + h + "小时 " + m + " 分钟" + s + " 秒";
     };
+    /*
+    * 解决ie8
+    *
+    * *
+        function GetRTime(){
+        var time_txt2='2016-09-10 12:10:30';//从阅卷查看页面传过来的
+        var aa=time_txt2.replace("-","/");
+        var EndTime=  new Date(aa);
+        var NowTime = new Date();
+        var EndTime1= EndTime.getTime();
+        var NowTime1 = NowTime.getTime();
+        var t =parseFloat(EndTime1) - parseFloat(NowTime1);
+        var d=0;
+        var h=0;
+        var m=0;
+        var s=0;
+        if(t>=0){
+            d=Math.floor(t/1000/60/60/24);
+            h=Math.floor(t/1000/60/60%24);
+            m=Math.floor(t/1000/60%60);
+            s=Math.floor(t/1000%60);
+            document.getElementById("time").innerHTML="&nbsp;"+d +"天"+h + "时"+m + "分"+s + "秒";
+        }else{
+            document.getElementById("time").innerHTML="剩余阅卷时间已过期";
+        }
+
+    }
+    setInterval(GetRTime,1000);
+
+    */
     /**
      * @desc   格式化${startTime}距现在的已过时间
      * @param  {Date} startTime
@@ -1459,7 +1524,7 @@
         return ratio;
     };
 
-    // wwb 2017-11-21 处理win10浏览器放大
+    //  处理win10浏览器放大
     myFrame.win10zoom = function(options){
         var option = $.extend({}, {
             //interval : 1000,// 每隔1s检测一次
@@ -1467,7 +1532,51 @@
 
         WebpageZoomDetect.start(option);
     };
+    /*-------------------Cookie---------------------------------------------*/
+    /**
+     *
+     * @desc  设置Cookie
+     * @param {String} name
+     * @param {String} value
+     * @param {Number} days
+     */
+    myFrame.setCookie=function (name, value, days){
+        var date = new Date();
+        date.setDate(date.getDate() + days);
+        document.cookie = name + '=' + value + ';expires=' + date;
+    };
+    /**
+     *
+     * @desc 根据name读取cookie
+     * @param  {String} name
+     * @return {String}
+     */
+    myFrame.getCookie=function (name) {
 
+        var arr = document.cookie.replace(/\s/g, "").split(';');
+
+        for (var i = 0; i < arr.length; i++) {
+
+            var tempArr = arr[i].split('=');
+
+            if (tempArr[0] == name) {
+
+                return decodeURIComponent(tempArr[1]);
+            }
+        }
+
+        return '';
+    };
+    /**
+     *
+     * @desc 根据name删除cookie
+     * @param  {String} name
+     */
+    myFrame.removeCookie=function (name) {
+
+        // 设置已过期，系统会立刻删除cookie
+        myFrame.setCookie(name, '1', -1);
+    };
     /*-------------------获取浏览器类型和版本-----------------------------------*/
 
     /**
