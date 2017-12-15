@@ -147,6 +147,7 @@ var ecDo = {
     //检测字符串
     //checkType('165226226326','phone')
     //false
+    //
     checkType: function (str, type) {
         switch (type) {
             case 'email':
@@ -172,6 +173,24 @@ var ecDo = {
     //检测密码强度
     //checkPwd('12asdASAD')
     //3(强度等级为3)
+    /*
+    *   检测密码强度
+    $('#live').on("keyup", function () {   //
+    strong($(this));
+});
+function strong($that) {
+    var size = myFrame.checkPwd($that.val()),
+        dom = $(".Password_strength span");
+    dom.removeClass('active');
+    console.log(size);
+    if (size <= 0) {
+        dom.eq(0).addClass('active').prevAll().removeClass("active");
+    }
+    if (size > 0) {
+        dom.eq(size - 1).addClass('active').prevAll().removeClass("active");
+    }
+}
+    * */
     checkPwd: function (str) {
         var nowLv = 0;
         if (str.length < 6) {
@@ -206,7 +225,52 @@ var ecDo = {
     randomNumber: function (count) {
         return Math.random().toString(count).substring(2);
     },
+    //随机返回一个范围的数字
+    randomNumberA: function (n1, n2) {
+        //randomNumber(5,10)
+        //返回5-10的随机整数，包括5，10
+        if (arguments.length === 2) {
+            return Math.round(n1 + Math.random() * (n2 - n1));
+        }
+        //randomNumber(10)
+        //返回0-10的随机整数，包括0，10
+        else if (arguments.length === 1) {
+            return Math.round(Math.random() * n1)
+        }
+        //randomNumber()
+        //返回0-255的随机整数，包括0，255
+        else {
+            return Math.round(Math.random() * 255)
+        }
+    },
+    //随进产生颜色
+    randomColor: function () {
+        //randomNumber是下面定义的函数
+        //写法1
+        //return 'rgb(' + this.randomNumber(255) + ',' + this.randomNumber(255) + ',' + this.randomNumber(255) + ')';
 
+        //写法2
+        return '#' + Math.random().toString(16).substring(2).substr(0, 6);
+
+        //写法3
+        //var color='#',_index=this.randomNumber(15);
+        //for(var i=0;i<6;i++){
+        //color+='0123456789abcdef'[_index];
+        //}
+        //return color;
+    },
+
+    //随机生成指定长度的字符串
+    randomString: function (n) { //console.log(ecDo.randomString(10));
+        var str = 'abcdefghijklmnopqrstuvwxyz9876543210';
+        var tmp = '',
+            i = 0,
+            l = str.length;
+        for (i = 0; i < n; i++) {
+            tmp += str.charAt(Math.floor(Math.random() * l));
+        }
+        return tmp;
+    },
     //检查字符串的个数
     //var strTest='sad44654blog5a1sd67as9dablog4s5d16zxc4sdweasjkblogwqepaskdkblogahseiuadbhjcibloguyeajzxkcabloguyiwezxc967'
     //countStr(strTest,'blog')
@@ -408,51 +472,7 @@ var ecDo = {
         }
         return "剩余时间" + d + "天 " + h + "小时 " + m + " 分钟" + s + " 秒";
     },
-    //随进产生颜色
-    randomColor: function () {
-        //randomNumber是下面定义的函数
-        //写法1
-        //return 'rgb(' + this.randomNumber(255) + ',' + this.randomNumber(255) + ',' + this.randomNumber(255) + ')';
 
-        //写法2
-        return '#' + Math.random().toString(16).substring(2).substr(0, 6);
-
-        //写法3
-        //var color='#',_index=this.randomNumber(15);
-        //for(var i=0;i<6;i++){
-        //color+='0123456789abcdef'[_index];
-        //}
-        //return color;
-    },
-    //随机返回一个范围的数字
-    randomNumber: function (n1, n2) {
-        //randomNumber(5,10)
-        //返回5-10的随机整数，包括5，10
-        if (arguments.length === 2) {
-            return Math.round(n1 + Math.random() * (n2 - n1));
-        }
-        //randomNumber(10)
-        //返回0-10的随机整数，包括0，10
-        else if (arguments.length === 1) {
-            return Math.round(Math.random() * n1)
-        }
-        //randomNumber()
-        //返回0-255的随机整数，包括0，255
-        else {
-            return Math.round(Math.random() * 255)
-        }
-    },
-    //随机生成指定长度的字符串
-    randomString: function (n) { //console.log(ecDo.randomString(10));
-        var str = 'abcdefghijklmnopqrstuvwxyz9876543210';
-        var tmp = '',
-            i = 0,
-            l = str.length;
-        for (i = 0; i < n; i++) {
-            tmp += str.charAt(Math.floor(Math.random() * l));
-        }
-        return tmp;
-    },
     //不借助临时变量，进行两个整数的交换
     //主要是利用 + – 去进行运算，类似 a = a + ( b – a) 实际上等同于最后 的 a = b;
     swap: function (a, b) {  //console.log(ecDo.swap(4,6));

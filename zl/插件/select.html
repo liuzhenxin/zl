@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src=""></script>
+</head>
+<body>
+<form action="" id="forma">
+    First name: <input type="text" name="First
+    Name" value="" /><br />
+    Last name: <input type="text" name="LastName" value="" /><br />
+    <button type="button" id="btn">dsf</button>
+</form>
+</body>
+<script>
+
+    $.fn.extend({
+
+    });
+    $(function () {
+        var json={FirstName: "第三方第三方", LastName: "12313"};
+        $('#forma').setForm(json);
+        $('#btn').click(function () {
+
+//            var array = {};
+//            //var t = $('#'+formId).serializeArray();
+//            var t = $('#forma').serializeArray();
+//            $.each(t, function() {
+//                array[this.name] = this.value;
+//            });
+//            console.log(array);
+        });
+
+    })
+</script>
+</html>
