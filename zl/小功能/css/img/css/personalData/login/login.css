@@ -1,0 +1,261 @@
+@charset "UTF-8";
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+/*头部菜单*/
+/**/
+/*办事指南*/
+/*页面背景图*/
+/*政策法规*/
+/**/
+/*系统配置*/
+/*模拟估分*/
+/*用户注册*/
+/*受理查询*/
+/*办事指南*/
+/*栏目服务*/
+/*个人中心*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+.border_bs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.border_bd {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3); }
+
+.form-control {
+  padding: 20px 12px; }
+
+label {
+  font-weight: 500;
+  margin-bottom: 10px; }
+
+/*验证*/
+#drag {
+  height: 42px;
+  line-height: 42px; }
+  #drag .handler {
+    height: 39px; }
+  #drag .drag_bg {
+    height: 39px; }
+  #drag .handler_bg {
+    height: 39px;
+    background-position: 10px 10px; }
+  #drag .drag_text {
+    width: 100%; }
+
+.textIndent {
+  text-indent: 2em; }
+
+.marginTop-10 {
+  margin-top: 10px; }
+
+.login_box {
+  width: 100%;
+  background-image: url("../../../img/home_bg.png");
+  background-size: 100% 100%; }
+  .login_box .container {
+    height: 100%; }
+    .login_box .container .top {
+      height: 100%; }
+    .login_box .container .pull-left {
+      width: 35%;
+      height: 600px;
+      position: absolute;
+      top: 50%;
+      margin-top: -300px; }
+      @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+        .login_box .container .pull-left {
+          width: 47%;
+          height: 550px;
+          margin-top: -275px; } }
+    .login_box .container .left_top {
+      height: 300px;
+      position: relative; }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .login_box .container .left_top {
+          height: 270px; } }
+    .login_box .container .login_box_l {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%); }
+      .login_box .container .login_box_l h2 {
+        color: white;
+        font-size: 48px;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 5px #000; }
+      .login_box .container .login_box_l h3 {
+        color: white;
+        font-size: 30px;
+        font-size: 1.875rem;
+        text-shadow: 2px 2px 5px #000; }
+    .login_box .container .login_box_r {
+      width: 544px;
+      height: 300px;
+      position: relative; }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .login_box .container .login_box_r {
+          width: 400px;
+          height: 200px; } }
+    .login_box .container .login_bgr {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      height: 300px;
+      transform: translate(0, -50%); }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .login_box .container .login_bgr {
+          height: 200px; } }
+    .login_box .container .pull-right {
+      width: 33%;
+      height: 100%;
+      position: relative; }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .login_box .container .pull-right {
+          width: 34%; } }
+    .login_box .container .login_right {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      padding-bottom: 20px;
+      border: 1px solid #e5e4e4;
+      background: #fff;
+      border-radius: 6px;
+      transform: translateY(-50%);
+      overflow: hidden; }
+      .login_box .container .login_right button.btn {
+        width: 100%;
+        height: 42px; }
+
+/*tab*/
+.tab .tab_item_active {
+  width: 50%;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  text-align: center; }
+.tab .tab_item {
+  width: 50%;
+  float: left;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #e5e4e4;
+  border-top: none;
+  box-sizing: border-box;
+  background: -webkit-linear-gradient(#ffffff, #eaf2fa);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#ffffff, #eaf2fa);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#ffffff, #eaf2fa);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(#ffffff, #eaf2fa);
+  /* 标准的语法 */ }
+.tab li:hover {
+  cursor: pointer;
+  border: 1px solid #e5e4e4;
+  border-top: none;
+  box-sizing: border-box;
+  background: -webkit-linear-gradient(#ffffff, #eaf2fa);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(#ffffff, #eaf2fa);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(#ffffff, #eaf2fa);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(#ffffff, #eaf2fa);
+  /* 标准的语法 */ }
+
+/*忘记密码*/
+.onpure_title {
+  text-align: center; }
+
+/*伪元素实现*/
+.onpure_title:before {
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  right: 10px;
+  content: "";
+  width: 15%;
+  height: 0px;
+  border-top: 1px solid #e5e4e4; }
+
+.onpure_title:after {
+  display: inline-block;
+  position: relative;
+  top: -7px;
+  left: 10px;
+  content: " ";
+  width: 15%;
+  color: #fff;
+  height: 0px;
+  border-top: 1px solid #e5e4e4; }
+
+/*------------------------------chrom input输入框黄色背景去除-----------------------------*/
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #666; }
+
+/*获取焦点时*/
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+textarea:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff  inset; }
+  input[type=text]:focus::-webkit-input-placeholder,
+  input[type=password]:focus::-webkit-input-placeholder,
+  input[type=email]:focus::-webkit-input-placeholder,
+  textarea:focus::-webkit-input-placeholder {
+    color: transparent; }
+  input[type=text]:focus::-moz-placeholder,
+  input[type=password]:focus::-moz-placeholder,
+  input[type=email]:focus::-moz-placeholder,
+  textarea:focus::-moz-placeholder {
+    color: transparent; }
+
+/*# sourceMappingURL=login.css.map */

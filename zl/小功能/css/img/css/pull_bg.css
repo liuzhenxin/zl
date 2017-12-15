@@ -1,0 +1,86 @@
+@charset "UTF-8";
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+/*头部菜单*/
+/**/
+/*办事指南*/
+/*页面背景图*/
+/*政策法规*/
+/**/
+/*系统配置*/
+/*模拟估分*/
+/*用户注册*/
+/*受理查询*/
+/*办事指南*/
+/*栏目服务*/
+/*个人中心*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+.ban_bg {
+  width: 100%;
+  height: 200px;
+  text-align: center;
+  line-height: 200px;
+  font-size: 3.5rem;
+  color: #fff;
+  text-shadow: 2px 3px 4px #464343;
+  background-size: 100% 100%; }
+
+/*政策法规*/
+.policy_list_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*栏目服务*/
+.Column_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*系统配置*/
+.eidtPhone_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*模拟估分*/
+.Simulation_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*用户注册*/
+.register_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*受理查询*/
+.Acceptance_query_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*办事指南*/
+.Service_guide_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*个人中心*/
+.eidtPhone_bg {
+  background: url("../img/person/ban_1.png") no-repeat; }
+
+/*# sourceMappingURL=pull_bg.css.map */

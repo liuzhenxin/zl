@@ -116,7 +116,8 @@
         }
     };
     document.getElementById("show").innerText = "今天是：" + timeFormat.getWeekFormat() + "\u000a\u000a";
+    document.getElementById("show").innerText = "今天是：" + timeFormat.getWeekFormat();
     document.getElementById("show").innerText += "现在是：" + timeFormat.getFullTimeFormat("second") + "\u000a\u000a";
-    document.getElementById("show").innerText += "2016/8/26 2:28:24 是：" + timeFormat.countdownUpdate("1472149704000") + "\u000a\u000a";
+    document.getElementById("show").innerText += "2017/8/26 2:28:24 是：" + timeFormat.countdownUpdate("1472149704000") + "\u000a\u000a";
 </script>
 </html>

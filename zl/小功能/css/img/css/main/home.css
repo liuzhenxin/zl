@@ -1,0 +1,278 @@
+@charset "UTF-8";
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+/*头部菜单*/
+/**/
+/*办事指南*/
+/*页面背景图*/
+/*政策法规*/
+/**/
+/*系统配置*/
+/*模拟估分*/
+/*用户注册*/
+/*受理查询*/
+/*办事指南*/
+/*栏目服务*/
+/*个人中心*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+@keyframes myfirst {
+  0% {
+    bottom: -20px;
+    left: 0; }
+  100% {
+    bottom: 0;
+    left: 0; } }
+p {
+  margin: 0; }
+
+.border_bs {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3); }
+
+.border_bd {
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3); }
+
+.textIndent {
+  text-indent: 2em; }
+
+.marginTop-10 {
+  margin-top: 10px; }
+
+.home_box {
+  width: 100%;
+  height: 851px;
+  background-image: url("../../img/home_bg1.png");
+  background-size: 100% 100%; }
+  .home_box .container .pull-left {
+    height: 400px;
+    width: 65%;
+    position: relative; }
+  .home_box .container .home_box_l {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); }
+    .home_box .container .home_box_l h2 {
+      color: white;
+      font-size: 48px;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px #000; }
+    .home_box .container .home_box_l h3 {
+      color: white;
+      font-size: 30px;
+      font-size: 1.875rem;
+      text-shadow: 2px 2px 5px #000; }
+  .home_box .container .pull-right {
+    width: 35%;
+    height: 400px;
+    position: relative; }
+    @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+      .home_box .container .pull-right {
+        height: 140px;
+        width: 323px; } }
+    @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+      .home_box .container .pull-right {
+        height: 140px;
+        width: 323px; } }
+  .home_box .container .home_box_r {
+    width: 100%;
+    height: 400px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%); }
+  .home_box .container #main {
+    width: 100%;
+    height: 100%; }
+  .home_box .bottom {
+    width: 100%;
+    background: #0a5398;
+    margin-top: 0; }
+    .home_box .bottom .bottom_left1 {
+      width: 40%;
+      height: 100%; }
+    .home_box .bottom .bottom_left2 {
+      width: 35%;
+      height: 100%; }
+    .home_box .bottom .bottom_left3 {
+      width: 25%;
+      height: 100%;
+      background: #0e79df; }
+      .home_box .bottom .bottom_left3 a {
+        color: #fff; }
+    .home_box .bottom .bottom_box {
+      width: 90%;
+      margin: 0 auto;
+      color: white; }
+      .home_box .bottom .bottom_box .inners {
+        height: 60px; }
+      .home_box .bottom .bottom_box .bottom-left {
+        float: left; }
+      .home_box .bottom .bottom_box .bottom-right {
+        float: left;
+        margin-left: 6px; }
+      .home_box .bottom .bottom_box .p_hover {
+        position: absolute;
+        width: 523px;
+        top: 0;
+        left: 0;
+        background: rgba(96, 98, 114, 0.5);
+        color: #fff;
+        padding-left: 5px;
+        transform: translate(0, -22px);
+        transition: all 0.5s ease-in-out; }
+        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+          .home_box .bottom .bottom_box .p_hover {
+            width: 368px; } }
+        @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+          .home_box .bottom .bottom_box .p_hover {
+            width: 368px; } }
+      .home_box .bottom .bottom_box .bottom_img {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        /*width: 450px;*/
+        width: 523px;
+        height: 275px; }
+        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+          .home_box .bottom .bottom_box .bottom_img {
+            height: 155px;
+            width: 368px; } }
+        @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+          .home_box .bottom .bottom_box .bottom_img {
+            height: 155px;
+            width: 368px; } }
+        .home_box .bottom .bottom_box .bottom_img .ck-slide-wrapper {
+          height: 100%; }
+        .home_box .bottom .bottom_box .bottom_img img {
+          height: 275px;
+          width: 523px; }
+          @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+            .home_box .bottom .bottom_box .bottom_img img {
+              height: 155px;
+              width: 368px; } }
+          @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+            .home_box .bottom .bottom_box .bottom_img img {
+              height: 155px;
+              width: 368px; } }
+        .home_box .bottom .bottom_box .bottom_img:hover .p_hover {
+          cursor: pointer;
+          transform: translate(0, 0px);
+          transition: all 0.5s ease-in-out; }
+    .home_box .bottom .bottom_left2 .bottom_box .inners {
+      height: 75px;
+      display: table;
+      /*border-bottom: 1px dashed $border;*/ }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .home_box .bottom .bottom_left2 .bottom_box .inners {
+          height: 44px; } }
+      @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+        .home_box .bottom .bottom_left2 .bottom_box .inners {
+          height: 44px; } }
+      .home_box .bottom .bottom_left2 .bottom_box .inners .inner {
+        display: table-cell;
+        vertical-align: middle; }
+      .home_box .bottom .bottom_left2 .bottom_box .inners .bottom-left {
+        line-height: 85px; }
+      .home_box .bottom .bottom_left2 .bottom_box .inners .bottom-right {
+        margin: 12px 0 0;
+        margin-left: 6px; }
+      .home_box .bottom .bottom_left2 .bottom_box .inners:last-child {
+        border-bottom: none; }
+    .home_box .bottom .bottom_left3 .bottom_box .inners {
+      height: 120px; }
+      @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+        .home_box .bottom .bottom_left3 .bottom_box .inners {
+          height: 77px; } }
+      @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+        .home_box .bottom .bottom_left3 .bottom_box .inners {
+          height: 77px; } }
+      .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-left {
+        line-height: 120px; }
+        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+          .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-left {
+            line-height: 77px;
+            margin-right: 5px; } }
+        @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+          .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-left {
+            line-height: 77px;
+            margin-right: 5px; } }
+      .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-right {
+        margin: 40px 0 0;
+        margin-left: 6px; }
+        @media only screen and (min-width: 1024px) and (max-width: 1366px) {
+          .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-right {
+            margin: 22px 0 0; } }
+        @media only screen and (min-width: 1370px) and (max-width: 1600px) {
+          .home_box .bottom .bottom_left3 .bottom_box .inners .bottom-right {
+            margin: 22px 0 0; } }
+
+@media screen and (max-width: 1600px) {
+  .home_box {
+    height: 670px; }
+    .home_box .container .pull-left, .home_box .container .pull-right {
+      height: 260px; }
+    .home_box .container .home_box_r {
+      height: 260px; }
+    .home_box .bottom {
+      margin-top: 50px; } }
+@media screen and (max-width: 1366px) {
+  .home_box {
+    height: 559px; }
+    .home_box .container .pull-left, .home_box .container .pull-right {
+      height: 230px; }
+    .home_box .container .home_box_r {
+      height: 200px; }
+    .home_box .bottom {
+      margin-top: 50px; } }
+@media screen and (min-height: 1080px) and (max-height: 1200px) {
+  .home_box {
+    height: 971px; }
+    .home_box .container .top .pull-left, .home_box .container .top .pull-right {
+      height: 500px; }
+    .home_box .container .home_box_r {
+      height: 320px; } }
+
+/*# sourceMappingURL=home.css.map */

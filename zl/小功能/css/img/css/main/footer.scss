@@ -1,0 +1,12 @@
+@import "../personalData/color";
+@import "../personalData/pulic";
+@charset "utf-8";
+.busi_footer_box{
+  height: auto;
+  width: 100%;
+  background: #fff;
+  padding: 20px 0 5px;
+  .pull-left{
+    margin-right: 10px;
+  }
+}

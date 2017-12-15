@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" href="Simulation.css">
+<link rel="stylesheet" href="open.css">
+<style type="text/css">
+
+    .tables1 td,
+    .tables th {
+        text-align: center;
+    }
+    .Simulation .tables {
+        width: 96%;
+    }
+    .Simulation .tables .td_input {
+        width: 80%;
+    }
+    .Simulation .tables2{
+        border-top: none;
+        border-bottom: none;
+    }
+    .Simulation .jftjd_head {
+        line-height: 50px;
+        border-bottom: 1px solid #ccc;
+        padding-left: 1%;
+    }
+    .Simulation .tables td, .Simulation .tables th {
+        border-right: 1px solid #e5e4e4;
+        height: auto;
+        line-height: 50px;
+        padding-left: 0;
+    }
+    .Simulation .tables .paddingL-10{
+        line-height: initial;
+        padding: 10px 10px 10px 20px;
+    }
+    .tables td{
+        color: #666;
+    }
+    .jfx{
+        width: 30%;
+        text-align: center;
+        margin-left: 35%;
+    }
+    @media screen and (min-width: 1024px)and (max-width: 1366px) {
+        .jfx{
+            width: 40%;
+            margin-left: 30%;
+        }
+    }
+    .Simulation .jftjd_head {
+        text-align: center;
+        font-weight: 700;
+    }
+    .btn-box {
+        text-align: center;
+    }
+    .Simulation .border .btn-primary {
+        display: inline-block;
+    }
+</style>
+<style media=print>
+    .Noprint{display:none;}
+    .PageNext{page-break-after: always;}
+</style>
+<style media=print>
+    .Noprint{display:none;}
+    .PageNext{page-break-after: always;}
+</style>
+<div class="col-md-12 Simulation">
+    <div class="border clearfix container_h" id="div1">
+        <div class="color-606060 jftjd_head">成都市居住证积分指标提交单</div>
+        <form class="" id="formTable" action="${pageContext.request.contextPath}/onlineBooking/saveTable" name="formTable">
+            <input type="hidden" name="onlineBooking.id" value="${onlineBooking.id}">
+            <input type="hidden" name="onlineBooking.name" value="${onlineBooking.name}">
+            <input type="hidden" name="onlineBooking.liveCard" value="${onlineBooking.liveCard}">
+            <input type="hidden" name="onlineBooking.phone" value="${onlineBooking.phone}">
+            <input type="hidden" name="onlineBooking.orderNo" value="${onlineBooking.orderNo}">
+            <input type="hidden" name="onlineBooking.userId" value="${onlineBooking.userId}">
+            <input type="hidden" name="onlineBooking.area" value="${onlineBooking.area}">
+            <input type="hidden" name="onlineBooking.bookingTime" value="${onlineBooking.bookingTime}">
+            <input type="hidden" name="onlineBooking.status" value="${onlineBooking.status}">
+            <input type="hidden" name="onlineBooking.createTime" value="${onlineBooking.createTime}">
+            <input type="hidden" name="onlineBooking.bookingDate" value="${onlineBooking.bookingDate}">
+            <input type="hidden" name="onlineBooking.qsxId" value="${onlineBooking.qsxId}">
+            <!--startprint-->
+            <table class="tables tables1" style="margin-top: 10px">
+                <tr>
+                    <td>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</td>
+                    <td><input type="text" placeholder="请填写" class="td_input" name="temp.name" value="${temp.name}" readonly="readonly"></td>
+                    <td>年&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;龄</td>
+                    <td><input type="text" class="td_input" placeholder="请填写" name="temp.age" value="${temp.age}" readonly="readonly"></td>
+                </tr>
+                <tr>
+                    <td>电话号码</td>
+                    <td><input type="text" placeholder="请填写" class="td_input" name="temp.phone" value="${temp.phone}"></td>
+                    <td>居&nbsp;&nbsp;住&nbsp;&nbsp;证</td>
+                    <td><input type="text" placeholder="请填写" class="td_input" name="temp.liveCard" value="${temp.liveCard}"></td>
+                </tr>
+                <tr>
+                    <td>身&nbsp;&nbsp;份&nbsp;&nbsp;证</td>
+                    <td colspan="3"><input type="text" placeholder="请填写" class="td_input" name="temp.idCard" value="${temp.idCard}"></td>
+                </tr>
+
+            </table>
+            <table class="tables tables2">
+                <thead>
+                <tr>
+                    <th class="text-center" style=" width: 10%;">类型</th>
+                    <th class="text-center" style=" width: 10%;">序号</th>
+                    <th class="text-center" style=" width: 60%;" colspan="2">指标项</th>
+                    <th class="text-center" style=" width: 20%;">是否满足</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td rowspan="17"><div class="jfx">
+                        加分项
+                    </div></td>
+                    <td class="text-center">1</td>
+                    <td colspan="2" class="paddingL-10">连续缴纳城镇职工社会保险六月以上</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addOne" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addOne" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                        <!-- <i class="iconfont icon-duoxuan2"></i>
+                         <i class="iconfont icon-duoxuan1"></i>-->
+                        <!--   <span class="radio_box">
+
+                          <input type="radio" id="radio_1" name="radio" checked>
+
+                          <label for="radio_1"></label>
+
+                         <em>选项1</em>
+
+                </span>
+
+
+
+       <span class="radio_box">
+
+                          <input type="radio" id="radio_2" name="radio">
+
+                          <label for="radio_2"></label>
+
+                          <em>选项2</em>
+
+                </span>-->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">2</td>
+                    <td colspan="2" class="paddingL-10">在本市合法未定居住</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addTwo" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addTwo" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">3</td>
+                    <td colspan="2" class="paddingL-10">不符合本市人才引进条件但取得国民教育系列及教育部认可的大学专科（含高职）以上学历</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addThree"  value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addThree"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">4</td>
+                    <td colspan="2" class="paddingL-10">就业所在区域属于东进区域、南拓区域、北改区域</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addFour" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addFour"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">5</td>
+                    <td colspan="2" class="paddingL-10">居住地由锦江区、育羊区、金牛区、武侯区、成华区以及成都高新南区 和西区转移到本市其他行政区域；就业地和居住地均转移到本市其他行 政区域。</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addFive"  value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addFive"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">6</td>
+                    <td colspan="2" class="paddingL-10">属于紧缺工种</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addSix"value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addSix" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="text-center">7</td>
+                    <td rowspan="3" class="text-center"><div style="width: 40%; margin-left: 30%;">个人贡献</div></td>
+                    <td class="paddingL-10">获得国家、省、市政府各级党委、政府表彰，包括：劳 动模范（含享受劳模待遇的）；道德模范；见义勇为模 范、工匠等</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenOne" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenOne" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingL-10">在本市依法缴纳个人所得税，上一年度纳税额达到1万元</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenTwo" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenTwo" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingL-10">在本市参与社会服务，在参加志愿者服务、慈善捐賠、无 偿献血等方面做出贡献</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenThree" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addSevenThree" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td rowspan="3" class="text-center">8</td>
+                    <td rowspan="3" class="text-center"><div style="width: 40%; margin-left: 30%;">创新创业</div></td>
+                    <td class="paddingL-10">参加创新创业大赛获得国家、省或本市市级奖项</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightOne"value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightOne" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingL-10">在本市创业吸纳5人以上就业</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightTwo" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightTwo" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="paddingL-10">在本市科技企业孵化器及众创空间投资或创业</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightThree" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addEightThree"value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">9</td>
+                    <td colspan="2" class="paddingL-10">45周岁以下</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.addNine" value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.addNine" value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <table class="tables">
+                <thead>
+                <tr>
+                    <th class="text-center" style=" width: 10%;">类型</th>
+                    <th class="text-center" style=" width: 10%;">序号</th>
+                    <th class="text-center" style=" width: 60%;" colspan="2">指标项</th>
+                    <th class="text-center" style=" width: 20%;">是否满足</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td rowspan="3" class="text-center"><div class="jfx">
+                        减分项
+                    </div></td>
+                    <td class="text-center">1</td>
+                    <td colspan="2" class="paddingL-10">近3年在个人信用、工商税务等方面存在不良记录</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.delOne"  value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.delOne"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">2</td>
+                    <td colspan="2" class="paddingL-10">违反有关法律法规，因刑事犯罪被处罚的、参加国家禁止的组织或活动 ,被行政执法机关处以行政拘留、强制戒毒</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.delTwo"  value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.delTwo"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="text-center">3</td>
+                    <td colspan="2" class="paddingL-10">违反计划生育</td>
+                    <td class="text-center">
+                        <label><label class="input_radios"><input type="radio" name="temp.delThree"  value="1"><span class="input_radio"> <i class="icon iconfont"></i> </span></label>&nbsp;&nbsp;是</label>
+                        &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label><label class="input_radios"><input type="radio" name="temp.delThree"  value="0"><span class="input_radio"><i class="icon iconfont"></i></span></label>&nbsp;&nbsp;否</label>
+
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <!--endprint-->
+            <div class="btn-boxs" style="border:none;height: 100px;">
+                <div class="btn-box" >
+                    <OBJECT id=WebBrowser classid=CLSID:8856F961-340A-11D0-A96B-00C04FD705A2 height=0 width=0 VIEWASTEXT>
+                    </OBJECT>
+                    <input type=button value=打印 onclick="javascript:window.print()" class="Noprint btn btn-primary">
+                    <!--
+                                    <input type=button value=直接打印 onclick="javascript:window.print()" class="Noprint btn btn-primary">
+                    -->
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>

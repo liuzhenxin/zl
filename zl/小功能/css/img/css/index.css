@@ -1,0 +1,663 @@
+@charset "UTF-8";
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+/*头部菜单*/
+/**/
+/*办事指南*/
+/*页面背景图*/
+/*政策法规*/
+/**/
+/*系统配置*/
+/*模拟估分*/
+/*用户注册*/
+/*受理查询*/
+/*办事指南*/
+/*栏目服务*/
+/*个人中心*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/*头部菜单*/
+/**/
+/*办事指南*/
+/*页面背景图*/
+/*政策法规*/
+/**/
+/*系统配置*/
+/*模拟估分*/
+/*用户注册*/
+/*受理查询*/
+/*办事指南*/
+/*栏目服务*/
+/*个人中心*/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/**/
+/*头部*/
+/*背景色*/
+/*边框颜色*/
+/*tab下边框选中颜色*/
+/*首页内容*/
+/*顶部*/
+/*字体颜色*/
+/*边框颜色*/
+/*顶部字体*/
+/*一级字体颜色*/
+/*个人信息字体颜色*/
+/*个人信息提示字体颜色  系统通知hover*/
+/*二级字体颜色*/
+/*选中字体颜色*/
+/*表单通过图片*/
+/*密码强度背景色*/
+/*模拟估分*/
+/*侧边菜单颜色*/
+/*注册*/
+@import url(../../font/iconfont.css);
+html, body {
+  font-size: 16px;
+  font-family: '微软雅黑';
+  overflow-y: auto;
+  background: #f2f2f2; }
+  @media only screen and (min-width: 500px) and (max-width: 1366px) {
+    html, body {
+      font-size: 14px; } }
+
+/*字体库*/
+@font-face {
+  font-family: "iconfont";
+  src: url("../../font/iconfont.eot");
+  /* IE9*/
+  src: url("../../font/iconfont.eot#iefix") format("embedded-opentype"), url("../../font/iconfont.woff") format("woff"), url("../../font/iconfont.ttf") format("truetype"), url("../../font/iconfont.svg#iconfont") format("svg");
+  /* iOS 4.1- */ }
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale; }
+
+/*边框*/
+.border {
+  border: 1px solid #e5e4e4;
+  background: #fff; }
+
+.border-tb {
+  border-top: 1px solid #e5e4e4;
+  border-bottom: 1px solid #e5e4e4;
+  background: #fff; }
+
+.border-bd {
+  border-bottom: 1px dashed #e5e4e4; }
+
+.border-bs {
+  border-bottom: 1px solid #e5e4e4; }
+
+.border-ts {
+  border-top: 1px solid #e5e4e4; }
+
+.borderRadius {
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid #e5e4e4;
+  background: #fff; }
+
+.fontSize_14 {
+  font-size: 14px;
+  font-size: 0.875rem; }
+
+.fontSize_16 {
+  font-size: 16px;
+  font-size: 1rem; }
+
+.fontSize_18 {
+  font-size: 18px;
+  font-size: 1.125rem; }
+
+.fontSize_20 {
+  font-size: 20px;
+  font-size: 1.25rem; }
+
+.fontSize-24 {
+  font-size: 24px;
+  font-size: 1.5rem; }
+
+.fontSize-30 {
+  font-size: 30px;
+  font-size: 1.875rem; }
+
+.fontSize-48 {
+  font-size: 48px;
+  font-size: 3rem; }
+
+.fontWeight-600 {
+  font-weight: 600; }
+
+.margin-center {
+  margin: 0 auto; }
+
+.marginTop-10 {
+  margin-top: 10px; }
+
+.marginBotto-10 {
+  margin-bottom: 10px; }
+
+.marginTB-10 {
+  margin-top: 10px;
+  margin-bottom: 10px; }
+
+.marginTop-15 {
+  margin-top: 15px; }
+
+.marginTop-20 {
+  margin-top: 20px; }
+
+.marginT_50 {
+  margin-top: 50px; }
+
+.marginTb-20 {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+
+.marginR-20 {
+  margin-right: 20px; }
+
+.marginR-2_5 {
+  margin-right: 2.5%; }
+
+.list_item li {
+  padding: 5px 0; }
+
+.padding-20 {
+  padding: 20px 0 10px; }
+
+.paddingTB-10 {
+  padding-top: 10px;
+  padding-bottom: 10px; }
+
+.paddingTB-15 {
+  padding-top: 15px;
+  padding-bottom: 15px; }
+
+.paddingT_20 {
+  padding-top: 20px; }
+
+.paddingT_50 {
+  padding-top: 50px; }
+
+.padding_20 {
+  padding: 20px; }
+
+.padding-0 {
+  padding: 0; }
+
+.padding-10 {
+  padding: 10px 10px 0; }
+
+.padding_10 {
+  padding: 10px; }
+
+.paddingLR-10 {
+  padding: 0 10px; }
+
+.paddingLR-20 {
+  padding: 0 20px; }
+
+.paddingL-10 {
+  padding-left: 10px; }
+
+.paddingTb-20 {
+  padding-top: 20px;
+  padding-bottom: 20px; }
+
+.paddingLR-30 {
+  padding-left: 30px;
+  padding-right: 30px; }
+
+.padding5-30 {
+  padding: 5px 30px; }
+
+.color-606060 {
+  color: #606060; }
+
+.color-333 {
+  color: #333333; }
+
+.color-999 {
+  color: #999999; }
+
+.color-0e79df {
+  color: #0e79df; }
+
+.color-2c90dd {
+  color: #2c90dd; }
+
+.color_f08200 {
+  color: #f08200; }
+
+.color_ff0000 {
+  color: #ff0000; }
+
+.color-search {
+  color: #ff0000; }
+
+.w98 {
+  width: 98%; }
+
+.w95 {
+  width: 95%; }
+
+.w93 {
+  width: 93%; }
+
+.w90 {
+  width: 90%; }
+
+.w86 {
+  width: 86%; }
+
+.w85 {
+  width: 85%; }
+
+.w83 {
+  width: 83%; }
+
+.w80 {
+  width: 80%; }
+
+.w64_5 {
+  width: 64.5%; }
+
+.w35 {
+  width: 35%; }
+
+.w33 {
+  width: 33.33%; }
+
+.w17 {
+  width: 17%; }
+
+.w15 {
+  width: 15%; }
+
+.w12 {
+  width: 12%; }
+
+.w7 {
+  width: 7%; }
+
+.box-shadow {
+  box-shadow: 1px 1px 20px #4093ed; }
+
+.lineH-30 {
+  line-height: 30px; }
+
+.lineH-50 {
+  line-height: 30px; }
+
+.text-center {
+  text-align: center; }
+
+.text-right {
+  text-align: right; }
+
+.text-indent {
+  text-indent: 2em; }
+
+.icon-tongguo {
+  font-size: 20px;
+  font-size: 1.25rem;
+  vertical-align: middle;
+  color: #2c90dd; }
+
+.icon-butongguo {
+  font-size: 20px;
+  font-size: 1.25rem;
+  vertical-align: middle;
+  color: red; }
+
+.iconfont_padding {
+  padding: 0 6px; }
+
+.input_radio i {
+  color: #999999;
+  cursor: pointer; }
+
+/* 清除浮动 */
+.clearfix {
+  /* 触发 hasLayout */
+  zoom: 1; }
+
+.clearfix:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+/*显示隐藏*/
+.public_hide {
+  display: none; }
+
+.public_show {
+  display: block; }
+
+.container_box {
+  background: #f2f2f2; }
+
+/*字体hover*/
+a {
+  text-decoration: none;
+  color: #606060; }
+
+a:hover, a:focus {
+  color: #0e79df;
+  text-decoration: none; }
+
+.text-hover {
+  cursor: pointer;
+  color: red; }
+
+/*tab标签*/
+.tab_box {
+  height: 50px;
+  border-bottom: 1px solid #e5e4e4; }
+  .tab_box .item {
+    float: left;
+    padding: 13px 0; }
+    .tab_box .item span {
+      padding: 0 30px;
+      border-right: 1px solid #e5e4e4; }
+    .tab_box .item:hover {
+      cursor: pointer;
+      border-bottom: 3px solid #0e79df;
+      color: #0e79df; }
+  .tab_box .item:last-child span {
+    border-right: none; }
+  .tab_box .item_active {
+    border-bottom: 3px solid #0e79df;
+    color: #0e79df; }
+
+/*侧边菜单*/
+.leftNav {
+  border: 1px solid #e5e4e4;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 1px 1px 10px 0px #e5e4e4; }
+  .leftNav .item {
+    /* margin-bottom: 10px;*/
+    padding: 15px 20px;
+    /* border-radius: 6px;*/
+    /* background: $ececec;*/
+    background: #fdfdfd;
+    color: #606060;
+    border-bottom: 1px solid #e5e4e4;
+    text-align: center; }
+    .leftNav .item i.iconfont {
+      float: right; }
+    .leftNav .item:last-child {
+      border-bottom: none; }
+    @media only screen and (min-width: 1024px) and (max-width: 1440px) {
+      .leftNav .item {
+        padding: 10px 20px; } }
+  .leftNav .item:hover {
+    cursor: pointer;
+    border-left: 2px solid #0e79df;
+    /*color: #fff;
+    background: $_0e79df;
+    border-bottom: 1px solid $_0e79df;*/ }
+  .leftNav .active {
+    color: #fff;
+    background: #0e79df;
+    border-bottom: 1px solid #0e79df; }
+  .leftNav .item:last-child:hover {
+    border-bottom: none; }
+  .leftNav .item {
+    /*color: #fff;
+    background: $_0e79df;*/ }
+
+/*设置分页样式*/
+.container_h {
+  position: relative; }
+
+#kkpager {
+  position: absolute;
+  bottom: 5px;
+  right: 15px; }
+
+.pagination > li > a, .pagination > li > span {
+  border-radius: 3px; }
+
+.pagination-sm > li > a, .pagination-sm > li > span {
+  color: #ddd;
+  margin-right: 7px; }
+
+.pagination .jump-ipt {
+  height: 30px;
+  border-color: #ddd;
+  border-radius: 3px;
+  border-left: 1px solid #ddd; }
+
+.pagination-sm > li > .active, .pagination > li > span {
+  background: #2c90dd;
+  color: #fff; }
+
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
+  background: #2c90dd;
+  color: #fff; }
+
+/*头部*/
+/*尾部*/
+.busi_footer {
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
+  background: #fff;
+  z-index: 99; }
+
+@media (min-width: 1200px) {
+  .container {
+    width: 78%; } }
+/*表单验证*/
+.form_text {
+  color: #606060;
+  font-size: 14px;
+  font-size: 0.875rem; }
+  .form_text .icon-tongguo {
+    padding-right: 6px;
+    color: #4ac584; }
+  .form_text .icon-tishi1 {
+    padding-right: 6px;
+    color: #2c90dd;
+    font-size: 20px;
+    font-size: 1.25rem; }
+
+.Verification-box {
+  width: 80px;
+  height: 34px;
+  line-height: 34px;
+  text-align: center;
+  position: absolute;
+  top: 0;
+  right: 19px;
+  border-left: 1px solid #ccc; }
+
+/*导航位置*/
+h3.nav-title:after,
+h4.nav-title:after,
+h6.nav-title:after {
+  border: 1px  solid #84b5e4;
+  top: 50px; }
+
+h3.nav-title:before,
+h4.nav-title:before,
+h6.nav-title:before {
+  top: 16px;
+  background-color: #0a6bca; }
+
+h3.nav-title,
+h4.nav-title,
+h6.nav-title {
+  margin: auto;
+  margin-bottom: 25px;
+  text-indent: 5px; }
+
+.breadcrumb > li + li:before {
+  padding: 0;
+  content: ""; }
+
+.breadcrumb > li + li:after {
+  content: "";
+  padding: 0; }
+
+.breadcrumb {
+  background-color: #fff;
+  margin-bottom: 10px; }
+  .breadcrumb li {
+    font-weight: normal;
+    font-size: 14px;
+    font-size: 0.875rem; }
+    .breadcrumb li i {
+      margin: auto 0 auto 10px;
+      font-style: normal; }
+
+/*
+::-webkit-scrollbar 滚动条整体部分，可以设置宽度啥的
+::-webkit-scrollbar-button 滚动条两端的按钮
+::-webkit-scrollbar-track  外层轨道
+::-webkit-scrollbar-track-piece  内层滚动槽
+::-webkit-scrollbar-thumb 滚动的滑块
+::-webkit-scrollbar-corner 边角
+::-webkit-resizer 定义右下角拖动块的样式
+:horizontal 水平方向的滚动条
+
+:vertical 垂直 方向的滚动条
+
+
+:decrement 应用于按钮和内层轨道(track piece)。它用来指示按钮或者内层轨道是否会减小视窗的位置(比如，垂直滚动条的上面，水平滚动条的左边。)
+
+:increment decrement类似，用来指示按钮或内层轨道是否会增大视窗的位置(比如，垂直滚动条的下面和水平滚动条的右边。)
+
+:start 伪类也应用于按钮和滑块。它用来定义对象是否放到滑块的前面。
+
+:end 类似于start伪类，标识对象是否放到滑块的后面。
+
+:double-button  该伪类以用于按钮和内层轨道。用于判断一个按钮是不是放在滚动条同一端的一对按钮中的一个。对于内层轨道来说，它表示内层轨道是否紧靠一对按钮。
+
+:single-button 类似于double-button伪类。对按钮来说，它用于判断一个按钮是否自己独立的在滚动条的一段。对内层轨道来说，它表示内层轨道是否紧靠一个single-button。
+
+:no-button 用于内层轨道，表示内层轨道是否要滚动到滚动条的终端，比如，滚动条两端没有按钮的时候。
+
+:corner-present  用于所有滚动条轨道，指示滚动条圆角是否显示。
+
+:window-inactive 用于所有的滚动条轨道，指示应用滚动条的某个页面容器(元素)是否当前被激活。(在webkit最近的版本中，该伪类也可以用于::selection伪元素。webkit团队有计划扩展它并推动成为一个标准的伪类)
+
+*/
+/* 设置滚动条的样式 */
+.page-loading {
+  background-image: none !important; }
+
+.page-loading span {
+  background: url("../../common/assets/layer/layer-v3.1.0/theme/default/loading-1.gif") no-repeat; }
+
+/*表单*/
+.form-group .form-control {
+  height: 34px;
+  padding: 6px 12px;
+  border: 1px solid #e5e4e4;
+  color: #606060;
+  /* height: 28px; */
+  /* padding: 3px 12px; */
+  /* border-color: #dbdbdb; */
+  /* color: #666666; */ }
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  -webkit-transition: none;
+  -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+  transition: none; }
+
+.form_text .icon-tishi1, .form_text .icon-tongguo {
+  vertical-align: middle; }
+
+/*------------------------------chrom input输入框黄色背景去除-----------------------------*/
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #fff inset;
+  -webkit-text-fill-color: #666; }
+
+/*
+获取焦点时
+ :read-write 选择器选取没有设置 "readonly" 属性的元素。
+ :readonly 择器选取设置 "readonly" 属性的元素
+
+*/
+input[type=text]:read-write:focus,
+input[type=password]:read-write:focus,
+textarea:read-write:focus {
+  -webkit-box-shadow: 0 0 0 1000px #fff  inset; }
+  input[type=text]:read-write:focus::-webkit-input-placeholder,
+  input[type=password]:read-write:focus::-webkit-input-placeholder,
+  textarea:read-write:focus::-webkit-input-placeholder {
+    color: transparent; }
+  input[type=text]:read-write:focus::-moz-placeholder,
+  input[type=password]:read-write:focus::-moz-placeholder,
+  textarea:read-write:focus::-moz-placeholder {
+    color: transparent; }
+
+/* 没有设置 "readonly" 属性的元素 */
+input:read-only:focus,
+input[type=password]:read-only:focus,
+textarea:read-only:focus {
+  -webkit-box-shadow: 0 0 0 1000px #eeeeee  inset; }
+
+.form-control:focus {
+  -webkit-box-shadow: none;
+  box-shadow: none; }
+
+/*# sourceMappingURL=index.css.map */

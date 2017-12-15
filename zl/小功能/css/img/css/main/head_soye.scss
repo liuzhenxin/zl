@@ -1,0 +1,261 @@
+@import "../personalData/color";
+@import "../personalData/pulic";
+@charset "utf-8";
+/*
+动画
+*/
+// 放大动画
+
+@mixin fd($s1:1.2){ //@include fd();
+  transform:scale($s1);
+  -webkit-transform:scale($s1);
+  -moz-transform:scale($s1);
+  -o-transform:scale($s1);
+  -ms-transform:scale($s1);
+}
+@keyframes scale
+{
+  0%   {
+    transform:scale(0);
+  }
+  100%  {
+    transform:scale(1);
+  }
+}
+
+
+/*头部*/
+.busi_header #accordion1 {
+  margin-bottom: 0;
+}
+.busi_header {
+  height: 70px;
+  .container {
+    height: 100%;
+    position: relative;
+    h3 {
+      color: #424242;
+      font-size: 26px;
+     @include font-size(26px);
+      line-height: 70px;
+      margin: 0;
+    }
+    .pull-left {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+    .pull-right {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+      z-index: 10;
+    }
+  }
+  /*菜单*/
+  .topnav {
+    /*子集*/
+    li {
+      float: left;
+      height: 70px;
+      line-height: 70px;
+      position: relative;
+      cursor: pointer;
+      a {
+        padding: 0 10px;
+        color: #545454;
+        border-left: 1px solid #545454;
+        text-decoration: none;
+        &:hover {
+          color: #0e79df; }
+      }
+    }
+    .li_active a {
+      color: #0e79df;
+    }
+    li:first-child a {
+      border-left: none;
+    }
+    .child {
+      height: auto;
+      top: 70px;
+      position: absolute;
+      display: none;
+      li {
+        height: 40px;
+        line-height: 40px;
+        a {
+          padding: 0;
+          text-align: center;
+          width: 100px;
+          color: #fff;
+          line-height: 40px;
+          border-left: none;
+          display: inline-block;
+          &:hover {
+            color: #0e79df;
+          }
+        }
+      }
+    }
+    li:hover .child {
+      cursor: pointer;
+      display: block;
+    }
+  }
+}
+@media screen and (max-width: 1366px) {
+  .busi_header .topnav .child {
+    top: 60px; }
+}
+
+@media screen and (max-width: 1366px) {
+  .busi_header .topnav li {
+    height: 60px;
+    line-height: 60px; }
+}
+/*ul背景*/
+.busi_header .b_box{
+  height: 40px;
+  background-color: rgba(6, 4, 59,0.4);
+  /*box-shadow: 1px 2px 5px #e5e5e5;*/
+  position: absolute;
+  top:69px;
+  width: 100%;
+  z-index:1;
+  display: none;
+}
+
+
+
+
+/*尾部*/
+.busi_footer {
+  height: 52px;
+  line-height: 50px;
+  .list {
+    margin:0;
+  }
+  li{
+    float: left;
+    height:100%;
+    margin-left: 10px;
+    cursor: pointer;
+    position: relative;
+    i{
+      color: #a3a4ab;
+    }
+    &:hover i{
+      color: #0e79df;
+    }
+  }
+
+/*弹出二维码*/
+  .tan_box {
+    position: absolute;
+    z-index: 99;
+    top: -162px;
+    background: #fff;
+    color: #333;
+    padding-top: 10px;
+    left: -50px;
+    width: 120px;
+    min-height: 60px;
+    height: auto;
+    text-align: center;
+    font-size: 14px;
+    @include font-size(14px);
+   /* box-shadow: 0px 0px 5px 1px #ccc;*/
+    border-radius: 4px;
+    display: none;
+    &:after, &:before {
+      border: solid transparent;
+      content: ' ';
+      height: 0;
+      top: 100%;
+      position: absolute;
+      width: 0;
+    }
+
+    &:after {
+      border-width: 10px;
+      border-top-color: #fff;
+      left: 50px;
+    }
+
+    &:before {
+      border-width: 11px;
+      border-top-color: #ccc;
+      left: 49px;
+    }
+    p {
+      width: 90%;
+      line-height: 15px;
+      margin: 6px auto;
+    }
+  }
+  .tan_box_1{
+    top: -148px;
+  }
+  .tan_img {
+    background: #fff;
+    width: 90%;
+    margin: 0 auto;
+    img{
+      padding:10px;
+    }
+  }
+  .tan_box_2 {
+    top: -63px;
+  }
+  //.triangle_border_down {
+  //  font-size: 0;
+  //  line-height: 0;
+  //  border-width: 10px;
+  //  border-color: #7dbcfb;
+  //  border-right-width: 0;
+  //  border-style: dashed;
+  //  border-left-style: solid;
+  //  border-top-color: transparent;
+  //  border-bottom-color: transparent;
+  //  position: absolute;
+  //  right: -10px;
+  //  top: 13%;
+  //}
+  .tan_box_1 .triangle_border_down{
+    top:20%;
+  }
+  li:hover{
+    cursor: pointer;
+  }
+  li:hover .tan_box{
+    cursor: pointer;
+    display: block;
+  }
+  li:hover i{
+    color: #0a6bca;
+  }
+  p{
+    margin: 0;
+    line-height: 26px;
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  .busi_header {
+    height: 60px; }
+  .busi_header .container h3 {
+    line-height: 60px;
+    margin: 0;
+  }
+  .busi_header .b_box {
+    height: 40px;
+    top: 59px;
+  }
+  .busi_footer {
+    height: 42px;
+    line-height: 40px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 78%; } }

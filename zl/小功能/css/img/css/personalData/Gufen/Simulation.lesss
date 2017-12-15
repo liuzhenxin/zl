@@ -1,0 +1,85 @@
+@import "../../personalData/color";
+.Simulation{
+  .container{
+    background: #fff;
+    padding: 0;
+  }
+  ._title{
+    color: @1f81ab;
+    height: 100px;
+    font-size: 36px;
+    line-height: 100px;
+    background: #fff;
+  }
+  .tables{
+    width: 100%;
+    border: 1px solid @border;
+    border-right: none;
+    tbody tr {
+      border-top: 1px solid @border;
+    }
+    td,th{
+      border-right: 1px solid @border;
+      height: 50px;
+      line-height: 50px;
+      padding-left: 5px;
+    }
+    .td_input{
+      border: none;
+      outline: none;
+      height: 30px;
+      width: 150px;
+      text-align: center;
+      border-bottom: 1px solid @border;
+    }
+    .width-68{
+      width: 68px;
+      font-weight: normal;
+    }
+  }
+  .border{
+    overflow: hidden;
+    border-top:none;
+    p{
+      text-align: right;
+      padding-right: 20px;
+      line-height: 50px;
+    }
+    b{
+      color: #1e9d2a;
+      font-size: 30px;
+    }
+    .btn-primary {
+      margin: 10px auto;
+      padding: 6px 30px;
+      display: inherit;
+    }
+  }
+}
+/*单选框*/
+.input_radios > input[type=radio]:checked ~ .input_radio i{
+  color: #2493c4;
+}
+.input_radios > input[type=radio]{
+  display: none;
+}
+/*多选框*/
+.input_checkboxs{cursor:pointer;}
+
+.input_checkboxs input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  display:none;
+}
+.input_checkboxs   i{
+  color: #999999;
+  font-size: 20px;
+  vertical-align: middle;
+  cursor:pointer;
+}
+.input_checkboxs input[type="checkbox"]:checked ~   i{
+  color: #2493c4;
+  font-size: 20px;
+  vertical-align: middle;
+}
