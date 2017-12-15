@@ -24,9 +24,11 @@ $.validator.addMethod("phoneCheck", function (value, element, param) {
         return status;
     }, $.validator.format("手机号已被注册")
 );
+//[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5}
 //中文验证
 $.validator.addMethod("zw", function(value, element,param) {
-    var tel =/[\u4e00-\u9fa5]/;
+    var tel =/[\u4e00-\u9fa5]{2,}/;
+    //var tel =/[\u4E00-\u9FA5]{2,5}(?:·[\u4E00-\u9FA5]{2,5})/;  //少数民族的人名，或者外国人的中译名，例如：阿沛·阿旺晋美
     return this.optional(element) || (tel.test(value));
 }, $.validator.format("请正确输入姓名"));
 //邮箱验证
@@ -46,7 +48,11 @@ $.validator.addMethod("oldPassword", function(value, element,param) {
     }
     return this.optional(element) || (flag) ;
 }, $.validator.format("请输入正确的旧密码"));
-
+//微信验证
+$.validator.addMethod("wxreg", function(value, element,param) {
+    var wxreg = /^([a-zA-Z]{1}[-_a-zA-Z0-9]{5,19})+$/;
+    return this.optional(element) || (wxreg.test(value));
+}, $.validator.format("邮箱格式错误"));
 //确认密码验证
 $.validator.addMethod("twoPassword", function(value, element,param) {
     var pwd =$("#password").val();
