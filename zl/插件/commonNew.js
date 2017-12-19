@@ -381,12 +381,23 @@
     };
     /*
     *   表单security.js RSA 加密
+    *
+    *   ***需导入security.js文件
+    *
     *   @param  {[type]} data   --->  {modulus: "86f07785f0e5465614b0c1accc218ecec6dddd033d12fb0e67…790ff875292dbb4ca54e1c304dd3f4ac4f1947a8c7a62946d", exponent: "10001"}
     *
     *    @param  {[type]} el 元素
     *
     *   多个输入框用逗号隔开
     *    使用:myFrame.security(ajax成功返回的值,[input元素,input元素,input元素])
+    *
+    *
+    *     $.getJSON("getRsa",function(data) {
+    *
+    *           myFrame.security(ajax成功返回的值,[input元素,input元素,input元素];
+    *
+    *           $("#loginForm").submit();
+    *       });
     *
     * */
     myFrame.security=function (data,el) {
