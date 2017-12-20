@@ -408,6 +408,41 @@
             $(el[i]).val(RSAUtils.encryptedString(publicKey, $(el[i]).val().split("").reverse().join("")));//进行反序
         }
     };
+    /*
+    * 输入框获取焦点时 清除placeholder内容
+    *
+    * 使用:myFrame.inputPlaceholder()
+    * */
+    myFrame.inputPlaceholder = function(fEvent) {
+
+        if (typeof fEvent == "function"){
+            fEvent(focusEvent);
+            return;
+        }
+        $("input[type='text']").each(function(index,el) {
+            var $that = $(el),
+                holder;
+            if($that.attr("readonly") || $that.attr("disabled")){
+                return;
+            }
+            focusEvent($that,holder);
+
+        });
+        // 单独处理获取焦点 placeholder问题
+        function focusEvent(dom,holder){
+            dom.on("focus",function(event) {
+                event.stopPropagation();
+                var that = $(this);
+                holder = that.attr("placeholder");
+                that.attr("placeholder","");
+            }).on("blur",function() {
+                var that = $(this);
+                if (that.val().length === 0) {
+                    that.attr("placeholder",holder);
+                }
+            });
+        }
+    };
     /**
      * 获取单选或者多选的值
      *
