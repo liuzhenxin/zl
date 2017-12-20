@@ -205,6 +205,28 @@
         });
         return width;
     };
+
+    /**
+     *
+     * @desc 动态加载js
+     * @param  id  dom元素id
+     * @param newJS  js文件路径
+     *
+     * var src='${pageContext.request.contextPath}/static/gateway/js/gufen/expectScore.js';
+     * 使用:myFrame.reloadAbleJSFn('javascript',src);
+     */
+    myFrame.reloadAbleJSFn=function(id,newJS)
+    {
+        var oldjs = null;
+        var t = null;
+        var oldjs = document.getElementById(id);
+        if(oldjs) oldjs.parentNode.removeChild(oldjs);
+        var scriptObj = document.createElement("script");
+        scriptObj.src = newJS;
+        scriptObj.type = "text/javascript";
+        scriptObj.id   = id;
+        document.getElementsByTagName("head")[0].appendChild(scriptObj);
+    };
     /*----------------------------------表单类--------------------------------------------------------------------*/
     /*
     * 移除input不为（button，submit，reset，hidden）的值，选中
@@ -783,28 +805,6 @@
         }
 
         return true;
-    };
-    /*------------------------------加载js-----------------------------*/
-    /**
-     *
-     * @desc 动态加载js
-     * @param  id  dom元素id
-     * @param newJS  js文件路径
-     *
-     * var src='${pageContext.request.contextPath}/static/gateway/js/gufen/expectScore.js';
-     * 使用:myFrame.reloadAbleJSFn('javascript',src);
-     */
-    myFrame.reloadAbleJSFn=function(id,newJS)
-    {
-        var oldjs = null;
-        var t = null;
-        var oldjs = document.getElementById(id);
-        if(oldjs) oldjs.parentNode.removeChild(oldjs);
-        var scriptObj = document.createElement("script");
-        scriptObj.src = newJS;
-        scriptObj.type = "text/javascript";
-        scriptObj.id   = id;
-        document.getElementsByTagName("head")[0].appendChild(scriptObj);
     };
     /*--------------------对象序列化--------------------------------*/
     /**
@@ -1551,6 +1551,28 @@
         myFrame.isSupportWebP= function () {
             return !! [].map && document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') == 0;
         };
+
+    /*-------------------判断浏览器-----------------------------------*/
+
+    // 监听浏览器 前进 后退 按钮 刷新页面
+    myFrame.initialize = function() {
+        //监听hashchange事件
+        window.addEventListener('hashchange', function() {
+
+            //为当前导航页附加一个tag
+            this.history.replaceState('hasHash', '', '');
+
+        }, false);
+
+        window.addEventListener('popstate', function(e) {
+
+            if (e.state) {
+                //侦测是用户触发的后退操作, dosomething
+                //这里刷新当前url
+                this.location.reload();
+            }
+        }, false);
+    };
 
 // 设置自适应 字体大小 用于rem 单位移动端
     /**
