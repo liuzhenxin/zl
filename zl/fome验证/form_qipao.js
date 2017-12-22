@@ -185,3 +185,36 @@ window.jsonSubmit = function(options){
         //设置在表单后提示end
     });
 };
+
+
+//json提交
+/*
+* if($('form').valid()){
+            alert('通过')；
+        }
+* */
+window.vali = function(options){  //只能验证静态的input框
+    var messages = options.messages || {};
+    var rules = options.rules || {};
+    var formid = options.formid || "formTable";
+    var successFun = options.successFun || function(){};
+    var submitHandler = options.submitHandler || function(form){
+        var index = layer.load(1, {
+            shade: [0.7,'#848484'] //0.7透明度的灰色背景
+        });
+    };
+    $("#"+formid).validate({
+        rules:rules,
+        messages:messages,
+
+        onfocusout: function(element) { $(element).valid();},
+        errorPlacement: function(error, element) {
+            console.log(element+error[0].innerText)
+            // layer.tips(error[0].innerText, element, {
+            //     tipsMore: true,
+            //     time: 1000, //2秒后自动关闭
+            //     tips: [3, '#78BA32']
+            // });
+        }
+    });
+};

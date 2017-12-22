@@ -180,4 +180,44 @@ window.jsonSubmit = function(options){
       //设置在表单后提示end
 	}); 
 };
+
+
+
+
+
+	//json提交
+	window.vali = function(options){
+	var messages = options.messages || {};
+	var rules = options.rules || {};
+	var formid = options.formid || "formTable";
+	var successFun = options.successFun || function(){}
+	var submitHandler = options.submitHandler || function(form){
+	var index = layer.load(1, {
+	shade: [0.7,'#848484'] //0.7透明度的灰色背景
+	});
+	};
+	$("#"+formid).validate({
+	rules:rules,
+	messages:messages,
+
+	errorElement: 'span',
+	errorClass: 'false',
+	validClass: 'right',
+	onfocusout: function(element){
+	$(element).valid();
+	},
+	errorPlacement: function(error,element){
+	element.parent().next().append(error);
+	},
+	highlight: function(element, errorClass, validClass) {
+	$(element).removeClass('right').addClass('false');
+	$(element).parent().next().removeClass('right').addClass('false').find('i').removeClass('icon-tongguo').addClass('icon-tishi1');
+	},
+	success: function(span){
+	span.parent().removeClass('false').addClass('right');
+	span.prev('.iconfont').removeClass('icon-tishi1').addClass('icon-tongguo');
+	span.append('验证信息通过');
+	}
+	});
+	};
 </script>		

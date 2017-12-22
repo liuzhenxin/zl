@@ -179,3 +179,63 @@ window.jsonSubmit = function(options){
         //设置在表单后提示end
     });
 };
+
+/*
+需先使用:
+$('提交元素').click(function () {
+        $("form元素").submit();
+    });
+ //再使用以下任一种方法
+
+//使用方法一：
+ //jsonSubmit({});
+
+//使用方法二：
+ $(document).ready(function () {
+        jsonSubmit({
+            successFun: go
+        });
+    });
+    function go() {
+        window.gateway.first_loadJsp("mainIndex/login");
+    }
+//使用方法三：
+$(document).ready(function() {
+    jsonSubmit({
+        submitHandler:function(){
+            $('#formTable').ajaxSubmit({
+                type:"post",  //提交方式
+                dataType:"json", //数据类型
+                success:function(data){
+
+                },
+                error: function() {
+
+                }
+            });
+        }
+    });
+});
+
+//使用方法四：
+jsonSubmit({
+        formid: 'pageForm',
+        submitHandler: function (form) {
+            var index = layer.load(0, {
+                shade: [0.7, '#848484'] //0.7透明度的灰色背景
+            });
+            $(form).ajaxSubmit({
+                type: "post",  //提交方式
+                dataType: "json", //数据类型
+                success: function (data) { //提交成功的回调函数
+
+                },
+                error: function (info) {
+                    console.log(info)
+                    layer.close(index);
+                    layer.alert('' + info + '', {title: '信息提示', icon: 3});
+                }
+            });
+        }
+    });
+*/

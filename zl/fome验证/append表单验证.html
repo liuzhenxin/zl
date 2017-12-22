@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="form/jquery.min.js"></script>
+    <script type="text/javascript" src="form/validate/jquery.validate.min.js"></script>
+    <script type="text/javascript" src="form/validate/additional-methods.min.js"></script>
+    <script type="text/javascript" src="form/messages_zh.js"></script>
+
+    <script type="text/javascript" src="form/jquery.form.js"></script>
+    <script type="text/javascript" src="static/common/assets/layer/layer-v3.1.0/layer.js"></script>
+    <!--自定义css-->
+    <script src="form/form_qipao.js"></script>
+</head>
+<body>
+<form action="" id="pageForm">
+    <input type="text"  placeholder="请输入用户名"  number="true" name="aa" required/>
+    <div id="aa">
+
+    </div>
+</form>
+<button type="button" id="btn">提交</button>
+<button type="button" id="add">add</button>
+</body>
+<script>
+    $('#btn').click(function () {
+        var a = $("input"); //要验证的input框
+        for(var i=0;i<a.length;i++){
+            if($(a[i]).hasClass("valid")){
+                //所有验证通过
+            }else{ //提示为通过的表单
+                console.log($(a[i]).attr('data-title'));
+                var inText=$(a[i]).attr('data-title');
+                 layer.tips(inText, $(a[i]), {
+                     tipsMore: true,
+                     time: 1000, //2秒后自动关闭
+                     tips: [3, '#78BA32']
+                 });
+                //alert("字段内容不允许为空");
+            }
+        }
+
+    });
+    $('#add').on('click',function () {
+       var h='';
+        h+='<input type="text"  placeholder="请输入用户名"  number="true" name="aa" required/>';
+        $('#aa').append(h);
+    });
+    vali({
+        formid: 'pageForm'
+    });
+</script>
+</html>
