@@ -227,6 +227,36 @@
         scriptObj.id   = id;
         document.getElementsByTagName("head")[0].appendChild(scriptObj);
     };
+    // 加载插件方法 引入js 、css文件
+    myFrame.pluginPath = function() {
+        var config = myFrame.config,
+            assetsPath = config.assetsPath,
+            link = "",
+            scripts = "",
+            // aryJs = [],aryCss = [],
+            head = document.getElementsByTagName("head").item(0),
+            linkDom = head.getElementsByTagName("link").item(0),
+            body = document.getElementsByTagName("body").item(0),
+            scriptDom = body.getElementsByTagName("script").item(0);
+        config.assets.map(function(data, index) {
+            // js
+            if (data.js && data.js != "") {
+                scripts = document.createElement("script");
+                scripts.type = "text/javascript";
+                scripts.src = assetsPath + data.js;
+                body.appendChild(scripts);
+            }
+            // css
+            if (data.css && data.css != "") {
+                link = document.createElement("link");
+                link.rel = "stylesheet";
+                link.type = "text/css";
+                link.href = assetsPath + data.css;
+                head.insertBefore(link, linkDom);
+            }
+
+        });
+    };
     /*----------------------------------表单类--------------------------------------------------------------------*/
     /*
     * 移除input不为（button，submit，reset，hidden）的值，选中
