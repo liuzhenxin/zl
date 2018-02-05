@@ -37,6 +37,28 @@
             }
         });
     };
+
+    /*文本框文字长度指示器*/
+
+    /**
+     * @param els 文本框元素
+     * @param num 限制字数
+     * @param word 字数的元素
+     *使用方法:myFrame.slight(文本框元素,限制字数,显示剩余字数的元素)
+     */
+    myFrame.textLen=function (els,num,word) {
+        $(els).keyup(function(event) {
+            var current = $(this).val().length; //赋予变量current为该文本域输入的长度
+            if(current >= num){ //如果当输入长度大于140字时
+                if(event.which!==0 && event.which!==8){ //如果允许删除键（ascll码为0）和退格键（ascll为8）工作
+                    event.preventDefault(); //阻止默认事件
+                }
+            }
+            $(word).text(num-current);
+        });
+    };
+
+
     /**
      * @param textArea dom节点输入框
      *
@@ -195,10 +217,10 @@
     * 计算元素总宽度
     * elements  dom元素
     *
-    * 使用: myFrame.calSumWidth(元素)
+    * 使用: myFrame.SumWidth(元素)
     *
     * */
-    myFrame.calSumWidth=function (elements) {
+    myFrame.SumWidth=function (elements) {
         var width = 0;
         $(elements).each(function () {
             width += $(this).outerWidth(true);
@@ -1251,6 +1273,7 @@
         }
         return "剩余时间" + d + "天 " + h + "小时 " + m + " 分钟" + s + " 秒";
     };
+
     /*
     * 解决ie8
     *
@@ -1706,7 +1729,7 @@
      */
     myFrame.getExplore=function () {
 
-        var sys = {},
+        /*var sys = {},
             ua = navigator.userAgent.toLowerCase(),
             s;
         (s = ua.match(/rv:([\d.]+)\) like gecko/)) ? sys.ie = s[1] :
@@ -1731,7 +1754,39 @@
 
         if (sys.safari) return ('Safari: ' + sys.safari);
 
-        return 'Unkonwn';
+        return 'Unkonwn';*/
+
+        var userAgent = navigator.userAgent; //取得浏览器的userAgent字符串
+        var version = "";
+        var browsers = navigator.appName;
+        var b_version = navigator.appVersion;
+        version = b_version.split(";");
+        var trim_Version = (version[1]) ? version[1].replace(/[ ]/g, "") : version[0].replace(/[ ]/g, "");
+        var isOpera = userAgent.indexOf("Opera") > -1;
+        if(userAgent.indexOf("Opera") > -1) {
+            return "Opera"
+        } else if(userAgent.indexOf("Firefox") > -1) {
+            return "FF";
+        } else if(userAgent.indexOf("Chrome") > -1) {
+            return "Chrome";
+        } else if(userAgent.indexOf("Safari") > -1) {
+            return "Safari";
+        } else if(userAgent.indexOf("compatible") > -1 && userAgent.indexOf("MSIE") > -1 && !isOpera) {
+            if(browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE6.0") {
+                version = "IE 6";
+            } else if(browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE7.0") {
+                version = "IE 7";
+            } else if(browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE8.0") {
+                version = "IE 8";
+            } else if(browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE9.0") {
+                version = "IE 9";
+            } else if(browsers == "Microsoft Internet Explorer" && trim_Version == "MSIE10.0") {
+                version = "IE 10";
+            }
+        } else if(browsers = "Netscape" && trim_Version == "WOW64") {
+            version = "IE 11";
+        }
+        return version;
     };
     /*-------------------判断手机、pc、iPad-----------------------------------*/
     /*
@@ -2498,8 +2553,81 @@
 
                 });
                 return result;
-            }
+            },
+            //时间戳之间倒计时
+            //倒计时控件
+            /*
+            * this_time：
+            *
+            *
+            * 使用:  $('#div_timer').timer({
+            *            this_time: '1495847718',
+            *            end_time: '1495848823',
+            *            onTimeout: function() {
+            *                //location.href='http://www.baidu.com';
+            *            }
+            *        });
+            *
+            * */
+            timer: function(options) {
+                var defaults = {
+                    this_time: null,
+                    end_time: null,
+                    onTimeout: null
+                };
+                var opts = $.extend(defaults, options);
+                return this.each(function() {
+                    var _this = this;
 
+                    function build_timer(t) {
+                        if (t < 0) {
+                            t = 0;
+                        }
+                        var day = Math.floor(t / 86400);
+                        var hour = Math.floor((t - day * 86400) / 3600);
+                        var min = Math.floor((t - day * 86400 - hour * 3600) / 60);
+                        var sec = t - day * 86400 - hour * 3600 - min * 60;
+                        if (day < 10) {
+                            day = '0' + day;
+                        }
+                        if (hour < 10) {
+                            hour = '0' + hour;
+                        }
+                        if (min < 10) {
+                            min = '0' + min;
+                        }
+                        if (sec < 10) {
+                            sec = '0' + sec;
+                        }
+                        var code = day > 0 ? '<span class="number">' + day + '</span><span>天</span>' : '' +
+                        hour > 0 ? '<span class="number">' + hour + '</span><span>时</span>' : '' +
+                            '<span class="number">' + min + '</span><span>分</span>' +
+                            '<span class="number">' + sec + '</span><span>秒</span>';
+                        $(_this).html(code);
+                    }
+                    if (opts.this_time !== null && opts.end_time !== null) {
+                        $(this).addClass('jui-timer');
+                        var t = opts.end_time - opts.this_time;
+                        build_timer(t);
+                        if (t > 0) {
+                            var tmr = setInterval(function() {
+                                t--;
+                                build_timer(t);
+                                if (t <= 0) {
+                                    clearInterval(tmr);
+                                    if (typeof opts.onTimeout == 'function') {
+                                        opts.onTimeout();
+                                    }
+                                }
+                            }, 1000);
+                        } else {
+                            if (typeof opts.onTimeout == 'function') {
+                                opts.onTimeout();
+                            }
+                        }
+                    }
+                });
+            }
 
         })
 
