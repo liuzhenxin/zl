@@ -1,0 +1,68 @@
+<!doctype html>
+
+<html>
+<head>
+<meta charset="utf-8">
+<title>jQuery打印插件jqprint</title>
+<script language="javascript" src="jquery-1.4.4.min.js"></script>
+<!-- 
+如果您使用的是高版本jQuery调用下面jQuery迁移辅助插件即可-->
+<script src="http://www.jq22.com/jquery/jquery-migrate-1.2.1.min.js"></script>
+
+<script language="javascript" src="jquery.jqprint-0.3.js"></script>
+<script language="javascript">
+
+function aa(){
+	$("#aa").printArea();
+}
+</script>
+</head>
+<!--打印的内容样式需要外部引入css-->
+<body>
+  <div  style="height: 1px; width: 100%;overflow: hidden;">
+      <div id="aa">
+          dasdsadasasdddddddddddddddddddddddddddddddddddddddd
+      </div>
+  </div>
+<div id="ddd">
+  <table>
+    <tr>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+    </tr>
+    <tr>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+      <td>test</td>
+    </tr>
+  </table>
+</div>
+<input type="button" onclick="aa()" value="打印"/>
+</body>
+</html>

@@ -3,117 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        .color-search,b{
-            color: red;
-        }
+    <style type="text/css">
+        input, textarea { font-family: Helvetica, Arial; color: #000;}
+        .placeholder {color: #ccc;}
     </style>
-</head>
 <body>
+<input type="text" onkeyup="this.value = this.value.replace(/^(\-)*(\D+)\.(\d\d).*$/,'$1$2.$3');" size="10"/>元
+<input type="text" onkeyup="this.value = this.value.replace(/^(\-)*(\d+)\.(\d).*$/,'$1$2.$3');" size="10"/>元
 
-<input type ="text" id="input" />
-<div id="poetry">
-    <p>春江花月夜</p>
-    <p>作者：张若虚</p>
-    <p>春江潮水连海平，海上明月共潮生。 </p>
-    <p>滟滟随波千万里，何处春千江无月明！ </p>
-    <p>江流宛转绕芳甸，月照花林皆似霰； </p>
-    <p>空里流霜不觉飞，汀上白沙看不见。 </p>
-    <p>江天一色无纤尘，皎皎空中孤月轮。 </p>
-    <p>江畔何人初见月？江月何年初照人？ </p>
-    <p>人生代代无穷已，江月年年只相似。 </p>
-</div>
+
+
+
+
+　<input maxlength=9 onkeyup="if(value.match(/^\d{3}$/))  value="/value.replace(value,parseInt(value/10))" ;value="/value.replace(/\.\d*\./g,’."’)" onKeyPress="if((event.keyCode<48 || event.keyCode>57) && event.keyCode!=46 && event.keyCode!=45 || value.match(/^\d{3}$/) || /\.\d{3}$/.test(value)) {event.returnValue=false}" id=text_kfxe name=text_kfxe>
+<br/>
+<br/>
+<input ōnKeyPress="if((event.keyCode<48 ||event.keyCode>57) &&event.keyCode!=46 ||/\.\d\d$/.test(value))event.returnValue=false">
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text" id="signName" placeholder="请输入用户名"/>
+<input >
+<input type="text" id ="yiliao" placeholder="请填写连续缴纳城镇保险月份" class="td_input shebao"  positiveNumber="true" name='yiliao' onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')">(月)
+<input type="text" class="score" id="shebaoScore"  readonly style="border-style:none;width: 100%;text-align:center;" value="0">
+<input type="text" id="yanglao" class="td_input shebao" placeholder="请填写连续缴纳城镇医疗保险月份"  positiveNumber="true" name='yanglao' onkeyup="this.value=this.value.replace(/\D/g,'')"  onafterpaste="this.value=this.value.replace(/\D/g,'')">(月)
 </body>
 <script src="jquery-1.8.3.min.js"></script>
-<script src="commonNew.js"></script>
-<script>
-    //input 输入要查找的字符串
-//    input.onchange = function(){
-//        //获取要查找的字符串
-//        var searchVal = input.value;
-//        // 获取要查找的内容
-//        debugger
-//        var text = poetry.innerHTML;
-//        //将之前的查找高亮的字符串,取消高亮
-//        text = text.replace(/<b[^>]*>([^>]*)<\/b[^>]*>/ig,"$1");
-//        poetry.innerHTML = text;
-//        //初始化正则表达式,加上括号(),形成可捕获元组.ig表示全局匹配和不区分大小写
-//        var reg = new RegExp("("+searchVal +")","ig");
-//        //高亮要查找的字符串
-//        text = text.replace(reg,"<b>$1</b>");
-//        poetry.innerHTML = text;
-//    };
-    myFrame.textSearch('p','千万');
-//    myFrame.FormatDateTime("1497232433000");
+<script src="jquery.placeholder.min.js"></script>
 
-
-    function passerHtmlStr(str,len){
-        if(str==null||str=="")
-            return "";
-        var strTmp=str;
-        if (str.indexOf("<font color=red>") != -1 && str.indexOf("</font>") != -1) {
-            str=str.replace(/<font color=red>/g,"");
-            str=str.replace(/<\/font>/g,"");
-            str=str.replace(/<br>/g,"");
-            str=str.replace(/<BR>/g,"");
-            str=str.replace(/<br \/>/g,"");
-            str=str.replace(/<BR \/>/g,"");
-            if(len < str.length){
-                str=str.substr(0,len);
-                var redWords=redStrList(strTmp);
-                for(var i=0;i<redWords.length;i++){
-                    var tmpWord=redWords[i];
-                    tmpWord=removeRedStr(tmpWord);
-                    var regExp=new RegExp(tmpWord,'g');
-                    str=str.replace(regExp,redWords[i]);
-                }
-                return str+"..";
-            }else{
-                var redWords=redStrList(strTmp);
-                var hasReplaces=new Array();
-                for(var i=0;i<redWords.length;i++){
-                    var tmpWord=redWords[i];
-                    if(hasReplaces.indexOf(tmpWord)>=0)
-                    {
-                        continue;
-                    }else{
-                        hasReplaces[hasReplaces.length]=tmpWord;
-                    }
-                    tmpWord=removeRedStr(tmpWord);
-                    var regExp=new RegExp(tmpWord,'g');
-                    str=str.replace(regExp,redWords[i]);
-                }
-                return str;
-            }
-        }else{
-            if(str.length>len){
-                return str.substr(0,len)+"..";
-            }else{
-                return str;
-            }
-        }
-
-    }
-    function redStrList(str){
-        var reg=/<font color=red>([\s\S]*?)<\/font>/gi;
-        return str.match(reg);
-    }
-
-    passerHtmlStr(dretitle,20);
-</script>
-
-<script>
-    /*
- * 判断是否在手机中查看
- */
-//    var ua = navigator.userAgent;
-//    var ipad = ua.match(/(iPad).*OS\s([\d_]+)/),
-//        isIphone = !ipad && ua.match(/(iPhone\sOS)\s([\d_]+)/),
-//        isAndroid = ua.match(/(Android)\s+([\d.]+)/),
-//        isMobile = isIphone || isAndroid;
-//    if(isMobile) {
-//        var url="mobile?database=all&qt=成都市人&siteCode=5101000028";
-//        location.href=url;
+<script type="text/javascript">
+//    function keyPress(ob) {
+//        if (!ob.value.match(/^[\+\-]?\d*?\.?\d*?$/)) ob.value = ob.t_value; else ob.t_value = ob.value; if (ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/)) ob.o_value = ob.value;
 //    }
+//    function keyUp(ob) {
+//        if (!ob.value.match(/^[\+\-]?\d*?\.?\d*?$/)) ob.value = ob.t_value; else ob.t_value = ob.value; if (ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?)?$/)) ob.o_value = ob.value;
+//    }
+//    function onBlur(ob) {
+//        if(!ob.value.match(/^(?:[\+\-]?\d+(?:\.\d+)?|\.\d*?)?$/))ob.value=ob.o_value;else{if(ob.value.match(/^\.\d+$/))ob.value=0+ob.value;if(ob.value.match(/^\.$/))ob.value=0;ob.o_value=ob.value};
+//    }
+//$('input').keyup(function(){
+//    var c=$(this);
+//    if(/[^\d]/.test(c.val())){//替换非数字字符
+//        var temp_amount=c.val().replace(/[^\d]/g,'');
+//        $(this).val(temp_amount);
+//    }
+//})
+$('.shebao').on("keyup", function () {
+    var yiliao = $("#yiliao").val();
+    var yanglao = $("#yanglao").val();
+    var score = 0;
+    score = (parseInt(yiliao/6))*5;
+    score = score + (parseInt(yanglao/6))*5;
+    if(isNaN(score)){
+        score = 0;
+    }
+    $("#shebaoScore").val(score);
+});
 </script>
 </html>

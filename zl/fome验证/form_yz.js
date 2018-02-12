@@ -1,5 +1,10 @@
 /*表单验证*/
 
+
+/*if($('form').valid()){ //验证是否通过
+
+}*/
+
 //电话号码验证
 $.validator.addMethod("phone", function(value, element,param) {
     var tel = /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/;

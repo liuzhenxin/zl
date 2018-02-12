@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="http://www.jq22.com/jquery/jquery-ui-1.11.0.js"></script>
+    <script src="http://cdn.bootcss.com/jqueryui/1.11.0/jquery-ui.min.js"></script>
+    <style>
+        tr {
+            cursor:pointer;
+            height:40px;
+            line-height:40px;
+        }
+    </style>
+</head>
+<body>
+<table id="sort">
+    <tbody>
+    <tr>
+        <td class="index">1</td>
+        <td>内容信息1</td>
+    </tr>
+    <tr>
+        <td class="index">2</td>
+        <td>内容信息2</td>
+    </tr>
+    <tr>
+        <td class="index">3</td>
+        <td>内容信息3</td>
+    </tr>
+    <tr>
+        <td class="index">4</td>
+        <td>内容信息4</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+<script>
+    $(document).ready(function() {
+        var fixHelperModified = function(e, tr) {
+                var $originals = tr.children();
+                var $helper = tr.clone();
+                $helper.children().each(function(index) {
+                    $(this).width($originals.eq(index).width())
+                });
+                return $helper;
+            },
+            updateIndex = function(e, ui) {
+                $('td.index', ui.item.parent()).each(function(i) {
+                    $(this).html(i + 1);
+                });
+            };
+        $("#sort tbody").sortable({
+            helper: fixHelperModified,
+            stop: updateIndex
+        }).disableSelection();
+    });
+</script>
+</html>

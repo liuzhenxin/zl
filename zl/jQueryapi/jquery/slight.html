@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="down-main">
+    <div class="left-main">
+        <h1>字符过长出现省略号</h1>
+        <div class="hentry">
+            <h3>效果:</h3>
+            <div class="text">
+                现代化的目的是要解决人类所受到的自然的束缚和物质匮乏的束缚，在此基础上进一步追求美好生活。所以，经济发展的根本目的，就是以人为本，以民为本，提高民生福祉。但是，在一个相当长的时期里，物的发展成为现代化的目标和本质，而人的发展反倒成了工具和手段，从而违背了民生之根本。党的十九大报告指出：“增进民生福祉是发展的根本目的。”这就从根本上揭示了发展的本质，为我们指明了发展的终极目标，也是中国特色社会主义新时代发展的战略指向。
+            </div>
+        </div>
+
+        <article class="hentry">
+            <h3>实例:</h3>
+            <h4>HTMl</h4>
+            <div>
+                <span class="nt">&lt;div</span> <span class="na">class=</span><span class="red">"text"</span><span class="nt">&gt;</span>现代化的目的是要解决人类所受到的自然的束缚和物质匮乏的束缚，在此基础上进一步追求美好生活。所以，经济发展的根本目的，就是以人为本，以民为本，提高民生福祉。但是，在一个相当长的时<span class="nt">&lt;/div&gt;</span>
+            </div>
+            <h4>script</h4>
+            <div>
+                <span class="nt">调用方法:</span>
+                <span class="red">
+
+                    $(function () {
+                        myFrame.slight('.text', 50);
+                    })
+                </span>
+            </div>
+        </article>
+        <article class="hentry">
+            <h3>参数:</h3>
+            <div>
+                <p><span class="nt">第一个参数:</span><span class="na">元素的dome选择器[String ]</span><span class="red">必选</span></p>
+                <p><span class="nt">第二个参数:</span><span class="na">截取的字符长度[number]</span><span class="red">必选</span></p>
+                <p><span class="nt">第三个参数:</span><span class="na">超出字符出现的省略号符号[String ]</span><span class="red">可选</span></p>
+            </div>
+        </article>
+    </div>
+</div>
+</body>
+<script>
+    $(function () {
+        myFrame.slight('.text', 50);
+    })
+</script>
+</html>

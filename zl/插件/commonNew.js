@@ -47,7 +47,7 @@
      *使用方法:myFrame.slight(文本框元素,限制字数,显示剩余字数的元素)
      */
     myFrame.textLen=function (els,num,word) {
-        $(els).keyup(function(event) {
+      /*  $(els).keyup(function(event) {
             var current = $(this).val().length; //赋予变量current为该文本域输入的长度
             if(current >= num){ //如果当输入长度大于140字时
                 if(event.which!==0 && event.which!==8){ //如果允许删除键（ascll码为0）和退格键（ascll为8）工作
@@ -55,6 +55,16 @@
                 }
             }
             $(word).text(num-current);
+        });*/
+        $(els).bind("input propertychange", function() {
+            var $this = $(this),
+                _val = $this.val(),
+                count = "";
+            if (_val.length > num) {
+                $this.val(_val.substring(0, num));
+            }
+            count = num - $this.val().length;
+            $(word).text(count);
         });
     };
 
@@ -1331,6 +1341,26 @@
 
         else return '刚刚';
     };
+    // 根据当前时间获取问候语
+    /**
+     *
+     * @return {String}
+     *
+     * 使用:myFrame.getTimeGreat()
+     */
+    myFrame.getTimeGreat= function (){
+        var h = (new Date()).getHours();
+        if (h >= 15 && h < 19)
+            return "下午好";
+        if (h >= 11 && h < 15)
+            return "中午好";
+        if (h >= 19 && h < 22)
+            return "晚上好";
+        if (h >= 22 && h <= 24 || h >= 0 && h < 6)
+            return "深夜好";
+        if (h >= 6 && h < 11)
+            return "早上好";
+    };
     /*
     * Unix时间戳转换成日期格式
     * @param UnixTime Unix时间戳
@@ -1640,7 +1670,6 @@
         var rem = wW * whdef; // 以默认比例值乘以当前窗口宽度,得到该宽度下的相应FONT-SIZE值
         $('html').css('font-size', rem + "px");
     };
-
 
     // 判断pc浏览器是否缩放，若返回100则为默认无缩放，如果大于100则是放大，否则缩小
     myFrame.detectZoom =function (){

@@ -1,0 +1,50 @@
+第一:
+解压安装包，
+安装CLodop_Setup_for_Win32NT
+安装install_lodop32
+安装install_lodop64
+
+第二引入js文件:
+<!-- 浏览器打印插件 兼容到IE7已上 -->
+<script type="text/javascript" language="JavaScript" src="LODOP/LodopFuncs.js" ></script>
+<script type="text/javascript" charset="utf-8" src="jquery-print-preview-plugin-master/src/jquery.print-preview.js" charset="utf-8"></script>
+<!-- 引入自定义文件 -->
+<script type="text/javascript" charset="utf-8" src="print_common.js" charset="utf-8"></script>
+
+
+第三引入css文件:
+<!--打印文件-->
+<link rel="stylesheet" type="text/css" href="jquery-print-preview-plugin-master/example/css/print.css" media="print"/>
+<link rel="stylesheet" type="text/css" href="jquery-print-preview-plugin-master/src/css/print-preview.css" media="screen"/>
+
+第四:html页面的使用
+<button type="button" class="btn btn-default paddingLR-30" id="daYin">打 印</button>
+
+//点击事件必须用id
+//ifDom:$("要打印内容区的id")
+//elem.find("要打印内容区的id").show();
+
+ $("#daYin").printPreview({
+            ifDom:$("#day"),  //要打印内容区的id
+            // 打印之前回调 处理样式
+            callBack:function(elem){
+                elem = elem.contents();
+                elem.find("#day").show();  ////要打印内容区的id
+            },
+            // 点击打印
+            clickPrint:function(print_frame){
+
+                LODOP = getLodop();
+                LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_表单二");
+                LODOP.ADD_PRINT_RECT(70,27,634,242,0,1);
+                // LODOP.ADD_PRINT_TEXT(29,236,279,38,"页面内容改变布局打印");
+                LODOP.SET_PRINT_STYLEA(2,"FontSize",18);
+                LODOP.SET_PRINT_STYLEA(2,"Bold",1);
+                LODOP.ADD_PRINT_HTM(0,0,"100%","100%",$(window.frames["print-frame"].document).find("html").html());
+                // LODOP.ADD_PRINT_HTM(87,355,285,187,document.getElementById("form2").innerHTML);
+                // LODOP.ADD_PRINT_TEXT(319,58,500,30,"注：其中《表单一》按显示大小，《表单二》在程序控制宽度(285px)内自适应调整");
+                LODOP.PREVIEW();
+            }
+ });
+
+

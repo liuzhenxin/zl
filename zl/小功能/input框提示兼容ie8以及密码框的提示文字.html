@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+        }
+        body {
+            font-family:"Microsoft Yahei";
+            background:#cccccc;
+        }
+        /*--input框样式--*/
+        .wrap {
+            width:260px;
+            background:#ffffff;
+            margin:50px auto;
+            padding:30px 20px;
+        }
+        .inputAll {
+            margin-top:25px;
+            width:100%;
+        }
+        .inputAll:first-child {
+            margin-top:0;
+        }
+        .inputAll input {
+            width:100%;
+            height:45px;
+            line-height:45px;
+            padding-left:5%;
+            border:1px solid #319a51;
+            color:#292830;
+            font-size:14px;
+            out-line:none;
+        }
+        /*--因为password输入框设置value之后还是显示不可见的点，所以这块需要做个"假的password"来让用户通过直观来看到提示--*/
+        .passwordAll {
+            position:relative;
+        }
+        .topPw {
+            position:absolute;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <form>
+        <div class="userAll inputAll">
+            <input type="text" value="请输入用户名" class="input user">
+        </div>
+        <div class="passwordAll inputAll">
+            <input type="text" value="请输入密码" class="topPw input">
+            <input type="password" class="input password">
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    //设置提示文字js
+    $(".input") //所有样式名中含有input的input
+        .each(function() {
+            var oldVal = $(this).val(); //默认的提示性文本
+            $(this).css({
+                "color": "#a6a6a6"
+            }) //灰色
+                .focus(function() {
+                    if ($(this).val() != oldVal) {
+                        $(this).css({
+                            "color": "#000"
+                        })
+                    } else {
+                        $(this).val("").css({
+                            "color": "#a6a6a6"
+                        })
+                    }
+                })
+                .blur(function() {
+                    if ($(this).val() == "") {
+                        $(this).val(oldVal).css({
+                            "color": "#a6a6a6"
+                        })
+                    }
+                })
+                .keydown(function() {
+                    $(this).css({
+                        "color": "#000"
+                    })
+                })
+
+        })
+    //设置password框js
+    $('.topPw ').focus(function() {
+        $(this).css('display', 'none').siblings('.password').focus();
+    });
+    $('.password').blur(function() {
+        if ($(this).val() == '') {
+            $(this).siblings('.topPw ').css('display', 'block');
+        }
+    })
+</script>
+</html>

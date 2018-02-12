@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        /* 全局样式设置 */
+        *{
+            margin:0;
+            padding:0;
+        }
+        h1{
+            text-align: center;
+            /*line-height: 100px;*/
+        }
+        a{
+            text-decoration: none;
+        }
+        /* 设置轮播图样式 */
+        /* 图片显示样式 */
+        .banner_slider{
+            position: relative;
+            background-color: green;
+            margin:0 auto;
+            width:500px;
+            height: 380px;
+            overflow:hidden;
+        }
+        .banner_slider_pics{
+            width:3000px;
+            height: 100%;
+            margin:0 auto;
+            position: relative;
+            left:-500px;
+        }
+        .banner_slider_pics>a{
+            width: 500px;
+            height: 380px;
+            display: block;
+            float: left;
+            text-align:center;
+        }
+        .banner_slider_pics>a> img{
+            width: 100%;
+            height: 380px;
+        }
+        /* 上一张，下一张按钮样式 */
+        .banner_slider_arrow{
+            width: 500px;
+            height: 40px;
+            position: absolute;
+            left: 0;
+            bottom: 50%;
+            margin-bottom: -20px;
+        }
+        .arrow_item{
+            font-size: 25px;
+            font-weight: bold;
+            color: #fff;
+            background-color: rgba(0,0,0,.6);
+            opacity: .6;
+        }
+        .arrow_item:hover{
+            opacity: .8;
+        }
+        .prev{
+            position: absolute;
+            left: 10px;
+            padding:10px 7px 10px 7px;
+        }
+        .next{
+            position: absolute;
+            right: 10px;
+            padding:10px 7px 10px 7px;
+        }
+        /* 圆点按钮 */
+        .banner_slider_dots{
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            position: absolute;
+            bottom: 10px;
+            text-align: center;
+        }
+        .dots_item{
+            display: inline-block;
+            width:10px;
+            height: 10px;
+            background-color: #999;
+            border-radius:50%;
+            border:3px solid #fff;
+            margin-right: 10px;
+        }
+        .dots_active{
+            background-color: #fff;
+            border-color:orange;
+        }
+    </style>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+<h1>无缝轮播</h1>
+<!-- 有缝轮播 -->
+<div class="banner_slider" id="banner_slider">
+    <!-- 图片 -->
+    <div class="banner_slider_pics" id="banner_slider_pics">
+        <a href="#4">-1<img src="http://www.jq22.com/img/cs/500x500-2.png"></a>
+        <a href="#1">0<img src="http://www.jq22.com/img/cs/500x500-1.png"></a>
+        <a href="#2">1<img src="http://www.jq22.com/img/cs/500x300-1.png"></a>
+        <a href="#3">2<img src="http://www.jq22.com/img/cs/300x500-1.png"></a>
+        <a href="#4">3<img src="http://www.jq22.com/img/cs/500x500-2.png"></a>
+        <a href="#1">4<img src="http://www.jq22.com/img/cs/500x500-1.png"></a>
+    </div>
+    <!-- 按钮 -->
+    <div class="banner_slider_arrow">
+        <a href="#5" class="arrow_item prev" id="arrow_prev">&lt;</a>
+        <a href="#6" class="arrow_item next" id="arrow_next">&gt;</a>
+    </div>
+    <!-- 索引圆点 -->
+    <div class="banner_slider_dots" id="banner_slider_dots">
+        <a href="#7" class="dots_item dots_active"></a>
+        <a href="#8" class="dots_item"></a>
+        <a href="#9" class="dots_item"></a>
+        <a href="#10" class="dots_item"></a>
+    </div>
+</div>
+</body>
+<script>
+    window.onload=function(){
+        var banner_slider=$('#banner_slider'),
+            pics=$('#banner_slider_pics'),
+            items=$('#banner_slider_pics a'),
+            pic_width=items.eq(0).width(),
+            dots=$('#banner_slider_dots a'),
+            btn_prev=$('#arrow_prev'),
+            btn_next=$('#arrow_next'),
+            current=0,
+            timmer=null,
+            size=dots.size();
+        // 定义一个鼠标滑过判断事件
+        banner_slider.hover(function(){
+            clearInterval(timmer);
+        },function(){
+            timmer=setInterval(slider,3000);
+        });
+        function slider(){
+            current++;
+            doSlider();
+        }
+        function doSlider(){
+            // 圆点按钮轮播
+            dots.removeClass('dots_active').eq(current%size).addClass('dots_active');
+            // 图片轮播
+            pics.stop().animate({
+                left:-(current+1)*pic_width
+            },1000,function(){
+                if(current==size){
+                    current=0;
+                    pics.css('left',-(current+1)*pic_width+'px');
+                }else if(current==-1){
+                    current=size-1;
+                    pics.css('left',-(size)*pic_width+'px');
+                }
+            });
+        }
+        timmer=setInterval(slider,3000);
+        // 点击上一张按钮切换图片
+        btn_prev.click(function(){
+            current--;
+            doSlider();
+        });
+        // 点击下一张按钮切换图片
+        btn_next.click(function(){
+            current++;
+            doSlider();
+        });
+        // 点击圆点切换图片
+        dots.click(function(){
+            current=$(this).index();
+            doSlider();
+        });
+    }
+</script>
+</html>

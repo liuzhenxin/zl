@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="commonNew.js"></script>
+</head>
+<body>
+<span id="num">3s</span>
+</body>
+<script>
+    $(document).ready(function () {
+        function jump(count,ele) {
+            window.setTimeout(function () {
+                count--;
+                if (count >= 0) {
+                    $(ele).text(count + 's');
+                    jump(count,ele);
+                    return count;
+                } else {
+                    return count;
+                    //  window.location.href="${pageContext.request.contextPath }/governmentFront";
+                }
+            }, 1000);
+            return count;
+        }
+
+        jump(8,'#num')
+    });
+</script>
+</html>

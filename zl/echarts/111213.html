@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/echarts-all.js"></script>
+
+</head>
+<body>
+<div id="main" style="width:100%;height:265px;"></div>
+</body>
+<script>
+    var  data={"qzcjl":{"2017-01":0,"2017-02":0,"2017-03":0,"2017-04":0,"2017-05":0,"2017-06":558404,"2017-07":0,"2017-08":0,"2017-09":274766367,"2017-10":2410483157,"2017-11":568582170,"2017-12":0},
+               "jkcjl":{"2017-01":0,"2017-02":0,"2017-03":0,"2017-04":0,"2017-05":0,"2017-06":162301,"2017-07":0,"2017-08":0,"2017-09":0,"2017-10":0,"2017-11":0,"2017-12":0},
+               "qzgxl":{"2017-01":0,"2017-02":0,"2017-03":0,"2017-04":0,"2017-05":0,"2017-06":1244226,"2017-07":0,"2017-08":0,"2017-09":0,"2017-10":0,"2017-11":0,"2017-12":0},
+               "jkgxl":{"2017-01":0,"2017-02":0,"2017-03":0,"2017-04":0,"2017-05":0,"2017-06":2507,"2017-07":0,"2017-08":0,"2017-09":0,"2017-10":0,"2017-11":0,"2017-12":0}
+    };
+    var  data1={"qzcjl":{'year':["2017-01","2017-01","2017-01","2017-01","2017-01"],
+                        'value':[0,1,2,3,5,6,7,8,9,0]}
+
+    };
+    var  data2={"qzcjl":[{'year':'2017-01','value':'0'},{'year':'2017-02','value':'1'},{'year':'2017-03','value':'2'},{'year':'2017-04','value':'3'}]
+
+
+    };
+
+    var myChart = echarts.init(document.getElementById('main'));
+    // 指定图表的配置项和数据
+    option = {
+        title: {
+            text: '数据采集对比'
+        },
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['前置采集量','接口采集量']
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+//        xAxis: {
+//           /* data:["2017-01", "2017-02", "2017-03", "2017-04", "2017-05", "2017-06", "2017-07", "2017-08", "2017-09", "2017-10", "2017-11", "2017-12"]*/
+//            data: []
+//        },
+        yAxis: {
+            type: 'value'
+        }
+        //,
+//        series:[
+//         /*   {data:[0, 0, 0, 0, 0, 558404, 0, 0, 274766367, 2410483157, 568582170, 0],
+//            name:'前置采集量',
+//            type:'line'
+//
+//        },{data:[0, 0, 0, 0, 0, 558404, 0, 0, 274766367, 2410483157, 568582170, 0],
+//            name:'接口采集量',
+//            type:'line'
+//        }*/
+//        ]
+            /*{
+                name:'前置采集量',
+                type:'line',
+                data:sbDateJk
+            },
+            {
+                name:'接口采集量',
+                type:'line',
+                data:sbDateJk
+            }*/
+    };
+
+    var cjl_xAxisData = new Array();
+    var qzcjl_data = new Array();
+    var jkcjl_data = new Array();
+    for (var x in data.qzcjl)
+    {
+        cjl_xAxisData.push(x);
+        qzcjl_data.push(data.qzcjl[x]);
+        jkcjl_data.push(data.jkcjl[x]);
+    }
+
+    console.log(cjl_xAxisData);
+    console.log(qzcjl_data);
+    console.log(jkcjl_data);
+    myChart.setOption(option);
+
+    myChart.setOption({        //加载数据图表
+        xAxis: {
+            data: cjl_xAxisData
+        },
+        series: [
+            {data:qzcjl_data,
+            name:'前置采集量',
+            type:'line'
+
+        },{data:jkcjl_data,
+            name:'接口采集量',
+            type:'line'
+        }
+        ]
+    });
+
+   /* console.log(option_data);
+    option.push(option_data);
+    // 使用刚指定的配置项和数据显示图表。*/
+</script>
+</html>

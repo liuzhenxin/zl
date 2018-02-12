@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-1.8.3.min.js"></script>
+    <script src="commonNew.js"></script>
+</head>
+<body>
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text"  placeholder="请输入用户名"/>
+<input type="text" id="signName" placeholder="请输入用户名"/>
+</body>
+<script>
+    alert(myFrame.getExplore());
+    if(myFrame.getExplore()=='IE'){
+        alert(11)
+    }
+//    var placeHolder = function(ele){
+//        if(ele && !("placeholder" in document.createElement("input"))){
+//            //元素里面的属性值复制给pleaceHolder;
+//            placeholder = ele.getAttribute("placeholder");
+//
+//            ele.onfocus = function(){
+//                if(this.value === placeholder){
+//                    this.value = "";
+//                }
+//                this.style.color = "";
+//            }
+//            ele.onblur = function(){
+//                if(this.value === ""){
+//                    this.value = placeholder;
+//                    this.style.color = "red";
+//                }
+//            };
+//            if(ele.value === ""){
+//                ele.value = placeholder;
+//                ele.style.color = "red";
+//            }
+//        }
+//    };
+//    placeHolder(placeHolder(document.getElementById("signName")));
+
+//    if (!('placeholder' in document.createElement('input'))) {
+//        $('[placeholder]').each(function () {
+//            var $tag = $(this); //当前 input
+//            var $copy = $tag.clone();   //当前 input 的复制
+//            if ($copy.val() == "") {
+//                $copy.css("color", "#999");
+//                $copy.val($copy.attr('placeholder'));
+//            }
+//            $copy.focus(function () {
+//                if (this.value == $copy.attr('placeholder')) {
+//                    this.value = '';
+//                    this.style.color = '#000';
+//                }
+//            });
+//            $copy.blur(function () {
+//                if (this.value=="") {
+//                    this.value = $copy.attr('placeholder');
+//                    $tag.val("");
+//                    this.style.color = '#999';
+//                } else {
+//                    $tag.val(this.value);
+//                }
+//            });
+//          // $tag.hide().after($copy.show());    //当前 input 隐藏 ，具有 placeholder 功能js的input显示
+//            $tag.hide().after($copy.show());    //当前 input 隐藏 ，具有 placeholder 功能js的input显示
+//        });
+//    }
+</script>
+</html>

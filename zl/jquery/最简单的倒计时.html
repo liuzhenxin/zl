@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</head>
+<body>
+<span id="num">3s</span>
+</body>
+<script>
+    $(document).ready(function () {
+        function jump(count) {
+            window.setTimeout(function () {
+                count--;
+                if (count >= 0) {
+                    $('#num').text(count + 's');
+                    jump(count);
+                } else {
+                    //  window.location.href="${pageContext.request.contextPath }/governmentFront";
+                }
+            }, 1000);
+        }
+
+        jump(3);
+    });
+</script>
+</html>

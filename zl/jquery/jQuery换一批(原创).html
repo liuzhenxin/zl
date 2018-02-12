@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            text-decoration:none;
+            list-style:none;
+        }
+        .list1 {
+            display:flex;
+            margin:0 auto;
+        }
+        .list1 li {
+            flex:1;
+            border-radius:0.25em;
+            height:2.5em;
+            text-align:center;
+            line-height:2.5em;
+            margin:0.625em 0.32em;
+        }
+        .listchange2,.listchange3,.listchange4 {
+            display:none;
+        }
+        .huan {
+            text-align:center;
+            font-family:"微软雅黑";
+            font-size:1em;
+            color:#999999;
+        }
+
+    </style>
+</head>
+<body>
+<!-- 插件使用方式:多加一组就是加两个ul listchange类后面数字改为递增
+
+	例：<ul class="list1 listchange5">
+		<li>5</li>
+		<li>5</li>
+		<li>5</li>
+		<li>5</li>
+	</ul>
+
+	style内将listchange5改成dispaly:none;
+
+	js内把要换的批数也加1: var listitemmax=5;
+ -->
+
+<ul class="list1 listchange1">
+    <li>幸福家庭</li>
+    <li>幸福家庭</li>
+    <li>幸福家庭</li>
+    <li>幸福家庭</li>
+</ul>
+<ul class="list1 listchange1">
+    <li>亲子娱乐</li>
+    <li>爸妈游</li>
+    <li>蜜月旅行</li>
+    <li>朋友聚会</li>
+</ul>
+<ul class="list1 listchange2">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<ul class="list1 listchange2">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<ul class="list1 listchange3">
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+</ul>
+<ul class="list1 listchange3">
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+    <li>a</li>
+</ul>
+<ul class="list1 listchange4">
+    <li>b</li>
+    <li>b</li>
+    <li>b</li>
+    <li>b</li>
+</ul>
+<ul class="list1 listchange4">
+    <li>b</li>
+    <li>b</li>
+    <li>b</li>
+    <li>b</li>
+</ul>
+
+
+<div style="text-align: center;"><button class="huan">换一批</button> </div>
+</body>
+<script>
+    var bcjson = ["#ff9900", "#3dbeb6", "#a3eee9", "#f8cd8c"];
+    var cjson = ["#fff", "black"];
+    $(function() {
+
+        $(".list1").children("li").each(function() {
+            $(this).css({
+                "background-color": bcjson[Math.floor(Math.random() * 4)],
+                "color": cjson[Math.floor(Math.random() * 2)]
+            });
+        })
+
+    });
+    //代表第一次换的是第二组
+    var listitem = 2;
+
+    //这是要换的批数
+    var listitemmax = 4;
+    $(".huan").click(function() {
+        $(".listchange" + listitem).siblings("ul").css("display", "none");
+        $(".listchange" + listitem).css("display", "flex");
+        if (listitem < listitemmax) {
+            listitem++;
+        } else {
+            listitem = 1;
+        }
+    });
+</script>
+</html>

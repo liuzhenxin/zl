@@ -168,7 +168,10 @@ $(function(){
             if(part.length==0){
                 part = $(el).parents("table").find("thead tr").last().find("th");
             }else {
-                part = part.find("td")
+                part = part.find("td");
+                var a=21;
+                dom.append('<div class="yibohui" style="width:'+a+'px;position: absolute;top: 0; right: 0;"><img style="height:52px;" src="${pageContext.request.contextPath}/static/business/img/order/yibohui.png" alt=""></div>')
+
             }
             if(index==0){
                 part.each(function(index2, el2) {

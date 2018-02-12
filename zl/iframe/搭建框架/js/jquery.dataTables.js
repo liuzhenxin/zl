@@ -6,7 +6,7 @@
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
  * @version     1.10.7
- * @file        jquery.dataTables.js
+ * @file        dataTables.js
  * @author      SpryMedia Ltd (www.sprymedia.co.uk)
  * @contact     www.sprymedia.co.uk/contact
  * @copyright   Copyright 2008-2014 SpryMedia Ltd.

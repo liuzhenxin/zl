@@ -1,0 +1,88 @@
+@charset "UTF-8";
+/*浮动*/
+.pull-left {
+  float: left; }
+
+.pull-right {
+  float: right; }
+
+/* 清除浮动 */
+.clearfix {
+  /* 触发 hasLayout */
+  zoom: 1; }
+
+.clearfix:after {
+  content: "020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+.down-main {
+  width: 1000px;
+  margin: 0 auto; }
+
+.left-main {
+  width: 800px;
+  float: left; }
+
+.right-main {
+  float: right; }
+
+/**/
+.hentry {
+  padding: 10px 20px;
+  margin: 15px 0;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  background-color: #eee;
+  position: relative; }
+
+/*布局*/
+.bs-example {
+  padding: 10px;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  box-sizing: border-box; }
+
+figure {
+  padding: 0;
+  margin: 0;
+  background-color: #f7f7f9;
+  border: 1px solid #e1e1e8;
+  box-sizing: border-box;
+  width: 800px;
+  overflow-x: auto; }
+  figure h3 {
+    margin: 0; }
+
+.nt {
+  color: #2f6f9f; }
+
+.na {
+  color: #4f9fcf; }
+
+.red {
+  color: #d44950; }
+
+.box {
+  width: 1200px;
+  margin: 0 auto; }
+  .box .box-left {
+    width: 30%;
+    height: 600px;
+    border-image: linear-gradient(#ffffff, #e7e7e7 15%, #e7e7e7 85%, #ffffff);
+    box-shadow: inset 15px 0 5px -16px #e7e7e7;
+    background-image: -webkit-radial-gradient(right, #f2f2f2, #ffffff 80%); }
+  .box .box-right {
+    width: 70%;
+    height: 600px; }
+
+.list .child_list li {
+  cursor: pointer;
+  color: #357efa; }
+  .list .child_list li a {
+    color: #357efa;
+    text-underline: none; }
+
+/*# sourceMappingURL=index.css.map */

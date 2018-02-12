@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .test-div{
+            position: relative;  /*日常相对定位(重要，下面内容也会介绍)*/
+            width:300px;
+            height: 10px;
+            background: #eee;
+        }
+        .test-div:before{
+            position: absolute;  /*日常绝对定位(重要，下面内容也会略带介绍)*/
+            content: "";  /*:before和:after必带技能，重要性为满5颗星*/
+            top:0;
+            right: -10px;
+            width: 8px;
+            height: 8px;
+            border: 1px solid red;
+            border-radius: 60%;
+        }
+    </style>
+</head>
+<body>
+<div class="test-div">
+</div>
+</body>
+</html>

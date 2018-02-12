@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            margin:50px auto;
+            width:100px;
+            height:100px;
+            background-color:pink;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div class="box"></div>
+</body>
+<script>
+    click("box","box");
+    function click(name,box) {
+        $(document).on("click", function(e) {
+            var _conss = $('.'+name);//点击的容器范围
+            if (!_conss.is(e.target) && _conss.has(e.target).length === 0) {
+                $("."+box).hide();//选择要关闭的容器
+            }
+        });
+    }
+</script>
+</html>

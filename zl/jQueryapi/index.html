@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="jquery-1.4.4.min.js"></script>
+    <script src="commonNew.js"></script>
+</head>
+<body>
+<div class="box clearfix">
+    <div class="box-left pull-left">
+        <ul class="list">
+            <li>
+                <div class="nav">字符类</div>
+                <ul class="child_list">
+                    <li><a target="jquery/slight.html" >文字过长省略</a></li>
+                    <li><a target="jquery/textLen.html" >文本框文字限制</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="box-right pull-right">
+        <div id="iframe" style="height: 100%;width: 100%">
+            　　<!--jquery 插入html 位址-->
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        $.get("jquery/slight.html", function (data) { //初始將a.html include div#iframe
+            $("#iframe").html(data);
+        });
+        $(function () {
+            $('.child_list li').click(function () {
+                // 找出 li 中的超链接 href(#id)
+                var $this = $(this),
+                    _clickTab = $this.find('a').attr('target'); // 找到链接a中的targer的值
+
+                $.get(_clickTab, function (data) {
+                    $("#iframe").html(data);  //获取该页面的html内容
+                });
+            });
+        });
+    });
+</script>
+</html>

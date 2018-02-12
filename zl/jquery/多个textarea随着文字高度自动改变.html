@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .bodyBg {
+            background:#f0f2f5;
+        }
+        .content-page {
+            overflow:auto;
+            width:100%;
+            padding:30px 15px;
+        }
+        .infobox {
+            background:#ffffff;
+        }
+        .boxTitle {
+            color:#22a7f0;
+            font-size:18px;
+            text-align:left;
+            background:#fafafa;
+            height:50px;
+            line-height:50px;
+            padding:0px 20px;
+        }
+        .boxContent {
+            padding:20px;
+        }
+        .boxContent:after {
+            content:'';
+            display:table;
+            clear:both;
+        }
+        .templetebox {
+            margin-bottom:30px;
+        }
+        .btnBoxform {
+            text-align:center;
+        }
+    </style>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<div class="infobox templetebox">
+    <div class="boxTitle">个人简介</div>
+    <div class="boxContent">
+        <textarea data-adaptheight="" rows="3" cols="40" placeholder="请在此输入内容。">南京鼓楼医院妇科副主任，主任医师、教授、硕士研究生导师。1995年首都医科大学临床医学专业本科毕业。1997年起于首都医科大学硕博连读，师从赵继宗教授。2002年获外科学博士学位。2006年于美国BARROW神经科学研究所访问学习。2013-2014年于美国加州大学旧金山分校博士后学习。获得国家自然科学基金面上项目“皮层电刺激联合康复锻炼对大鼠脑缺血模型运动区突触可塑性的作用及机制”，北京市卫生系统高层次卫生技术人才培养计划，北京市十百千卫生人才计划，北京市科技新星计划，北京天坛医院“栋梁人才”计划，市科委“脑卒中三项外科关键治疗技术规范研究”分课题“大面积脑梗死去大骨瓣减压手术技术”，国家科技支撑计划"脑、脊髓动静脉畸形多种微创治疗技术及预后因素分析”分课题等多项科研项目资助。2011年起担任国家自然科学基金面上项目评阅人，2017年获北京天坛医院先进工作者，2016年获得北京市优秀中青年医师称已发表学术论文20余篇，其中SCI论文8篇。</textarea>
+    </div>
+</div>
+
+<div class="infobox templetebox">
+    <div class="boxTitle">在学会担（兼）任的职务</div>
+    <div class="boxContent">
+        <textarea data-adaptheight="" rows="3" cols="40" placeholder="请在此输入内容。">南京鼓楼医院妇科副主任，主任医师、教授、硕士研究生导师。1995年首都医科大学临床医学专业本科毕业。1997年起于首都医科大学硕博连读，师从赵继宗教授。2002年获外科学博士学位。2006年于美国BARROW神经科学研究所访问学习。2013-2014年于美国加州大学旧金山分校博士后学习。获得国家自然科学基金面上项目“皮层电刺激联合康复锻炼对大鼠脑缺血模型运动区突触可塑性的作用及机制”，北京市卫生系统高层次卫生技术人才培养计划，北京市十百千卫生人才计划，北京市科技新星计划，北京天坛医院“栋梁人才”计划，市科委“脑卒中三项外科关键治疗技术规范研究”分课题“大面积脑梗死去大骨瓣减压手术技术”，国家科技支撑计划"脑、脊髓动静脉畸形多种微创治疗技术及预后因素分析”分课题等多项科研项目资助。2011年起担任国家自然科学基金面上项目评阅人，2017年获北京天坛医院先进工作者，2016年获得北京市优秀中青年医师称已发表学术论文20余篇，其中SCI论文8篇。</textarea>
+    </div>
+</div>
+</body>
+<script>
+    // JavaScript Document
+
+    function adjustHeight(textareaElement, minHeight) {
+        // compute the height difference which is caused by border and outline
+        // 计算因边框和轮廓产生的高度差异
+        var outerHeight = parseInt(window.getComputedStyle(textareaElement).height, 10);
+        var diff = outerHeight - textareaElement.clientHeight;
+
+        // set the height to 0 in case of it has to be shrinked
+        // 设置高度为0以防需要收缩（高度）
+        textareaElement.style.height = 0;
+        // set the correct height
+        // el.scrollHeight is the full height of the content, not just the visible part
+        // 设置正确的高度
+        // el.scrollHeight 是文本内容的全部高度，而不仅仅是可见部分的。
+        textareaElement.style.height = Math.max(minHeight, textareaElement.scrollHeight + diff) + 'px';
+    }
+
+    // we use the "data-adaptheight" attribute as a marker
+    // 我们使用"data-adaptheight"属性作为一个标记
+    var textAreas = document.querySelectorAll('textarea[data-adaptheight]');
+
+    // iterate through all the textareas on the page
+    // 迭代本页所有的文本域
+    for (var i = 0, l = textAreas.length; i < l; i++) {
+        var el = textAreas[i];
+
+        // we need box-sizing: border-box, if the textarea has padding
+        // 如果文本域有边距，我们需要设置box-sizing: border-box
+        el.style.boxSizing = el.style.mozBoxSizing = 'border-box';
+
+        // we don't need any scrollbars, do we? :)
+        // 我们不需要滚动条，不是么？ :)
+        el.style.overflowY = 'hidden';
+
+        // the minimum height initiated through the "rows" attribute
+        // 通过"rows"属性初始化的最小高度
+        var minHeight = el.scrollHeight;
+
+        el.addEventListener('input', function() {
+            adjustHeight(this, minHeight);
+        });
+
+        // we have to readjust when window size changes (e.g. orientation change)
+        // 当窗口大小改变时，我们需要重新调整高度（例如方向变化）
+        window.addEventListener('resize', function() {
+            adjustHeight(this, minHeight);
+        });
+
+        // we adjust height to the initial content
+        // 我们调整初始内容的高度
+        adjustHeight(el, minHeight);
+    }
+</script>
+</html>

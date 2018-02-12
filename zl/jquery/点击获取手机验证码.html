@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #btn {
+            width:100px;
+            height:34px;
+            text-align:center;
+            background-color:#e6e6e6;
+            font:12px/34px "PingFangSC-Regular,sans-serif";
+            color:#111;
+            cursor:pointer;
+            outline:none;
+        }
+    </style>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+</head>
+<body>
+<input type="button" id="btn" value="免费获取验证码" onclick="sendemail()">
+</body>
+<script>
+    var countdown = 60;
+
+    function sendemail() {
+        var obj = $("#btn");
+        settime(obj);
+
+    }
+
+    function settime(obj) { //发送验证码倒计时
+        if (countdown == 0) {
+            obj.attr('disabled', false);
+            //obj.removeattr("disabled");
+            obj.val("免费获取验证码");
+            countdown = 60;
+            return;
+        } else {
+            obj.attr('disabled', true);
+            obj.val("重新发送(" + countdown + ")s");
+            countdown--;
+        }
+        setTimeout(function() {
+            settime(obj)
+        }, 1000)
+    }
+</script>
+</html>

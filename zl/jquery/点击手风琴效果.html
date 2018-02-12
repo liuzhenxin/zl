@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin:0;
+            padding:0;
+            border:0;
+        }
+        .container {
+            width:740px;
+            height:300px;
+            overflow:hidden;
+        }
+        .pic {
+            width:180px;
+            height:300px;
+            float:left;
+        }
+    </style>
+    <script src="jquery-1.8.3.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="pic pic-1"><img src="http://www.jq22.com/img/cs/500x300-1.png"></div>
+    <div class="pic pic-2"><img src="http://www.jq22.com/img/cs/500x300-2.png"></div>
+    <div class="pic pic-3"><img src="http://www.jq22.com/img/cs/500x300-3.png"></div>
+    <div class="pic pic-4"><img src="http://www.jq22.com/img/cs/500x300-4.png"></div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        $(".pic").click(function() {
+            $(this).animate({
+                "width": "500px"
+            });
+            $(this).siblings().animate({
+                "width": "80px"
+            });
+        })
+    })
+</script>
+</html>

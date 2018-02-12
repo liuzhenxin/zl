@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="jquery-1.8.3.min.js"></script>
-    <script src=""></script>
+    <script src="commonNew.js"></script>
 </head>
 <body>
 <form action="" id="forma">
@@ -12,27 +12,35 @@
     Name" value="" /><br />
     Last name: <input type="text" name="LastName" value="" /><br />
     <button type="button" id="btn">dsf</button>
+
+    <div id="aa">3</div>
 </form>
 </body>
 <script>
 
-    $.fn.extend({
-
-    });
-    $(function () {
-        var json={FirstName: "第三方第三方", LastName: "12313"};
-        $('#forma').setForm(json);
-        $('#btn').click(function () {
-
-//            var array = {};
-//            //var t = $('#'+formId).serializeArray();
-//            var t = $('#forma').serializeArray();
-//            $.each(t, function() {
-//                array[this.name] = this.value;
-//            });
-//            console.log(array);
-        });
-
-    })
+//    $.fn.extend({
+//
+//    });
+//    $(function () {
+//        var json={FirstName: "第三方第三方", LastName: "12313"};
+//        $('#forma').setForm(json);
+//        $('#btn').click(function () {
+//
+////            var array = {};
+////            //var t = $('#'+formId).serializeArray();
+////            var t = $('#forma').serializeArray();
+////            $.each(t, function() {
+////                array[this.name] = this.value;
+////            });
+////            console.log(array);
+//        });
+//
+//    })
+$(function () {
+    window.setTimeout(function () {
+        console.log(myFrame.playSec('#aa'));
+    }, 1000);
+       // consol(myFrame.playSec('#aa'));
+})
 </script>
 </html>

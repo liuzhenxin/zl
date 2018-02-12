@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="timer">
+
+</div>
+</body>
+<script>
+    window.onload = function() {
+        var timer = setInterval(showTime, 1)
+    };
+
+    function showTime() {
+        var now = new Date();
+        //此处为记录开始的时间
+        var then = new Date("2014/1/21 15:30:00");
+        var time = now - then;
+        var year = parseInt(time / (3600 * 1000 * 24 * 365));
+        var day = parseInt(time % (3600 * 1000 * 24 * 365) / (3600 * 1000 * 24));
+        var second = parseInt((time % (3600 * 1000 * 24 * 365) % (3600 * 1000 * 24)) / 1000);
+        var ms = (time % (3600 * 1000 * 24 * 365) % (3600 * 1000 * 24)) % 1000;
+        var s = document.getElementById("timer");
+        s.innerHTML = '爱的计时：' + year + '年' + day + '天' + second + '秒' + ms;
+    }
+</script>
+</html>
