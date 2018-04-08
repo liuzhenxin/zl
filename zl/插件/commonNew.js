@@ -499,32 +499,65 @@
     * */
     myFrame.inputPlaceholder = function(fEvent) {
 
-        if (typeof fEvent == "function"){
-            fEvent(focusEvent);
-            return;
-        }
-        $("input[type='text']").each(function(index,el) {
-            var $that = $(el),
-                holder;
-            if($that.attr("readonly") || $that.attr("disabled")){
-                return;
-            }
-            focusEvent($that,holder);
+        // if (typeof fEvent == "function"){
+        //     fEvent(focusEvent);
+        //     return;
+        // }
+        // $("input[type='text']").each(function(index,el) {
+        //     var $that = $(el),
+        //         holder;
+        //     if($that.attr("readonly") || $that.attr("disabled")){
+        //         return;
+        //     }
+        //     focusEvent($that,holder);
+        //
+        // });
+        // // 单独处理获取焦点 placeholder问题
+        // function focusEvent(dom,holder){
+        //     dom.on("focus",function(event) {
+        //         event.stopPropagation();
+        //         var that = $(this);
+        //         holder = that.attr("placeholder");
+        //         that.attr("placeholder","");
+        //     }).on("blur",function() {
+        //         var that = $(this);
+        //         if (that.val().length === 0) {
+        //             that.attr("placeholder",holder);
+        //         }
+        //     });
+        // }
 
-        });
-        // 单独处理获取焦点 placeholder问题
-        function focusEvent(dom,holder){
-            dom.on("focus",function(event) {
-                event.stopPropagation();
-                var that = $(this);
-                holder = that.attr("placeholder");
-                that.attr("placeholder","");
-            }).on("blur",function() {
-                var that = $(this);
-                if (that.val().length === 0) {
-                    that.attr("placeholder",holder);
+        if (!('placeholder' in document.createElement('input'))) {
+            // 将返回的nodeList对象转为数组
+            var nodes = Array.prototype.slice.call(document.querySelectorAll('[placeholder]'));
+            nodes.forEach(function (item, index) {
+                item.addEventListener('focus', function () {
+                    this.nextSibling.style.display = 'none'
+                });
+                item.addEventListener('blur', function () {
+                    if (!this.value) {
+                        this.style.display = 'none';
+                        this.nextSibling.style.display = 'inline'
+                    }
+                });
+                var cloneNode = item.cloneNode();
+                // 如果[type='password']类型，则转为text
+                if (cloneNode.getAttribute('type').toLowerCase() === 'password') {
+                    cloneNode.setAttribute('type', 'text')
                 }
-            });
+                cloneNode.setAttribute('value', cloneNode.getAttribute('placeholder'));
+                cloneNode.style.display = 'none';
+                item.insertAdjacentHTML('afterend', cloneNode.outerHTML);
+                item.nextSibling.addEventListener('focus', function () {
+                    this.style.display = 'none';
+                    this.previousSibling.style.display = 'inline';
+                    this.previousSibling.focus()
+                });
+                if (!item.value) {
+                    item.style.display = 'none';
+                    item.nextSibling.style.display = 'inline'
+                }
+            })
         }
     };
     /**
@@ -1238,13 +1271,6 @@
      *    fmt 需转换的格式
      */
     myFrame.DateFormat = function (date, fmt) {
-        // 对Date的扩展，将 Date 转化为指定格式的String
-        // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
-        // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-        // 例子：
-        // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
-        // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
-        // Date.prototype.Format = function (fmt) { //author: meizz
         var o = {
             "M+": date.getMonth() + 1, //月份
             "d+": date.getDate(), //日
