@@ -1,0 +1,46 @@
+/*************************
+文件：add.scss
+说明：客户新增页面样式
+作者：袁贤栩
+时间：2018-07-18
+修改人：
+修改时间：
+修改说明：
+*************************/
+
+
+
+//最外层包裹，防止各模块css样式相互污染
+.customer_add_modules_outer{
+  
+  //重写表格中验证的位置
+
+  .form_wrap{
+    .el-form-item__error{
+      left:130px;
+    }
+  }
+
+  .detailPage_table{
+
+    .el-input__inner{
+      border-color: transparent;
+    }
+
+  }
+
+  .upload-demo{
+    margin-top: -7px;
+  }
+
+  .typeSelect_div{
+    margin-bottom: 28px;
+  }
+
+    
+  
+  
+  
+  
+  
+}
