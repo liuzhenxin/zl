@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/echarts-all.js"></script>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<script type="text/javascript">
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    option = {
+        title : {
+            text: '某地区蒸发量和降水量',
+            subtext: '纯属虚构'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['蒸发量','降水量']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                // 控制网格线是否显示
+                splitLine: {
+                    show: true,
+                    //  改变轴线颜色
+                    lineStyle: {
+                        // 使用深浅的间隔色
+                        type: 'dashed',
+                        color: ['red']
+                    }
+                },
+                type : 'category',
+                data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value',
+                splitLine: {
+                    show: true,
+                    //  改变轴线颜色
+                    lineStyle: {
+                        // 使用深浅的间隔色
+                        type: 'dashed',
+                        color: ['red']
+                    }
+                }
+            }
+        ],
+        series : [
+            {
+                name:'蒸发量',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
+            }
+        ]
+    };
+
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    myChart.on("click", function (param){
+        console.log(param);
+        console.log(param.name);
+        switch (param.name) {
+            case "衬衫":
+                window.location.href = "http://www.sina.com";
+                window.open("http://www.sina.com", "_blank");//在新页面打开
+                break;
+            case "羊毛衫":
+                window.location.href = "http://www.baidu.com";
+                break;
+            case "雪纺衫":
+                window.location.href = "http://www.qq.com";
+                break;
+            default:
+                break;
+        }      });
+</script>
+</body>
+</html>

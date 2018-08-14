@@ -208,6 +208,11 @@
             return str.replace(Reg, replaceCount)
         }
     };
+
+
+
+
+    
     /*
     *  搜索相关字高亮显示
     * @dom  元素
@@ -236,6 +241,51 @@
             width += $(this).outerWidth(true);
         });
         return width;
+    };
+	
+    /*
+    *   ele  ---dom元素----要关闭的元素
+    *   Array--字符格式的dom元素['','']  --点击无效的元素---存放子元素---最多4个
+	*
+    *   使用: myFrame.bodyClick('元素',['元素','元素'])  
+    * */
+	myFrame.bodyClick=function (ele,Array) {
+        $('body').click(function(e) {
+            var target = $(e.target);
+            // 如果#overlay或者#btn下面还有子元素，可使用
+            // !target.is('#btn *') && !target.is('#overlay *')
+            if(!target.is(ele)) {
+                if(Array.length === 1){
+                    if(!target.is(Array[0])) {
+                        if ( $(ele).is(':visible') ) {
+                            $(ele).hide();
+                        }
+                    }
+                }
+                if(Array.length === 2){
+                    if(!target.is(Array[0]) && !target.is(Array[1])) {
+                        if ($(ele).is(':visible') ) {
+                            $(ele).hide();
+                        }
+                    }
+                }
+                if(Array.length === 3){
+                    if(!target.is(Array[0]) && !target.is(Array[1])&& !target.is(Array[2])) {
+                        if ( $(ele).is(':visible') ) {
+                            $(ele).hide();
+                        }
+                    }
+                }
+                if(Array.length === 4){
+                    if(!target.is(Array[0]) && !target.is(Array[1])&& !target.is(Array[2])&& !target.is(Array[3])) {
+                        if ( $(ele).is(':visible') ) {
+                            $(ele).hide();
+                        }
+                    }
+                }
+
+            }
+        });
     };
 
     /**
@@ -1086,6 +1136,29 @@
         }
         return theRequest;
     };
+	/*
+	
+	function GetRequest() {
+		var url = location.search; //获取url中"?"符后的字串
+		var theRequest = new Object();
+		if (url.indexOf("?") != -1) {
+			var str = url.substr(1);
+			strs = str.split("&");
+			for(var i = 0; i < strs.length; i ++) {
+				theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+			}
+		}
+		return theRequest;
+	}
+	var Request = new Object();
+	Request = GetRequest();
+	console.log(Request)  //返回json数据
+	
+	
+	
+	*/
+	
+	
     /**
      *
      * @desc   判断是否为URL地址
@@ -1271,13 +1344,6 @@
      *    fmt 需转换的格式
      */
     myFrame.DateFormat = function (date, fmt) {
-        // 对Date的扩展，将 Date 转化为指定格式的String
-        // 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
-        // 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
-        // 例子：
-        // (new Date()).Format("yyyy-MM-dd hh:mm:ss.S") ==> 2006-07-02 08:09:04.423
-        // (new Date()).Format("yyyy-M-d h:m:s.S")      ==> 2006-7-2 8:9:4.18
-        // Date.prototype.Format = function (fmt) { //author: meizz
         var o = {
             "M+": date.getMonth() + 1, //月份
             "d+": date.getDate(), //日

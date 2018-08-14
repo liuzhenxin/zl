@@ -29,12 +29,51 @@ $browser-default-font-size: 16px !default;//变量的值可以根据自己需求
   width: $width;
   height: $height;
 }
+//  盒子阴影
+/*
+$h-shadow 水平阴影的位置,
+$v-shadow 垂直阴影的位置,
+$blur 模糊距离,
+spread 阴影的尺寸,
+$color 阴影的颜色,
+$inset 将外部阴影 (outset) 改为内部阴影
+ */
+@mixin box-shadow($h-shadow ,$v-shadow ,$blur ,$spread ,$_color ){
+  -moz-box-shadow: $h-shadow $v-shadow $blur $spread $_color ;              /* For Firefox3.6+ */
+  -webkit-box-shadow: $h-shadow $v-shadow $blur $spread ;           /* For Chrome5+, Safari5+ */
+  box-shadow: $h-shadow $v-shadow $blur $spread $_color ;
+}
+/*实现了宽度为父容器宽度减去固定的像素 方法*/
+/* 兼容性
+* 谷歌 26.0 19.0 -webkit-
+* IE 9.0
+* 火狐 16.0 4.0 -moz-
+* Safari 7.0 6.0 -webkit-
+* 欧朋 15.0
+* 使用  ：@include width-calc("100% - 10px");
+*/
+@mixin width-calc($expression){
+  width:-webkit-calc(#{$expression});
+  width:-moz-calc(#{$expression});
+  width:calc(#{$expression});
+}
+@mixin box-sizing($name){
+  -moz-box-sizing: $name;
+  -webkit-box-sizing: $name;
+  -o-box-sizing: $name;
+  -ms-box-sizing:$name;
+  box-sizing: $name;
+}
+
 //边框
 @mixin border($color){
   border: 1px solid $color;
 }
 //圆角
 @mixin border_radius($top,$right,$bottom,$left){
+  -webkit-border-radius:$top $right $bottom $left;
+  -moz-border-radius:$top $right $bottom $left;
+  -o-border-radius:$top $right $bottom $left;
   border-radius:$top $right $bottom $left;
   /*解决ie8及以下不支持圆角*/
   behavior: url(ie8border_radius/iecss3.htc)\0;
