@@ -1,0 +1,3 @@
+webuploader不支持ie9(包含ie9)以下浏览器：
+	1、需引入UploadPreview.js即可
+	2、配置需：swf: "https://xujun.work/static/common/webuploader/Uploader.swf",
